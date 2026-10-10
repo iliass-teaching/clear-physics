@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import EquationSheet from '../components/EquationSheet.astro';
+import { url } from '../lib/url';
+---
+
+<Base title="Equations" description="The equations and values to learn for Cambridge IGCSE Physics 0625.">
+  <p class="kicker">Cambridge IGCSE Physics 0625 · syllabus 2026–2028</p>
+  <h1>Equations to know</h1>
+  <p class="lead">
+    In the exam, you are <strong>not</strong> given these equations: the syllabus says "recall and use". Learn them, with their units.
+    Core students need the equations without the <span class="tag ext">Extended</span> label.
+  </p>
+  <p class="small muted">
+    This list was made from the learning points of the official syllabus. See <a href={url('syllabus/')}>Syllabus and sources</a>.
+    You can practise them on the <a href={url('practice/')}>Practice</a> page.
+  </p>
+  <EquationSheet />
+</Base>
+
+<style>
+  .kicker { margin: 0; font-size: 0.85rem; color: var(--ink-soft); }
+  .lead { font-size: 1.1rem; }
+</style>

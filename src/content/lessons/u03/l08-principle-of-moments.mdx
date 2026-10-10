@@ -1,0 +1,160 @@
+---
+unit: 3
+lesson: 8
+title: The principle of moments
+syllabus: ['1.5.2 C3', '1.5.2 C4', '1.5.2 S5', '1.5.2 S6']
+goals:
+  - Use the principle of moments to balance a beam.
+  - State the two conditions for equilibrium.
+  - Describe an experiment to show that there is no resultant moment on an object in equilibrium (Extended).
+keyWords: [principle of moments, equilibrium, moment, pivot]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { beamSvg } from '../../../lib/forceFigures';
+
+<Step kind="starter" title="Balance the see-saw" minutes={5}>
+
+A child of weight 300 N sits 2 m from the middle of a see-saw. Her father has a weight of 600 N.
+
+Where must he sit to balance the see-saw? Discuss, then check your idea at the end of the lesson.
+
+</Step>
+
+<Step kind="learn" title="The principle of moments" minutes={12}>
+
+When a beam is **balanced**, the moments on each side cancel:
+
+$$
+\text{total clockwise moment} = \text{total anticlockwise moment}
+$$
+
+(both moments about the same pivot). This is the **principle of moments**.
+
+<Figure svg={beamSvg([{ d: -0.6, label: '20 N' }, { d: 0.4, label: 'F' }])} caption="A balanced beam: 20 N at 0.6 m on the left, F at 0.4 m on the right." width="30rem" />
+
+<WorkedExample
+  question="The beam in the figure is balanced. Calculate the force F."
+  given={['left: $20\\,\\text{N}$ at $0.6\\,\\text{m}$ (anticlockwise)', 'right: $F$ at $0.4\\,\\text{m}$ (clockwise)']}
+  find="the force $F$"
+  answer="$F = 30\,\text{N}$"
+>
+
+clockwise moment = anticlockwise moment
+
+$F \times 0.4 = 20 \times 0.6 = 12\,\text{N m}$
+
+$F = \dfrac{12}{0.4} = 30\,\text{N}$
+
+</WorkedExample>
+
+**Extended:** with more than one force on a side, **add** the moments on that side.
+
+</Step>
+
+<Step kind="learn" title="Equilibrium" minutes={6}>
+
+An object is in **equilibrium** when:
+
+1. there is **no resultant force** on it, and
+2. there is **no resultant moment** on it.
+
+Then the object does not start to move and does not start to turn.
+
+For the balanced beam: the pivot pushes up with a force equal to the total weight on the beam (no resultant force), and the clockwise and anticlockwise moments are equal (no resultant moment).
+
+</Step>
+
+<Step kind="do" title="Balancing a metre rule" minutes={17}>
+
+**Equipment:** metre rule with a hole at the 50 cm mark, pivot (a nail or a knife edge in a clamp stand), masses with loops of thread (100 g, 200 g…).
+
+1. Balance the metre rule on the pivot at its centre (50 cm).
+2. Hang a 200 g mass on one side, at a measured distance from the pivot.
+3. Hang a 100 g mass on the other side. Move it until the rule balances again.
+4. Measure both distances from the pivot. Calculate both moments.
+5. Repeat with different masses and distances. **Extended:** use two masses on one side.
+
+<div class="table-wrap">
+
+| left: force / N | left: distance / m | anticlockwise moment / (N m) | right: force / N | right: distance / m | clockwise moment / (N m) |
+|---|---|---|---|---|---|
+| | | | | | |
+| | | | | | |
+
+</div>
+
+A 100 g mass has a weight of about 1 N.
+
+**Question (Extended):** do your results show that there is no resultant moment when the rule balances? Explain.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={15}>
+
+Level 3 is for Extended students.
+
+<Practice topic="moments" level={2} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Back to the starter: the child (300 N) sits 2 m from the middle. Where must her father (600 N) sit?',
+    options: [
+      { text: '1 m from the middle, on the other side', correct: true, why: '$300 \\times 2 = 600 \\times d$, so $d = 1\\,\\text{m}$.' },
+      { text: '2 m from the middle', why: 'He is heavier, so he must sit closer to the middle.' },
+      { text: '4 m from the middle', why: 'The heavier person sits closer to the pivot, not further.' },
+      { text: 'in the middle', why: 'Then he gives no moment, and the see-saw is not balanced.' },
+    ],
+  },
+  {
+    question: 'An object is in equilibrium. Which is true?',
+    options: [
+      { text: 'There is no resultant force and no resultant moment', correct: true, why: 'Both conditions are needed.' },
+      { text: 'There is no resultant force only', why: 'There must also be no resultant moment.' },
+      { text: 'There is no resultant moment only', why: 'There must also be no resultant force.' },
+      { text: 'There are no forces on it', why: 'There can be forces, but they must balance.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Do 5 questions at **Level 2** of the practice. For each one, write "clockwise moment = anticlockwise moment" as your first line.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** one force on each side (1.5.2 C3) and the conditions for equilibrium (C4) are Core. Several forces on one side (S5) and the experiment to show no resultant moment (S6) are Extended.
+
+**Timing:** starter 5 min, learn 18 min, practical 17 min, practice 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Multiplying each force by the other force’s distance.
+- Measuring distances from the end of the rule instead of from the pivot.
+- Forgetting the weight of the rule when the pivot is not at its centre (avoid this case at Core).
+
+**Practical tips:** hang the masses with thin loops of thread so the distance is easy to read. The rule should balance before you add any masses.
+
+**Language support:**
+
+- Sentence frame: *"Clockwise moment = … × … = … N m. Anticlockwise moment = …"*
+
+**Differentiation:**
+
+- Support: use the same mass on both sides first (equal distances), then double one mass.
+- Stretch: put the pivot at the 40 cm mark. The rule now needs a mass to balance it. Use this to find the weight of the rule. (Its weight acts at its centre, 0.10 m from the pivot.)
+
+</Step>

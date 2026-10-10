@@ -1,0 +1,150 @@
+---
+import '@fontsource-variable/source-sans-3';
+import '@fontsource-variable/source-sans-3/wght-italic.css';
+import '@fontsource-variable/source-serif-4';
+import 'katex/dist/katex.min.css';
+import '../styles/global.css';
+import { url } from '../lib/url';
+
+interface Props {
+  title: string;
+  description?: string;
+  wide?: boolean; // wider main column (lesson pages with a side menu)
+}
+
+const { title, description = 'Cambridge IGCSE Physics, explained in clear English.', wide = false } = Astro.props;
+const path = Astro.url.pathname;
+const nav = [
+  { href: url('course/'), label: 'Course' },
+  { href: url('practice/'), label: 'Practice' },
+  { href: url('key-words/'), label: 'Key words' },
+  { href: url('syllabus/'), label: 'Syllabus' },
+  { href: url('teachers/'), label: 'For teachers' },
+  { href: url('about/'), label: 'About' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
+    <title>{title} · Clear Physics</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="inner">
+        <a class="brand" href={url('')}>
+          <span class="mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="5.5" /><ellipse cx="16" cy="16" rx="14" ry="5.5" /></svg>
+          </span>
+          <span class="name">Clear Physics</span>
+          <span class="sub">IGCSE 0625</span>
+        </a>
+        <nav aria-label="Main">
+          {nav.map((item) => (
+            <a href={item.href} aria-current={path.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+    <main class={wide ? 'wide' : ''}>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="inner">
+        <p>
+          <strong>Clear Physics</strong> — Cambridge IGCSE Physics (0625), syllabus 2026–2028, in clear English. <a href={url('syllabus/')}>Syllabus and sources</a>
+        </p>
+        <p>
+          Independent resource. Not affiliated with or endorsed by Cambridge University Press &amp; Assessment.
+        </p>
+      </div>
+    </footer>
+    <script>
+      import '../scripts/enlarge';
+      import '../scripts/textZoom';
+    </script>
+  </body>
+</html>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .inner {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 2rem;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .mark svg {
+    width: 26px;
+    height: 26px;
+    display: block;
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2;
+  }
+  .mark circle { fill: var(--accent); stroke: none; }
+  .name {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+  .sub {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+    border-left: 1px solid var(--line);
+    padding-left: 0.55rem;
+    letter-spacing: 0.04em;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.4rem;
+    font-size: 0.95rem;
+  }
+  nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 0.2rem 0;
+    border-bottom: 2px solid transparent;
+  }
+  nav a:hover { color: var(--ink); }
+  nav a[aria-current='page'] {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+  }
+  main.wide { max-width: 72rem; }
+  .site-footer {
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+    margin-top: 2rem;
+  }
+  .site-footer .inner {
+    display: block;
+    padding: 1.5rem 1.25rem 2.5rem;
+  }
+  .site-footer p { margin: 0.25rem 0; }
+</style>

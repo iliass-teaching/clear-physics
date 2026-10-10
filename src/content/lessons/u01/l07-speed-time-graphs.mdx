@@ -1,0 +1,215 @@
+---
+unit: 1
+lesson: 7
+title: Speed–time graphs and acceleration
+syllabus: ['1.2 C4', '1.2 C5', '1.2 S9', '1.2 S10', '1.2 S12']
+goals:
+  - Say from a speed–time graph if an object is at rest, at constant speed, speeding up or slowing down.
+  - 'Use the equation $a = \dfrac{\Delta v}{\Delta t}$ to calculate an acceleration (Extended).'
+  - Know that a deceleration is a negative acceleration (Extended).
+keyWords: [speed, acceleration, deceleration, at rest, constant speed]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Graph from '../../../components/Graph.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { graphSvg } from '../../../lib/graph';
+
+<Step kind="starter" title="Same line, different story" minutes={5}>
+
+Both graphs have a flat line. Do they tell the same story? Talk with a partner.
+
+<div class="graph-grid">
+<Graph
+  xLabel="time / s" yLabel="distance / m" xMax={10} yMax={50} xStep={2} yStep={10}
+  points={[[0, 30], [10, 30]]} caption="Graph 1: distance–time"
+/>
+<Graph
+  xLabel="time / s" yLabel="speed / (m/s)" xMax={10} yMax={10} xStep={2} yStep={2}
+  points={[[0, 6], [10, 6]]} caption="Graph 2: speed–time"
+/>
+</div>
+
+</Step>
+
+<Step kind="learn" title="Reading a speed–time graph" minutes={10}>
+
+On a speed–time graph, **speed** is on the vertical axis.
+
+<div class="table-wrap">
+
+| Shape of the line | What the object does |
+|---|---|
+| flat, on the time axis (speed = 0) | at rest |
+| flat, above the time axis | constant speed |
+| straight, going up | speeds up at a constant rate (constant acceleration) |
+| straight, going down | slows down at a constant rate (constant deceleration) |
+| curve | the acceleration changes (Extended) |
+
+</div>
+
+<div class="graph-grid">
+<Graph
+  xLabel="time / s" yLabel="speed / (m/s)" xMax={10} yMax={10} xStep={2} yStep={2}
+  points={[[0, 6], [10, 6]]} caption="Constant speed"
+/>
+<Graph
+  xLabel="time / s" yLabel="speed / (m/s)" xMax={10} yMax={10} xStep={2} yStep={2}
+  points={[[0, 0], [10, 10]]} caption="Constant acceleration"
+/>
+<Graph
+  xLabel="time / s" yLabel="speed / (m/s)" xMax={10} yMax={10} xStep={2} yStep={2}
+  points={[[0, 10], [10, 0]]} caption="Constant deceleration"
+/>
+<Graph
+  xLabel="time / s" yLabel="speed / (m/s)" xMax={10} yMax={10} xStep={2} yStep={2}
+  points={[[0, 0], [2, 4.5], [4, 7.2], [6, 8.6], [8, 9.4], [10, 9.8]]} curve
+  caption="Extended: changing acceleration. The curve gets less steep, so the acceleration gets smaller."
+/>
+</div>
+
+**Be careful:** on a distance–time graph, a flat line means at rest. On a speed–time graph, a flat line means constant speed.
+
+</Step>
+
+<Step kind="learn" title="Acceleration (Extended)" minutes={10}>
+
+**Acceleration** is the change in velocity per unit time.
+
+$$
+a = \frac{\Delta v}{\Delta t}
+$$
+
+- $\Delta v$ (say "delta v") means **change in velocity**: $\Delta v = \text{final velocity} - \text{start velocity}$.
+- $\Delta t$ means **change in time** (the time taken).
+- The unit of acceleration is **m/s²** ("metres per second squared").
+
+An acceleration of $2\,\text{m/s}^2$ means: the speed increases by 2 m/s **every second**.
+
+<WorkedExample
+  question="A car starts from rest. It reaches 20 m/s in 8 s. Calculate its acceleration."
+  given={['start speed $= 0\\,\\text{m/s}$', 'final speed $= 20\\,\\text{m/s}$', 'time $\\Delta t = 8\\,\\text{s}$']}
+  find="the acceleration $a$"
+  answer="$a = 2.5\,\text{m/s}^2$"
+>
+
+$\Delta v = 20 - 0 = 20\,\text{m/s}$
+
+$a = \dfrac{\Delta v}{\Delta t} = \dfrac{20}{8} = 2.5\,\text{m/s}^2$
+
+</WorkedExample>
+
+When an object slows down, $\Delta v$ is negative, so the acceleration is negative.
+A negative acceleration is a **deceleration**.
+
+<WorkedExample
+  question="The car brakes from 20 m/s to rest in 4 s. Calculate its acceleration."
+  given={['start speed $= 20\\,\\text{m/s}$', 'final speed $= 0\\,\\text{m/s}$', 'time $\\Delta t = 4\\,\\text{s}$']}
+  find="the acceleration $a$"
+  answer="$a = -5\,\text{m/s}^2$ (a deceleration of $5\,\text{m/s}^2$)"
+>
+
+$\Delta v = 0 - 20 = -20\,\text{m/s}$
+
+$a = \dfrac{-20}{4} = -5\,\text{m/s}^2$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="do" title="Plot a car journey" minutes={15}>
+
+A car's speed is recorded every 2 seconds.
+
+<div class="table-wrap">
+
+| time / s | 0 | 2 | 4 | 6 | 8 | 10 | 12 | 14 |
+|---|---|---|---|---|---|---|---|---|
+| speed / (m/s) | 0 | 5 | 10 | 15 | 15 | 15 | 7.5 | 0 |
+
+</div>
+
+1. Plot a speed–time graph. Label the axes **time / s** and **speed / (m/s)**.
+2. Find the three parts of the journey. Describe each part in one sentence.
+3. **Extended:** calculate the acceleration in each part.
+
+</Step>
+
+<Step kind="practice" title="Practice (Extended)" minutes={15}>
+
+Core students: practise reading graphs in the exit ticket, then try Level 1.
+
+<Practice topic="acceleration" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: `Which part of this speed–time graph shows constant speed? ${graphSvg({ xLabel: 'time / s', yLabel: 'speed / (m/s)', xMax: 12, yMax: 10, xStep: 2, yStep: 2, points: [[0, 0], [4, 8], [8, 8], [12, 0]], labels: [{ x: 1.4, y: 5, text: 'P' }, { x: 6, y: 9, text: 'Q' }, { x: 10.6, y: 5, text: 'R' }] })}`,
+    options: [
+      { text: 'Q', correct: true, why: 'The line is flat above the axis: the speed does not change.' },
+      { text: 'P', why: 'In P the speed increases. The object speeds up.' },
+      { text: 'R', why: 'In R the speed decreases. The object slows down.' },
+      { text: 'None of them', why: 'Look at Q: the speed stays at 8 m/s.' },
+    ],
+  },
+  {
+    question: 'What is the unit of acceleration?',
+    options: [
+      { text: 'm/s²', correct: true, why: '$a = \\dfrac{\\Delta v}{\\Delta t}$, so the unit is $\\dfrac{\\text{m/s}}{\\text{s}} = \\text{m/s}^2$.' },
+      { text: 'm/s', why: 'm/s is the unit of speed and velocity.' },
+      { text: 'm', why: 'm is the unit of distance.' },
+      { text: 's/m²', why: 'The unit of acceleration is $\\dfrac{\\text{m/s}}{\\text{s}} = \\text{m/s}^2$.' },
+    ],
+  },
+  {
+    question: 'Extended: a car slows down from 15 m/s to 5 m/s in 5 s. What is its acceleration?',
+    options: [
+      { text: '−2 m/s²', correct: true, why: '$\\Delta v = 5 - 15 = -10\\,\\text{m/s}$, and $a = \\dfrac{-10}{5} = -2\\,\\text{m/s}^2$.' },
+      { text: '2 m/s²', why: 'The car slows down, so the acceleration is negative.' },
+      { text: '1 m/s²', why: 'Use the change in speed: 5 − 15 = −10 m/s.' },
+      { text: '−50 m/s²', why: 'You multiplied. $a = \\dfrac{\\Delta v}{\\Delta t}$.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Sketch a speed–time graph for a lift: it starts at rest, speeds up, moves at constant speed, then slows down and stops.
+2. Extended: do 5 questions at **Level 2** of the practice.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** shapes of speed–time graphs (1.2 C4, C5) are Core. Acceleration calculations and changing acceleration (S9, S10, S12) are Extended.
+
+**Timing:** starter 5 min, learn 20 min, plotting 15 min, practice 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Confusing distance–time and speed–time graphs (always read the axis labels first).
+- Using the final speed instead of the change in speed.
+- Writing a deceleration as a positive acceleration.
+- Writing the unit as m/s instead of m/s².
+
+**Answers for the plotting task:** 0–6 s: speeds up, $a = 2.5\,\text{m/s}^2$; 6–10 s: constant speed, $a = 0$; 10–14 s: slows down, $a = -3.75\,\text{m/s}^2$.
+
+**Language support:**
+
+- Read $\Delta$ as "change in". Write $\Delta v = \text{final} - \text{start}$ on the board all lesson.
+- Sentence frame: *"The speed increases by … m/s every second, so the acceleration is … m/s²."*
+
+**Differentiation:**
+
+- Support: start with objects that start from rest, so $\Delta v$ = final speed.
+- Stretch: sketch the speed–time graph of a ball thrown straight up, until it comes back to your hand. (Speed decreases to zero at the top, then increases.)
+
+</Step>

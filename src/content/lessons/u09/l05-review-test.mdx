@@ -1,0 +1,160 @@
+---
+unit: 9
+lesson: 5
+title: Review and unit test
+syllabus: ['3.1']
+goals:
+  - Remember the key words and the equation of Unit 9.
+  - Solve wave problems with the right units.
+  - Check your learning of Unit 9 with a test.
+keyWords: [wave, wavelength, frequency, amplitude, wave speed, diffraction]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="learn" title="Unit 9 in one page" minutes={8}>
+
+<div class="table-wrap">
+
+| Idea | Key facts |
+|---|---|
+| waves | transfer **energy**, not matter |
+| transverse | vibration at **right angles** to the direction of travel: water waves, light, electromagnetic waves, S-waves |
+| longitudinal | vibration **parallel** to the direction of travel: sound, P-waves (compressions and rarefactions) |
+| parts of a wave | crest, trough, amplitude (middle line → crest), wavelength $\lambda$ (crest → next crest) |
+| frequency | waves per second, in **Hz** |
+| wave speed | $v = f\lambda$ |
+| reflection | the wave comes back; same angle |
+| refraction | change of speed (deep → shallow water: slower, shorter $\lambda$, same $f$) |
+| diffraction | spreading through a gap or past an edge; most when gap ≈ $\lambda$ (Extended) |
+
+</div>
+
+</Step>
+
+<Step kind="practice" title="Mixed practice" minutes={20}>
+
+<Practice topic="wave-speed" level={2} />
+
+</Step>
+
+<Step kind="exit" title="Unit test" minutes={30}>
+
+Questions marked **(E)** are for Extended students.
+
+<Quiz questions={[
+  {
+    question: '1. A wave travels across a pond. What moves from one side to the other?',
+    options: [
+      { text: 'energy', correct: true, why: 'Waves transfer energy, not matter.' },
+      { text: 'water', why: 'The water only moves up and down.' },
+      { text: 'water and energy', why: 'The water stays in about the same place.' },
+      { text: 'nothing', why: 'Energy moves across the pond.' },
+    ],
+  },
+  {
+    question: '2. Which list has only transverse waves?',
+    options: [
+      { text: 'light, water waves, S-waves', correct: true, why: 'They can all be modelled as transverse.' },
+      { text: 'sound, light, water waves', why: 'Sound is longitudinal.' },
+      { text: 'sound, P-waves', why: 'These are longitudinal.' },
+      { text: 'P-waves, S-waves', why: 'P-waves are longitudinal.' },
+    ],
+  },
+  {
+    question: '3. In a longitudinal wave, the vibration is…',
+    options: [
+      { text: 'parallel to the direction of travel', correct: true, why: 'Like sound in air.' },
+      { text: 'at right angles to the direction of travel', why: 'This is a transverse wave.' },
+      { text: 'in a circle', why: 'It is parallel to the direction of travel.' },
+      { text: 'there is no vibration', why: 'All waves are vibrations.' },
+    ],
+  },
+  {
+    question: '4. What is the wavelength of a wave?',
+    options: [
+      { text: 'the distance from one crest to the next crest', correct: true, why: 'The length of one full wave.' },
+      { text: 'the height from a trough to a crest', why: 'This is two amplitudes.' },
+      { text: 'the number of waves each second', why: 'This is the frequency.' },
+      { text: 'the distance from a crest to the next trough', why: 'This is half a wavelength.' },
+    ],
+  },
+  {
+    question: '5. A wave has a frequency of 50 Hz and a wavelength of 4 m. What is its speed?',
+    options: [
+      { text: '200 m/s', correct: true, why: '$v = f\\lambda = 50 \\times 4$.' },
+      { text: '12.5 m/s', why: 'Multiply: $v = f\\lambda$.' },
+      { text: '54 m/s', why: 'Multiply, do not add.' },
+      { text: '0.08 m/s', why: 'Multiply: $v = f\\lambda$.' },
+    ],
+  },
+  {
+    question: '6. Sound travels at 340 m/s in air. A note has a frequency of 170 Hz. What is its wavelength?',
+    options: [
+      { text: '2 m', correct: true, why: '$\\lambda = \\dfrac{v}{f} = \\dfrac{340}{170}$.' },
+      { text: '0.5 m', why: 'Divide the speed by the frequency.' },
+      { text: '57 800 m', why: 'Divide: $\\lambda = \\dfrac{v}{f}$.' },
+      { text: '170 m', why: 'Use $\\lambda = \\dfrac{v}{f}$.' },
+    ],
+  },
+  {
+    question: '7. Which effect does a ripple tank with a glass plate (shallow water) show?',
+    options: [
+      { text: 'refraction', correct: true, why: 'The waves slow down in shallow water.' },
+      { text: 'reflection', why: 'Reflection needs a barrier.' },
+      { text: 'diffraction', why: 'Diffraction needs a gap or an edge.' },
+      { text: 'none', why: 'It shows refraction.' },
+    ],
+  },
+  {
+    question: '8. Waves go through a gap. Which quantity changes?',
+    options: [
+      { text: 'the shape of the wavefronts: they spread out', correct: true, why: 'Diffraction. The wavelength, frequency and speed do not change.' },
+      { text: 'the wavelength', why: 'The wavelength does not change in diffraction.' },
+      { text: 'the frequency', why: 'The frequency does not change.' },
+      { text: 'the speed', why: 'The speed does not change.' },
+    ],
+  },
+  {
+    question: '9. (E) Which gap gives the most diffraction for waves with a wavelength of 1 cm?',
+    options: [
+      { text: '1 cm', correct: true, why: 'Gap about the same size as the wavelength.' },
+      { text: '10 cm', why: 'Too wide: little spreading.' },
+      { text: '30 cm', why: 'Much too wide.' },
+      { text: 'they are all the same', why: 'The size of the gap matters.' },
+    ],
+  },
+  {
+    question: '10. (E) Why can you hear a person around a corner, but not see them?',
+    options: [
+      { text: 'Sound has a much longer wavelength than light, so it diffracts much more', correct: true, why: 'Sound: about 1 m. Light: less than a millionth of a metre.' },
+      { text: 'Sound is faster than light', why: 'Light is much faster. The reason is the wavelength.' },
+      { text: 'Light cannot reflect', why: 'The reason is diffraction: longer wavelength, more spreading.' },
+      { text: 'Sound is a transverse wave', why: 'Sound is longitudinal. The reason is the wavelength.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Look at the questions you got wrong. Find the lesson for each one and read it again. Then do 5 practice questions at each level of the wave-speed practice.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** review 8 min, mixed practice 20 min, unit test 30 min, plus 2 min to start.
+
+**Using the test:** questions 1–8 test Core content; 9–10 are Extended.
+
+**Differentiation:**
+
+- Support: allow the "Unit 9 in one page" table during the test the first time.
+- Stretch: level 3 of the practice (wave graphs; counting waves).
+
+</Step>

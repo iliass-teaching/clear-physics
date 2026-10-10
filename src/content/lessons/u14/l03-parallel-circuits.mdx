@@ -1,0 +1,119 @@
+---
+unit: 14
+lesson: 3
+title: Parallel circuits
+syllabus: ['4.3.2 C5–C7', '4.3.2 S8', '4.3.2 S9']
+goals:
+  - State that the current from the source is bigger than the current in each branch.
+  - State that two resistors in parallel have less resistance than either one alone.
+  - State the advantages of lamps in parallel in a lighting circuit.
+  - 'Extended: use the junction rule and the fact that parallel branches have the same p.d.'
+keyWords: [parallel circuit, junction, branch, electric current, potential difference]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import CircuitSim from '../../../components/CircuitSim.astro';
+import { seriesParallelSvg, junctionSvg } from '../../../lib/safetyFigures';
+
+<Step kind="starter" title="Lights at home" minutes={5}>
+
+At home, you switch off the kitchen light. The other lights stay on. If the lights were in series, what would happen?
+
+</Step>
+
+<Step kind="learn" title="Rules for parallel circuits" minutes={15}>
+
+<Figure svg={seriesParallelSvg()} caption="A parallel circuit (right) has two or more branches." width="34rem" />
+
+In a **parallel circuit**, the current splits into **branches**:
+
+1. The **current from the source** is **bigger** than the current in each branch.
+2. The **combined resistance** of two resistors in parallel is **less** than either resistor alone. (There are more paths for the current.)
+3. If one branch breaks, the other branches **still work**.
+
+**Advantages of lamps in parallel in a lighting circuit:**
+
+- each lamp can be switched **on and off on its own**;
+- if one lamp breaks, the **others stay on**;
+- each lamp gets the **full p.d.** of the supply, so it is **bright**.
+
+**Extended: two important rules**
+
+<Figure svg={junctionSvg()} caption="The current into a junction equals the current out of it." width="28rem" />
+
+- **Junction rule:** the sum of the currents **into** a junction = the sum of the currents **out of** it. Charge is not lost or created: every coulomb that arrives must leave.
+- **Same p.d.:** the p.d. across each branch is the **same** (and equal to the p.d. across the whole arrangement).
+
+</Step>
+
+<Step kind="do" title="Investigate" minutes={15}>
+
+<CircuitSim />
+
+Select **Parallel**.
+
+1. Compare the current in each lamp with the current from the supply. What rule do you find?
+2. Compare the p.d. across each lamp with the e.m.f.
+3. Tick **remove lamp 2**. What happens to lamp 1? What happens to the supply current?
+4. Compare the brightness of the lamps in parallel and in series (same lamps, same e.m.f.). Which are brighter?
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={18}>
+
+<Practice topic="parallel" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={7}>
+
+<Quiz questions={[
+  {
+    question: '0.8 A goes into a junction. 0.5 A leaves along one branch. What current leaves along the other branch?',
+    options: [
+      { text: '0.3 A', correct: true, why: 'Current in = current out: $0.8 - 0.5$.' },
+      { text: '1.3 A', why: 'Subtract: the current splits.' },
+      { text: '0.8 A', why: 'The 0.8 A is shared between the branches.' },
+      { text: '0.5 A', why: 'Current in = current out.' },
+    ],
+  },
+  {
+    question: 'Why are the lights in a house connected in parallel?',
+    options: [
+      { text: 'Each can be switched on its own, and if one breaks the others stay on', correct: true, why: 'And each gets the full p.d.' },
+      { text: 'They use less current in total', why: 'The reasons are independent switching and reliability.' },
+      { text: 'There is only one path for the current', why: 'That is a series circuit.' },
+      { text: 'So they all go off together', why: 'In parallel, they work independently.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** 4.3.2 C5–C7 are Core. The junction rule and equal p.d.s (S8a, S8c, S9) are Extended.
+
+**Timing:** starter 5 min, learn 15 min, simulation 15 min, practice 18 min, exit ticket 7 min.
+
+**Common mistakes:**
+
+- "In parallel, the current is the same in each branch." (Only if the branches have the same resistance.)
+- "Adding a resistor in parallel increases the total resistance." It decreases it.
+- Forgetting that the supply current increases when more branches are added.
+
+**Language support:**
+
+- *parallel*: side by side, like the lines of an equals sign (=).
+- *branch*: like the branches of a tree.
+
+**Differentiation:**
+
+- Support: level 1 of the practice only.
+- Stretch: why does a battery go flat faster with lamps in parallel than in series?
+
+</Step>

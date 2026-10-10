@@ -1,0 +1,184 @@
+---
+unit: 12
+lesson: 1
+title: Magnets and magnetic materials
+syllabus: ['4.1 C1–C4']
+goals:
+  - Describe the forces between magnetic poles, and between magnets and magnetic materials.
+  - Describe induced magnetism.
+  - Compare temporary magnets (soft iron) and permanent magnets (steel).
+  - Know which materials are magnetic.
+keyWords: [magnetic pole, attract, repel, magnetic material, magnetised, induced magnetism, temporary magnet, permanent magnet]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { polesForcesSvg, inducedSvg } from '../../../lib/chargeFigures';
+
+<Step kind="starter" title="Which ones stick?" minutes={5}>
+
+Predict which of these a magnet will pick up: a steel paper clip, an aluminium can, a copper coin, an iron nail, a gold ring, a plastic pen, a nickel coin. Then test your predictions.
+
+</Step>
+
+<Step kind="learn" title="Poles and forces" minutes={12}>
+
+Every magnet has two **poles**: a **north pole (N)** and a **south pole (S)**. The magnetic force is strongest at the poles.
+
+<Figure svg={polesForcesSvg()} caption="Forces between the poles of two magnets." width="30rem" />
+
+- **Unlike** poles (N and S) **attract**.
+- **Like** poles (N and N, or S and S) **repel**.
+
+**Is it a magnet?** A magnet attracts **both** ends of an unmagnetised piece of iron. Only **repulsion** proves that an object is a magnet: two magnets can repel, but a magnet never repels an unmagnetised piece of iron.
+
+</Step>
+
+<Step kind="learn" title="Magnetic materials and induced magnetism" minutes={12}>
+
+**Magnetic materials** are attracted by a magnet: **iron**, **steel** (mostly iron), **nickel** and **cobalt**. They can be **magnetised** (made into magnets).
+
+**Non-magnetic materials** are not attracted: for example copper, aluminium, gold, plastic, wood, glass.
+
+**Induced magnetism:** when a magnetic material is near a magnet, it **becomes a magnet** too.
+
+<Figure svg={inducedSvg()} caption="A magnet induces magnetism in an iron nail." width="30rem" />
+
+**Temporary and permanent magnets:**
+
+<div class="table-wrap">
+
+| | Soft iron | Steel |
+|---|---|---|
+| Magnetise it | easy | harder |
+| Remove the magnet | it **loses** its magnetism quickly | it **keeps** its magnetism |
+| Type of magnet | **temporary** | **permanent** |
+| Used for | the core of electromagnets | permanent magnets (fridge magnets, compasses) |
+
+</div>
+
+</Step>
+
+<Step kind="do" title="Iron or steel?" minutes={14}>
+
+**Equipment:** a bar magnet, a soft iron nail, a steel nail (or a steel needle) of the same size, paper clips.
+
+1. Hold the **iron** nail against one pole of the magnet. How many paper clips can the nail hold?
+2. Pull the magnet away. What happens to the paper clips?
+3. Repeat with the **steel** nail.
+4. Stroke the steel needle 20 times with one pole of the magnet, always in the same direction. Can it now pick up a paper clip? Hang it from a thread: which way does it point?
+
+**Write:** which one is a temporary magnet? Which one is a permanent magnet? Use your results.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={12}>
+
+<Quiz questions={[
+  {
+    question: 'The N pole of one magnet is near the S pole of another magnet. What happens?',
+    options: [
+      { text: 'They attract', correct: true, why: 'Unlike poles attract.' },
+      { text: 'They repel', why: 'Like poles repel; N and S are unlike.' },
+      { text: 'Nothing', why: 'Poles always push or pull each other.' },
+      { text: 'They become non-magnetic', why: 'They attract.' },
+    ],
+  },
+  {
+    question: 'Which material is magnetic?',
+    options: [
+      { text: 'nickel', correct: true, why: 'Iron, steel, nickel and cobalt are magnetic.' },
+      { text: 'copper', why: 'Copper is not magnetic.' },
+      { text: 'aluminium', why: 'Aluminium is not magnetic.' },
+      { text: 'gold', why: 'Gold is not magnetic.' },
+    ],
+  },
+  {
+    question: 'An object is attracted by both poles of a magnet. What can you say?',
+    options: [
+      { text: 'It is made of a magnetic material, but it may not be a magnet', correct: true, why: 'Only repulsion proves it is a magnet.' },
+      { text: 'It is a magnet', why: 'A magnet would repel one of the poles.' },
+      { text: 'It is non-magnetic', why: 'Non-magnetic materials are not attracted.' },
+      { text: 'It is a permanent magnet', why: 'We can only be sure of a magnet if it repels.' },
+    ],
+  },
+  {
+    question: 'Why is soft iron used for the core of an electromagnet?',
+    options: [
+      { text: 'It loses its magnetism quickly when the current is switched off', correct: true, why: 'It is a temporary magnet.' },
+      { text: 'It keeps its magnetism for ever', why: 'That is steel.' },
+      { text: 'It is non-magnetic', why: 'Iron is magnetic.' },
+      { text: 'It is very light', why: 'The reason is that it is easily magnetised and demagnetised.' },
+    ],
+  },
+  {
+    question: 'An iron nail touches the N pole of a magnet. What pole is induced at the end of the nail that touches the magnet?',
+    options: [
+      { text: 'S', correct: true, why: 'The induced pole is opposite, so they attract.' },
+      { text: 'N', why: 'Then the nail would be repelled.' },
+      { text: 'no pole', why: 'The nail becomes a magnet: induced magnetism.' },
+      { text: 'both N and S at the same end', why: 'One end is S, the other end is N.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'What is the difference between a temporary and a permanent magnet?',
+    options: [
+      { text: 'A temporary magnet loses its magnetism easily; a permanent magnet keeps it', correct: true, why: 'Soft iron: temporary. Steel: permanent.' },
+      { text: 'A temporary magnet is stronger', why: 'The difference is about keeping the magnetism.' },
+      { text: 'A permanent magnet has no poles', why: 'All magnets have two poles.' },
+      { text: 'There is no difference', why: 'One keeps its magnetism, one does not.' },
+    ],
+  },
+  {
+    question: 'Two like poles are brought together. They…',
+    options: [
+      { text: 'repel', correct: true, why: 'N–N or S–S: repel.' },
+      { text: 'attract', why: 'Unlike poles attract.' },
+      { text: 'do nothing', why: 'Like poles repel.' },
+      { text: 'stick together', why: 'Like poles repel.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+You have three identical metal bars. One is a magnet, one is iron (not magnetised), one is aluminium. You have no other equipment. How can you find which is which? Write the steps.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 24 min, activity 14 min, check 12 min, exit ticket 5 min.
+
+**Note:** "soft" iron does not mean physically soft: it means it is magnetically soft (easy to magnetise and demagnetise).
+
+**Common mistakes:**
+
+- "All metals are magnetic."
+- "Attraction proves an object is a magnet."
+- "A magnet only attracts the opposite pole of an iron bar." (It attracts both ends, by induced magnetism.)
+
+**Language support:**
+
+- *like poles* = the same poles; *unlike poles* = different poles.
+- *induce* = cause something to happen without touching (or by being near).
+
+**Differentiation:**
+
+- Support: a sorting grid (magnetic / non-magnetic) with real objects.
+- Stretch: the homework puzzle.
+
+**Safety:** keep strong magnets away from phones, bank cards and pacemakers. Neodymium magnets can pinch fingers.
+
+</Step>

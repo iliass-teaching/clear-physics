@@ -1,0 +1,179 @@
+---
+unit: 2
+lesson: 1
+title: Mass and weight
+syllabus: ['1.3 C1', '1.3 C2', '1.3 C4']
+goals:
+  - Say what mass is, and give its unit.
+  - Say what weight is, and give its unit.
+  - Explain why your mass is the same on the Moon, but your weight is not.
+keyWords: [mass, weight, newton, force meter, balance]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="Lighter on the Moon?" minutes={5}>
+
+An astronaut goes from the Earth to the Moon.
+
+1. Does she have less **stuff** in her body on the Moon?
+2. Is it easier to lift her on the Moon?
+
+Talk with a partner. Are your two answers the same?
+
+</Step>
+
+<Step kind="learn" title="Mass" minutes={8}>
+
+**Mass** is a measure of the quantity of matter (the amount of "stuff") in an object.
+
+- The unit of mass is the **kilogram (kg)**. We also use grams: $1000\,\text{g} = 1\,\text{kg}$.
+- The mass of an object is **the same everywhere**: on the Earth, on the Moon, or in space.
+
+</Step>
+
+<Step kind="learn" title="Weight" minutes={10}>
+
+**Weight** is the **gravitational force** on an object that has mass. The Earth pulls everything towards its centre.
+
+- Weight is a **force**, so its unit is the **newton (N)**.
+- We measure weight with a **force meter** (a newton meter).
+- Weight depends on where you are. On the Moon, gravity is weaker, so your weight is smaller.
+
+<div class="table-wrap">
+
+| | Mass | Weight |
+|---|---|---|
+| What is it? | the amount of matter | the gravitational force on the object |
+| Unit | kilogram (kg) | newton (N) |
+| Measured with | a balance | a force meter |
+| Same everywhere? | yes | no: it depends on gravity |
+| Scalar or vector? | scalar | vector (it points down, towards the centre of the planet) |
+
+</div>
+
+**Be careful:** in everyday English, people say "my weight is 60 kilograms". In physics, this is your **mass**. Your weight is a force, in newtons.
+
+### Comparing with a balance
+
+A **balance** compares the weights of two objects. When the two sides are level, the two weights are equal, so the two masses are also equal.
+This works on the Moon too: gravity pulls both sides in the same way.
+
+</Step>
+
+<Step kind="do" title="Mass and weight of objects" minutes={17}>
+
+**Equipment:** a balance (scale), a force meter (0–10 N), 5 objects (for example a pencil case, a book, a water bottle, a shoe, a bag of sugar).
+
+1. Measure the **mass** of each object with the balance. Write it in kg.
+2. Hang each object from the force meter. Measure its **weight** in N.
+3. Divide the weight by the mass for each object.
+
+<div class="table-wrap">
+
+| object | mass / kg | weight / N | weight ÷ mass / (N/kg) |
+|---|---|---|---|
+| | | | |
+| | | | |
+| | | | |
+
+</div>
+
+**Question:** what do you notice about the last column? Keep your answer for the next lesson.
+*Start your answer like this: "For every object, weight ÷ mass is about …"*
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={15}>
+
+<Quiz questions={[
+  {
+    question: 'What is the unit of mass?',
+    options: [
+      { text: 'kilogram (kg)', correct: true, why: 'Mass is measured in kilograms (or grams).' },
+      { text: 'newton (N)', why: 'The newton is the unit of force, for example weight.' },
+      { text: 'N/kg', why: 'This is the unit of gravitational field strength.' },
+      { text: 'metre (m)', why: 'The metre is the unit of length.' },
+    ],
+  },
+  {
+    question: 'What is weight?',
+    options: [
+      { text: 'the gravitational force on an object that has mass', correct: true, why: 'Weight is a force, in newtons.' },
+      { text: 'the amount of matter in an object', why: 'This is mass.' },
+      { text: 'the size of an object', why: 'Size is volume. Weight is a force.' },
+      { text: 'how heavy something feels in your hand', why: 'In physics, weight is the gravitational force on an object.' },
+    ],
+  },
+  {
+    question: 'An astronaut has a mass of 70 kg on the Earth. What is her mass on the Moon?',
+    options: [
+      { text: '70 kg', correct: true, why: 'Mass does not change: she has the same amount of matter.' },
+      { text: 'less than 70 kg', why: 'Her weight is smaller on the Moon, but her mass is the same.' },
+      { text: 'more than 70 kg', why: 'Mass is the same everywhere.' },
+      { text: '0 kg', why: 'Mass is the same everywhere. Even in space, she has a mass of 70 kg.' },
+    ],
+  },
+  {
+    question: 'Which instrument measures weight?',
+    options: [
+      { text: 'a force meter', correct: true, why: 'A force meter measures forces, in newtons.' },
+      { text: 'a ruler', why: 'A ruler measures length.' },
+      { text: 'a measuring cylinder', why: 'A measuring cylinder measures volume.' },
+      { text: 'a stopwatch', why: 'A stopwatch measures time.' },
+    ],
+  },
+  {
+    question: 'On the Moon, your weight is smaller than on the Earth. Why?',
+    options: [
+      { text: 'Gravity on the Moon is weaker', correct: true, why: 'The Moon pulls less on each kilogram.' },
+      { text: 'Your mass is smaller on the Moon', why: 'Your mass is the same everywhere.' },
+      { text: 'There is no air on the Moon', why: 'Air does not change your weight. Weaker gravity does.' },
+      { text: 'The Moon is further from the Sun', why: 'The Moon’s own gravity is what matters.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+Copy and complete:
+
+1. Mass is measured in … with a …
+2. Weight is measured in … with a …
+3. When I go to the Moon, my mass … and my weight …
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Find 3 objects at home with their mass written on them (for example food packets). Write each mass in kg. Then predict whether each one weighs more or less than 10 N on the Earth.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 18 min, activity 17 min, check 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Using "weight" for mass, as in everyday English ("I weigh 60 kg").
+- Thinking mass changes on the Moon, or that objects have no mass in space.
+- Thinking a balance gives a different result on the Moon (it compares, so it does not).
+
+**Activity:** weight ÷ mass should be close to 9.8 N/kg for every object. Lesson 2 builds on this result.
+
+**Language support:**
+
+- Put the mass/weight table on the wall for the whole unit.
+- Sentence frame: *"Mass is the …, measured in … Weight is the …, measured in …"*
+
+**Differentiation:**
+
+- Support: give the masses already in kg.
+- Stretch: an object in orbit around the Earth is "weightless". Is its weight really zero? (No: gravity still acts on it. It is in free fall.)
+
+</Step>

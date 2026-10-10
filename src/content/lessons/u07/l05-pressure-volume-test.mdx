@@ -1,0 +1,213 @@
+---
+unit: 7
+lesson: 5
+title: Pressure and volume, and unit test
+syllabus: ['2.1.3 S3', '2.1']
+goals:
+  - 'Extended: use $pV = \text{constant}$ for a fixed mass of gas at constant temperature.'
+  - 'Extended: recognise the shape of the pressure–volume graph.'
+  - Check your learning of Unit 7 with a test.
+keyWords: [pressure, fixed mass of gas, compress, kelvin]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Graph from '../../../components/Graph.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="Remember the simulation" minutes={3}>
+
+In the last lesson, the volume went from 100 % to 50 %, at the same temperature. What happened to the pressure?
+
+</Step>
+
+<Step kind="learn" title="Pressure × volume = constant (Extended)" minutes={10}>
+
+A syringe holds a fixed mass of air. We push the plunger slowly, so the temperature does not change. We measure the pressure:
+
+<div class="table-wrap">
+
+| volume $V$ / cm³ | 50 | 40 | 25 | 20 |
+|---|---|---|---|---|
+| pressure $p$ / kPa | 100 | 125 | 200 | 250 |
+| $p \times V$ | 5000 | 5000 | 5000 | 5000 |
+
+</div>
+
+$p \times V$ is the **same** every time. For a **fixed mass of gas** at **constant temperature**:
+
+$$
+pV = \text{constant} \qquad \text{so} \qquad p_1 V_1 = p_2 V_2
+$$
+
+- Half the volume → double the pressure.
+- Double the volume → half the pressure.
+
+<Graph
+  xLabel="volume / cm³" yLabel="pressure / kPa"
+  xMax={60} yMax={300} xStep={10} yStep={50}
+  points={[[16.7, 300], [20, 250], [25, 200], [30, 166.7], [40, 125], [50, 100], [60, 83.3]]}
+  curve
+  markers={[[20, 250], [25, 200], [40, 125], [50, 100]]}
+  title="Pressure against volume: a curve that goes down. The pressure gets smaller when the volume gets bigger."
+  caption="Pressure against volume at constant temperature: a curve, not a straight line."
+/>
+
+<WorkedExample
+  question="A gas has a volume of 30 cm³ at a pressure of 200 kPa. It is compressed to 12 cm³. The temperature does not change. Calculate the new pressure."
+  given={['$p_1 = 200\\,\\text{kPa}$', '$V_1 = 30\\,\\text{cm}^3$', '$V_2 = 12\\,\\text{cm}^3$']}
+  find="the new pressure $p_2$"
+  answer="$p_2 = 500\,\text{kPa}$"
+>
+
+$p_1 V_1 = p_2 V_2$, so $p_2 = \dfrac{p_1 V_1}{V_2}$
+
+$p_2 = \dfrac{200 \times 30}{12}$
+
+$p_2 = 500\,\text{kPa}$
+
+**Check:** the volume is smaller, so the pressure must be bigger. ✓
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="practice" title="Practice (Extended)" minutes={15}>
+
+<Practice topic="boyle" />
+
+### Kelvin and Celsius (all students)
+
+<Practice topic="kelvin" level={3} />
+
+</Step>
+
+<Step kind="exit" title="Unit test" minutes={30}>
+
+Questions marked **(E)** are for Extended students.
+
+<Quiz questions={[
+  {
+    question: '1. Which state of matter has a fixed shape and a fixed volume?',
+    options: [
+      { text: 'solid', correct: true, why: 'The particles stay in fixed places.' },
+      { text: 'liquid', why: 'A liquid has no fixed shape.' },
+      { text: 'gas', why: 'A gas has no fixed shape and no fixed volume.' },
+      { text: 'liquid and gas', why: 'Only a solid has a fixed shape.' },
+    ],
+  },
+  {
+    question: '2. What is the change from liquid to gas at the surface of a liquid, below the boiling point?',
+    options: [
+      { text: 'evaporation', correct: true, why: 'Evaporation happens at the surface, at any temperature.' },
+      { text: 'condensation', why: 'Condensation is gas → liquid.' },
+      { text: 'melting', why: 'Melting is solid → liquid.' },
+      { text: 'freezing', why: 'Freezing is liquid → solid.' },
+    ],
+  },
+  {
+    question: '3. Which describes the particles in a liquid?',
+    options: [
+      { text: 'close together, no regular pattern, move around each other', correct: true, why: 'This is why a liquid flows but is hard to compress.' },
+      { text: 'close together, regular pattern, vibrate in fixed places', why: 'This is a solid.' },
+      { text: 'far apart, random, move fast', why: 'This is a gas.' },
+      { text: 'far apart, regular pattern, do not move', why: 'This does not describe any state.' },
+    ],
+  },
+  {
+    question: '4. Why can a gas be compressed, but a liquid cannot (almost)?',
+    options: [
+      { text: 'In a gas, there is a lot of space between the particles', correct: true, why: 'In a liquid, the particles already touch.' },
+      { text: 'Gas particles are smaller', why: 'The particles do not change size. The space between them is different.' },
+      { text: 'Gas particles are softer', why: 'The reason is the space between the particles.' },
+      { text: 'Liquid particles do not move', why: 'Liquid particles move around each other.' },
+    ],
+  },
+  {
+    question: '5. What is absolute zero?',
+    options: [
+      { text: 'The lowest possible temperature, −273 °C', correct: true, why: 'At absolute zero, the particles have the least kinetic energy.' },
+      { text: 'The temperature where water freezes', why: 'Water freezes at 0 °C = 273 K.' },
+      { text: '0 °C', why: '0 °C is 273 K. Absolute zero is −273 °C.' },
+      { text: 'The temperature of space', why: 'Absolute zero is −273 °C, the lowest possible temperature.' },
+    ],
+  },
+  {
+    question: '6. What is 300 K in °C?',
+    options: [
+      { text: '27 °C', correct: true, why: '$300 - 273 = 27\\,^\\circ\\text{C}$.' },
+      { text: '573 °C', why: 'To go from K to °C, subtract 273.' },
+      { text: '−27 °C', why: '$300 - 273 = +27$.' },
+      { text: '300 °C', why: 'Subtract 273.' },
+    ],
+  },
+  {
+    question: '7. In a microscope, smoke particles in air move in a random zigzag. This is evidence that…',
+    options: [
+      { text: 'air is made of small particles that move fast', correct: true, why: 'The air molecules hit the smoke particles: Brownian motion.' },
+      { text: 'smoke particles are alive', why: 'They are moved by collisions with air molecules.' },
+      { text: 'air does not move', why: 'The air molecules move fast and at random.' },
+      { text: 'smoke is a liquid', why: 'The motion is evidence for moving air particles.' },
+    ],
+  },
+  {
+    question: '8. A sealed container of gas is heated. Its volume stays the same. Why does the pressure go up?',
+    options: [
+      { text: 'The particles move faster and hit the walls more often and harder', correct: true, why: 'Higher temperature: more kinetic energy.' },
+      { text: 'The particles get bigger', why: 'The particles do not change size.' },
+      { text: 'There are more particles', why: 'It is a fixed mass of gas.' },
+      { text: 'The particles move slower', why: 'Hotter particles move faster.' },
+    ],
+  },
+  {
+    question: '9. (E) A gas has a volume of 60 cm³ at 100 kPa. It is compressed to 20 cm³ at constant temperature. What is the new pressure?',
+    options: [
+      { text: '300 kPa', correct: true, why: '$p_2 = \\dfrac{100 \\times 60}{20} = 300\\,\\text{kPa}$.' },
+      { text: '33 kPa', why: 'Smaller volume → bigger pressure. Use $p_2 = \\dfrac{p_1 V_1}{V_2}$.' },
+      { text: '120 kPa', why: 'Use $p_1 V_1 = p_2 V_2$.' },
+      { text: '6000 kPa', why: 'Divide $p_1 V_1$ by $V_2$.' },
+    ],
+  },
+  {
+    question: '10. (E) For a fixed mass of gas at constant temperature, what is the shape of the graph of pressure against volume?',
+    options: [
+      { text: 'a curve that goes down: $p$ gets smaller as $V$ gets bigger', correct: true, why: '$pV = \\text{constant}$.' },
+      { text: 'a straight line through the origin', why: 'That would mean $p$ goes up when $V$ goes up.' },
+      { text: 'a horizontal line', why: 'That would mean $p$ does not change.' },
+      { text: 'a straight line that goes up', why: '$p$ goes down when $V$ goes up.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Look at the questions you got wrong. Find the lesson for each one and read it again. Then do 5 practice questions on each topic.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** $pV = \text{constant}$ (2.1.3 S3) is Extended. Core students can spend the first 25 minutes on the kelvin practice and on revising lessons 1–4 (for example with the simulations).
+
+**Timing:** starter 3 min, learn 10 min, practice 15 min, unit test 30 min, plus 2 min to start.
+
+**Using the test:** questions 1–8 test Core content; 9–10 are Extended.
+
+**Common mistakes:**
+
+- Using $p_1 V_2 = p_2 V_1$ (the pressure changes the wrong way). Teach students to check: smaller volume → bigger pressure.
+- Forgetting the conditions: *fixed mass of gas*, *constant temperature*.
+- Mixing units: $p_1$ and $p_2$ must be in the same unit, and $V_1$ and $V_2$ too.
+
+**Possible practical (demonstration):** a Boyle's law apparatus (oil column with a pressure gauge and a bicycle pump), or a sealed syringe on a pressure sensor. Change the volume slowly, so the temperature stays the same.
+
+**Differentiation:**
+
+- Support: give the first line of each calculation: $p_1 V_1 = p_2 V_2$.
+- Stretch: plot $p$ against $\dfrac{1}{V}$ for the table above. What shape is the graph? Why?
+
+</Step>

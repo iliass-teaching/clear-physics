@@ -1,0 +1,117 @@
+---
+// Virtual practical: a potential divider with a sensor (LDR or NTC thermistor) and a fixed resistor.
+// The output p.d. is measured across the bottom component. An output device switches on above 3.0 V.
+---
+
+<div class="divider-sim" data-divider-sim>
+  <div class="row">
+    <div class="drawing"></div>
+    <div class="side">
+      <div class="meter"><span class="name">output p.d.</span><span class="value vout">0.00</span><span class="unit">V</span></div>
+      <p class="device"><span class="bulb"></span> <span class="device-text"></span></p>
+      <p class="small rs"></p>
+    </div>
+  </div>
+  <div class="controls">
+    <label>sensor
+      <select class="sensor">
+        <option value="ldr">LDR (light sensor)</option>
+        <option value="th">thermistor (temperature sensor)</option>
+      </select>
+    </label>
+    <label class="cond"><span class="cond-name">light</span> <input type="range" class="level" min="0" max="100" step="5" value="70" /> <output class="level-out"></output></label>
+    <label>fixed resistor <input type="range" class="r1" min="1" max="20" step="1" value="10" /> <output class="r1-out">10 kΩ</output></label>
+    <label class="check"><input type="checkbox" class="swap" /> sensor at the top</label>
+  </div>
+  <p class="small muted">Supply: 6.0 V. The output device switches on when the output p.d. is more than 3.0 V.</p>
+</div>
+
+<script>
+  import { wire, symbol, junction } from '../lib/circuit';
+
+  const E = 6;
+
+  document.querySelectorAll<HTMLElement>('[data-divider-sim]').forEach((root) => {
+    const q = <T extends Element>(s: string) => root.querySelector<T>(s)!;
+    const sensor = q<HTMLSelectElement>('.sensor');
+    const level = q<HTMLInputElement>('.level');
+    const r1 = q<HTMLInputElement>('.r1');
+    const swap = q<HTMLInputElement>('.swap');
+
+    // Sensor resistance in kΩ.
+    const rSensor = (): number => {
+      const L = Number(level.value);
+      if (sensor.value === 'ldr') return 100 * Math.pow(10, (-2 * L) / 100); // 100 kΩ in the dark, 1 kΩ in bright light
+      const T = L + 273.15; // 0–100 °C
+      return 10 * Math.exp(3950 * (1 / T - 1 / 298.15)); // NTC: 10 kΩ at 25 °C
+    };
+
+    function draw(): void {
+      const Rs = rSensor();
+      const R1 = Number(r1.value);
+      const top = swap.checked ? Rs : R1;
+      const bottom = swap.checked ? R1 : Rs;
+      const vout = (E * bottom) / (top + bottom);
+      const sType = sensor.value === 'ldr' ? 'ldr' : 'thermistor';
+      const topSym = swap.checked ? sType : 'resistor';
+      const botSym = swap.checked ? 'resistor' : sType;
+      const svg =
+        wire([[60, 40], [240, 40], [240, 240], [60, 240], [60, 40]]) +
+        wire([[240, 140], [340, 140], [340, 240], [240, 240]]) +
+        junction(240, 140) + junction(240, 240) +
+        symbol('power-supply', 60, 140, 90) +
+        symbol(topSym as 'resistor', 240, 90, 90) +
+        symbol(botSym as 'resistor', 240, 190, 90) +
+        symbol('voltmeter', 340, 190, 90) +
+        `<text class="txt" x="40" y="146" text-anchor="end">6 V</text>` +
+        `<text class="txt" x="268" y="94">${swap.checked ? 'sensor' : 'fixed'}</text>` +
+        `<text class="txt" x="268" y="194">${swap.checked ? 'fixed' : 'sensor'}</text>` +
+        `<text class="txt" x="360" y="194">output</text>`;
+      q<HTMLElement>('.drawing').innerHTML = `<svg class="fig circuit" viewBox="0 0 420 270" role="img" aria-label="A potential divider">${svg}</svg>`;
+
+      const isLdr = sensor.value === 'ldr';
+      q<HTMLElement>('.cond-name').textContent = isLdr ? 'light' : 'temperature';
+      q<HTMLElement>('.level-out').textContent = isLdr ? `${level.value} %` : `${level.value} °C`;
+      q<HTMLElement>('.r1-out').textContent = `${R1} kΩ`;
+      q<HTMLElement>('.vout').textContent = vout.toFixed(2);
+      q<HTMLElement>('.rs').textContent = `sensor resistance: ${Rs < 10 ? Rs.toFixed(2) : Rs.toFixed(1)} kΩ`;
+      const on = vout > 3;
+      q<HTMLElement>('.bulb').classList.toggle('on', on);
+      q<HTMLElement>('.device-text').textContent = `output device ${on ? 'ON' : 'OFF'}`;
+    }
+
+    sensor.addEventListener('change', () => {
+      level.value = sensor.value === 'ldr' ? '70' : '25';
+      draw();
+    });
+    for (const el of [level, r1]) el.addEventListener('input', draw);
+    swap.addEventListener('change', draw);
+    draw();
+
+    (root as HTMLElement & { _d?: unknown })._d = { rSensor };
+  });
+</script>
+
+<style>
+  .divider-sim {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .row { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 1rem; align-items: center; }
+  @media (max-width: 640px) { .row { grid-template-columns: 1fr; } }
+  .drawing :global(svg) { width: 100%; max-width: 26rem; height: auto; display: block; }
+  .divider-sim :global(.fig .cut), .divider-sim :global(.fig .sym-fill) { fill: var(--surface); }
+  .meter { display: flex; align-items: baseline; gap: 0.4rem; background: #10261a; border-radius: 8px; padding: 0.4rem 0.8rem; }
+  .meter .name { font-size: 0.8rem; color: #9fd8ae; }
+  .meter .value { font-family: monospace; font-size: 1.5rem; color: #7dff9a; min-width: 4rem; text-align: right; }
+  .meter .unit { color: #7dff9a; }
+  .device { display: flex; align-items: center; gap: 0.5rem; font-weight: 700; }
+  .bulb { display: inline-block; width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--ink); background: transparent; }
+  .bulb.on { background: #ffd54f; box-shadow: 0 0 14px #ffd54f; }
+  .controls { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; align-items: center; margin-top: 0.6rem; }
+  .controls label { display: flex; align-items: center; gap: 0.4rem; }
+  .controls output { font-variant-numeric: tabular-nums; min-width: 3.5rem; }
+</style>

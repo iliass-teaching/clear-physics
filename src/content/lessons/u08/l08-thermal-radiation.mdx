@@ -1,0 +1,192 @@
+---
+unit: 8
+lesson: 8
+title: Thermal radiation
+syllabus: ['2.3.3 C1–C3', '2.3.3 S7–S9']
+goals:
+  - Know that thermal radiation is infrared radiation, and that all objects emit it.
+  - Know that thermal radiation does not need a medium.
+  - Describe how colour and texture affect emission, absorption and reflection.
+  - 'Extended: describe experiments with emitters and absorbers, and how the rate of emission depends on temperature and area.'
+keyWords: [thermal radiation, infrared, emit, absorb, medium, matt]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { leslieCubeSvg, absorbersSvg } from '../../../lib/heatFigures';
+
+<Step kind="starter" title="Through empty space" minutes={5}>
+
+Between the Sun and the Earth, there is almost nothing: a vacuum. There are no particles to conduct, and no fluid for convection. So how does the Sun's energy reach us?
+
+</Step>
+
+<Step kind="learn" title="Infrared radiation" minutes={10}>
+
+- **Thermal radiation** is **infrared** radiation: an electromagnetic wave, like light, but we cannot see it. We can feel it on our skin.
+- **All objects emit** infrared radiation, even cold ones. Hotter objects emit more.
+- Thermal radiation **does not need a medium** (a material to travel through). It can travel through a **vacuum**. This is how the Sun's energy reaches the Earth.
+- It travels at the speed of light.
+
+</Step>
+
+<Step kind="learn" title="Colour and texture" minutes={12}>
+
+<div class="table-wrap">
+
+| Surface | Emitting (giving out) | Absorbing (taking in) | Reflecting |
+|---|---|---|---|
+| **matt (dull) black** | best | best | worst |
+| **shiny silver** (or white) | worst | worst | best |
+
+</div>
+
+- **Black** is a better emitter and absorber than **white**.
+- **Matt (dull)** is a better emitter and absorber than **shiny**.
+- A good **absorber** is also a good **emitter**.
+
+**In everyday life:**
+
+- Houses in hot countries are often painted **white**: they reflect the Sun's radiation.
+- Solar water heaters have **black** pipes: they absorb the most radiation.
+- Emergency blankets for runners are **shiny**: they reflect the body's radiation back and reduce energy loss.
+
+</Step>
+
+<Step kind="learn" title="Experiments (Extended)" minutes={12}>
+
+**Good and bad emitters: the Leslie cube**
+
+<Figure svg={leslieCubeSvg()} caption="A Leslie cube, seen from above. Each face has a different surface." width="28rem" />
+
+1. Fill the cube with very hot water. All the faces are at the same temperature.
+2. Put the infrared detector at the **same distance** from each face, in turn.
+3. Read the detector. The **matt black** face gives the highest reading; the **shiny silver** face gives the lowest.
+
+**Good and bad absorbers**
+
+<Figure svg={absorbersSvg()} caption="Two plates at the same distance from a heater." width="28rem" />
+
+1. Put a matt black plate and a shiny plate at the **same distance** from a heater.
+2. Fix a coin (or a pin) on the back of each plate with a little wax.
+3. Switch on the heater. The wax on the **matt black** plate melts first: it absorbs more radiation.
+
+**What else changes the rate of emission?**
+
+- **Surface temperature:** a hotter surface emits radiation at a **higher rate**.
+- **Surface area:** a bigger surface emits radiation at a **higher rate**. This is why radiators and cooling fins have a big area.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={13}>
+
+<Quiz questions={[
+  {
+    question: 'What type of radiation is thermal radiation?',
+    options: [
+      { text: 'infrared', correct: true, why: 'It is part of the electromagnetic spectrum.' },
+      { text: 'ultraviolet', why: 'Thermal radiation is infrared.' },
+      { text: 'sound', why: 'Sound is not radiation, and it needs a medium.' },
+      { text: 'radioactive radiation', why: 'Thermal radiation is infrared, an electromagnetic wave.' },
+    ],
+  },
+  {
+    question: 'Which objects emit infrared radiation?',
+    options: [
+      { text: 'all objects', correct: true, why: 'Hotter objects emit more.' },
+      { text: 'only very hot objects', why: 'All objects emit some infrared, even cold ones.' },
+      { text: 'only black objects', why: 'All objects emit it. Black ones emit more.' },
+      { text: 'only the Sun', why: 'All objects emit infrared.' },
+    ],
+  },
+  {
+    question: 'Which surface is the best absorber of radiation?',
+    options: [
+      { text: 'matt black', correct: true, why: 'It is also the best emitter.' },
+      { text: 'shiny silver', why: 'Shiny surfaces reflect most of the radiation.' },
+      { text: 'shiny white', why: 'White and shiny surfaces are bad absorbers.' },
+      { text: 'they are all the same', why: 'Colour and texture change the absorption.' },
+    ],
+  },
+  {
+    question: 'Why are many houses in hot countries painted white?',
+    options: [
+      { text: 'White reflects radiation, so the house absorbs less', correct: true, why: 'The inside stays cooler.' },
+      { text: 'White is a good absorber', why: 'White is a bad absorber.' },
+      { text: 'White is a good emitter', why: 'The main reason: white reflects the Sun’s radiation.' },
+      { text: 'White conducts energy away', why: 'The reason is reflection of radiation.' },
+    ],
+  },
+  {
+    question: 'Extended: two metal cubes at the same temperature have the same surface. Cube A is bigger. Which emits radiation at a higher rate?',
+    options: [
+      { text: 'Cube A, because it has a bigger surface area', correct: true, why: 'A bigger area emits at a higher rate.' },
+      { text: 'Cube B, because it is smaller', why: 'A bigger surface area gives a higher rate of emission.' },
+      { text: 'Both the same', why: 'The surface area is different.' },
+      { text: 'Neither: metals do not emit radiation', why: 'All objects emit infrared radiation.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Which is the only way thermal energy can travel through a vacuum?',
+    options: [
+      { text: 'radiation', correct: true, why: 'Radiation does not need a medium.' },
+      { text: 'conduction', why: 'Conduction needs particles.' },
+      { text: 'convection', why: 'Convection needs a fluid that moves.' },
+      { text: 'all three', why: 'Only radiation can travel through a vacuum.' },
+    ],
+  },
+  {
+    question: 'Extended: in a Leslie cube experiment, why must the detector be at the same distance from each face?',
+    options: [
+      { text: 'To make it a fair test: only the surface changes', correct: true, why: 'The reading also depends on the distance.' },
+      { text: 'To make the water hotter', why: 'The distance does not change the water temperature.' },
+      { text: 'Because the detector is heavy', why: 'It is to make a fair test.' },
+      { text: 'To stop convection', why: 'It is to make a fair test.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+A teapot keeps tea hot for longer if it is shiny. Explain why, using the words *emit* and *radiation*. Then suggest one more way to keep the tea hot, and say which type of energy transfer it reduces.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** 2.3.3 C1–C3 are Core. The experiments (S7, S8) and the effect of temperature and area (S9) are Extended. Energy balance (S4–S6) is in the next lesson.
+
+**Timing:** starter 5 min, learn 34 min, check 13 min, exit ticket 5 min. Show the Leslie cube as a demonstration if possible.
+
+**About real results (for the teacher):** in a real Leslie cube experiment, the big difference is between **painted or dull** faces and **polished metal** faces. At these temperatures, white paint emits infrared almost as well as black paint (emissivity tables give values of about 0.9 for most paints, whatever their colour, and much lower values for polished metals). The syllabus and the exam expect "black is better than white" and "matt is better than shiny". This is true for absorbing sunlight (visible light), and it is the expected answer. If your results show matt white close to matt black, it is a good discussion for strong students.
+
+**Common mistakes:**
+
+- "Only hot objects emit radiation."
+- "Shiny surfaces absorb radiation and make things hot."
+- Confusing thermal radiation with radioactivity (Unit 16).
+
+**Language support:**
+
+- *emit* = give out; *absorb* = take in; *reflect* = send back.
+- *matt* = dull, not shiny (also written *matte*).
+
+**Differentiation:**
+
+- Support: a three-column sorting task: emit / absorb / reflect, with pictures.
+- Stretch: why do cooling fins on a motorbike engine have many thin plates? (Bigger surface area: more radiation and more convection.)
+
+**Safety:** the Leslie cube is full of very hot water. Fill it on a heatproof mat and do not move it.
+
+</Step>

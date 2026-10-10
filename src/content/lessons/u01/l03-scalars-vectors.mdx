@@ -1,0 +1,184 @@
+---
+unit: 1
+lesson: 3
+title: Scalars and vectors
+syllabus: ['1.1 S4', '1.1 S5', '1.1 S6', '1.1 S7']
+goals:
+  - Say the difference between a scalar and a vector.
+  - Give examples of scalars and vectors.
+  - Find the resultant of two vectors at right angles, by calculation and by scale drawing.
+keyWords: [scalar, vector, magnitude, resultant]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { vectorsSvg } from '../../../scripts/practice/vectors';
+
+<Step kind="starter" title="Where is the treasure?" minutes={5}>
+
+A friend says: "The treasure is 100 m from the school gate."
+
+Can you find the treasure? What other information do you need?
+
+</Step>
+
+<Step kind="learn" title="Scalars and vectors" minutes={10}>
+
+A **scalar** has a size (a **magnitude**) only.
+A **vector** has a magnitude **and a direction**.
+
+<div class="table-wrap">
+
+| Scalars | Vectors |
+|---|---|
+| distance | force |
+| speed | weight |
+| time | velocity |
+| mass | acceleration |
+| energy | momentum |
+| temperature | electric field strength |
+| | gravitational field strength |
+
+</div>
+
+We draw a vector as an **arrow**:
+
+- the length of the arrow shows the magnitude;
+- the arrow points in the direction.
+
+Be careful with pairs: **speed** is a scalar but **velocity** is a vector. **Mass** is a scalar but **weight** is a vector.
+
+</Step>
+
+<Step kind="learn" title="Adding two vectors at right angles" minutes={10}>
+
+The **resultant** is one vector that has the same effect as the vectors together.
+
+When two vectors are at right angles, the resultant is the diagonal of a rectangle.
+
+<Figure svg={vectorsSvg(30, 40, '30 N', '40 N', 'R')} caption="Two forces at right angles. R is the resultant." />
+
+### Method 1: calculation
+
+Use Pythagoras for the magnitude, and tan for the direction.
+
+<WorkedExample
+  question="Two forces act on a box at right angles: 30 N to the right and 40 N up."
+  given={['force 1 $= 30\\,\\text{N}$ to the right', 'force 2 $= 40\\,\\text{N}$ up']}
+  find="the magnitude and the direction of the resultant"
+  answer="$R = 50\,\text{N}$, at $53^\circ$ to the 30 N force"
+>
+
+$R^2 = 30^2 + 40^2 = 900 + 1600 = 2500$
+
+$R = \sqrt{2500} = 50\,\text{N}$
+
+$\tan\theta = \dfrac{40}{30}$, so $\theta = \tan^{-1}(1.33) = 53^\circ$
+
+</WorkedExample>
+
+### Method 2: scale drawing
+
+1. Choose a scale, for example 1 cm = 10 N.
+2. Draw the first arrow: 3 cm to the right.
+3. From the same point, draw the second arrow: 4 cm up.
+4. Complete the rectangle. Draw the diagonal from the starting point.
+5. Measure the diagonal: 5 cm. So $R = 5 \times 10 = 50\,\text{N}$.
+6. Measure the angle with a protractor.
+
+</Step>
+
+<Step kind="do" title="Human vectors" minutes={15}>
+
+Work outside or in a large room, in groups of 3. **Equipment:** tape measure, chalk or cones, compass (optional).
+
+1. Mark a start point.
+2. Walk 3 m in a straight line. Mark the point.
+3. Turn 90° and walk 4 m. Mark the end point.
+4. Measure the straight distance from the start to the end.
+5. Calculate it with Pythagoras. Compare.
+
+Then do 2 scale drawings on paper:
+
+- 5 N to the right and 12 N up.
+- A plane flies north at 80 m/s. The wind blows east at 60 m/s.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={15}>
+
+<Practice topic="vectors" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Which quantity is a vector?',
+    options: [
+      { text: 'velocity', correct: true, why: 'Velocity has a magnitude and a direction.' },
+      { text: 'speed', why: 'Speed has a magnitude only. It is a scalar.' },
+      { text: 'mass', why: 'Mass has a magnitude only. It is a scalar.' },
+      { text: 'time', why: 'Time has a magnitude only. It is a scalar.' },
+    ],
+  },
+  {
+    question: 'Two forces of 6 N and 8 N act at right angles. What is the magnitude of the resultant?',
+    options: [
+      { text: '10 N', correct: true, why: '$R^2 = 6^2 + 8^2 = 100$, so $R = 10\\,\\text{N}$.' },
+      { text: '14 N', why: 'You added. This works only if the forces point the same way.' },
+      { text: '2 N', why: 'You subtracted. This works only if the forces point in opposite directions.' },
+      { text: '100 N', why: 'This is $R^2$. Take the square root.' },
+    ],
+  },
+  {
+    question: 'Which list has only scalars?',
+    options: [
+      { text: 'distance, mass, energy', correct: true, why: 'None of these has a direction.' },
+      { text: 'force, mass, time', why: 'Force is a vector.' },
+      { text: 'velocity, speed, distance', why: 'Velocity is a vector.' },
+      { text: 'weight, temperature, time', why: 'Weight is a vector.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Make two lists: 5 scalars and 5 vectors. For each vector, give an example with a direction.
+2. Do 5 questions at **Level 2** of the practice.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**This lesson is Extended content only** (Supplement 1.1 S4–S7). Core students can do the starter and the human vectors activity, then move on.
+
+**Timing:** starter 5 min, learn 20 min, activity 15 min, practice 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Adding the magnitudes of vectors at right angles.
+- Thinking speed and velocity are the same.
+- Thinking weight is a scalar (weight is a force, so it is a vector).
+- Giving $\tan\theta$ as the answer, not $\theta$.
+
+**Language support:**
+
+- Use the treasure starter to link "vector" with "direction" before the word is written.
+- Sentence frame: *"… is a vector because it has a magnitude and a direction."*
+
+**Differentiation:**
+
+- Support: use Pythagorean triples (3-4-5, 6-8-10) so the numbers are whole.
+- Stretch: two forces at right angles have a resultant of 25 N. One force is 7 N. Find the other force.
+
+**Note:** trigonometry ($\tan^{-1}$) is in the mathematical requirements for Extended candidates only.
+
+</Step>

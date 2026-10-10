@@ -1,0 +1,124 @@
+---
+unit: 14
+lesson: 2
+title: Series circuits
+syllabus: ['4.3.2 C1–C4', '4.3.2 S8']
+goals:
+  - Know that the current is the same at every point in a series circuit.
+  - Calculate the combined e.m.f. of cells in series, and the combined resistance of resistors in series.
+  - 'Extended: use the fact that the p.d.s in a series circuit add up to the total p.d.'
+keyWords: [series circuit, electric current, potential difference, resistance]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import CircuitSim from '../../../components/CircuitSim.astro';
+import { seriesParallelSvg } from '../../../lib/safetyFigures';
+
+<Step kind="starter" title="Old fairy lights" minutes={5}>
+
+Some old strings of fairy lights stop working completely when one bulb breaks. Why do you think this happens?
+
+</Step>
+
+<Step kind="learn" title="Rules for series circuits" minutes={14}>
+
+<Figure svg={seriesParallelSvg()} caption="A series circuit (left) has only one path for the current." width="34rem" />
+
+In a **series circuit**, all the components are in **one loop**:
+
+1. The **current is the same** at every point: $I_1 = I_2 = I_3$.
+2. If one component breaks, the circuit is **broken**: everything stops.
+3. **Cells in series:** their e.m.f.s **add up** (if they point the same way). Two 1.5 V cells give 3.0 V.
+4. **Resistors in series:** their resistances **add up**: $R = R_1 + R_2 + \dots$
+5. **Extended:** the **p.d.s** across the components **add up** to the total p.d. of the supply: $V = V_1 + V_2 + \dots$
+
+<WorkedExample
+  question="A 4 Ω resistor and an 8 Ω resistor are in series with a 6 V battery. Find (a) the combined resistance, (b) the current, (c) the p.d. across the 8 Ω resistor."
+  given={['$R_1 = 4\\,\\Omega$', '$R_2 = 8\\,\\Omega$', '$E = 6\\,\\text{V}$']}
+  find="$R$, $I$ and $V_2$"
+  answer="$R = 12\,\Omega$; $I = 0.5\,\text{A}$; $V_2 = 4\,\text{V}$"
+>
+
+(a) $R = 4 + 8 = 12\,\Omega$
+
+(b) $I = \dfrac{V}{R} = \dfrac{6}{12} = 0.5\,\text{A}$
+
+(c) $V_2 = I R_2 = 0.5 \times 8 = 4\,\text{V}$ (and $V_1 = 2\,\text{V}$: $2 + 4 = 6\,\text{V}$ ✓)
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="do" title="Investigate" minutes={14}>
+
+<CircuitSim />
+
+Keep **Series** selected.
+
+1. Read the current in lamp 1, lamp 2 and the supply. What do you notice?
+2. Add the p.d.s across lamp 1 and lamp 2. Compare with the e.m.f.
+3. Make lamp 2 bigger (more resistance). What happens to the current? To the brightness of lamp 1?
+4. Tick **remove lamp 2**. What happens to lamp 1? Why?
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={20}>
+
+<Practice topic="series" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={7}>
+
+<Quiz questions={[
+  {
+    question: 'In a series circuit, the current through lamp 1 is 0.3 A. What is the current through lamp 2?',
+    options: [
+      { text: '0.3 A', correct: true, why: 'The current is the same everywhere in a series circuit.' },
+      { text: '0.6 A', why: 'The current does not add up in series.' },
+      { text: '0.15 A', why: 'The current is not shared in series.' },
+      { text: '0 A', why: 'The same current flows through both lamps.' },
+    ],
+  },
+  {
+    question: 'Three 1.5 V cells are in series, all the same way round. What is the combined e.m.f.?',
+    options: [
+      { text: '4.5 V', correct: true, why: '$1.5 + 1.5 + 1.5$.' },
+      { text: '1.5 V', why: 'In series, the e.m.f.s add up.' },
+      { text: '0.5 V', why: 'Add, do not divide.' },
+      { text: '3.0 V', why: 'There are three cells.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** 4.3.2 C1–C4 are Core. Adding p.d.s in series (S8b) is Extended.
+
+**Timing:** starter 5 min, learn 14 min, simulation 14 min, practice 20 min, exit ticket 7 min.
+
+**About the simulation:** the lamps have a constant resistance, so the numbers are simple. Real filament lamps change resistance (Unit 13).
+
+**Common mistakes:**
+
+- "The current is used up by the first lamp."
+- Adding currents in a series circuit.
+- Cells in series the wrong way round (their e.m.f.s subtract).
+
+**Language support:**
+
+- *in series* = one after the other, in one line.
+
+**Differentiation:**
+
+- Support: level 1 and 2 of the practice.
+- Stretch: a 9 V battery is in series with a lamp and a resistor. The p.d. across the lamp is 6 V and the current is 0.2 A. Find the resistance of the resistor.
+
+</Step>

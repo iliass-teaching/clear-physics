@@ -1,0 +1,179 @@
+---
+unit: 4
+lesson: 4
+title: Review and unit test
+syllabus: ['1.6']
+goals:
+  - Remember the three equations of Unit 4.
+  - Solve momentum problems with signs for direction.
+  - Check what you know with a unit test.
+keyWords: [momentum, impulse, conservation of momentum]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="Which equation?" minutes={5}>
+
+For each question, write the equation you need (do not calculate yet):
+
+1. A 5 kg ball moves at 2 m/s. Find its momentum.
+2. A force of 30 N acts for 0.1 s. Find the impulse.
+3. A car’s momentum changes by 6000 kg m/s in 0.2 s. Find the force.
+4. Two trolleys collide and stick. Find their velocity after.
+
+</Step>
+
+<Step kind="learn" title="Unit 4 in one page" minutes={10}>
+
+<div class="table-wrap">
+
+| Idea | Equation | Unit |
+|---|---|---|
+| momentum | $p = mv$ | kg m/s |
+| impulse | $F\Delta t = \Delta(mv)$ | N s |
+| force | $F = \dfrac{\Delta p}{\Delta t}$ | N |
+| conservation of momentum | total momentum before = total momentum after | |
+
+</div>
+
+**Method for momentum problems:**
+
+1. Choose a positive direction (usually to the right).
+2. Give each velocity a sign: $+$ to the right, $-$ to the left.
+3. Write "momentum before = momentum after".
+4. Solve. Give the size **and** the direction of your answer.
+
+</Step>
+
+<Step kind="practice" title="Mixed practice" minutes={20}>
+
+### Conservation of momentum
+
+<Practice topic="conservation" level={2} />
+
+### Impulse and force
+
+<Practice topic="impulse" level={2} />
+
+</Step>
+
+<Step kind="exit" title="Unit test" minutes={25}>
+
+<Quiz questions={[
+  {
+    question: '1. What is the momentum of a 1500 kg car moving at 20 m/s?',
+    options: [
+      { text: '30 000 kg m/s', correct: true, why: '$p = 1500 \\times 20 = 30\\,000\\,\\text{kg m/s}$.' },
+      { text: '75 kg m/s', why: 'Multiply: $p = mv$.' },
+      { text: '1520 kg m/s', why: 'Multiply, do not add.' },
+      { text: '30 000 N', why: 'The unit of momentum is kg m/s.' },
+    ],
+  },
+  {
+    question: '2. Which statement about momentum is correct?',
+    options: [
+      { text: 'It is a vector, so it has a direction', correct: true, why: 'It has the direction of the velocity.' },
+      { text: 'It is a scalar', why: 'Velocity is a vector, so momentum is a vector.' },
+      { text: 'It is measured in N', why: 'Its unit is kg m/s (or N s).' },
+      { text: 'An object at rest has a lot of momentum', why: 'At rest, $v = 0$, so $p = 0$.' },
+    ],
+  },
+  {
+    question: '3. Ball A (2 kg) moves right at 5 m/s. Ball B (3 kg) moves left at 2 m/s. What is the total momentum?',
+    options: [
+      { text: '4 kg m/s to the right', correct: true, why: '$2 \\times 5 + 3 \\times (-2) = 10 - 6 = 4\\,\\text{kg m/s}$.' },
+      { text: '16 kg m/s to the right', why: 'B moves left: its momentum is negative.' },
+      { text: '4 kg m/s to the left', why: 'The total is positive, so it is to the right.' },
+      { text: 'zero', why: 'Calculate: $10 - 6 = 4\\,\\text{kg m/s}$.' },
+    ],
+  },
+  {
+    question: '4. A 3 kg trolley at 4 m/s hits a 1 kg trolley at rest. They stick together. What is their velocity?',
+    options: [
+      { text: '3 m/s', correct: true, why: '$3 \\times 4 = 12$, $v = \\dfrac{12}{4} = 3\\,\\text{m/s}$.' },
+      { text: '4 m/s', why: 'More mass moves after, so the velocity is smaller.' },
+      { text: '12 m/s', why: 'Divide the momentum by the total mass.' },
+      { text: '1 m/s', why: '$v = \\dfrac{12}{3 + 1} = 3\\,\\text{m/s}$.' },
+    ],
+  },
+  {
+    question: '5. A 0.02 kg bullet leaves a 4 kg rifle at 400 m/s. What is the recoil speed of the rifle?',
+    options: [
+      { text: '2 m/s', correct: true, why: '$0.02 \\times 400 = 8$, and $\\dfrac{8}{4} = 2\\,\\text{m/s}$ backwards.' },
+      { text: '400 m/s', why: 'The rifle is much heavier, so it moves much more slowly.' },
+      { text: '8 m/s', why: '8 kg m/s is the momentum. Divide by the mass of the rifle.' },
+      { text: '0 m/s', why: 'Total momentum stays zero, so the rifle must move backwards.' },
+    ],
+  },
+  {
+    question: '6. A force of 50 N acts for 0.4 s. What is the impulse?',
+    options: [
+      { text: '20 N s', correct: true, why: '$50 \\times 0.4 = 20\\,\\text{N s}$.' },
+      { text: '125 N s', why: 'Multiply the force by the time.' },
+      { text: '50.4 N s', why: 'Multiply, do not add.' },
+      { text: '20 N', why: 'Impulse is in N s.' },
+    ],
+  },
+  {
+    question: '7. A 0.5 kg ball hits a wall at 6 m/s and bounces back at 4 m/s. What is the size of the change in momentum?',
+    options: [
+      { text: '5 kg m/s', correct: true, why: '$0.5 \\times (-4 - 6) = -5$, so the size is $5\\,\\text{kg m/s}$.' },
+      { text: '1 kg m/s', why: 'The ball changes direction: the change in velocity is $-4 - 6 = -10\\,\\text{m/s}$.' },
+      { text: '3 kg m/s', why: 'Include the bounce back: $\\Delta v = 10\\,\\text{m/s}$.' },
+      { text: '10 kg m/s', why: 'Multiply the change in velocity by the mass (0.5 kg).' },
+    ],
+  },
+  {
+    question: '8. The momentum of a car changes by 9000 kg m/s in 0.15 s. What is the average force?',
+    options: [
+      { text: '60 000 N', correct: true, why: '$F = \\dfrac{9000}{0.15} = 60\\,000\\,\\text{N}$.' },
+      { text: '1350 N', why: 'Divide by the time: $F = \\dfrac{\\Delta p}{\\Delta t}$.' },
+      { text: '9000 N', why: 'Divide the change in momentum by the time.' },
+      { text: '60 000 N s', why: 'Force is in N.' },
+    ],
+  },
+  {
+    question: '9. Why does a crumple zone make a car safer?',
+    options: [
+      { text: 'It increases the time of the collision, so the force is smaller', correct: true, why: '$F = \\dfrac{\\Delta p}{\\Delta t}$.' },
+      { text: 'It reduces the momentum of the car before the crash', why: 'It acts during the crash, making it last longer.' },
+      { text: 'It makes the car heavier', why: 'The time of the collision is what changes.' },
+      { text: 'It stops the car more quickly', why: 'It makes the car stop more slowly.' },
+    ],
+  },
+  {
+    question: '10. Two trolleys at rest push apart with a spring. What is their total momentum after?',
+    options: [
+      { text: 'zero', correct: true, why: 'Total momentum before was zero, so it is zero after.' },
+      { text: 'the momentum of the heavier trolley', why: 'The two momentums are equal and opposite: the total is zero.' },
+      { text: 'it depends on the spring', why: 'With no outside force, the total momentum stays zero.' },
+      { text: 'double the momentum of one trolley', why: 'They move in opposite directions: the momentums cancel.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Look at the questions you got wrong, find the lesson for each one, and do 5 practice questions on it.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Extended content** (1.6). All the questions in the test are Extended.
+
+**Timing:** starter 5 min, review 10 min, mixed practice 20 min, unit test 25 min.
+
+**Starter answers:** 1. $p = mv$. 2. impulse $= F\Delta t$. 3. $F = \dfrac{\Delta p}{\Delta t}$. 4. momentum before = momentum after.
+
+**Differentiation:**
+
+- Support: allow the "Unit 4 in one page" table during the test the first time.
+- Stretch: write your own recoil question (a person jumping off a boat) and solve it.
+
+</Step>

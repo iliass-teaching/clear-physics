@@ -1,0 +1,154 @@
+---
+unit: 16
+lesson: 4
+title: Fission and fusion
+syllabus: ['5.1.2 S6']
+goals:
+  - 'Extended: describe nuclear fission and nuclear fusion.'
+  - 'Extended: write and check nuclide equations for fission and fusion.'
+  - 'Extended: describe the mass and energy changes (no values).'
+keyWords: [fission, fusion, nucleus, neutron, isotope]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { fissionFusionSvg } from '../../../lib/nuclearFigures';
+
+<Step kind="starter" title="Energy from nuclei" minutes={5}>
+
+A nuclear power station and the Sun both get their energy from nuclei. But they do opposite things to the nuclei. What do you think each one does?
+
+</Step>
+
+<Step kind="learn" title="Fission and fusion (Extended)" minutes={18}>
+
+<Figure svg={fissionFusionSvg()} caption="Nuclear fission and nuclear fusion." width="38rem" />
+
+**Fission: a big nucleus splits.**
+
+A slow **neutron** hits a big nucleus, for example uranium-235. The nucleus **splits** into two smaller nuclei, and gives out 2 or 3 neutrons and a lot of **energy**. For example:
+
+$$
+{}^{235}_{92}\text{U} + {}^{1}_{0}\text{n} \rightarrow {}^{141}_{56}\text{Ba} + {}^{92}_{36}\text{Kr} + 3\,{}^{1}_{0}\text{n} + \text{energy}
+$$
+
+The new neutrons can split more nuclei: a **chain reaction**. Nuclear power stations use fission.
+
+**Fusion: small nuclei join.**
+
+Two small nuclei **join** to make a bigger nucleus, and give out a lot of **energy**. For example, two isotopes of hydrogen:
+
+$$
+{}^{2}_{1}\text{H} + {}^{3}_{1}\text{H} \rightarrow {}^{4}_{2}\text{He} + {}^{1}_{0}\text{n} + \text{energy}
+$$
+
+The Sun and other stars get their energy from fusion (Unit 17). Fusion needs very high temperatures and pressures.
+
+**Mass and energy:** in both fission and fusion, the total **mass** of the products is a little **smaller** than the mass at the start. This "lost" mass has become **energy**.
+
+</Step>
+
+<Step kind="learn" title="Checking nuclide equations" minutes={10}>
+
+In a nuclide equation, the numbers must **balance**:
+
+- the **top numbers** ($A$) on the left add up to the top numbers on the right;
+- the **bottom numbers** ($Z$) on the left add up to the bottom numbers on the right.
+
+Check the fission equation: top: $235 + 1 = 141 + 92 + 3 \times 1 = 236$ ✓. Bottom: $92 + 0 = 56 + 36 + 0 = 92$ ✓.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={20}>
+
+<Quiz questions={[
+  {
+    question: 'What is nuclear fission?',
+    options: [
+      { text: 'A big nucleus splits into two smaller nuclei and releases energy', correct: true, why: 'Used in nuclear power stations.' },
+      { text: 'Two small nuclei join', why: 'That is fusion.' },
+      { text: 'A nucleus emits an α-particle', why: 'That is α-decay.' },
+      { text: 'An atom loses electrons', why: 'That makes an ion.' },
+    ],
+  },
+  {
+    question: 'Where does fusion happen naturally?',
+    options: [
+      { text: 'in the Sun and other stars', correct: true, why: 'Hydrogen nuclei fuse into helium.' },
+      { text: 'in nuclear power stations', why: 'Power stations use fission.' },
+      { text: 'in the Earth’s atmosphere', why: 'It needs huge temperatures and pressures.' },
+      { text: 'in batteries', why: 'Batteries use chemical reactions.' },
+    ],
+  },
+  {
+    question: 'Complete: ${}^{235}_{92}\\text{U} + {}^{1}_{0}\\text{n} \\rightarrow {}^{144}_{56}\\text{Ba} + {}^{?}_{36}\\text{Kr} + 3\\,{}^{1}_{0}\\text{n}$. What is the missing top number?',
+    options: [
+      { text: '89', correct: true, why: '$236 = 144 + ? + 3$, so $? = 89$.' },
+      { text: '92', why: 'Check: $235 + 1 = 236 = 144 + ? + 3$.' },
+      { text: '91', why: 'Do not forget the 3 neutrons.' },
+      { text: '36', why: '36 is the proton number of krypton.' },
+    ],
+  },
+  {
+    question: 'What happens to the total mass in fission or fusion?',
+    options: [
+      { text: 'It decreases a little; the lost mass becomes energy', correct: true, why: 'This is where the energy comes from.' },
+      { text: 'It increases', why: 'It decreases.' },
+      { text: 'It stays exactly the same', why: 'A little mass becomes energy.' },
+      { text: 'It all becomes energy', why: 'Only a very small part.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={7}>
+
+<Quiz questions={[
+  {
+    question: 'In fission, why can a chain reaction happen?',
+    options: [
+      { text: 'Each fission gives out neutrons that can split more nuclei', correct: true, why: 'In a reactor, the chain reaction is controlled.' },
+      { text: 'Each fission gives out electrons', why: 'It gives out neutrons.' },
+      { text: 'The nuclei join together', why: 'In fission, nuclei split.' },
+      { text: 'Energy makes more uranium', why: 'Neutrons cause more fissions.' },
+    ],
+  },
+  {
+    question: 'In a nuclide equation, what must balance?',
+    options: [
+      { text: 'the top numbers and the bottom numbers', correct: true, why: 'Nucleons and charge are conserved.' },
+      { text: 'only the symbols', why: 'The numbers must balance.' },
+      { text: 'only the energies', why: 'The numbers A and Z must balance.' },
+      { text: 'nothing', why: 'A and Z must balance.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Extended only** (5.1.2 S6). Core students can review lesson 16.3 and do the nuclide practice.
+
+**Timing:** starter 5 min, fission and fusion 18 min, equations 10 min, check 20 min, exit ticket 7 min.
+
+**Syllabus note:** mass and energy changes are qualitative only ("without values"). $E = mc^2$ is not required.
+
+**Common mistakes:**
+
+- Mixing up fission (splitting) and fusion (joining).
+- Forgetting the neutrons when balancing.
+
+**Language support:**
+
+- *fission* (like "fissure", a crack: splitting); *fusion* (like "fuse", join).
+
+**Differentiation:**
+
+- Support: two picture cards to label.
+- Stretch: why is fusion so difficult to use on Earth?
+
+</Step>

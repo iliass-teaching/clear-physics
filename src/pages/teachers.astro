@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/url';
+---
+
+<Base title="For teachers" description="How the Clear Physics lessons are built, and how to use them.">
+  <h1>For teachers</h1>
+  <p>
+    These lessons are for classes that learn physics in English as a second language.
+  </p>
+
+  <h2>Language</h2>
+  <ul>
+    <li>Short sentences and common words, when possible.</li>
+    <li>The exam key words are kept. Each lesson lists its key words, with a simple meaning in the <a href={url('key-words/')}>Key words</a> list.</li>
+    <li>Figures, animations and simulations support the text.</li>
+    <li>In calculations, the data is set apart: <em>Given</em> and <em>Find</em>.</li>
+    <li>Command words (<em>state, describe, explain…</em>) have their own <a href={url('key-words/#command-words')}>list</a>, and a lesson in Unit 18.</li>
+  </ul>
+
+  <h2>Lesson structure</h2>
+  <ol>
+    <li><strong>Goals and key words</strong>, with the syllabus codes.</li>
+    <li><strong>Starter</strong> (5 min): a question or a short demonstration.</li>
+    <li><strong>Learn</strong>: the explanation, with worked examples.</li>
+    <li><strong>Do</strong>: a practical or an on-screen activity.</li>
+    <li><strong>Practice</strong>: online questions with new numbers each time and hints for typical mistakes.</li>
+    <li><strong>Exit ticket</strong>: a short quiz to check learning.</li>
+    <li><strong>Homework</strong> and <strong>teacher notes</strong> (timing, common mistakes and other advice).</li>
+  </ol>
+
+  <h2>Your scheme of work</h2>
+  <p>
+    The lessons follow the order of the <a href={url('course/')}>course</a>, but each lesson works on its own.
+    You can use them inside your own scheme of work.
+    To see which syllabus topic each unit covers, and the sources we use, read <a href={url('syllabus/')}>Syllabus and sources</a>.
+  </p>
+
+  <h2>Printable worksheets</h2>
+  <p>
+    Make <a href={url('worksheets/')}>printable worksheets</a> from the practice topics: choose the topics and levels,
+    and print a different version for each student, with new numbers. The answers (and, if you want, the worked solutions)
+    for every version are printed at the end. Keep the code: the same code always gives the same sheets.
+  </p>
+</Base>

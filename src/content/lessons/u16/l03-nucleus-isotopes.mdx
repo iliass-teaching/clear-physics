@@ -1,0 +1,116 @@
+---
+unit: 16
+lesson: 3
+title: The nucleus and isotopes
+syllabus: ['5.1.2 C1–C5', '5.1.2 S7', '5.1.2 S8']
+goals:
+  - Describe the nucleus in terms of protons and neutrons, with their relative charges.
+  - Use proton number Z, nucleon number A, and nuclide notation.
+  - Explain what an isotope is.
+keyWords: [proton, neutron, proton number, nucleon number, isotope, nucleus]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { nuclideNotationSvg, isotopesSvg } from '../../../lib/nuclearFigures';
+
+<Step kind="starter" title="Same element, different weight" minutes={5}>
+
+Most carbon atoms are carbon-12. Some are carbon-14 (used to find the age of very old bones and wood). What could be different between them, if they are both carbon?
+
+</Step>
+
+<Step kind="learn" title="Particles and numbers" minutes={15}>
+
+<div class="table-wrap">
+
+| Particle | Where? | Relative charge | Relative mass |
+|---|---|---|---|
+| proton | nucleus | +1 | 1 |
+| neutron | nucleus | 0 | 1 |
+| electron | orbits | −1 | very small (about 1/2000) |
+
+</div>
+
+Protons and neutrons are called **nucleons**.
+
+- **Proton number** (atomic number) $Z$: the number of **protons**. It tells you the **element**.
+- **Nucleon number** (mass number) $A$: the number of **protons + neutrons**.
+- **Number of neutrons** $= A - Z$.
+
+<Figure svg={nuclideNotationSvg()} caption="Nuclide notation." width="28rem" />
+
+**Nuclide notation:** ${}^{A}_{Z}\text{X}$, where X is the symbol of the element.
+
+**Extended:** the **relative charge** of a nucleus is $+Z$ (its protons); its **relative mass** is about $A$ (its nucleons).
+
+</Step>
+
+<Step kind="learn" title="Isotopes" minutes={10}>
+
+<Figure svg={isotopesSvg()} caption="Two isotopes of carbon." width="28rem" />
+
+**Isotopes** are atoms of the **same element** (same number of protons) with **different numbers of neutrons**. An element can have several isotopes.
+
+- Carbon-12: ${}^{12}_{6}\text{C}$, 6 neutrons. Carbon-14: ${}^{14}_{6}\text{C}$, 8 neutrons.
+- Isotopes have the same chemistry (same electrons), but different masses. Some isotopes are radioactive.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={22}>
+
+<Practice topic="nuclide" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={8}>
+
+<Quiz questions={[
+  {
+    question: 'How many neutrons are in ${}^{27}_{13}\\text{Al}$?',
+    options: [
+      { text: '14', correct: true, why: '$27 - 13 = 14$.' },
+      { text: '13', why: 'This is the number of protons.' },
+      { text: '27', why: 'This is the number of nucleons.' },
+      { text: '40', why: 'Subtract: $A - Z$.' },
+    ],
+  },
+  {
+    question: 'What is the same in two isotopes of an element?',
+    options: [
+      { text: 'the number of protons', correct: true, why: 'Same element: same proton number.' },
+      { text: 'the number of neutrons', why: 'That is what is different.' },
+      { text: 'the nucleon number', why: 'The nucleon number is different.' },
+      { text: 'the mass', why: 'Different numbers of neutrons: different masses.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** 5.1.2 C1–C5 are Core. The relative charge and mass of a nucleus (S7, S8) are Extended.
+
+**Timing:** starter 5 min, numbers 15 min, isotopes 10 min, practice 22 min, exit ticket 8 min.
+
+**Common mistakes:**
+
+- Confusing $A$ and $Z$ (the bigger number is $A$, at the top).
+- "Isotopes have different numbers of protons."
+- Adding instead of subtracting for the number of neutrons.
+
+**Language support:**
+
+- *nucleon* = a particle in the nucleus (proton or neutron).
+- *isotope*: "iso" = same, "tope" = place (the same place in the periodic table).
+
+**Differentiation:**
+
+- Support: a table to complete for 5 nuclides.
+- Stretch: hydrogen has three isotopes. Write them in nuclide notation.
+
+</Step>

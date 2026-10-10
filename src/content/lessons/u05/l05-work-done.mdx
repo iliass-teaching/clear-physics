@@ -1,0 +1,154 @@
+---
+unit: 5
+lesson: 5
+title: Work done
+syllabus: ['1.7.2 C1', '1.7.2 C2']
+goals:
+  - Understand that work done is equal to the energy transferred.
+  - 'Use the equation $W = Fd = \Delta E$.'
+keyWords: [work done, energy, force, joule]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="Is it work?" minutes={5}>
+
+In physics, is work done in these cases? Yes or no?
+
+1. You push a car, but it does not move.
+2. You lift a bag from the floor onto a table.
+3. You hold a heavy bag still for 5 minutes.
+4. A crane lifts a beam.
+
+</Step>
+
+<Step kind="learn" title="Work done = energy transferred" minutes={12}>
+
+**Work is done** when a force moves an object. The **work done** is the energy transferred:
+
+$$
+W = F \times d = \Delta E
+$$
+
+<div class="table-wrap">
+
+| Quantity | Symbol | Unit |
+|---|---|---|
+| work done | $W$ | J |
+| force | $F$ | N |
+| distance moved (in the direction of the force) | $d$ | m |
+| energy transferred | $\Delta E$ | J |
+
+</div>
+
+- If the object does not move ($d = 0$), **no work is done**, even if you get tired.
+- 1 J of work is done when a force of 1 N moves an object 1 m.
+- Electrical work is done when a current transfers energy in a circuit.
+
+<WorkedExample
+  question="A student pushes a box with a force of 120 N for 5.0 m. Calculate the work done."
+  given={['$F = 120\\,\\text{N}$', '$d = 5.0\\,\\text{m}$']}
+  find="the work done $W$"
+  answer="$W = 600\,\text{J}$"
+>
+
+$W = F \times d = 120 \times 5.0$
+
+$W = 600\,\text{J}$: 600 J of energy is transferred.
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="learn" title="Lifting" minutes={8}>
+
+To lift an object at a steady speed, the force needed is equal to its **weight**: $F = mg$. So the work done is:
+
+$$
+W = mg \times \Delta h
+$$
+
+This is the same as the gain in gravitational potential energy: the work done is the energy transferred to the gravitational potential store.
+
+Example: lifting a 5 kg bag 1.2 m: $W = 5 \times 9.8 \times 1.2 = 59\,\text{J}$.
+
+</Step>
+
+<Step kind="do" title="How much work?" minutes={12}>
+
+Work in pairs with a force meter, a block with a hook and a metre rule.
+
+1. Pull the block along the bench at a steady speed for 0.50 m. Read the force.
+2. Calculate the work done.
+3. Lift the block 0.50 m at a steady speed with the force meter. Read the force.
+4. Calculate the work done.
+
+**Question:** which needed more work? Why? Where did the energy go each time?
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={18}>
+
+<Practice topic="work" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A force of 50 N moves a box 4 m. What is the work done?',
+    options: [
+      { text: '200 J', correct: true, why: '$W = 50 \\times 4 = 200\\,\\text{J}$.' },
+      { text: '12.5 J', why: 'Multiply: $W = F \\times d$.' },
+      { text: '54 J', why: 'Multiply, do not add.' },
+      { text: '200 N', why: 'Work is in joules.' },
+    ],
+  },
+  {
+    question: 'A girl holds a heavy box still above her head. How much work does she do on the box?',
+    options: [
+      { text: 'none, because the box does not move', correct: true, why: '$d = 0$, so $W = 0$.' },
+      { text: 'a lot, because the box is heavy', why: 'Work needs a distance moved.' },
+      { text: 'it depends on how long she holds it', why: 'Time does not matter: the box does not move.' },
+      { text: 'it is equal to the weight of the box', why: 'Work is force × distance, and the distance is zero.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Do 5 questions at **Level 3** of the practice. Then explain why carrying a bag along a flat corridor at a steady height does very little work on the bag (think about the direction of the force).
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 20 min, activity 12 min, practice 18 min, exit ticket 5 min.
+
+**Starter answers:** 1. no (no movement). 2. yes. 3. no (no movement). 4. yes.
+
+**Common mistakes:**
+
+- Using the mass (kg) as the force when lifting: the force is the weight, $mg$.
+- Thinking work is done whenever a force acts.
+- Confusing work done (J) and power (W) — the letter W is used for both work and the unit watt.
+
+**Homework note:** the force on the bag is upwards, and the movement is horizontal. Only the distance in the direction of the force counts.
+
+**Language support:**
+
+- In everyday English, *work* means a job or effort. In physics, work is done only when a force moves something.
+
+**Differentiation:**
+
+- Support: start with Level 1 and simple whole numbers.
+- Stretch: a 60 kg climber goes up 300 m. Calculate the work done against gravity in kJ. (176 kJ.)
+
+</Step>

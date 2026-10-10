@@ -1,0 +1,126 @@
+---
+// Virtual experiment: radioactive decay of 400 nuclei. Each minute, each undecayed nucleus has the same
+// chance to decay (decay is random). The graph shows the number of undecayed nuclei against time.
+---
+
+<div class="decay-sim" data-decay-sim>
+  <div class="row">
+    <svg class="grid-svg" viewBox="0 0 200 200" role="img" aria-label="400 nuclei: undecayed nuclei in red, decayed nuclei in grey">
+      <g class="cells"></g>
+    </svg>
+    <svg class="plot" viewBox="0 -4 340 244" role="img" aria-label="Graph of the number of undecayed nuclei against time">
+      <g class="axes"></g>
+      <polyline class="line" fill="none" points="" />
+      <g class="marks"></g>
+    </svg>
+  </div>
+  <div class="controls">
+    <label>isotope
+      <select class="iso">
+        <option value="2">isotope A</option>
+        <option value="4" selected>isotope B</option>
+        <option value="6">isotope C</option>
+      </select>
+    </label>
+    <button type="button" class="tick">Wait 1 minute</button>
+    <button type="button" class="run">Wait 10 minutes</button>
+    <button type="button" class="reset secondary">Start again</button>
+  </div>
+  <p class="readout" aria-live="polite"></p>
+  <p class="small muted">Red: undecayed nuclei. Grey: decayed nuclei. Each run is a little different, because decay is random.</p>
+</div>
+
+<script>
+  const N0 = 400;
+  const T_MAX = 20;
+  const NS = 'http://www.w3.org/2000/svg';
+
+  document.querySelectorAll<HTMLElement>('[data-decay-sim]').forEach((root) => {
+    const q = <T extends Element>(s: string) => root.querySelector<T>(s)!;
+    const cellsG = q<SVGGElement>('.cells');
+    const iso = q<HTMLSelectElement>('.iso');
+    let alive: boolean[] = [];
+    let t = 0;
+    let history: [number, number][] = [];
+    const cells: SVGRectElement[] = [];
+
+    for (let k = 0; k < N0; k++) {
+      const r = document.createElementNS(NS, 'rect');
+      r.setAttribute('x', String((k % 20) * 10 + 1));
+      r.setAttribute('y', String(Math.floor(k / 20) * 10 + 1));
+      r.setAttribute('width', '8');
+      r.setAttribute('height', '8');
+      r.setAttribute('rx', '2');
+      cellsG.appendChild(r);
+      cells.push(r);
+    }
+
+    const X = (s: number) => 40 + (s / T_MAX) * 290;
+    const Y = (n: number) => 200 - (n / N0) * 185;
+    let axes = `<line class="ax" x1="40" y1="200" x2="332" y2="200"/><line class="ax" x1="40" y1="200" x2="40" y2="10"/>`;
+    for (let s = 0; s <= T_MAX; s += 2) axes += `<line class="gl" x1="${X(s)}" y1="15" x2="${X(s)}" y2="200"/><text x="${X(s)}" y="214" text-anchor="middle">${s}</text>`;
+    for (let n = 0; n <= N0; n += 100) axes += `<line class="gl" x1="40" y1="${Y(n)}" x2="332" y2="${Y(n)}"/><text x="35" y="${Y(n) + 4}" text-anchor="end">${n}</text>`;
+    axes += `<text x="330" y="234" text-anchor="end" class="lab">time / minutes</text><text x="44" y="10" class="lab">undecayed nuclei</text>`;
+    q<SVGGElement>('.axes').innerHTML = axes;
+
+    const count = () => alive.filter(Boolean).length;
+
+    function draw(): void {
+      cells.forEach((c, k) => c.setAttribute('class', alive[k] ? 'alive' : 'gone'));
+      q<SVGPolylineElement>('.line').setAttribute('points', history.map(([s, n]) => `${X(s)},${Y(n).toFixed(1)}`).join(' '));
+      q<SVGGElement>('.marks').innerHTML = history.map(([s, n]) => `<circle cx="${X(s)}" cy="${Y(n).toFixed(1)}" r="2.5"/>`).join('');
+      q<HTMLElement>('.readout').innerHTML = `time: <strong>${t} min</strong> · undecayed nuclei: <strong>${count()}</strong> of ${N0}`;
+    }
+
+    function reset(): void {
+      alive = Array(N0).fill(true);
+      t = 0;
+      history = [[0, N0]];
+      draw();
+    }
+
+    function tick(): void {
+      if (t >= T_MAX) return;
+      const p = 1 - Math.pow(2, -1 / Number(iso.value)); // chance to decay in one minute
+      alive = alive.map((a) => a && Math.random() >= p);
+      t += 1;
+      history.push([t, count()]);
+      draw();
+    }
+
+    q<HTMLButtonElement>('.tick').addEventListener('click', tick);
+    q<HTMLButtonElement>('.run').addEventListener('click', () => {
+      for (let k = 0; k < 10; k++) tick();
+    });
+    q<HTMLButtonElement>('.reset').addEventListener('click', reset);
+    iso.addEventListener('change', reset);
+    reset();
+
+    (root as HTMLElement & { _decay?: unknown })._decay = { tick, reset, get history() { return history; } };
+  });
+</script>
+
+<style>
+  .decay-sim {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .row { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr); gap: 1rem; align-items: center; }
+  @media (max-width: 600px) { .row { grid-template-columns: 1fr; } }
+  svg { width: 100%; height: auto; display: block; }
+  .grid-svg { max-width: 15rem; margin: 0 auto; }
+  .grid-svg :global(.alive) { fill: #d84b3a; }
+  .grid-svg :global(.gone) { fill: #9aa0a6; opacity: 0.4; }
+  .plot :global(.ax) { stroke: var(--ink); stroke-width: 1.5; }
+  .plot :global(.gl) { stroke: var(--line); stroke-width: 1; }
+  .plot :global(text) { fill: var(--ink-soft); font-size: calc(11px * var(--tz, 1)); font-family: var(--sans); }
+  .plot :global(.lab) { fill: var(--ink); font-weight: 700; font-size: calc(12px * var(--tz, 1)); }
+  .plot .line { stroke: var(--accent); stroke-width: 2; }
+  .plot :global(.marks circle) { fill: var(--exit); }
+  .controls { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; margin-top: 0.6rem; }
+  .controls label { display: flex; align-items: center; gap: 0.4rem; }
+  .readout { margin: 0.6rem 0 0.2rem; }
+</style>

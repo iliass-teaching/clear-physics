@@ -1,0 +1,40 @@
+---
+// An exam-style structured question, with its marks and a hidden mark scheme.
+// Use: <ExamQuestion number="1(a)" marks={2}> question… <div slot="scheme"> answers… </div></ExamQuestion>
+interface Props {
+  number: string;
+  marks: number;
+}
+const { number, marks } = Astro.props;
+---
+
+<div class="exam-q">
+  <div class="head">
+    <span class="num">{number}</span>
+    <span class="marks">[{marks} mark{marks > 1 ? 's' : ''}]</span>
+  </div>
+  <div class="body"><slot /></div>
+  <div class="lines" aria-hidden="true">{Array.from({ length: Math.min(4, marks + 1) }, () => <span />)}</div>
+  <details class="scheme">
+    <summary>Show the mark scheme</summary>
+    <div class="scheme-body"><slot name="scheme" /></div>
+  </details>
+</div>
+
+<style>
+  .exam-q {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0.8rem 1.1rem;
+    margin: 1rem 0;
+    background: var(--surface);
+  }
+  .head { display: flex; justify-content: space-between; align-items: baseline; }
+  .num { font-weight: 700; }
+  .marks { font-weight: 700; color: var(--ink-soft); font-size: 0.9rem; }
+  .body :global(p:first-child) { margin-top: 0.3rem; }
+  .lines span { display: block; border-bottom: 1px dotted var(--line); height: 1.6rem; }
+  .scheme { margin-top: 0.6rem; }
+  .scheme summary { cursor: pointer; font-weight: 700; color: var(--accent); }
+  .scheme-body { border-left: 3px solid var(--good); padding: 0.2rem 0 0.2rem 0.8rem; margin-top: 0.4rem; }
+</style>

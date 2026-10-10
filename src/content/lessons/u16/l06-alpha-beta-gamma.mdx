@@ -1,0 +1,178 @@
+---
+unit: 16
+lesson: 6
+title: Alpha, beta and gamma
+syllabus: ['5.2.2 C1', '5.2.2 C2', '5.2.2 S3', '5.2.2 S4']
+goals:
+  - Describe the emission of radiation from a nucleus as spontaneous and random in direction.
+  - Identify α, β and γ by their nature, ionising effect and penetrating ability.
+  - 'Extended: describe their deflection in electric and magnetic fields, and explain their ionising effects.'
+keyWords: [alpha particle, beta particle, gamma radiation, ionising, nucleus]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { penetrationSvg, deflectionSvg } from '../../../lib/nuclearFigures';
+
+<Step kind="starter" title="Three kinds" minutes={5}>
+
+Radiation from radioactive materials is of more than one kind: some is stopped by a sheet of paper, some goes further. How could you test what stops each kind?
+
+</Step>
+
+<Step kind="learn" title="Three types of nuclear radiation" minutes={16}>
+
+An unstable nucleus gives out radiation **spontaneously** (by itself, we cannot make it happen or stop it) and **randomly** in direction.
+
+<div class="table-wrap">
+
+| | α (alpha) | β (beta) | γ (gamma) |
+|---|---|---|---|
+| **Nature** | a helium nucleus: 2 protons + 2 neutrons | a fast electron from the nucleus | an electromagnetic wave |
+| **Charge** | +2 | −1 | 0 |
+| **Ionising effect** | **strong** | medium | **weak** |
+| **Stopped by** | a sheet of paper (or a few cm of air) | a few mm of aluminium | only reduced by several cm of lead (or thick concrete) |
+
+</div>
+
+<Figure svg={penetrationSvg()} caption="What stops each type of radiation." width="34rem" />
+
+**Ionising** means knocking electrons off atoms, making ions. The **more ionising** a radiation is, the **faster it loses its energy**, so the **less penetrating** it is.
+
+</Step>
+
+<Step kind="learn" title="Deflection and ionisation (Extended)" minutes={14}>
+
+<Figure svg={deflectionSvg()} caption="α, β and γ in an electric field and in a magnetic field." width="38rem" />
+
+**Deflection:**
+
+- **α** (positive) is deflected towards the **negative** plate in an electric field. It is heavy, so it is deflected only a **little**.
+- **β** (negative) is deflected the **opposite way**, and **more** (it is very light).
+- **γ** has **no charge**: it is **not deflected**.
+- In a magnetic field, α and β curve in **opposite** directions (use the left-hand rule, with β as a current in the opposite direction to its motion); γ goes straight.
+
+**Why is α so ionising?**
+
+- It has a **big charge** (+2), so it pulls electrons off atoms strongly.
+- It has a lot of **kinetic energy**, but it is heavy and slow, so it spends a long time near each atom it passes. It gives up its energy in a short distance.
+- β has a smaller charge (−1) and moves much faster: it ionises less. γ has **no charge**: it ionises very little.
+
+</Step>
+
+<Step kind="do" title="Identify the radiation" minutes={10}>
+
+A school measured the count rate from three sources with different absorbers (background already subtracted, counts/minute):
+
+<div class="table-wrap">
+
+| Source | nothing | paper | 5 mm aluminium | 5 cm lead |
+|---|---|---|---|---|
+| X | 520 | 0 | 0 | 0 |
+| Y | 600 | 590 | 0 | 0 |
+| Z | 300 | 300 | 290 | 60 |
+
+</div>
+
+1. Which source emits α, which emits β, and which emits γ? Explain.
+2. A fourth source gives 400 with nothing, 250 with paper and 0 with aluminium. What does it emit?
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={10}>
+
+<Quiz questions={[
+  {
+    question: 'Which radiation is the most ionising?',
+    options: [
+      { text: 'alpha', correct: true, why: 'Big charge, slow: strong interaction with atoms.' },
+      { text: 'beta', why: 'β is medium.' },
+      { text: 'gamma', why: 'γ is the least ionising.' },
+      { text: 'they are all the same', why: 'α is the most ionising.' },
+    ],
+  },
+  {
+    question: 'Which radiation is an electromagnetic wave?',
+    options: [
+      { text: 'gamma', correct: true, why: 'No charge and no mass.' },
+      { text: 'alpha', why: 'α is a helium nucleus.' },
+      { text: 'beta', why: 'β is an electron.' },
+      { text: 'none of them', why: 'Gamma is electromagnetic.' },
+    ],
+  },
+  {
+    question: 'Which radiation is stopped by a few millimetres of aluminium, but not by paper?',
+    options: [
+      { text: 'beta', correct: true, why: 'α is stopped by paper; γ passes through aluminium.' },
+      { text: 'alpha', why: 'α is stopped by paper.' },
+      { text: 'gamma', why: 'γ is only reduced by thick lead.' },
+      { text: 'all three', why: 'Only β.' },
+    ],
+  },
+  {
+    question: 'Extended: which radiation is NOT deflected by an electric field?',
+    options: [
+      { text: 'gamma', correct: true, why: 'It has no charge.' },
+      { text: 'alpha', why: 'α is positive: it is deflected.' },
+      { text: 'beta', why: 'β is negative: it is deflected.' },
+      { text: 'none is deflected', why: 'α and β are deflected.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'What is an alpha particle?',
+    options: [
+      { text: '2 protons and 2 neutrons (a helium nucleus)', correct: true, why: 'Charge +2.' },
+      { text: 'an electron', why: 'That is β.' },
+      { text: 'an electromagnetic wave', why: 'That is γ.' },
+      { text: 'a neutron', why: 'α is a helium nucleus.' },
+    ],
+  },
+  {
+    question: 'Why do we say radioactive emission is random?',
+    options: [
+      { text: 'We cannot predict when a nucleus will decay, or in which direction the radiation will go', correct: true, why: 'It is spontaneous and random.' },
+      { text: 'Each nucleus decays at a fixed time', why: 'We cannot predict when one nucleus decays.' },
+      { text: 'It only happens when we heat the source', why: 'It is spontaneous.' },
+      { text: 'All radiation goes in one direction', why: 'It is random in direction.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** 5.2.2 C1, C2 are Core. Deflection (S3) and the explanation of ionising effects (S4) are Extended.
+
+**Timing:** starter 5 min, learn 16 min, Extended 14 min, data task 10 min, check 10 min, exit ticket 5 min.
+
+**Data task answers:** X: α (stopped by paper). Y: β (passes paper, stopped by aluminium). Z: γ (reduced by lead only). The fourth source emits α **and** β.
+
+**Note:** in the syllabus, "β" means β⁻ (an electron); β⁺ is not included.
+
+**Common mistakes:**
+
+- "Gamma is the most dangerous because it is the most ionising." (It is the most penetrating, the least ionising.)
+- Mixing up "ionising" and "penetrating".
+
+**Language support:**
+
+- *penetrate* = go through; *absorb* = take in and stop.
+
+**Differentiation:**
+
+- Support: a three-column card sort (α / β / γ).
+- Stretch: inside the body, which radiation is the most harmful? Outside the body? Explain.
+
+**Safety:** demonstrations with sealed sources only, by the teacher, following local rules.
+
+</Step>

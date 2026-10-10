@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/url';
+import UnitList from '../components/UnitList.astro';
+import { units, totalLessons } from '../data/units';
+---
+
+<Base title="Course" description="The full Cambridge IGCSE Physics (0625) course, unit by unit.">
+  <p class="kicker">Cambridge IGCSE Physics 0625 · syllabus 2026–2028</p>
+  <h1>The course</h1>
+  <p class="lead">
+    Two years, {units.length} units, {totalLessons} lessons of one hour.
+    Each unit shows the parts of the syllabus it covers
+    (<a href={url('syllabus/')}>see the full syllabus map</a>).
+  </p>
+  <p class="stats">
+    <span><strong>{units.length}</strong> units</span>
+    <span><strong>{totalLessons}</strong> lessons</span>
+    <span><span class="tag ext">Extended</span> Supplement content, for the Extended papers</span>
+  </p>
+
+  <h2>Year 1</h2>
+  <UnitList year={1} />
+
+  <h2>Year 2</h2>
+  <UnitList year={2} />
+  <p class="muted small">
+    Space physics comes last because it uses waves, energy, gravity and nuclear fusion from earlier units.
+    Practical skills are taught inside each unit, and revised in Unit 18 with the exam papers.
+    All the equations are on one page: <a href={url('equations/')}>Equations to know</a>.
+  </p>
+</Base>
+
+<style>
+  .kicker { margin: 0; font-size: 0.85rem; color: var(--ink-soft); }
+  .lead { font-size: 1.1rem; }
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.8rem;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    padding: 0.8rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .stats strong { color: var(--ink); font-size: 1.05rem; }
+</style>

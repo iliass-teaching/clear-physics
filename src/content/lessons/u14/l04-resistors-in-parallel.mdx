@@ -1,0 +1,125 @@
+---
+unit: 14
+lesson: 4
+title: Resistors in parallel
+syllabus: ['4.3.2 S10']
+goals:
+  - 'Extended: calculate the combined resistance of two resistors in parallel.'
+  - 'Extended: solve problems with series and parallel circuits.'
+keyWords: [parallel circuit, resistance, junction, branch]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import CircuitSim from '../../../components/CircuitSim.astro';
+
+<Step kind="starter" title="Smaller than both" minutes={5}>
+
+In the simulation of the last lesson, two 6 Ω lamps in parallel had a combined resistance of 3 Ω. How can two resistors together have **less** resistance than one of them alone?
+
+</Step>
+
+<Step kind="learn" title="The equation (Extended)" minutes={14}>
+
+For two resistors $R_1$ and $R_2$ in parallel, the combined resistance $R$ is given by:
+
+$$
+\frac{1}{R} = \frac{1}{R_1} + \frac{1}{R_2}
+$$
+
+You can also use: $R = \dfrac{R_1 R_2}{R_1 + R_2}$ ("product over sum").
+
+**Check your answer:** $R$ must be **smaller** than the smaller resistor.
+
+<WorkedExample
+  question="A 6 Ω resistor and a 3 Ω resistor are in parallel. Calculate the combined resistance."
+  given={['$R_1 = 6\\,\\Omega$', '$R_2 = 3\\,\\Omega$']}
+  find="the combined resistance $R$"
+  answer="$R = 2\,\Omega$"
+>
+
+$\dfrac{1}{R} = \dfrac{1}{6} + \dfrac{1}{3} = \dfrac{1}{6} + \dfrac{2}{6} = \dfrac{3}{6}$
+
+$R = \dfrac{6}{3} = 2\,\Omega$ (smaller than 3 Ω ✓)
+
+</WorkedExample>
+
+**Two equal resistors** in parallel: the combined resistance is **half** of one resistor.
+
+</Step>
+
+<Step kind="do" title="Check with the simulation" minutes={12}>
+
+<CircuitSim />
+
+Select **Parallel**. For each pair of lamp resistances, calculate the combined resistance, then check with the simulation:
+
+<div class="table-wrap">
+
+| lamp 1 / Ω | lamp 2 / Ω | your answer / Ω | simulation / Ω |
+|---|---|---|---|
+| 6 | 6 | | |
+| 4 | 12 | | |
+| 10 | 15 | | |
+| 20 | 5 | | |
+
+</div>
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={22}>
+
+<Practice topic="parallel" level={3} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={7}>
+
+<Quiz questions={[
+  {
+    question: 'Extended: what is the combined resistance of a 12 Ω and a 4 Ω resistor in parallel?',
+    options: [
+      { text: '3 Ω', correct: true, why: '$\\dfrac{12 \\times 4}{12 + 4} = \\dfrac{48}{16} = 3\\,\\Omega$.' },
+      { text: '16 Ω', why: 'This is for series.' },
+      { text: '8 Ω', why: 'Use $\\dfrac{1}{R} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2}$.' },
+      { text: '0.33 Ω', why: 'This is $\\dfrac{1}{R}$. Take 1 divided by it.' },
+    ],
+  },
+  {
+    question: 'Extended: two 10 Ω resistors are in parallel. What is the combined resistance?',
+    options: [
+      { text: '5 Ω', correct: true, why: 'Two equal resistors: half of one.' },
+      { text: '20 Ω', why: 'This is for series.' },
+      { text: '10 Ω', why: 'In parallel, the resistance is smaller.' },
+      { text: '0.2 Ω', why: 'This is $\\dfrac{1}{R}$.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Extended only** (4.3.2 S10). Core students can repeat the series and parallel investigations with different lamps, and do levels 1 of the series and parallel practice.
+
+**Timing:** starter 5 min, learn 14 min, simulation 12 min, practice 22 min, exit ticket 7 min.
+
+**Common mistakes:**
+
+- Forgetting to take the reciprocal at the end.
+- Adding resistances in parallel.
+
+**Language support:**
+
+- *reciprocal* = 1 divided by the number.
+- "product over sum": multiply them, then divide by their sum.
+
+**Differentiation:**
+
+- Support: start with pairs of equal resistors.
+- Stretch: a 6 Ω resistor is in series with two 6 Ω resistors in parallel. Find the total resistance (9 Ω).
+
+</Step>

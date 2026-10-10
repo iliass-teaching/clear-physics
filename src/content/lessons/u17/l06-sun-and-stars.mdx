@@ -1,0 +1,168 @@
+---
+unit: 17
+lesson: 6
+title: The Sun and the stars
+syllabus: ['6.2.1 C1', '6.2.1 S2', '6.2.2 C1', '6.2.2 S2']
+goals:
+  - Describe the Sun as a star.
+  - Know that stars are grouped in galaxies, and that we live in the Milky Way.
+  - Use the light-year as a unit of distance.
+keyWords: [nuclear fusion, galaxy, light-year]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="A special star?" minutes={5}>
+
+The Sun looks much bigger and brighter than all the other stars.
+
+Is the Sun a special star? Or is it an ordinary star that is very close to us? Talk with a partner.
+
+</Step>
+
+<Step kind="learn" title="The Sun is a star" minutes={10}>
+
+The Sun is a **star of medium size**. It is made mostly of **hydrogen** and **helium**.
+
+The Sun gives out (radiates) most of its energy as:
+
+- **infrared** radiation,
+- **visible light**,
+- **ultraviolet** radiation.
+
+**Extended:** stars are powered by **nuclear reactions** that release energy. In a stable star like the Sun, the reaction is the **nuclear fusion** of hydrogen into helium.
+
+</Step>
+
+<Step kind="learn" title="Galaxies and light-years" minutes={12}>
+
+A **galaxy** is a huge group of many billions of stars.
+The Sun is one star in our galaxy, the **Milky Way**.
+
+The other stars of the Milky Way are **much further away** from us than the Sun. Distances in space are so big that we use a special unit: the **light-year**.
+
+One **light-year** is the distance that light travels in space in one year. (It is a distance, not a time.)
+
+**Extended:**
+
+$$
+1\ \text{light-year} = 9.5 \times 10^{15}\,\text{m}
+$$
+
+We can check this value: $\text{distance} = \text{speed} \times \text{time} = 3.0 \times 10^{8}\,\text{m/s} \times 3.15 \times 10^{7}\,\text{s} = 9.5 \times 10^{15}\,\text{m}$.
+
+<WorkedExample
+  question="Proxima Centauri is the closest star to the Sun. It is 4.2 light-years away. Calculate this distance in metres."
+  given={['distance $= 4.2$ light-years', '$1\\ \\text{light-year} = 9.5 \\times 10^{15}\\,\\text{m}$']}
+  find="the distance in metres"
+  answer="$4.0 \times 10^{16}\,\text{m}$"
+>
+
+$d = 4.2 \times 9.5 \times 10^{15}$
+
+$d = 4.0 \times 10^{16}\,\text{m}$
+
+</WorkedExample>
+
+The light from Proxima Centauri left the star 4.2 years ago.
+
+</Step>
+
+<Step kind="do" title="How far is it?" minutes={13}>
+
+Here are some distances, written as the time light takes to travel them.
+
+<div class="table-wrap">
+
+| Distance | Time for light |
+|---|---|
+| from the Earth to the Moon | 1.3 seconds |
+| from the Sun to the Earth | 8.3 minutes |
+| from the Sun to Neptune | 4.2 hours |
+| from the Sun to Proxima Centauri | 4.2 years |
+| across the Milky Way | about 100 000 years |
+| from the Milky Way to the Andromeda galaxy | 2.5 million years |
+
+</div>
+
+1. Draw a line across your page. Mark the six distances on it in order. (Can you use one scale for all of them? Discuss why.)
+2. Light from the Sun takes 8.3 minutes to reach us. What does this mean when we look at the Sun? (Never look at the Sun directly.)
+3. **Extended:** calculate the distance from the Sun to the Earth in metres, using $c = 3.0 \times 10^{8}\,\text{m/s}$.
+
+</Step>
+
+<Step kind="practice" title="Practice (Extended)" minutes={15}>
+
+<Practice topic="light-year" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'What is the Sun mostly made of?',
+    options: [
+      { text: 'hydrogen and helium', correct: true, why: 'The Sun is mostly hydrogen and helium.' },
+      { text: 'rock and metal', why: 'Rock and metal are in the inner planets. The Sun is mostly hydrogen and helium.' },
+      { text: 'oxygen and nitrogen', why: 'These are in the Earth’s air. The Sun is mostly hydrogen and helium.' },
+      { text: 'burning coal', why: 'The Sun is not on fire. Nuclear fusion releases its energy.' },
+    ],
+  },
+  {
+    question: 'What is a light-year?',
+    options: [
+      { text: 'the distance light travels in one year', correct: true, why: 'A light-year is a unit of distance.' },
+      { text: 'the time light takes to reach the Earth', why: 'A light-year is a distance, not a time.' },
+      { text: 'one year on another planet', why: 'A light-year is a distance.' },
+      { text: 'the age of a star', why: 'A light-year is a distance.' },
+    ],
+  },
+  {
+    question: 'Extended: which reaction gives a stable star its energy?',
+    options: [
+      { text: 'fusion of hydrogen into helium', correct: true, why: 'Hydrogen nuclei join to make helium. This releases energy.' },
+      { text: 'burning of hydrogen with oxygen', why: 'This is a chemical reaction. Stars use nuclear fusion.' },
+      { text: 'fission of uranium', why: 'Fission is used in nuclear power stations. Stars use fusion.' },
+      { text: 'fusion of helium into hydrogen', why: 'The other way round: hydrogen fuses into helium.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Explain in two sentences why we say "when we look at the stars, we look into the past".
+2. Extended: do 5 questions at **Level 2** of the practice.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** 6.2.1 C1 and 6.2.2 C1 are Core. Nuclear fusion in stars (6.2.1 S2) and the value of the light-year (6.2.2 S2) are Extended.
+
+**Timing:** starter 5 min, learn 22 min, distance task 13 min, practice 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "A light-year is a time."
+- "The Sun is burning." It is not a chemical fire: nuclear fusion releases its energy.
+- "The stars in the sky are in other galaxies." All the stars we see with the naked eye are in the Milky Way.
+
+**Distance table:** values from $t = d/c$: Earth–Moon $3.84 \times 10^{8}\,\text{m}$; Sun–Earth $1.5 \times 10^{11}\,\text{m}$; Sun–Neptune $4.5 \times 10^{12}\,\text{m}$. Proxima Centauri 4.2 light-years; Andromeda 2.5 million light-years.
+
+**Language support:**
+
+- Underline the word *year* in *light-year* and ask: "Is it a time or a distance?"
+
+**Differentiation:**
+
+- Support: Core students do questions 1 and 2 of the task, and Level 1 of the practice.
+- Stretch: how many times further away is Proxima Centauri than the Sun? (About $2.7 \times 10^{5}$ times.)
+
+</Step>

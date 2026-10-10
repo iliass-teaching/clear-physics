@@ -1,0 +1,130 @@
+---
+unit: 16
+lesson: 7
+title: Radioactive decay
+syllabus: ['5.2.3 C1', '5.2.3 C2', '5.2.3 S3–S5']
+goals:
+  - Know that radioactive decay is a spontaneous and random change in an unstable nucleus.
+  - State that α-decay and β-decay change the nucleus into a different element.
+  - 'Extended: explain why some isotopes are unstable, and write decay equations.'
+keyWords: [radioactive decay, alpha particle, beta particle, gamma radiation, isotope]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="A different element" minutes={5}>
+
+Uranium-238 gives out an α-particle. Afterwards, the nucleus is no longer uranium. How can a nucleus change into a different element?
+
+</Step>
+
+<Step kind="learn" title="Radioactive decay" minutes={12}>
+
+**Radioactive decay** is a change in an **unstable** nucleus. It gives out α-particles, β-particles and/or γ-radiation.
+
+- It is **spontaneous**: it happens by itself; temperature, pressure or chemistry do not change it.
+- It is **random**: we cannot predict **when** one particular nucleus will decay.
+
+During **α-decay** or **β-decay**, the number of protons changes, so the nucleus becomes a **different element**.
+
+**γ-emission** does not change the number of protons or neutrons: the nucleus just loses some energy.
+
+</Step>
+
+<Step kind="learn" title="Why and how (Extended)" minutes={15}>
+
+**Why are some isotopes radioactive?** Their nucleus has **too many neutrons**, or it is **too heavy** (too many nucleons).
+
+**Each decay makes the nucleus more stable:**
+
+<div class="table-wrap">
+
+| Decay | What happens in the nucleus | $A$ | $Z$ |
+|---|---|---|---|
+| **α** | loses 2 protons and 2 neutrons | − 4 | − 2 |
+| **β** | a neutron changes into a proton and an electron; the electron leaves | no change | + 1 |
+| **γ** | loses energy only | no change | no change |
+
+</div>
+
+β-decay: **neutron → proton + electron**. It reduces the number of excess neutrons.
+
+**Decay equations** (nuclide notation). The top numbers and the bottom numbers balance:
+
+$$
+{}^{238}_{92}\text{U} \rightarrow {}^{234}_{90}\text{Th} + {}^{4}_{2}\alpha
+\qquad
+{}^{14}_{6}\text{C} \rightarrow {}^{14}_{7}\text{N} + {}^{0}_{-1}\beta
+$$
+
+(An α-particle can also be written ${}^{4}_{2}\text{He}$, and a β-particle ${}^{0}_{-1}\text{e}$.)
+
+</Step>
+
+<Step kind="practice" title="Practice (Extended)" minutes={20}>
+
+<Practice topic="decay-equation" />
+
+**Core students:** answer the quiz below, then try level 1.
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={8}>
+
+<Quiz questions={[
+  {
+    question: 'What happens to a nucleus in α-decay?',
+    options: [
+      { text: 'It becomes a different element', correct: true, why: 'It loses 2 protons.' },
+      { text: 'It stays the same element', why: 'The number of protons changes.' },
+      { text: 'It gains 2 protons', why: 'It loses 2 protons and 2 neutrons.' },
+      { text: 'Nothing happens', why: 'It changes into a different element.' },
+    ],
+  },
+  {
+    question: 'Can you make a radioactive sample decay faster by heating it?',
+    options: [
+      { text: 'No: decay is spontaneous and not affected by temperature', correct: true, why: 'Nothing we do changes it.' },
+      { text: 'Yes, a little', why: 'Temperature does not change the rate of decay.' },
+      { text: 'Yes, a lot', why: 'Decay is spontaneous.' },
+      { text: 'Only for gamma', why: 'No: decay is not affected.' },
+    ],
+  },
+  {
+    question: 'Extended: in β-decay, what happens inside the nucleus?',
+    options: [
+      { text: 'A neutron changes into a proton and an electron', correct: true, why: 'The electron leaves as a β-particle.' },
+      { text: 'A proton changes into a neutron', why: 'The other way round.' },
+      { text: 'The nucleus loses 2 protons and 2 neutrons', why: 'That is α-decay.' },
+      { text: 'Nothing changes', why: 'A neutron becomes a proton: Z goes up by 1.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** 5.2.3 C1, C2 are Core. Reasons for instability, effects on the nucleus, and decay equations (S3–S5) are Extended.
+
+**Timing:** starter 5 min, decay 12 min, Extended 15 min, practice 20 min, exit ticket 8 min.
+
+**Common mistakes:**
+
+- In β-decay, writing $Z - 1$ instead of $Z + 1$.
+- In α-decay, subtracting 2 from $A$ instead of 4.
+- "The electron in β-decay comes from the electron cloud." (It comes from the nucleus.)
+
+**Language support:**
+
+- *spontaneous* = by itself; *unstable* = likely to change.
+
+**Differentiation:**
+
+- Support: the table of changes on a card during the practice.
+- Stretch: uranium-238 decays in many steps to lead-206. How many α-decays are needed? (8, because $238 - 206 = 32 = 8 \times 4$.)
+
+</Step>

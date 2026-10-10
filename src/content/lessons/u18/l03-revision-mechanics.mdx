@@ -1,0 +1,155 @@
+---
+unit: 18
+lesson: 3
+title: 'Revision: motion, forces and energy'
+syllabus: ['1']
+goals:
+  - Revise the key ideas of syllabus section 1 (Units 1–6).
+  - Practise exam-style calculations.
+  - Avoid common mistakes.
+keyWords: [speed, acceleration, resultant force, momentum, energy, pressure]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="learn" title="What to revise" minutes={10}>
+
+<div class="table-wrap">
+
+| Topic | Key ideas | Unit |
+|---|---|---|
+| measurement | rulers, measuring cylinders, timing many oscillations; scalars and vectors (E) | [1](../../1/) |
+| motion | $v = \dfrac{s}{t}$; distance–time and speed–time graphs (gradient, area); $a = \dfrac{\Delta v}{\Delta t}$ (E) | [1](../../1/) |
+| mass, weight, density | $g = \dfrac{W}{m}$; $\rho = \dfrac{m}{V}$; floating and sinking | [2](../../2/) |
+| forces | load–extension graphs; resultant force; friction and drag; $F = ma$ (E); moments; centre of gravity | [3](../../3/) |
+| momentum (E) | $p = mv$; conservation; impulse $F\Delta t = \Delta(mv)$ | [4](../../4/) |
+| energy | stores and transfers; $W = Fd$; $P = \dfrac{\Delta E}{t}$; energy resources; $E_k$, $\Delta E_p$, efficiency (E) | [5](../../5/) |
+| pressure | $p = \dfrac{F}{A}$; depth and density; $\Delta p = \rho g \Delta h$ (E) | [6](../../6/) |
+
+</div>
+
+**Mistakes to avoid:**
+
+- mass (kg) and weight (N) mixed up;
+- speed–time graph: the **area** is the distance, the **gradient** is the acceleration;
+- moments: the distance must be **perpendicular** to the force, measured from the **pivot**;
+- energy: "energy is used up" (it is transferred, never destroyed);
+- pressure: cm² not converted to m².
+
+</Step>
+
+<Step kind="practice" title="Mixed practice" minutes={28}>
+
+### Speed–time graphs
+
+<Practice topic="st-graph" level={2} />
+
+### Density
+
+<Practice topic="density" level={2} />
+
+### Moments
+
+<Practice topic="moments" level={2} />
+
+### Energy and power
+
+<Practice topic="power" level={2} />
+
+### Extended: momentum and energy
+
+<Practice topic="conservation" level={2} />
+
+</Step>
+
+<Step kind="exit" title="Exam-style questions" minutes={22}>
+
+<Quiz questions={[
+  {
+    question: '1. A car travels 150 m in 6.0 s at constant speed. What is its speed?',
+    options: [
+      { text: '25 m/s', correct: true, why: '$\\dfrac{150}{6.0}$.' },
+      { text: '900 m/s', why: 'Divide the distance by the time.' },
+      { text: '0.04 m/s', why: 'Upside down.' },
+      { text: '144 m/s', why: 'Divide.' },
+    ],
+  },
+  {
+    question: '2. On a speed–time graph, what gives the distance travelled?',
+    options: [
+      { text: 'the area under the line', correct: true, why: 'Speed × time.' },
+      { text: 'the gradient', why: 'The gradient is the acceleration.' },
+      { text: 'the highest point', why: 'That is the maximum speed.' },
+      { text: 'the intercept', why: 'Use the area.' },
+    ],
+  },
+  {
+    question: '3. An object has a mass of 5.0 kg on the Moon (g = 1.6 N/kg). What is its weight there?',
+    options: [
+      { text: '8.0 N', correct: true, why: '$W = mg = 5.0 \\times 1.6$.' },
+      { text: '5.0 kg', why: 'Weight is a force in N.' },
+      { text: '3.1 N', why: 'Multiply: $W = mg$.' },
+      { text: '49 N', why: 'That is on the Earth.' },
+    ],
+  },
+  {
+    question: '4. A block of volume 50 cm³ has a mass of 135 g. What is its density?',
+    options: [
+      { text: '2.7 g/cm³', correct: true, why: '$\\dfrac{135}{50}$.' },
+      { text: '6750 g/cm³', why: 'Divide mass by volume.' },
+      { text: '0.37 g/cm³', why: 'Upside down.' },
+      { text: '2.7 kg', why: 'Density has a unit like g/cm³.' },
+    ],
+  },
+  {
+    question: '5. A 20 N force acts 0.30 m from a pivot, at 90°. What is its moment?',
+    options: [
+      { text: '6.0 N m', correct: true, why: '$20 \\times 0.30$.' },
+      { text: '67 N m', why: 'Multiply force × distance.' },
+      { text: '6.0 N', why: 'Moment is in N m.' },
+      { text: '20.3 N m', why: 'Multiply, do not add.' },
+    ],
+  },
+  {
+    question: '6. A motor does 3000 J of work in 20 s. What is its power?',
+    options: [
+      { text: '150 W', correct: true, why: '$\\dfrac{3000}{20}$.' },
+      { text: '60 000 W', why: 'Divide work by time.' },
+      { text: '150 J', why: 'Power is in W.' },
+      { text: '0.0067 W', why: 'Upside down.' },
+    ],
+  },
+  {
+    question: '7. (E) A 2.0 kg trolley moving at 3.0 m/s hits a stationary 1.0 kg trolley. They stick together. What is their speed after the collision?',
+    options: [
+      { text: '2.0 m/s', correct: true, why: 'Momentum before = 6.0 kg m/s; total mass 3.0 kg.' },
+      { text: '3.0 m/s', why: 'The total mass is bigger after the collision.' },
+      { text: '1.5 m/s', why: 'Use conservation of momentum: 6.0 ÷ 3.0.' },
+      { text: '6.0 m/s', why: 'That is the momentum.' },
+    ],
+  },
+  {
+    question: '8. (E) A 0.50 kg ball falls 5.0 m (g = 9.8 N/kg). Ignoring air resistance, what is its kinetic energy at the bottom?',
+    options: [
+      { text: '24.5 J', correct: true, why: '$\\Delta E_p = mg\\Delta h = 0.50 \\times 9.8 \\times 5.0$, all transferred to kinetic energy.' },
+      { text: '2.5 J', why: 'Multiply by g too.' },
+      { text: '49 J', why: 'Check: $0.50 \\times 9.8 \\times 5.0 = 24.5$.' },
+      { text: '6.25 J', why: 'Use $mg\\Delta h$.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** what to revise 10 min, practice 28 min (students choose the topics they find hardest), exam questions 22 min.
+
+**Using this lesson:** ask students to rate each topic in the table (green / orange / red) before the lesson, and to spend the practice time on their red topics. Each link opens the unit.
+
+**Questions 7–8 are Extended.** Core students can do levels 1–2 of other Core topics instead.
+
+</Step>

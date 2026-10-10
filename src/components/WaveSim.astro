@@ -1,0 +1,207 @@
+---
+// Virtual practical: a wave on a long spring.
+// Transverse or longitudinal. The wave speed is fixed (2.0 m/s); the student changes the frequency
+// and sees the wavelength change, so that v = f × λ. The red point only vibrates: it does not travel.
+---
+
+<div class="wave-sim" data-wave-sim>
+  <p class="modes" role="group" aria-label="Type of wave">
+    <button type="button" class="mode" data-mode="transverse" aria-pressed="true">Transverse</button>
+    <button type="button" class="mode secondary" data-mode="longitudinal" aria-pressed="false">Longitudinal</button>
+    <button type="button" class="pause secondary">Pause</button>
+  </p>
+
+  <svg viewBox="0 0 600 220" role="img" aria-label="A wave moving to the right along a spring, with a ruler in metres">
+    <line class="rest" x1="20" y1="90" x2="580" y2="90" />
+    <path class="rope" d="" />
+    <g class="coils"></g>
+    <circle class="marker" r="7" cx="300" cy="90" />
+    <g class="ruler"></g>
+  </svg>
+
+  <div class="controls">
+    <label>
+      frequency <input type="range" class="freq" min="0.5" max="3" step="0.25" value="1" />
+      <output class="freq-out">1.00 Hz</output>
+    </label>
+    <label>
+      amplitude <input type="range" class="amp" min="1" max="6" step="0.5" value="4" />
+      <output class="amp-out">4.0 cm</output>
+    </label>
+  </div>
+
+  <p class="readout">
+    <span>frequency <strong class="f">1.00</strong> Hz</span>
+    <span>wavelength <strong class="lam">2.00</strong> m</span>
+    <span>speed = f × λ = <strong class="v">2.0</strong> m/s</span>
+  </p>
+  <p class="small muted">On this spring, the waves always travel at 2.0 m/s. The ruler is in metres. Use Pause to measure the wavelength.</p>
+</div>
+
+<script>
+  const NS = 'http://www.w3.org/2000/svg';
+  const X0 = 20;
+  const X1 = 580;
+  const MID = 90;
+  const PX_PER_M = 100;
+  const V = 2.0; // m/s
+  const PX_PER_CM = 8; // amplitude scale (drawn bigger than real, so we can see it)
+
+  document.querySelectorAll<HTMLElement>('[data-wave-sim]').forEach((root) => {
+    const q = <T extends Element>(s: string) => root.querySelector<T>(s)!;
+    const rope = q<SVGPathElement>('.rope');
+    const coilsG = q<SVGGElement>('.coils');
+    const marker = q<SVGCircleElement>('.marker');
+    const freq = q<HTMLInputElement>('.freq');
+    const amp = q<HTMLInputElement>('.amp');
+    const pauseBtn = q<HTMLButtonElement>('.pause');
+    let mode: 'transverse' | 'longitudinal' = 'transverse';
+    let t = 0;
+    let paused = false;
+    let last = performance.now();
+
+    // Ruler: a tick every 0.5 m, a number every 1 m.
+    const ruler = q<SVGGElement>('.ruler');
+    for (let m = 0; m <= 5.6 + 1e-9; m += 0.5) {
+      const x = X0 + m * PX_PER_M;
+      const line = document.createElementNS(NS, 'line');
+      line.setAttribute('x1', String(x));
+      line.setAttribute('x2', String(x));
+      line.setAttribute('y1', '178');
+      line.setAttribute('y2', Number.isInteger(m) ? '192' : '186');
+      ruler.appendChild(line);
+      if (Number.isInteger(m)) {
+        const label = document.createElementNS(NS, 'text');
+        label.setAttribute('x', String(x));
+        label.setAttribute('y', '208');
+        label.setAttribute('text-anchor', 'middle');
+        label.textContent = `${m} m`;
+        ruler.appendChild(label);
+      }
+    }
+    const base = document.createElementNS(NS, 'line');
+    base.setAttribute('x1', String(X0));
+    base.setAttribute('x2', String(X1));
+    base.setAttribute('y1', '178');
+    base.setAttribute('y2', '178');
+    ruler.appendChild(base);
+
+    // Coils for the longitudinal wave.
+    const coils: SVGLineElement[] = [];
+    for (let x0 = X0; x0 <= X1; x0 += 10) {
+      const c = document.createElementNS(NS, 'line');
+      c.setAttribute('y1', String(MID - 30));
+      c.setAttribute('y2', String(MID + 30));
+      if (x0 === 300) c.classList.add('red');
+      coilsG.appendChild(c);
+      coils.push(c);
+    }
+
+    const f = () => Number(freq.value);
+    const lambdaPx = () => (V / f()) * PX_PER_M;
+
+    function readouts(): void {
+      q<HTMLElement>('.freq-out').textContent = `${f().toFixed(2)} Hz`;
+      q<HTMLElement>('.amp-out').textContent = `${Number(amp.value).toFixed(1)} cm`;
+      q<HTMLElement>('.f').textContent = f().toFixed(2);
+      q<HTMLElement>('.lam').textContent = (V / f()).toFixed(2);
+      q<HTMLElement>('.v').textContent = V.toFixed(1);
+    }
+
+    // Displacement (px) of the point that is at rest at x, at time t. The wave travels to the right.
+    const phase = (x: number) => 2 * Math.PI * (f() * t - (x - X0) / lambdaPx());
+
+    function draw(): void {
+      const A = Number(amp.value) * PX_PER_CM;
+      if (mode === 'transverse') {
+        const pts: string[] = [];
+        for (let x = X0; x <= X1; x += 3) pts.push(`${x},${(MID - A * Math.sin(phase(x))).toFixed(1)}`);
+        rope.setAttribute('d', `M${pts.join(' L')}`);
+        marker.setAttribute('cx', '300');
+        marker.setAttribute('cy', (MID - A * Math.sin(phase(300))).toFixed(1));
+      } else {
+        // Keep the coils in order: the displacement must be smaller than λ / 2π.
+        const AL = Math.min(A, (0.8 * lambdaPx()) / (2 * Math.PI));
+        coils.forEach((c, i) => {
+          const x0 = X0 + 10 * i;
+          const x = (x0 + AL * Math.sin(phase(x0))).toFixed(1);
+          c.setAttribute('x1', x);
+          c.setAttribute('x2', x);
+        });
+        marker.setAttribute('cx', (300 + AL * Math.sin(phase(300))).toFixed(1));
+        marker.setAttribute('cy', String(MID - 40));
+      }
+    }
+
+    function setMode(m: 'transverse' | 'longitudinal'): void {
+      mode = m;
+      root.querySelectorAll<HTMLButtonElement>('.mode').forEach((b) => {
+        const on = b.dataset.mode === m;
+        b.setAttribute('aria-pressed', String(on));
+        b.classList.toggle('secondary', !on);
+      });
+      rope.style.display = m === 'transverse' ? '' : 'none';
+      coilsG.style.display = m === 'longitudinal' ? '' : 'none';
+      draw();
+    }
+
+    root.querySelectorAll<HTMLButtonElement>('.mode').forEach((b) =>
+      b.addEventListener('click', () => setMode(b.dataset.mode as 'transverse' | 'longitudinal')),
+    );
+    pauseBtn.addEventListener('click', () => {
+      paused = !paused;
+      pauseBtn.textContent = paused ? 'Play' : 'Pause';
+    });
+    freq.addEventListener('input', () => {
+      readouts();
+      draw();
+    });
+    amp.addEventListener('input', () => {
+      readouts();
+      draw();
+    });
+
+    const loop = (now: number) => {
+      const dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      if (!paused) {
+        t += dt;
+        draw();
+      }
+      requestAnimationFrame(loop);
+    };
+    readouts();
+    setMode('transverse');
+    requestAnimationFrame(loop);
+
+    // For testing without animation frames.
+    (root as HTMLElement & { _wave?: unknown })._wave = {
+      setTime(s: number) { t = s; draw(); },
+      setMode,
+    };
+  });
+</script>
+
+<style>
+  .wave-sim {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .modes { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0; }
+  svg { width: 100%; height: auto; display: block; }
+  .rest { stroke: var(--line); stroke-dasharray: 4 4; }
+  .rope { fill: none; stroke: var(--accent); stroke-width: 3; }
+  .coils :global(line) { stroke: var(--accent); stroke-width: 2; }
+  .coils :global(line.red) { stroke: var(--exit); stroke-width: 3.5; }
+  .marker { fill: var(--exit); }
+  .ruler :global(line) { stroke: var(--ink-soft); stroke-width: 1.2; }
+  .ruler :global(text) { fill: var(--ink-soft); font-size: calc(12px * var(--tz, 1)); font-family: var(--sans); }
+  .controls { display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem; margin-top: 0.6rem; }
+  .controls label { display: flex; align-items: center; gap: 0.5rem; }
+  .controls output { font-variant-numeric: tabular-nums; min-width: 4.5rem; }
+  .readout { display: flex; flex-wrap: wrap; gap: 0.4rem 1.6rem; font-size: 1.05rem; margin: 0.8rem 0 0.2rem; }
+  .readout strong { font-variant-numeric: tabular-nums; }
+</style>

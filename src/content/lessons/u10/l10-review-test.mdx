@@ -1,0 +1,168 @@
+---
+unit: 10
+lesson: 10
+title: Review and unit test
+syllabus: ['3.2']
+goals:
+  - Remember the key ideas of Unit 10.
+  - Solve problems about reflection, refraction and lenses.
+  - Check your learning of Unit 10 with a test.
+keyWords: [reflection, refraction, critical angle, converging lens, dispersion]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="learn" title="Unit 10 in one page" minutes={8}>
+
+<div class="table-wrap">
+
+| Topic | Key ideas |
+|---|---|
+| reflection | $i = r$, angles from the **normal** |
+| plane mirror image | same size, same distance behind the mirror, virtual |
+| refraction | change of speed; air → glass: towards the normal |
+| refractive index (E) | $n = \dfrac{\sin i}{\sin r}$; $n$ = speed in air ÷ speed in material |
+| total internal reflection | glass → air, $i$ bigger than the critical angle; $n = \dfrac{1}{\sin c}$ (E); optical fibres (E) |
+| lenses | converging: parallel rays meet at F; diverging: they spread as if from F |
+| ray diagrams | parallel → through F; through centre → straight; through F → parallel |
+| images | enlarged / same size / diminished; upright / inverted; real / virtual |
+| magnifying glass (E) | object closer than F: virtual, upright, enlarged |
+| sight (E) | short sight → diverging lens; long sight → converging lens |
+| dispersion | prism: violet refracts most; ROYGBIV; red = longest λ, lowest $f$ |
+
+</div>
+
+</Step>
+
+<Step kind="practice" title="Mixed practice" minutes={20}>
+
+### Reflection
+
+<Practice topic="reflection" level={2} />
+
+### Refractive index (Extended)
+
+<Practice topic="refractive-index" level={1} />
+
+</Step>
+
+<Step kind="exit" title="Unit test" minutes={30}>
+
+Questions marked **(E)** are for Extended students.
+
+<Quiz questions={[
+  {
+    question: '1. A ray hits a plane mirror. The angle between the ray and the mirror is 30°. What is the angle of reflection?',
+    options: [
+      { text: '60°', correct: true, why: 'The angle of incidence is $90^\\circ - 30^\\circ = 60^\\circ$, and $r = i$.' },
+      { text: '30°', why: 'Measure from the normal, not from the mirror.' },
+      { text: '90°', why: '$i = 60^\\circ$, so $r = 60^\\circ$.' },
+      { text: '120°', why: 'This is the angle between the two rays.' },
+    ],
+  },
+  {
+    question: '2. Which describes the image in a plane mirror?',
+    options: [
+      { text: 'same size, same distance behind the mirror, virtual', correct: true, why: 'These are the three characteristics.' },
+      { text: 'smaller, on the mirror, real', why: 'The image is the same size and behind the mirror.' },
+      { text: 'bigger, inverted, real', why: 'It is the same size, upright and virtual.' },
+      { text: 'same size, in front of the mirror, real', why: 'It is behind the mirror and virtual.' },
+    ],
+  },
+  {
+    question: '3. A ray goes from air into water at an angle. It…',
+    options: [
+      { text: 'slows down and bends towards the normal', correct: true, why: 'Light is slower in water.' },
+      { text: 'speeds up and bends away from the normal', why: 'Light is slower in water.' },
+      { text: 'goes straight on', why: 'Only along the normal.' },
+      { text: 'is totally internally reflected', why: 'TIR needs light going from water towards air.' },
+    ],
+  },
+  {
+    question: '4. What is the critical angle?',
+    options: [
+      { text: 'The angle of incidence where the angle of refraction is 90°', correct: true, why: 'Above it: total internal reflection.' },
+      { text: 'The angle of incidence where the light goes straight on', why: 'That is 0°.' },
+      { text: 'The angle between two rays', why: 'It is an angle of incidence.' },
+      { text: 'Always 45°', why: 'It depends on the material (about 42° for glass).' },
+    ],
+  },
+  {
+    question: '5. Parallel rays go through a converging lens. Where do they meet?',
+    options: [
+      { text: 'at the principal focus', correct: true, why: 'By definition of F.' },
+      { text: 'at the centre of the lens', why: 'They meet at F.' },
+      { text: 'they never meet', why: 'That is a diverging lens.' },
+      { text: 'at 2F', why: 'They meet at F.' },
+    ],
+  },
+  {
+    question: '6. An object is beyond 2F of a converging lens. The image is…',
+    options: [
+      { text: 'real, inverted, diminished', correct: true, why: 'Like in a camera.' },
+      { text: 'virtual, upright, enlarged', why: 'This needs the object closer than F.' },
+      { text: 'real, upright, enlarged', why: 'A real image is inverted.' },
+      { text: 'virtual, inverted, same size', why: 'The image is real and diminished.' },
+    ],
+  },
+  {
+    question: '7. Which colour of white light refracts the least in a prism?',
+    options: [
+      { text: 'red', correct: true, why: 'Red has the lowest frequency.' },
+      { text: 'violet', why: 'Violet refracts the most.' },
+      { text: 'green', why: 'Red refracts the least.' },
+      { text: 'blue', why: 'Red refracts the least.' },
+    ],
+  },
+  {
+    question: '8. (E) $i = 40^\\circ$, $r = 25^\\circ$. What is the refractive index?',
+    options: [
+      { text: '1.52', correct: true, why: '$\\dfrac{\\sin 40^\\circ}{\\sin 25^\\circ} = \\dfrac{0.643}{0.423}$.' },
+      { text: '1.60', why: 'This is $\\dfrac{40}{25}$. Use the sines.' },
+      { text: '0.66', why: 'Upside down.' },
+      { text: '15', why: 'Divide the sines.' },
+    ],
+  },
+  {
+    question: '9. (E) The refractive index of a glass is 1.6. What is its critical angle?',
+    options: [
+      { text: '38.7°', correct: true, why: '$\\sin c = \\dfrac{1}{1.6} = 0.625$, $c = 38.7^\\circ$.' },
+      { text: '0.625°', why: 'This is $\\sin c$. Use $\\sin^{-1}$.' },
+      { text: '62.5°', why: 'Use $\\sin^{-1}(0.625)$.' },
+      { text: '1.6°', why: 'Use $\\sin c = \\dfrac{1}{n}$.' },
+    ],
+  },
+  {
+    question: '10. (E) Which lens corrects short sight, and why?',
+    options: [
+      { text: 'a diverging lens: it moves the image back onto the retina', correct: true, why: 'The eye bends the light too much; the diverging lens spreads it first.' },
+      { text: 'a converging lens: it moves the image forward', why: 'A converging lens corrects long sight.' },
+      { text: 'a diverging lens: it makes things bigger', why: 'The reason is the position of the image on the retina.' },
+      { text: 'a converging lens: it makes far things clear', why: 'Short sight needs a diverging lens.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Look at the questions you got wrong. Find the lesson for each one and read it again. Then do 5 practice questions on each topic.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** review 8 min, mixed practice 20 min, unit test 30 min, plus 2 min to start.
+
+**Using the test:** questions 1–7 test Core content; 8–10 are Extended.
+
+**Differentiation:**
+
+- Support: allow the "Unit 10 in one page" table during the test the first time.
+- Stretch: draw, to scale, the ray diagram for question 6 with $f = 5$ cm and the object 15 cm from the lens.
+
+</Step>

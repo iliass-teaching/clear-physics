@@ -1,0 +1,168 @@
+---
+unit: 10
+lesson: 3
+title: Refraction of light
+syllabus: ['3.2.2 C1', '3.2.2 C2', '3.2.2 C3']
+goals:
+  - Use the words normal, angle of incidence and angle of refraction.
+  - Describe an experiment to show refraction with glass blocks.
+  - Describe how light bends when it goes into and out of a transparent material.
+keyWords: [refraction, normal, angle of incidence, angle of refraction]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import RaySim from '../../../components/RaySim.astro';
+import { glassBlockSvg } from '../../../lib/lightFigures';
+
+<Step kind="starter" title="A broken pencil" minutes={5}>
+
+Put a pencil in a glass of water. Look at it from the side. The pencil looks broken at the surface of the water. Is it broken? What is happening to the light?
+
+</Step>
+
+<Step kind="learn" title="Light changes speed" minutes={13}>
+
+Light travels more **slowly** in glass and water than in air. When light goes from one material into another at an angle, it **changes direction**. This is **refraction**.
+
+<Figure svg={glassBlockSvg()} caption="A ray of light through a rectangular glass block." width="30rem" />
+
+- **Air → glass** (it slows down): the ray bends **towards** the normal. The angle of refraction is **smaller** than the angle of incidence.
+- **Glass → air** (it speeds up): the ray bends **away from** the normal.
+- A ray along the normal ($i = 0^\circ$) goes **straight on**: it does not bend.
+- With a rectangular block, the ray that comes out is **parallel** to the ray that went in.
+
+The **angle of refraction** is the angle between the refracted ray and the **normal**.
+
+</Step>
+
+<Step kind="do" title="Glass blocks" minutes={20}>
+
+**Equipment:** a ray box with a single slit, a rectangular glass block, a semicircular block and a triangular prism, a protractor, white paper.
+
+1. Draw around the rectangular block. Remove it and draw a normal near one end of the long side.
+2. Put the block back. Shine a ray at the normal, at $i = 30^\circ$. Mark the ray that comes out with two crosses.
+3. Remove the block. Join the points to draw the ray inside the glass. Measure the angle of refraction.
+4. Repeat for 0°, 20°, 40°, 50°, 60°.
+5. Now use the **semicircular** block and the **triangular** prism. Draw the path of a ray through each one.
+
+<RaySim mode="block" />
+
+**Questions:**
+
+1. Is the angle of refraction always smaller than the angle of incidence (air → glass)?
+2. What happens when $i = 0^\circ$?
+3. In the simulation, compare glass, water and diamond. Which bends the light the most?
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={17}>
+
+<Quiz questions={[
+  {
+    question: 'A ray goes from air into glass at an angle. What happens?',
+    options: [
+      { text: 'It slows down and bends towards the normal', correct: true, why: 'The angle of refraction is smaller than the angle of incidence.' },
+      { text: 'It speeds up and bends away from the normal', why: 'Light is slower in glass.' },
+      { text: 'It goes straight on', why: 'Only a ray along the normal goes straight on.' },
+      { text: 'It reflects back', why: 'Most of the light goes into the glass and refracts.' },
+    ],
+  },
+  {
+    question: 'A ray goes from glass into air at an angle. Which way does it bend?',
+    options: [
+      { text: 'away from the normal', correct: true, why: 'It speeds up as it leaves the glass.' },
+      { text: 'towards the normal', why: 'That happens when light goes into the glass.' },
+      { text: 'it does not bend', why: 'It bends because its speed changes.' },
+      { text: 'it always goes along the surface', why: 'This only happens at the critical angle (next lesson).' },
+    ],
+  },
+  {
+    question: 'A ray hits a glass block along the normal (angle of incidence 0°). What happens?',
+    options: [
+      { text: 'It goes straight on, without bending', correct: true, why: 'It slows down, but it does not change direction.' },
+      { text: 'It bends towards the normal', why: 'It is already on the normal.' },
+      { text: 'It bends away from the normal', why: 'A ray along the normal does not bend.' },
+      { text: 'It stops', why: 'It goes straight through.' },
+    ],
+  },
+  {
+    question: 'Why does a swimming pool look less deep than it really is?',
+    options: [
+      { text: 'Light from the bottom refracts away from the normal when it leaves the water', correct: true, why: 'Your eye follows the rays back in straight lines, to a point that is too high.' },
+      { text: 'Water makes things smaller', why: 'The reason is refraction at the surface.' },
+      { text: 'Light reflects from the bottom of the pool', why: 'The reason is refraction at the surface.' },
+      { text: 'Light is faster in water', why: 'Light is slower in water.' },
+    ],
+  },
+  {
+    question: 'What is the angle of refraction?',
+    options: [
+      { text: 'The angle between the refracted ray and the normal', correct: true, why: 'All angles are measured from the normal.' },
+      { text: 'The angle between the refracted ray and the surface', why: 'Measure from the normal.' },
+      { text: 'The angle between the incident ray and the normal', why: 'This is the angle of incidence.' },
+      { text: 'The angle between the two rays', why: 'Measure from the normal.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Why does light refract when it goes from air into water?',
+    options: [
+      { text: 'Its speed changes', correct: true, why: 'Light is slower in water.' },
+      { text: 'Its colour changes', why: 'The colour does not change. The speed does.' },
+      { text: 'Water is a mirror', why: 'The reason is a change of speed.' },
+      { text: 'Its frequency changes', why: 'The frequency stays the same. The speed changes.' },
+    ],
+  },
+  {
+    question: 'A ray goes through a rectangular glass block. How is the ray that comes out?',
+    options: [
+      { text: 'parallel to the ray that went in', correct: true, why: 'It bends one way going in, and back the same amount coming out.' },
+      { text: 'at 90° to the ray that went in', why: 'It comes out parallel to the ray that went in.' },
+      { text: 'it does not come out', why: 'It comes out on the other side.' },
+      { text: 'it goes back to the ray box', why: 'Most of the light goes through the block.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Draw the path of a ray through a rectangular glass block, with an angle of incidence of 40°. Draw the normals and label $i$ and $r$ at both surfaces.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 13 min, experiment 20 min, check 17 min, exit ticket 5 min.
+
+**Syllabus note:** 3.2.2 C3 is limited to what happens at the boundary between two materials. The refractive index and the equation $n = \dfrac{\sin i}{\sin r}$ come in the next lesson (Extended).
+
+**Common mistakes:**
+
+- Bending the ray the wrong way. Use the idea: "slower → towards the normal".
+- Measuring angles from the surface.
+- Drawing the ray inside the block without joining the two points.
+
+**Language support:**
+
+- *refract* comes from Latin "to break": the ray looks broken at the surface.
+- *transparent* = light can go through it.
+
+**Differentiation:**
+
+- Support: give the block outline with the normal and the incident ray already drawn.
+- Stretch: use your results to plot $\sin i$ against $\sin r$. What shape is the graph? (Next lesson.)
+
+**Safety:** glass blocks have sharp edges and are heavy; ray boxes get hot.
+
+</Step>

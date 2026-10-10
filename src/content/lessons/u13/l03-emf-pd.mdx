@@ -1,0 +1,149 @@
+---
+unit: 13
+lesson: 3
+title: E.m.f. and potential difference
+syllabus: ['4.2.3 C1–C5', '4.2.3 S6', '4.2.3 S7']
+goals:
+  - Define electromotive force (e.m.f.) and potential difference (p.d.).
+  - Know that e.m.f. and p.d. are measured in volts.
+  - Use voltmeters (analogue and digital) with different ranges.
+  - 'Extended: use $E = \dfrac{W}{Q}$ and $V = \dfrac{W}{Q}$.'
+keyWords: [electromotive force, potential difference, volt, voltmeter, coulomb]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { measureCircuitSvg, energyFlowSvg } from '../../../lib/electricFigures';
+
+<Step kind="starter" title="1.5 V or 9 V?" minutes={5}>
+
+A small cell says 1.5 V. A battery for a smoke alarm says 9 V. What do you think the number in volts tells you?
+
+</Step>
+
+<Step kind="learn" title="E.m.f. and p.d." minutes={14}>
+
+<Figure svg={energyFlowSvg()} caption="The source gives energy to the charges; the components take energy from them." width="30rem" />
+
+**Electromotive force (e.m.f.):** the electrical **work done by a source** (a cell, a battery, a power supply) in moving **one unit of charge** (1 C) around a **complete circuit**.
+
+**Potential difference (p.d.):** the **work done by one unit of charge** (1 C) passing **through a component** (the energy it transfers to the component).
+
+Both are measured in **volts** (V). 1 V = 1 J per coulomb.
+
+- A 9 V battery gives 9 J of energy to each coulomb of charge.
+- If the p.d. across a lamp is 6 V, each coulomb transfers 6 J of energy in the lamp.
+
+**Extended: the equations**
+
+$$
+E = \frac{W}{Q} \qquad V = \frac{W}{Q}
+$$
+
+- $E$: e.m.f. (V); $V$: p.d. (V); $W$: work done, or energy transferred (J); $Q$: charge (C).
+
+<WorkedExample
+  question="A charge of 20 C passes through a heater. 240 J of energy is transferred. Calculate the p.d. across the heater."
+  given={['$W = 240\\,\\text{J}$', '$Q = 20\\,\\text{C}$']}
+  find="the p.d. $V$"
+  answer="$V = 12\,\text{V}$"
+>
+
+$V = \dfrac{W}{Q} = \dfrac{240}{20}$
+
+$V = 12\,\text{V}$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="learn" title="Using a voltmeter" minutes={8}>
+
+<Figure svg={measureCircuitSvg()} caption="A voltmeter is connected in parallel (across the component)." width="32rem" />
+
+- A **voltmeter** measures p.d. (or e.m.f.). It is connected **in parallel**: one lead on each side of the component.
+- Like ammeters, voltmeters can be **analogue** (two scales, for example 0–3 V and 0–15 V) or **digital**. Choose the range: start high, then go lower for a more precise reading.
+- To measure the **e.m.f.** of a cell, connect the voltmeter across the cell.
+
+</Step>
+
+<Step kind="do" title="Measure some p.d.s" minutes={10}>
+
+**Equipment:** two cells in a holder, a lamp, a switch, a voltmeter, leads.
+
+1. Measure the p.d. across the cells (the e.m.f. of the battery).
+2. Build a circuit with the cells, the switch and the lamp. Measure the p.d. across the lamp.
+3. Measure the p.d. across the switch when it is closed. (Almost 0 V: why?)
+4. Try an analogue and a digital voltmeter, on two ranges. Compare the readings.
+
+</Step>
+
+<Step kind="practice" title="Practice (Extended)" minutes={15}>
+
+<Practice topic="emf-pd" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={8}>
+
+<Quiz questions={[
+  {
+    question: 'How is a voltmeter connected?',
+    options: [
+      { text: 'in parallel with the component', correct: true, why: 'Across the component, one lead on each side.' },
+      { text: 'in series', why: 'That is how an ammeter is connected.' },
+      { text: 'only across the switch', why: 'It is connected across the component you want to measure.' },
+      { text: 'it does not matter', why: 'It must be in parallel.' },
+    ],
+  },
+  {
+    question: 'What does "the p.d. across the lamp is 3 V" mean?',
+    options: [
+      { text: 'each coulomb of charge transfers 3 J of energy in the lamp', correct: true, why: '1 V = 1 J/C.' },
+      { text: '3 A flows through the lamp', why: 'That would be a current.' },
+      { text: 'the lamp has a resistance of 3 Ω', why: 'That would be a resistance.' },
+      { text: 'the lamp uses 3 C of charge', why: 'Charge is not used up.' },
+    ],
+  },
+  {
+    question: 'Extended: a battery does 360 J of work moving 40 C around a circuit. What is its e.m.f.?',
+    options: [
+      { text: '9 V', correct: true, why: '$E = \\dfrac{W}{Q} = \\dfrac{360}{40}$.' },
+      { text: '14 400 V', why: 'Divide: $E = \\dfrac{W}{Q}$.' },
+      { text: '0.11 V', why: 'Upside down.' },
+      { text: '400 V', why: 'Divide, do not add.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** the definitions and voltmeters (4.2.3 C1–C5) are Core. The equations (S6, S7) are Extended.
+
+**Timing:** starter 5 min, e.m.f. and p.d. 14 min, voltmeters 8 min, practical 10 min, practice 15 min, exit ticket 8 min.
+
+**Model:** the rope model or a "ski lift" model: the cell lifts the charges (gives them energy); the components let them go down (take energy).
+
+**Common mistakes:**
+
+- "The voltage flows through the circuit." Current flows; p.d. is *across* a component.
+- Connecting a voltmeter in series.
+- Mixing up e.m.f. (the source gives energy) and p.d. (a component takes energy).
+
+**Language support:**
+
+- *across* (p.d., voltmeter) versus *through* (current, ammeter).
+- *e.m.f.* is not a force, despite its name.
+
+**Differentiation:**
+
+- Support: the definitions with gaps to fill.
+- Stretch: level 3 of the practice (two steps).
+
+</Step>

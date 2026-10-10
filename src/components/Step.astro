@@ -1,0 +1,127 @@
+---
+// One part of a lesson (starter, learn, do, ...): a section with a small coloured label.
+// Teacher notes are folded away by default, so students see the lesson first.
+type Kind = 'starter' | 'learn' | 'do' | 'practice' | 'exit' | 'homework' | 'teacher';
+
+interface Props {
+  kind: Kind;
+  title?: string;
+  minutes?: number;
+}
+
+const labels: Record<Kind, string> = {
+  starter: 'Starter',
+  learn: 'Learn',
+  do: 'Activity',
+  practice: 'Practice',
+  exit: 'Exit ticket',
+  homework: 'Homework',
+  teacher: 'For the teacher',
+};
+
+const { kind, title, minutes } = Astro.props;
+---
+
+{
+  kind === 'teacher' ? (
+    <details class="teacher" data-step={labels[kind]} data-title={title ?? labels[kind]}>
+      <summary>
+        <span class="label">{labels[kind]}</span>
+        <span class="summary-title">{title ?? 'Teacher notes'}</span>
+        <span class="hint">timing, common mistakes, support and stretch</span>
+      </summary>
+      <div class="body">
+        <slot />
+      </div>
+    </details>
+  ) : (
+    <section class={`step ${kind}`} data-step={labels[kind]} data-title={title ?? labels[kind]}>
+      <div class="head">
+        <span class="label">{labels[kind]}</span>
+        {minutes && <span class="minutes">{minutes} min</span>}
+      </div>
+      {title && <h2>{title}</h2>}
+      <slot />
+    </section>
+  )
+}
+
+<style>
+  .step {
+    --c: var(--learn);
+    border-top: 1px solid var(--line);
+    padding-top: 1.4rem;
+    margin-top: 2.8rem;
+    scroll-margin-top: 5rem;
+  }
+  .starter { --c: var(--starter); }
+  .learn { --c: var(--learn); }
+  .do { --c: var(--do); }
+  .practice { --c: var(--practice); }
+  .exit { --c: var(--exit); }
+  .homework { --c: var(--homework); }
+
+  .head {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--c);
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .label::before {
+    content: '';
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: var(--c);
+  }
+  .minutes {
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+  }
+  .minutes::before { content: '·'; margin-right: 0.7rem; }
+  h2 { margin-top: 0.35rem; }
+
+  .teacher {
+    --c: var(--teacher);
+    margin-top: 3rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface-2);
+    scroll-margin-top: 5rem;
+  }
+  summary {
+    cursor: pointer;
+    padding: 0.9rem 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.3rem 0.8rem;
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: '+';
+    margin-left: auto;
+    font-size: 1.3rem;
+    line-height: 1;
+    color: var(--ink-soft);
+  }
+  .teacher[open] summary::after { content: '−'; }
+  .summary-title { font-weight: 700; }
+  .hint { color: var(--ink-soft); font-size: 0.85rem; }
+  .body {
+    padding: 0 1.2rem 1rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
+  }
+  .body :global(p:first-child) { margin-top: 1rem; }
+</style>

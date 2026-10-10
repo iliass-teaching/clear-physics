@@ -1,0 +1,131 @@
+---
+// Virtual practical: an a.c. generator seen from the end. A coil turns between the poles of a magnet.
+// The graph shows the e.m.f. against time. e.m.f. = E₀ sin α, where α is the angle of the coil from vertical;
+// E₀ is proportional to the speed of rotation.
+---
+
+<div class="generator-sim" data-generator-sim>
+  <div class="row">
+    <svg class="fig gen" viewBox="0 0 260 220" role="img" aria-label="End view of a coil turning between a N pole and a S pole">
+      <rect x="6" y="50" width="54" height="120" style="fill:#d84b3a" />
+      <rect x="200" y="50" width="54" height="120" style="fill:#3a6fd8" />
+      <text class="txt-light" x="33" y="116" text-anchor="middle" style="font-weight:700;font-size:18px">N</text>
+      <text class="txt-light" x="227" y="116" text-anchor="middle" style="font-weight:700;font-size:18px">S</text>
+      <g class="field"></g>
+      <g class="coil"></g>
+      <text class="txt angle-text" x="130" y="212" text-anchor="middle"></text>
+    </svg>
+    <svg class="graph-svg" viewBox="0 0 320 220" role="img" aria-label="Graph of e.m.f. against time">
+      <line class="ax" x1="30" y1="110" x2="312" y2="110" />
+      <line class="ax" x1="30" y1="12" x2="30" y2="208" />
+      <text x="310" y="126" text-anchor="end" class="lab">time</text>
+      <text x="36" y="20" class="lab">e.m.f.</text>
+      <polyline class="trace" points="" fill="none" />
+      <circle class="dot" r="4" cx="30" cy="110" />
+    </svg>
+  </div>
+  <div class="controls">
+    <label>speed <input type="range" class="speed" min="0.25" max="1.5" step="0.25" value="0.5" /> <output class="speed-out">0.50 turns/s</output></label>
+    <button type="button" class="pause secondary">Pause</button>
+  </div>
+  <p class="small muted">The e.m.f. is biggest when the coil is horizontal (its sides move across the field lines fastest), and zero when the coil is vertical (its sides move along the field lines).</p>
+</div>
+
+<script>
+  const WINDOW = 4; // seconds shown on the graph
+
+  document.querySelectorAll<HTMLElement>('[data-generator-sim]').forEach((root) => {
+    const q = <T extends Element>(s: string) => root.querySelector<T>(s)!;
+    const coil = q<SVGGElement>('.coil');
+    const field = q<SVGGElement>('.field');
+    const trace = q<SVGPolylineElement>('.trace');
+    const dot = q<SVGCircleElement>('.dot');
+    const speed = q<HTMLInputElement>('.speed');
+    const pauseBtn = q<HTMLButtonElement>('.pause');
+    let alpha = 0; // radians, from vertical
+    let t = 0;
+    let paused = false;
+    let samples: [number, number][] = [];
+    let last = performance.now();
+
+    field.innerHTML = [80, 110, 140].map((y) => `<line x1="64" y1="${y}" x2="196" y2="${y}" style="stroke:var(--ink-soft);stroke-width:1;stroke-dasharray:4 4"/>`).join('');
+
+    const E0 = () => Number(speed.value); // amplitude ∝ speed
+
+    function draw(): void {
+      const L = 62;
+      const x1 = 130 + L * Math.sin(alpha);
+      const y1 = 110 - L * Math.cos(alpha);
+      const x2 = 130 - L * Math.sin(alpha);
+      const y2 = 110 + L * Math.cos(alpha);
+      coil.innerHTML =
+        `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" style="stroke:#b87333;stroke-width:4"/>` +
+        `<circle cx="${x1.toFixed(1)}" cy="${y1.toFixed(1)}" r="8" style="fill:#b87333;stroke:var(--ink)"/>` +
+        `<circle cx="${x2.toFixed(1)}" cy="${y2.toFixed(1)}" r="8" style="fill:#b87333;stroke:var(--ink)"/>` +
+        `<circle cx="130" cy="110" r="3" style="fill:var(--ink)"/>`;
+      const deg = ((((alpha * 180) / Math.PI) % 360) + 360) % 360;
+      q<SVGTextElement>('.angle-text').textContent = `angle from vertical: ${deg.toFixed(0)}°`;
+
+      const X = (s: number) => 30 + ((s - (t - WINDOW)) / WINDOW) * 282;
+      const Y = (e: number) => 110 - (e / 1.5) * 90;
+      trace.setAttribute('points', samples.map(([s, e]) => `${X(s).toFixed(1)},${Y(e).toFixed(1)}`).join(' '));
+      const lastS = samples[samples.length - 1];
+      if (lastS) {
+        dot.setAttribute('cx', X(lastS[0]).toFixed(1));
+        dot.setAttribute('cy', Y(lastS[1]).toFixed(1));
+      }
+    }
+
+    function step(dt: number): void {
+      t += dt;
+      alpha += 2 * Math.PI * Number(speed.value) * dt;
+      samples.push([t, E0() * Math.sin(alpha)]);
+      samples = samples.filter(([s]) => s > t - WINDOW);
+    }
+
+    const loop = (now: number) => {
+      const dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      if (!paused) {
+        step(dt);
+        draw();
+      }
+      requestAnimationFrame(loop);
+    };
+
+    speed.addEventListener('input', () => {
+      q<HTMLOutputElement>('.speed-out').textContent = `${Number(speed.value).toFixed(2)} turns/s`;
+    });
+    pauseBtn.addEventListener('click', () => {
+      paused = !paused;
+      pauseBtn.textContent = paused ? 'Play' : 'Pause';
+    });
+    draw();
+    requestAnimationFrame(loop);
+
+    (root as HTMLElement & { _gen?: unknown })._gen = {
+      run(seconds: number) { for (let k = 0; k < seconds / 0.01; k++) step(0.01); draw(); },
+      get state() { return { alpha, samples }; },
+    };
+  });
+</script>
+
+<style>
+  .generator-sim {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .row { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); gap: 1rem; align-items: center; }
+  @media (max-width: 600px) { .row { grid-template-columns: 1fr; } }
+  svg { width: 100%; height: auto; display: block; }
+  .graph-svg .ax { stroke: var(--ink); stroke-width: 1.5; }
+  .graph-svg .lab { fill: var(--ink); font-size: 12px; font-weight: 700; font-family: var(--sans); }
+  .graph-svg .trace { stroke: var(--accent); stroke-width: 2.5; }
+  .graph-svg .dot { fill: var(--exit); }
+  .controls { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; align-items: center; margin-top: 0.6rem; }
+  .controls label { display: flex; align-items: center; gap: 0.4rem; }
+  .controls output { font-variant-numeric: tabular-nums; min-width: 6rem; }
+</style>

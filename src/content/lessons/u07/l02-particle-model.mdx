@@ -1,0 +1,195 @@
+---
+unit: 7
+lesson: 2
+title: The particle model
+syllabus: ['2.1.2 C1', '2.1.2 S6']
+goals:
+  - Describe the arrangement, separation and motion of particles in solids, liquids and gases.
+  - Draw simple particle diagrams.
+  - Use the particle model to explain the properties of each state.
+keyWords: [particle, molecule, solid, liquid, gas, compress]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { statesSvg } from '../../../lib/particleFigures';
+
+<Step kind="starter" title="What is inside?" minutes={5}>
+
+Imagine you cut a drop of water in half, then in half again, and again… Can you cut it forever? What do you find at the end?
+
+</Step>
+
+<Step kind="learn" title="Everything is made of particles" minutes={15}>
+
+All matter is made of very small **particles** (atoms or molecules). They are much too small to see, even with a normal microscope.
+
+<Figure svg={statesSvg()} caption="Particles in a solid, a liquid and a gas." width="36rem" />
+
+<div class="table-wrap">
+
+| | Arrangement | Separation | Motion |
+|---|---|---|---|
+| **solid** | regular pattern | very close, touching | vibrate around fixed places |
+| **liquid** | no regular pattern | close, touching | move around each other |
+| **gas** | no pattern, random | far apart | move fast, in all directions |
+
+</div>
+
+**How to draw particle diagrams:**
+
+- Draw all particles **the same size**: the particles do not change, only their arrangement.
+- Solid: rows, circles touching. Liquid: circles touching, but no rows, with a few gaps. Gas: a few circles, far apart, with arrows.
+
+</Step>
+
+<Step kind="learn" title="Explaining the properties" minutes={10}>
+
+<div class="table-wrap">
+
+| Property | Explanation with particles |
+|---|---|
+| A solid has a fixed shape. | The particles stay in fixed places. |
+| A liquid flows. | The particles can move around each other. |
+| Solids and liquids are hard to compress. | The particles are already touching: there is no space between them. |
+| A gas is easy to compress. | The particles are far apart: there is a lot of space between them. |
+| A gas fills its container. | The particles move fast in all directions until they hit a wall. |
+
+</div>
+
+**Extended: forces between particles**
+
+- There are forces between particles. In a solid, these forces are strong: they hold the particles in place.
+- In a liquid, the particles are still close, but the forces cannot hold them in fixed places.
+- In a gas, the particles are far apart, so the forces between them are very small (except when they collide).
+- The **forces**, the **distances** between particles and the **motion** of the particles explain the properties of solids, liquids and gases.
+
+</Step>
+
+<Step kind="do" title="Model it" minutes={12}>
+
+**Equipment:** a tray (or a Petri dish) and about 30 marbles or beads.
+
+1. Pack the marbles tightly in one corner of the tray, in rows. Shake the tray **very gently**. This is a **solid**: the particles vibrate but stay in place.
+2. Shake a little more. Some rows break, but the marbles still touch. This is a **liquid**.
+3. Shake hard. The marbles move fast all over the tray and hit the walls. This is a **gas**.
+
+**Draw** a particle diagram for each state. Label it with: *arrangement*, *separation*, *motion*.
+
+**Think:** what does the shaking represent in real life? (Hint: what do we do to ice to make it melt?)
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={13}>
+
+<Quiz questions={[
+  {
+    question: 'How are the particles arranged in a solid?',
+    options: [
+      { text: 'In a regular pattern, very close together', correct: true, why: 'They touch and they are in rows.' },
+      { text: 'Far apart, at random', why: 'This is a gas.' },
+      { text: 'Close together, with no regular pattern', why: 'This is a liquid.' },
+      { text: 'Far apart, in rows', why: 'In a solid, the particles touch.' },
+    ],
+  },
+  {
+    question: 'How do the particles in a liquid move?',
+    options: [
+      { text: 'They move around each other', correct: true, why: 'They stay close, but they can slide past each other. So a liquid flows.' },
+      { text: 'They only vibrate in fixed places', why: 'This is a solid.' },
+      { text: 'They do not move', why: 'Particles always move.' },
+      { text: 'They move fast and far apart', why: 'This is a gas.' },
+    ],
+  },
+  {
+    question: 'Why is a gas easy to compress?',
+    options: [
+      { text: 'There is a lot of space between the particles', correct: true, why: 'The particles can be pushed closer together.' },
+      { text: 'The particles are soft', why: 'The particles do not get smaller. The space between them gets smaller.' },
+      { text: 'The particles get smaller when you push', why: 'The particles do not change size.' },
+      { text: 'The particles vibrate', why: 'The reason is the space between the particles.' },
+    ],
+  },
+  {
+    question: 'Water freezes to ice. What happens to the particles?',
+    options: [
+      { text: 'They stay the same, but they go into a regular pattern', correct: true, why: 'The particles do not change. Only their arrangement and motion change.' },
+      { text: 'They become bigger', why: 'The particles do not change size.' },
+      { text: 'They become different particles', why: 'Ice and water are made of the same water molecules.' },
+      { text: 'They stop moving completely', why: 'In a solid, the particles still vibrate.' },
+    ],
+  },
+  {
+    question: 'Extended: why does a solid keep its shape?',
+    options: [
+      { text: 'Strong forces between the particles hold them in fixed places', correct: true, why: 'The particles can only vibrate around these places.' },
+      { text: 'There are no forces between the particles', why: 'There are strong forces between particles in a solid.' },
+      { text: 'The particles do not move at all', why: 'The particles vibrate.' },
+      { text: 'The particles are far apart', why: 'In a solid, the particles touch.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'In which state are the particles far apart and moving fast in all directions?',
+    options: [
+      { text: 'gas', correct: true, why: 'This is why a gas fills its container.' },
+      { text: 'liquid', why: 'In a liquid, the particles touch.' },
+      { text: 'solid', why: 'In a solid, the particles touch and vibrate in fixed places.' },
+      { text: 'solid and liquid', why: 'Only in a gas are the particles far apart.' },
+    ],
+  },
+  {
+    question: 'Why can a liquid flow?',
+    options: [
+      { text: 'Its particles can move around each other', correct: true, why: 'They are close but not in fixed places.' },
+      { text: 'Its particles are far apart', why: 'In a liquid, the particles are close together.' },
+      { text: 'Its particles are in a regular pattern', why: 'This is a solid.' },
+      { text: 'Its particles are very small', why: 'All particles are small. The reason is how they move.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Draw particle diagrams for a solid, a liquid and a gas. Under each diagram, write three sentences: one about the **arrangement**, one about the **separation**, one about the **motion**.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** arrangement, separation and motion (2.1.2 C1) are Core. Forces and distances between particles (2.1.2 S6) are Extended.
+
+**Timing:** starter 5 min, learn 25 min, model 12 min, check 13 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Drawing bigger particles for a gas, or smaller ones for a solid. The particles are the same in all states.
+- "The particles of a solid do not move." They vibrate.
+- "The particles expand when heated." The particles do not change size; the spaces between them change (Unit 8, thermal expansion).
+- Drawing a liquid with big gaps, like a gas. In a liquid, the particles touch.
+
+**Exam tip:** the syllabus asks for *arrangement*, *separation* and *motion*. Teach students to answer with these three words every time.
+
+**Language support:**
+
+- Sentence frames: *"In a solid, the particles are … . They are … together. They … ."*
+- *Separation* = *the distance between*. *Arrangement* = *how they are placed*.
+
+**Differentiation:**
+
+- Support: give dotted outlines for the particle diagrams.
+- Stretch: water is unusual: ice floats on water, so ice is less dense than water. What does this tell you about the separation of the molecules in ice? (They are a little further apart than in liquid water.)
+
+**Safety:** marbles on the floor are a slip hazard. Use trays with edges.
+
+</Step>

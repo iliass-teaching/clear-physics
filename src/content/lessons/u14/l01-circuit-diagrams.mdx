@@ -1,0 +1,151 @@
+---
+unit: 14
+lesson: 1
+title: Circuit diagrams and components
+syllabus: ['4.3.1 C1', '4.3.1 S2']
+goals:
+  - Draw and read circuit diagrams with the standard symbols.
+  - Know what each component does in a circuit.
+  - 'Extended: use diodes and LEDs in circuit diagrams.'
+keyWords: [thermistor, light-dependent resistor, diode, fuse, ammeter, voltmeter]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Quiz from '../../../components/Quiz.astro';
+import SymbolTable from '../../../components/SymbolTable.astro';
+
+<Step kind="starter" title="Draw it" minutes={5}>
+
+Draw a picture of a torch circuit: two cells, a switch and a lamp. Now compare your drawing with your partner's. Is it easy to understand someone else's drawing? Why do scientists use symbols?
+
+</Step>
+
+<Step kind="learn" title="The symbols" minutes={20}>
+
+Circuit diagrams use **standard symbols**, so that other people can read them. Draw the wires as **straight lines**, with a ruler, and with **no gaps**.
+
+<SymbolTable />
+
+**Two sensors:**
+
+- **Thermistor (NTC):** when the **temperature goes up**, its resistance goes **down**. Used in fire alarms and thermostats.
+- **LDR:** when **more light** falls on it, its resistance goes **down**. Used in automatic street lights and cameras.
+
+**A relay** is a switch worked by an electromagnet. A small current in the coil can switch on a big current in another circuit (for example a car starter motor).
+
+</Step>
+
+<Step kind="do" title="Read and build" minutes={18}>
+
+1. Draw circuit diagrams for:
+   - (a) a cell, a closed switch and a lamp;
+   - (b) a battery, a variable resistor and a motor, with an ammeter to measure the current;
+   - (c) a power supply, a fixed resistor and an LDR in series, with a voltmeter across the LDR.
+2. Build circuit (b). What happens to the motor when you change the variable resistor?
+3. **Extended:** add a diode in series with a lamp. Turn the diode round. What happens? Why?
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={12}>
+
+<Quiz questions={[
+  {
+    question: 'In a circuit symbol for a cell, which line is the positive terminal?',
+    options: [
+      { text: 'the long, thin line', correct: true, why: 'The short, thick line is the negative terminal.' },
+      { text: 'the short, thick line', why: 'That is the negative terminal.' },
+      { text: 'both lines', why: 'One is positive, one is negative.' },
+      { text: 'neither: a cell has no terminals', why: 'The long line is positive.' },
+    ],
+  },
+  {
+    question: 'What happens to the resistance of an NTC thermistor when it gets hotter?',
+    options: [
+      { text: 'It goes down', correct: true, why: 'NTC: negative temperature coefficient.' },
+      { text: 'It goes up', why: 'For an NTC thermistor, it goes down.' },
+      { text: 'It stays the same', why: 'It changes with temperature.' },
+      { text: 'It becomes zero', why: 'It goes down, but not to zero.' },
+    ],
+  },
+  {
+    question: 'Which component would you use to switch on a street light automatically when it gets dark?',
+    options: [
+      { text: 'an LDR', correct: true, why: 'Its resistance changes with light.' },
+      { text: 'a thermistor', why: 'A thermistor senses temperature.' },
+      { text: 'a fuse', why: 'A fuse protects a circuit from big currents.' },
+      { text: 'a voltmeter', why: 'A voltmeter measures p.d.' },
+    ],
+  },
+  {
+    question: 'What does a fuse do?',
+    options: [
+      { text: 'It melts and breaks the circuit if the current is too big', correct: true, why: 'This protects the wires and the appliance.' },
+      { text: 'It makes the current bigger', why: 'It breaks the circuit if the current is too big.' },
+      { text: 'It measures the current', why: 'That is an ammeter.' },
+      { text: 'It stores energy', why: 'It is a safety device.' },
+    ],
+  },
+  {
+    question: 'Extended: a diode is connected in series with a lamp. The lamp is off. What can you do?',
+    options: [
+      { text: 'Turn the diode round', correct: true, why: 'A diode lets current flow in one direction only.' },
+      { text: 'Add a second diode the same way', why: 'The diode is the wrong way round.' },
+      { text: 'Remove the switch', why: 'The diode blocks the current.' },
+      { text: 'Use a thicker wire', why: 'The diode blocks the current: turn it round.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'What does a relay do?',
+    options: [
+      { text: 'A small current switches a bigger current, using an electromagnet', correct: true, why: 'For example a car starter motor.' },
+      { text: 'It measures resistance', why: 'A relay is an electromagnetic switch.' },
+      { text: 'It changes a.c. to d.c.', why: 'A relay is a switch.' },
+      { text: 'It makes light', why: 'A relay is a switch.' },
+    ],
+  },
+  {
+    question: 'An LDR is in bright light. Its resistance is…',
+    options: [
+      { text: 'low', correct: true, why: 'More light: lower resistance.' },
+      { text: 'high', why: 'High in the dark.' },
+      { text: 'zero', why: 'Low, but not zero.' },
+      { text: 'the same as in the dark', why: 'It changes with light.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** all the symbols in 4.3.1 C1 are Core. Diodes and LEDs (S2) are Extended.
+
+**Timing:** starter 5 min, symbols 20 min, drawing and building 18 min, check 12 min, exit ticket 5 min.
+
+**Note on symbols:** symbols vary a little between countries and books. The ones here follow the usual IGCSE style (a lamp as a circle with a cross, a resistor as a rectangle).
+
+**Common mistakes:**
+
+- Gaps in wires, or wires that do not join at the corners.
+- Drawing a voltmeter in series.
+- Confusing the LDR and thermistor symbols (look for the arrows of light).
+
+**Language support:**
+
+- *component* = a part of a circuit.
+- *sensor* = a component that responds to something (light, temperature).
+
+**Differentiation:**
+
+- Support: a matching game with symbol cards and name cards.
+- Stretch: draw a circuit where a thermistor and a relay switch on a fan when it gets hot.
+
+</Step>

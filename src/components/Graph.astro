@@ -1,0 +1,26 @@
+---
+import { graphSvg, type GraphSpec } from '../lib/graph';
+
+interface Props extends GraphSpec {
+  caption?: string;
+}
+
+const { caption, ...spec } = Astro.props;
+---
+
+<figure class="graph-figure">
+  <Fragment set:html={graphSvg(spec)} />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .graph-figure {
+    margin: 1rem auto;
+    max-width: 26rem;
+  }
+  figcaption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+</style>

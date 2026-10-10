@@ -1,0 +1,135 @@
+---
+unit: 15
+lesson: 6
+title: The direction of an induced e.m.f.
+syllabus: ['4.5.1 S4', '4.5.1 S5']
+goals:
+  - 'Extended: know that the induced e.m.f. opposes the change that causes it.'
+  - "Extended: use Fleming's right-hand rule for the directions of motion, field and induced current."
+keyWords: [electromagnetic induction, induced, magnetic field, conventional current]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Quiz from '../../../components/Quiz.astro';
+import InductionSim from '../../../components/InductionSim.astro';
+
+<Step kind="starter" title="Hard to push" minutes={5}>
+
+When you push a strong magnet quickly into a coil connected in a complete circuit, you can feel a small force pushing back. Where does this force come from?
+
+</Step>
+
+<Step kind="learn" title="The induced e.m.f. opposes the change (Extended)" minutes={15}>
+
+**The direction of an induced e.m.f. always opposes the change that causes it.**
+
+- Push a **N pole** into a coil: the induced current makes the end of the coil near the magnet a **N pole**. It **repels** the magnet: it opposes the movement.
+- Pull the N pole **out**: the end of the coil becomes a **S pole**. It **attracts** the magnet: again, it opposes the movement.
+
+**Why must it be like this?** Energy is conserved. To make a current, you must do **work** against this force. If the induced current helped the movement, you would get energy for nothing.
+
+</Step>
+
+<Step kind="learn" title="Fleming's right-hand rule (Extended)" minutes={12}>
+
+For a **straight wire moving across a field**, use your **right** hand (the right hand is for **generators**):
+
+- th**u**mb: **m**otion of the wire;
+- **F**irst finger: **F**ield (N to S);
+- se**C**ond finger: induced **C**urrent (conventional).
+
+**Compare:** the **left**-hand rule is for **motors** (current → force); the **right**-hand rule is for **generators** (motion → current).
+
+</Step>
+
+<Step kind="do" title="Test the rule" minutes={15}>
+
+<InductionSim />
+
+1. Push the N pole in. Note the direction of the needle.
+2. Pull it out. Then turn the magnet round (S pole first) and push it in. Compare the three results.
+3. Explain each result: which pole is induced at the end of the coil near the magnet?
+
+**With a wire and a U-magnet:** move a wire down between the poles, then up. Use the right-hand rule to predict the direction of the current each time, then check with the meter.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={8}>
+
+<Quiz questions={[
+  {
+    question: 'A N pole is pushed into a coil. What pole is induced at the end of the coil near the magnet?',
+    options: [
+      { text: 'a N pole', correct: true, why: 'It repels the magnet: it opposes the change.' },
+      { text: 'a S pole', why: 'A S pole would attract the magnet and help the movement.' },
+      { text: 'no pole', why: 'The induced current makes the coil a magnet.' },
+      { text: 'it depends on the speed only', why: 'It always opposes the change.' },
+    ],
+  },
+  {
+    question: 'Why must the induced current oppose the change?',
+    options: [
+      { text: 'Energy is conserved: work must be done to make the current', correct: true, why: 'Otherwise we would get energy for nothing.' },
+      { text: 'Because magnets always repel', why: 'They can attract or repel.' },
+      { text: 'Because the coil is made of copper', why: 'The reason is conservation of energy.' },
+      { text: 'It does not oppose the change', why: 'It always does.' },
+    ],
+  },
+  {
+    question: "In Fleming's right-hand rule, what does the thumb show?",
+    options: [
+      { text: 'the motion of the wire', correct: true, why: 'thuMb = Motion.' },
+      { text: 'the field', why: 'The first finger shows the field.' },
+      { text: 'the induced current', why: 'The second finger shows the current.' },
+      { text: 'the force on the wire', why: 'For a generator, the thumb shows the motion.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Which hand rule is used for a generator?',
+    options: [
+      { text: 'the right-hand rule', correct: true, why: 'Motion → induced current.' },
+      { text: 'the left-hand rule', why: 'The left hand is for motors.' },
+      { text: 'the right-hand grip rule', why: 'That gives the field around a wire.' },
+      { text: 'no rule', why: 'Use the right-hand rule.' },
+    ],
+  },
+  {
+    question: 'A S pole is pulled out of a coil. What pole is induced at the near end of the coil?',
+    options: [
+      { text: 'a N pole', correct: true, why: 'It attracts the S pole: it opposes the movement.' },
+      { text: 'a S pole', why: 'That would repel and help the movement.' },
+      { text: 'no pole', why: 'A current is induced while the magnet moves.' },
+      { text: 'both poles', why: 'One end is N: it attracts the S pole.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Extended only** (4.5.1 S4, S5). Core students can repeat the investigation of lesson 15.5 and practise the three factors.
+
+**Timing:** starter 5 min, opposing change 15 min, right-hand rule 12 min, investigation 15 min, check 8 min, exit ticket 5 min.
+
+**Note:** this rule is often called Lenz's law. The syllabus only asks for the idea that the induced e.m.f. opposes the change.
+
+**Common mistakes:**
+
+- Using the left hand for induction.
+- "The induced pole always attracts the magnet."
+
+**Differentiation:**
+
+- Support: a table "movement / pole of the magnet / induced pole at the near end".
+- Stretch: drop a strong magnet down a copper pipe. It falls very slowly. Explain why.
+
+</Step>

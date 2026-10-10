@@ -1,0 +1,128 @@
+---
+unit: 10
+lesson: 2
+title: Images in a plane mirror
+syllabus: ['3.2.1 C2', '3.2.1 S4']
+goals:
+  - Describe the image in a plane mirror (same size, same distance, virtual).
+  - 'Extended: draw ray diagrams to find an image in a plane mirror.'
+keyWords: [plane mirror, virtual image, normal, angle of reflection]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { planeMirrorSvg } from '../../../lib/lightFigures';
+
+<Step kind="starter" title="Behind the mirror" minutes={5}>
+
+When you look in a mirror, your image seems to be **behind** the mirror. Is there really light behind the mirror? Could you catch your image on a sheet of paper behind the mirror?
+
+</Step>
+
+<Step kind="learn" title="The image in a plane mirror" minutes={12}>
+
+<Figure svg={planeMirrorSvg()} caption="The image is as far behind the mirror as the object is in front of it." width="30rem" />
+
+The image in a plane mirror is:
+
+- the **same size** as the object;
+- the **same distance** behind the mirror as the object is in front of it;
+- **virtual**: the light does not really come from the image. The rays only **seem** to come from it. You **cannot** catch a virtual image on a screen.
+
+Also, it is the right way up, and left and right are swapped (your right hand looks like a left hand).
+
+**How it works:** rays from the object reflect from the mirror into the eye. The brain thinks the light travels in straight lines, so it sees the light coming from behind the mirror (the dashed lines).
+
+</Step>
+
+<Step kind="learn" title="Drawing the image (Extended)" minutes={10}>
+
+To draw the image of a point object O:
+
+1. Draw a line from O to the mirror, at 90° to the mirror. Continue it behind the mirror.
+2. Mark the image I on this line, at the **same distance** behind the mirror. Use a ruler.
+3. To show how light reaches the eye: draw a straight **dashed** line from I to the eye. Where it crosses the mirror, the ray reflects.
+4. Draw the real ray from O to that point, and from that point to the eye (solid lines, with arrows).
+
+Check with a protractor: at the point of reflection, $i = r$.
+
+</Step>
+
+<Step kind="do" title="The ghost candle" minutes={13}>
+
+**Equipment:** a sheet of clear glass (or Perspex) standing upright, two identical candles (or two identical small objects), a ruler.
+
+1. Put one lit candle in front of the glass. Look into the glass: you see its image.
+2. Move the second, **unlit** candle behind the glass until it seems to be lit (it is in the same place as the image).
+3. Measure the distance from each candle to the glass. What do you notice?
+4. Repeat for two other distances.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={15}>
+
+<Practice topic="reflection" level={3} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A boy stands 2 m in front of a plane mirror. How far is he from his image?',
+    options: [
+      { text: '4 m', correct: true, why: 'The image is 2 m behind the mirror: 2 + 2 = 4 m.' },
+      { text: '2 m', why: 'This is the distance to the mirror. The image is 2 m further, behind the mirror.' },
+      { text: '1 m', why: 'The image is as far behind the mirror as he is in front.' },
+      { text: '0 m', why: 'The image is behind the mirror.' },
+    ],
+  },
+  {
+    question: 'Why is the image in a plane mirror called virtual?',
+    options: [
+      { text: 'The rays only seem to come from it; it cannot be caught on a screen', correct: true, why: 'No light really goes behind the mirror.' },
+      { text: 'It is upside down', why: 'The image in a plane mirror is the right way up.' },
+      { text: 'It is smaller than the object', why: 'It is the same size.' },
+      { text: 'It is very far away', why: 'It is as far behind the mirror as the object is in front.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Write the word AMBULANCE as it looks in a plane mirror. Explain why some ambulances have this word written backwards on the front.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** the characteristics of the image (3.2.1 C2) are Core. Constructions and calculations (S4) are Extended.
+
+**Timing:** starter 5 min, learn 22 min, ghost candle 13 min, practice 15 min, exit ticket 5 min.
+
+**Note:** "left and right swapped" (lateral inversion) is not in the syllabus list of characteristics.
+
+**Common mistakes:**
+
+- "The image is on the surface of the mirror."
+- Drawing the image closer or further than the object.
+- Drawing solid lines (real rays) behind the mirror. Behind the mirror, lines are dashed.
+
+**Language support:**
+
+- *virtual* = not real, it only seems to be there.
+- Sentence frame: *"The image is the same … as the object, it is … behind the mirror, and it is … ."*
+
+**Differentiation:**
+
+- Support: give squared paper so that equal distances are easy to draw.
+- Stretch: how tall must a mirror be so that you can see all of your body? (Half your height.)
+
+**Safety:** lit candles: tie back long hair; keep paper away from the flame.
+
+</Step>

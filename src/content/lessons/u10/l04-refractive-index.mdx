@@ -1,0 +1,148 @@
+---
+unit: 10
+lesson: 4
+title: Refractive index
+syllabus: ['3.2.2 S6', '3.2.2 S7']
+goals:
+  - 'Extended: define refractive index as a ratio of speeds.'
+  - 'Extended: use the equation $n = \dfrac{\sin i}{\sin r}$.'
+keyWords: [refractive index, angle of incidence, angle of refraction, refraction]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import RaySim from '../../../components/RaySim.astro';
+
+<Step kind="starter" title="How much does it bend?" minutes={5}>
+
+In the simulation of the last lesson, diamond bent the light more than glass, and glass more than water. What could be different about diamond?
+
+</Step>
+
+<Step kind="learn" title="Refractive index" minutes={14}>
+
+The **refractive index** $n$ of a material tells us how much it slows light down:
+
+$$
+n = \frac{\text{speed of light in air (or a vacuum)}}{\text{speed of light in the material}}
+$$
+
+It is a **ratio** of two speeds, so it has **no unit**. A bigger $n$ means slower light and more bending.
+
+<div class="table-wrap">
+
+| Material | $n$ (about) |
+|---|---|
+| air | 1.00 |
+| water | 1.33 |
+| glass | 1.5 |
+| diamond | 2.42 |
+
+</div>
+
+For a ray that goes from air into the material:
+
+$$
+n = \frac{\sin i}{\sin r}
+$$
+
+- $i$: angle of incidence (in air)
+- $r$: angle of refraction (in the material)
+- Your calculator must be in **degrees** (D or DEG on the screen).
+
+<WorkedExample
+  question="A ray goes from air into a plastic block. The angle of incidence is 50° and the angle of refraction is 31°. Calculate the refractive index of the plastic."
+  given={['$i = 50^\\circ$', '$r = 31^\\circ$']}
+  find="the refractive index $n$"
+  answer="$n = 1.49$"
+>
+
+$n = \dfrac{\sin i}{\sin r} = \dfrac{\sin 50^\circ}{\sin 31^\circ}$
+
+$n = \dfrac{0.766}{0.515}$
+
+$n = 1.49$ (no unit)
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="do" title="Measure n" minutes={14}>
+
+Use the simulation (or your results from the last lesson).
+
+<RaySim mode="block" />
+
+1. Choose **glass**. Record $r$ for $i$ = 20°, 30°, 40°, 50°, 60°, 70°.
+2. For each pair, calculate $\dfrac{\sin i}{\sin r}$. What do you notice?
+3. Plot $\sin i$ (vertical axis) against $\sin r$ (horizontal axis). The gradient of the straight line is $n$.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={22}>
+
+<Practice topic="refractive-index" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Extended: $i = 45^\\circ$ and $r = 28^\\circ$. What is the refractive index?',
+    options: [
+      { text: '1.51', correct: true, why: '$\\dfrac{\\sin 45^\\circ}{\\sin 28^\\circ} = \\dfrac{0.707}{0.469} = 1.51$.' },
+      { text: '1.61', why: 'This is $\\dfrac{45}{28}$. Use the sines of the angles.' },
+      { text: '0.66', why: 'Upside down: $n = \\dfrac{\\sin i}{\\sin r}$.' },
+      { text: '17', why: 'Divide the sines, do not subtract the angles.' },
+    ],
+  },
+  {
+    question: 'Extended: light travels at $2.0 \\times 10^8$ m/s in a material. In air it travels at $3.0 \\times 10^8$ m/s. What is the refractive index?',
+    options: [
+      { text: '1.5', correct: true, why: '$n = \\dfrac{3.0 \\times 10^8}{2.0 \\times 10^8} = 1.5$.' },
+      { text: '0.67', why: 'Upside down: speed in air ÷ speed in the material.' },
+      { text: '$1.0 \\times 10^8$', why: 'Divide the speeds, do not subtract.' },
+      { text: '1.5 m/s', why: 'A ratio of two speeds has no unit.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. A ray goes from air into water ($n = 1.33$) with an angle of incidence of 60°. Calculate the angle of refraction.
+2. Calculate the speed of light in diamond ($n = 2.42$).
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Extended only** (3.2.2 S6, S7). Core students: revise lesson 10.3 with the simulation, and do the reflection practice.
+
+**Timing:** starter 5 min, learn 14 min, measurement 14 min, practice 22 min, exit ticket 5 min.
+
+**Values:** the refractive indices in the table are typical values (water 1.33, crown glass about 1.5, diamond about 2.42). The syllabus defines $n$ as the ratio of the speeds of a wave in two regions.
+
+**Common mistakes:**
+
+- Calculator in radians.
+- Dividing the angles instead of their sines.
+- Giving $n$ a unit.
+- $i$ and $r$ swapped when the light goes from glass into air: $i$ in the equation is always the angle **in air**.
+
+**Language support:**
+
+- Read $\dfrac{\sin i}{\sin r}$ as "sine i over sine r".
+- *index* here means "a number that measures something".
+
+**Differentiation:**
+
+- Support: level 1 only, with the calculator steps written on the board.
+- Stretch: level 3 (critical angle, speed of light in a material).
+
+</Step>

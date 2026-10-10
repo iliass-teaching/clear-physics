@@ -1,0 +1,274 @@
+---
+// Virtual practical: gas particles in a box.
+// mode "pressure": change the temperature and the volume, and watch the hits on the walls and the pressure.
+// mode "brownian": one big particle (like a smoke particle) is hit by the small, fast particles.
+interface Props {
+  mode?: 'pressure' | 'brownian';
+}
+
+const { mode = 'pressure' } = Astro.props;
+const brownian = mode === 'brownian';
+---
+
+<div class="gas-sim" data-gas-sim data-mode={mode}>
+  <svg viewBox="0 0 400 240" role="img" aria-label={brownian ? 'A big particle in a gas, hit by small particles' : 'Gas particles in a box with a piston'}>
+    <rect class="box" x="10" y="10" width="380" height="220" />
+    <polyline class="trail" points="" />
+    <g class="particles"></g>
+    {brownian && <circle class="big" r="11" cx="200" cy="120" />}
+    {!brownian && <rect class="piston" x="388" y="4" width="10" height="232" rx="2" />}
+  </svg>
+
+  <div class="controls">
+    <label>
+      temperature <input type="range" class="temp" min="50" max="600" step="50" value="300" />
+      <output class="temp-out">300 K (27 °C)</output>
+    </label>
+    {
+      !brownian && (
+        <label>
+          volume <input type="range" class="vol" min="40" max="100" step="10" value="100" />
+          <output class="vol-out">100 %</output>
+        </label>
+      )
+    }
+    {
+      brownian && (
+        <label class="check">
+          <input type="checkbox" class="hide" /> hide the small particles (in a microscope, we cannot see them)
+        </label>
+      )
+    }
+    <button type="button" class="reset secondary">Reset</button>
+  </div>
+
+  {
+    !brownian && (
+      <p class="readout" aria-live="polite">
+        <span>hits on the walls each second: <strong class="hits">–</strong></span>
+        <span>pressure: <strong class="pressure">–</strong></span>
+      </p>
+    )
+  }
+  {!brownian && <p class="small muted">The pressure is 100 at 300 K with the full volume. The numbers change a little all the time: the motion is random.</p>}
+</div>
+
+<script>
+  const NS = 'http://www.w3.org/2000/svg';
+  const X0 = 10;
+  const Y0 = 10;
+  const W = 380;
+  const H = 220;
+  const R = 3; // small particle radius
+  const BIG_R = 11;
+  const BIG_M = 30; // mass of the big particle (small particle = 1)
+  const V300 = 140; // speed of the small particles at 300 K, in px/s
+  const WINDOW = 2; // seconds of data for the readouts
+
+  interface P {
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    el?: SVGCircleElement;
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-gas-sim]').forEach((root) => {
+    const brownian = root.dataset.mode === 'brownian';
+    const q = <T extends Element>(s: string) => root.querySelector<T>(s);
+    const group = q<SVGGElement>('.particles')!;
+    const temp = q<HTMLInputElement>('.temp')!;
+    const vol = q<HTMLInputElement>('.vol');
+    const hide = q<HTMLInputElement>('.hide');
+    const piston = q<SVGRectElement>('.piston');
+    const bigEl = q<SVGCircleElement>('.big');
+    const trail = q<SVGPolylineElement>('.trail')!;
+    const hitsOut = q<HTMLElement>('.hits');
+    const pressureOut = q<HTMLElement>('.pressure');
+    const N = brownian ? 70 : 40;
+
+    let T = +temp.value;
+    let frac = vol ? +vol.value / 100 : 1;
+    let ps: P[] = [];
+    let big: P = { x: 200, y: 120, vx: 0, vy: 0 };
+    let log: { t: number; imp: number }[] = [];
+    let clock = 0;
+    let since = 0; // time since the last change
+    let trailPts: string[] = [];
+    let trailClock = 0;
+
+    const right = () => X0 + W * frac;
+    // Pressure in 2D: N m <v²> / (2 A). Reference: 300 K, full volume -> 100.
+    const P0 = (N * V300 * V300) / (2 * W * H);
+
+    function reset(): void {
+      group.replaceChildren();
+      ps = [];
+      const v = V300 * Math.sqrt(T / 300);
+      for (let i = 0; i < N; i++) {
+        const a = Math.random() * 2 * Math.PI;
+        let x = 0;
+        let y = 0;
+        do {
+          x = X0 + R + Math.random() * (right() - X0 - 2 * R);
+          y = Y0 + R + Math.random() * (H - 2 * R);
+        } while (brownian && Math.hypot(x - 200, y - 120) < BIG_R + R + 2);
+        const el = document.createElementNS(NS, 'circle');
+        el.setAttribute('r', String(R));
+        el.setAttribute('class', 'small-p');
+        group.appendChild(el);
+        ps.push({ x, y, vx: v * Math.cos(a), vy: v * Math.sin(a), el });
+      }
+      big = { x: 200, y: 120, vx: 0, vy: 0 };
+      trailPts = [];
+      restartReadings();
+      draw();
+    }
+
+    function restartReadings(): void {
+      log = [];
+      since = 0;
+      if (hitsOut) hitsOut.textContent = 'measuring…';
+      if (pressureOut) pressureOut.textContent = 'measuring…';
+    }
+
+    function wallHit(p: P, r: number, count: boolean): void {
+      let imp = 0;
+      if (p.x < X0 + r) { p.x = X0 + r; imp += 2 * Math.abs(p.vx); p.vx = Math.abs(p.vx); }
+      if (p.x > right() - r) { p.x = right() - r; imp += 2 * Math.abs(p.vx); p.vx = -Math.abs(p.vx); }
+      if (p.y < Y0 + r) { p.y = Y0 + r; imp += 2 * Math.abs(p.vy); p.vy = Math.abs(p.vy); }
+      if (p.y > Y0 + H - r) { p.y = Y0 + H - r; imp += 2 * Math.abs(p.vy); p.vy = -Math.abs(p.vy); }
+      if (count && imp > 0) log.push({ t: clock, imp });
+    }
+
+    function step(dt: number): void {
+      clock += dt;
+      since += dt;
+      for (const p of ps) {
+        p.x += p.vx * dt;
+        p.y += p.vy * dt;
+        wallHit(p, R, true);
+      }
+      if (brownian) {
+        big.x += big.vx * dt;
+        big.y += big.vy * dt;
+        wallHit(big, BIG_R, false);
+        for (const p of ps) {
+          const dx = p.x - big.x;
+          const dy = p.y - big.y;
+          const d = Math.hypot(dx, dy);
+          if (d === 0 || d > R + BIG_R) continue;
+          const nx = dx / d;
+          const ny = dy / d;
+          const vrel = (p.vx - big.vx) * nx + (p.vy - big.vy) * ny;
+          if (vrel < 0) {
+            // Elastic collision: small mass 1, big mass BIG_M.
+            const kSmall = (2 * BIG_M) / (1 + BIG_M);
+            const kBig = 2 / (1 + BIG_M);
+            p.vx -= kSmall * vrel * nx;
+            p.vy -= kSmall * vrel * ny;
+            big.vx += kBig * vrel * nx;
+            big.vy += kBig * vrel * ny;
+          }
+          p.x = big.x + nx * (R + BIG_R + 0.1);
+          p.y = big.y + ny * (R + BIG_R + 0.1);
+        }
+        trailClock += dt;
+        if (trailClock > 0.08) {
+          trailClock = 0;
+          trailPts.push(`${big.x.toFixed(1)},${big.y.toFixed(1)}`);
+          if (trailPts.length > 300) trailPts.shift();
+        }
+      }
+      log = log.filter((e) => e.t > clock - WINDOW);
+    }
+
+    function readings(): { hits: number; pressure: number } | null {
+      if (since < 1) return null;
+      const span = Math.min(since, WINDOW);
+      const imp = log.reduce((s, e) => s + e.imp, 0);
+      const perimeter = 2 * (W * frac + H);
+      return { hits: log.length / span, pressure: (100 * imp) / (perimeter * span) / P0 };
+    }
+
+    function draw(): void {
+      for (const p of ps) {
+        p.el!.setAttribute('cx', p.x.toFixed(1));
+        p.el!.setAttribute('cy', p.y.toFixed(1));
+      }
+      if (bigEl) {
+        bigEl.setAttribute('cx', big.x.toFixed(1));
+        bigEl.setAttribute('cy', big.y.toFixed(1));
+        trail.setAttribute('points', trailPts.join(' '));
+      }
+      if (piston) piston.setAttribute('x', String(right() - 1));
+      const r = readings();
+      if (r && hitsOut && pressureOut) {
+        hitsOut.textContent = String(Math.round(r.hits / 10) * 10);
+        pressureOut.textContent = String(Math.round(r.pressure));
+      }
+    }
+
+    temp.addEventListener('input', () => {
+      const newT = +temp.value;
+      const k = Math.sqrt(newT / T);
+      T = newT;
+      for (const p of [...ps, big]) {
+        p.vx *= k;
+        p.vy *= k;
+      }
+      q<HTMLOutputElement>('.temp-out')!.textContent = `${T} K (${T - 273} °C)`;
+      restartReadings();
+    });
+
+    vol?.addEventListener('input', () => {
+      frac = +vol.value / 100;
+      q<HTMLOutputElement>('.vol-out')!.textContent = `${vol.value} %`;
+      for (const p of ps) if (p.x > right() - R) { p.x = right() - R - Math.random() * 5; p.vx = -Math.abs(p.vx); }
+      restartReadings();
+    });
+
+    hide?.addEventListener('change', () => {
+      group.style.visibility = hide.checked ? 'hidden' : 'visible';
+    });
+
+    q<HTMLButtonElement>('.reset')!.addEventListener('click', reset);
+
+    let last = performance.now();
+    const loop = (now: number) => {
+      const dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      // Small sub-steps so that fast particles do not jump through the big particle.
+      const n = Math.ceil(dt / 0.01);
+      for (let i = 0; i < n; i++) step(dt / n);
+      draw();
+      requestAnimationFrame(loop);
+    };
+    reset();
+    requestAnimationFrame(loop);
+
+    // For testing without animation frames.
+    (root as HTMLElement & { _gas?: unknown })._gas = { step, readings, get big() { return big; }, get ps() { return ps; } };
+  });
+</script>
+
+<style>
+  .gas-sim {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  svg { width: 100%; max-width: 34rem; height: auto; display: block; margin: 0 auto; }
+  .box { fill: var(--surface-2); stroke: var(--ink); stroke-width: 2; }
+  .piston { fill: #8a8f98; stroke: var(--ink); stroke-width: 1; }
+  :global(.gas-sim .small-p) { fill: var(--accent); }
+  .big { fill: var(--exit); stroke: var(--ink); stroke-width: 1; }
+  .trail { fill: none; stroke: var(--exit); stroke-width: 1.5; opacity: 0.7; stroke-linejoin: round; }
+  .controls { display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem; align-items: center; margin-top: 0.8rem; }
+  .controls label { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .controls output { font-variant-numeric: tabular-nums; min-width: 7.5rem; }
+  .readout { display: flex; flex-wrap: wrap; gap: 0.4rem 2rem; margin: 0.8rem 0 0.2rem; font-size: 1.05rem; }
+  .readout strong { font-variant-numeric: tabular-nums; }
+</style>

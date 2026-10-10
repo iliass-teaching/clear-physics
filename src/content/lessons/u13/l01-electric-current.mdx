@@ -1,0 +1,156 @@
+---
+unit: 13
+lesson: 1
+title: Electric current
+syllabus: ['4.2.2 C1', '4.2.2 C3', '4.2.2 C4', '4.2.2 S6']
+goals:
+  - Know that an electric current is a flow of charge.
+  - Describe conduction in metals with free electrons.
+  - Know the difference between direct current (d.c.) and alternating current (a.c.).
+  - 'Extended: compare conventional current and the flow of electrons.'
+keyWords: [electric current, ampere, free electrons, conventional current, direct current, alternating current]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Graph from '../../../components/Graph.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { currentDirectionSvg } from '../../../lib/electricFigures';
+
+<Step kind="starter" title="Switch on" minutes={5}>
+
+You press a light switch. The lamp comes on at once, even if it is far away. Does something travel from the switch to the lamp very fast? Discuss your ideas.
+
+</Step>
+
+<Step kind="learn" title="Current is a flow of charge" minutes={14}>
+
+- An **electric current** is a **flow of charge**. The bigger the current, the more charge passes a point each second.
+- Current is measured in **amperes** (A), often called *amps*.
+- In a **metal** wire, the charges that move are **free electrons** (Unit 12). When a cell is connected, all the free electrons in the circuit start to drift at the same time, so the lamp comes on at once.
+- A current needs a **complete circuit**: a closed loop with no gaps.
+
+<Figure svg={currentDirectionSvg()} caption="Conventional current and the flow of electrons." width="32rem" />
+
+**Extended: which direction?** We say that **conventional current** flows from the **positive** terminal to the **negative** terminal, around the circuit. But electrons are negative: they flow the **other way**, from **negative** to **positive**. (The direction of current was chosen before electrons were discovered.)
+
+</Step>
+
+<Step kind="learn" title="d.c. and a.c." minutes={10}>
+
+<div class="graph-grid">
+<Graph xLabel="time / s" yLabel="current / A" xMax={4} yMin={-2} yMax={2} xStep={1} yStep={1} points={[[0, 1.5], [4, 1.5]]} title="Direct current: constant, always in the same direction." caption="direct current (d.c.)" />
+<Graph xLabel="time / s" yLabel="current / A" xMax={4} yMin={-2} yMax={2} xStep={1} yStep={1} points={[[0,0],[0.25,1.06],[0.5,1.5],[0.75,1.06],[1,0],[1.25,-1.06],[1.5,-1.5],[1.75,-1.06],[2,0],[2.25,1.06],[2.5,1.5],[2.75,1.06],[3,0],[3.25,-1.06],[3.5,-1.5],[3.75,-1.06],[4,0]]} curve title="Alternating current: it changes direction again and again." caption="alternating current (a.c.)" />
+</div>
+
+- **Direct current (d.c.)** flows in **one direction** only. Cells and batteries give d.c.
+- **Alternating current (a.c.)** changes direction **again and again**. The mains supply is a.c. (in many countries, 50 times each second).
+
+</Step>
+
+<Step kind="do" title="Model a circuit" minutes={14}>
+
+**The rope model:** stand in a circle and hold a long loop of rope loosely in your hands. One student (the cell) pulls the rope around.
+
+1. When the "cell" pulls, does the rope move everywhere at the same time?
+2. Hold the rope tightly in one place (a "lamp" with resistance). What do you feel? (Your hands get warm: energy is transferred.)
+3. What in the model is like the electrons? What is like the current?
+
+**Then:** build a circuit with a cell, a switch and a lamp. Open and close the switch. Draw the circuit, with an arrow for the conventional current.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={12}>
+
+<Quiz questions={[
+  {
+    question: 'What is an electric current?',
+    options: [
+      { text: 'a flow of charge', correct: true, why: 'In a metal: a flow of free electrons.' },
+      { text: 'a flow of energy only', why: 'Current is a flow of charge (which carries energy).' },
+      { text: 'a flow of atoms', why: 'The atoms stay in place; electrons move.' },
+      { text: 'a force', why: 'Current is a flow of charge.' },
+    ],
+  },
+  {
+    question: 'What moves in a metal wire when there is a current?',
+    options: [
+      { text: 'free electrons', correct: true, why: 'They drift through the metal.' },
+      { text: 'positive ions', why: 'The ions stay in place.' },
+      { text: 'protons', why: 'Protons are in the nuclei and do not move.' },
+      { text: 'nothing', why: 'Free electrons move.' },
+    ],
+  },
+  {
+    question: 'Which describes alternating current?',
+    options: [
+      { text: 'it changes direction again and again', correct: true, why: 'Like the mains supply.' },
+      { text: 'it always flows in the same direction', why: 'This is direct current.' },
+      { text: 'it only flows in batteries', why: 'Batteries give d.c.' },
+      { text: 'it has no direction', why: 'It changes direction.' },
+    ],
+  },
+  {
+    question: 'Extended: in which direction do electrons flow in a circuit?',
+    options: [
+      { text: 'from the negative terminal to the positive terminal', correct: true, why: 'Opposite to conventional current.' },
+      { text: 'from positive to negative', why: 'That is conventional current.' },
+      { text: 'they do not move', why: 'They drift from − to +.' },
+      { text: 'both ways at once', why: 'In d.c., from − to +.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'What is the unit of current?',
+    options: [
+      { text: 'ampere (A)', correct: true, why: 'Often called amps.' },
+      { text: 'volt (V)', why: 'The volt is for p.d.' },
+      { text: 'ohm (Ω)', why: 'The ohm is for resistance.' },
+      { text: 'coulomb (C)', why: 'The coulomb is for charge.' },
+    ],
+  },
+  {
+    question: 'A cell gives…',
+    options: [
+      { text: 'direct current', correct: true, why: 'Always in the same direction.' },
+      { text: 'alternating current', why: 'The mains gives a.c.' },
+      { text: 'no current', why: 'It gives d.c. in a complete circuit.' },
+      { text: 'both at the same time', why: 'A cell gives d.c.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** 4.2.2 C1, C3, C4 are Core. Conventional current versus electron flow (S6) is Extended.
+
+**Timing:** starter 5 min, learn 24 min, model and circuit 14 min, check 12 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "The current is used up in the lamp." The current is the same before and after the lamp; energy is transferred, not current.
+- "Electrons travel very fast from the cell to the lamp." They drift slowly; all of them start moving at once.
+- Mixing up the direction of conventional current and electron flow.
+
+**Language support:**
+
+- *current* = flow (like the current of a river).
+- *alternating* = changing again and again from one to the other.
+
+**Differentiation:**
+
+- Support: a labelled circuit to copy, with arrows.
+- Stretch: why does a lamp come on at once if the electrons move only a few millimetres each second?
+
+**Safety:** use only cells or low-voltage supplies. Never experiment with the mains.
+
+</Step>

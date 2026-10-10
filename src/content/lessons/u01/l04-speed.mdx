@@ -1,0 +1,222 @@
+---
+unit: 1
+lesson: 4
+title: Speed
+syllabus: ['1.2 C1']
+goals:
+  - Say what speed means.
+  - 'Use the equation $v = \dfrac{s}{t}$ to find speed, distance or time.'
+  - Change a speed from km/h to m/s.
+keyWords: [distance, time, speed, equation, unit]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import SpeedSim from '../../../components/SpeedSim.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="Who is faster?" minutes={5}>
+
+**Ana** runs 100 m in 20 s.
+**Ben** runs 150 m in 25 s.
+
+Who is faster? Talk with a partner.
+
+*Tip: Ben runs further, but he also runs for longer. How can we compare?*
+
+</Step>
+
+<Step kind="learn" title="What is speed?" minutes={15}>
+
+**Speed** tells us how far something moves in one second.
+
+To find the speed, divide the distance by the time:
+
+$$
+\text{speed} = \frac{\text{distance}}{\text{time}}
+\qquad\text{or}\qquad
+v = \frac{s}{t}
+$$
+
+<div class="table-wrap">
+
+| Quantity | Symbol | Unit |
+|---|---|---|
+| speed | $v$ | m/s (metres per second) |
+| distance | $s$ | m (metres) |
+| time | $t$ | s (seconds) |
+
+</div>
+
+**Be careful:** in physics, $s$ is the symbol for **distance**. But the unit s means **seconds**.
+
+### Back to the starter
+
+- Ana: $v = \dfrac{100}{20} = 5\,\text{m/s}$. She runs 5 m in each second.
+- Ben: $v = \dfrac{150}{25} = 6\,\text{m/s}$. He runs 6 m in each second.
+
+So **Ben is faster**.
+
+<WorkedExample
+  question="A cyclist rides 300 m in 60 s. Calculate her speed."
+  given={['distance $s = 300\\,\\text{m}$', 'time $t = 60\\,\\text{s}$']}
+  find="the speed $v$"
+  answer="$v = 5\,\text{m/s}$"
+>
+
+$v = \dfrac{s}{t}$
+
+$v = \dfrac{300}{60}$
+
+$v = 5\,\text{m/s}$
+
+</WorkedExample>
+
+### Find the distance or the time
+
+We can change the equation to find $s$ or $t$. Start from:
+
+$$
+v = \frac{s}{t}
+$$
+
+**To find the distance:** multiply both sides by $t$.
+
+$$
+v \times t = s \qquad\text{so}\qquad s = v \times t
+$$
+
+**To find the time:** start from $s = v \times t$. Divide both sides by $v$.
+
+$$
+\frac{s}{v} = t \qquad\text{so}\qquad t = \frac{s}{v}
+$$
+
+### Units of speed
+
+We can write speed in **m/s**, **km/h** or **cm/s**.
+To change km/h to m/s:
+
+1. $1\,\text{km} = 1000\,\text{m}$
+2. $1\,\text{h} = 3600\,\text{s}$
+3. So $1\,\text{km/h} = \dfrac{1000}{3600}\,\text{m/s}$. This is the same as dividing by 3.6.
+
+Example: $72\,\text{km/h} = \dfrac{72}{3.6} = 20\,\text{m/s}$.
+
+</Step>
+
+<Step kind="do" title="Measure a speed" minutes={15}>
+
+### In class: your walking speed
+
+**Equipment:** tape measure, stopwatch, 2 cones.
+
+1. Put two cones 10 m apart. Check the distance with the tape measure.
+2. One student walks from the first cone to the second cone.
+3. A partner starts the stopwatch at the first cone. Stop it at the second cone.
+4. Write the time in the table.
+5. Do it 3 times. Then find the mean (average) time.
+6. Calculate the speed: $v = \dfrac{s}{t}$.
+
+<div class="table-wrap">
+
+| Try | distance / m | time / s |
+|---|---|---|
+| 1 | 10 | |
+| 2 | 10 | |
+| 3 | 10 | |
+| mean | 10 | |
+
+</div>
+
+**Question:** why do we do the measurement 3 times?
+*Start your answer like this: "We repeat the measurement because …"*
+
+### On screen: the toy car
+
+No space for walking? Measure the speed of this toy car.
+The watch starts with the car. Stop it when the car reaches the flag.
+
+<SpeedSim />
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={15}>
+
+Start at **Level 1**. When you get 3 correct in a row, go to the next level.
+
+<Practice topic="speed" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A bus travels 600 m in 40 s. What is its speed?',
+    options: [
+      { text: '15 m/s', correct: true, why: '$v = \\dfrac{s}{t} = \\dfrac{600}{40} = 15\\,\\text{m/s}$.' },
+      { text: '24 000 m/s', why: 'You multiplied. For speed, divide: $v = \\dfrac{s}{t}$.' },
+      { text: '0.067 m/s', why: 'You divided the wrong way. Distance goes on top.' },
+      { text: '640 m/s', why: 'You added. For speed, divide: $v = \\dfrac{s}{t}$.' },
+    ],
+  },
+  {
+    question: 'Which is a unit of speed?',
+    options: [
+      { text: 'm/s', correct: true, why: 'Speed = distance ÷ time, so the unit is metres ÷ seconds: m/s.' },
+      { text: 'm', why: 'm is a unit of distance.' },
+      { text: 's', why: 's is a unit of time.' },
+      { text: 's/m', why: 'This is time ÷ distance. Speed is distance ÷ time.' },
+    ],
+  },
+  {
+    question: 'A car moves at 20 m/s for 10 s. How far does it go?',
+    options: [
+      { text: '2 m', why: 'You divided. For distance, multiply: $s = v \\times t$.' },
+      { text: '200 m', correct: true, why: '$s = v \\times t = 20 \\times 10 = 200\\,\\text{m}$.' },
+      { text: '30 m', why: 'You added. For distance, multiply: $s = v \\times t$.' },
+      { text: '0.5 m', why: 'For distance, multiply speed by time: $s = v \\times t$.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Do 5 questions at **Level 2** of the practice.
+2. Find the speed of something on your way to school. For example: find the distance on a map, and measure the time. Calculate the speed in m/s.
+   Write one sentence: *"My speed is … m/s because I move … m in … s."*
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 15 min, do 15 min, practice 15 min, exit ticket 5 min.
+
+**Common mistakes** (the online practice detects them and gives a hint):
+
+- Multiplying $s \times t$, or dividing $\dfrac{t}{s}$.
+- Confusing the symbol $s$ (distance) with the unit s (seconds).
+- Forgetting the unit, or mixing km with s, or m with minutes.
+- From km/h to m/s: multiplying by 3.6 instead of dividing.
+
+**Language support:**
+
+- Put the key words on the wall, each with a picture.
+- Read the starter aloud. Let students discuss in pairs before they write.
+- Give a sentence frame: *"The speed of the … is … m/s. It moves … m in each second."*
+
+**Differentiation:**
+
+- Support: give the three forms of the equation on a card ($v = \dfrac{s}{t}$, $s = v \times t$, $t = \dfrac{s}{v}$), and practise the rearranging step together. Use Level 1 numbers that divide exactly.
+- Stretch: compare animal speeds (cheetah, human, snail) in m/s and in km/h. Ask why the measured walking speed is not exact (reaction time).
+
+**Safety:** clear the corridor before the walking practical. Walk, do not run.
+
+**Next lesson:** velocity and average speed (1.2 C2, C3).
+
+</Step>

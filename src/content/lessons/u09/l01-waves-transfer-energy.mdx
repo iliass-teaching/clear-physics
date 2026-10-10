@@ -1,0 +1,174 @@
+---
+unit: 9
+lesson: 1
+title: Waves transfer energy
+syllabus: ['3.1 C1', '3.1 C2', '3.1 C5', '3.1 C6']
+goals:
+  - Know that waves transfer energy without transferring matter.
+  - Describe wave motion with ropes, springs and water waves.
+  - Describe transverse and longitudinal waves, with examples.
+keyWords: [wave, vibration, transverse wave, longitudinal wave, compression, rarefaction]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import WaveSim from '../../../components/WaveSim.astro';
+import { transverseSvg, longitudinalSvg } from '../../../lib/waveFigures';
+
+<Step kind="starter" title="A Mexican wave" minutes={5}>
+
+In a football stadium, people stand up and sit down, one after the other. A "wave" goes all around the stadium.
+
+Does any person go around the stadium? What moves around the stadium?
+
+</Step>
+
+<Step kind="learn" title="What is a wave?" minutes={10}>
+
+A **wave** is a **vibration** that travels. It **transfers energy** from one place to another, but it does **not transfer matter**.
+
+- A **water wave** moves across a pond. A leaf on the water only goes up and down: it does not move with the wave.
+- A wave on a **rope**: each part of the rope moves up and down. The wave moves along the rope.
+- A **sound** wave: the air particles vibrate backwards and forwards. The air does not travel from the speaker to your ear, but the energy does.
+
+</Step>
+
+<Step kind="learn" title="Two types of wave" minutes={12}>
+
+**Transverse waves:** the vibration is at **right angles** (90°) to the direction the wave travels.
+
+<Figure svg={transverseSvg()} caption="A transverse wave on a rope." width="32rem" />
+
+Examples: **water waves**, **light** and all **electromagnetic** waves, seismic **S-waves** (secondary waves in an earthquake).
+
+**Longitudinal waves:** the vibration is **parallel** to the direction the wave travels (along the same line).
+
+<Figure svg={longitudinalSvg()} caption="A longitudinal wave on a spring." width="32rem" />
+
+- **Compression:** the coils (or particles) are close together.
+- **Rarefaction:** the coils (or particles) are far apart.
+
+Examples: **sound** waves, seismic **P-waves** (primary waves in an earthquake).
+
+</Step>
+
+<Step kind="do" title="Make waves" minutes={18}>
+
+**With a long spring (a "slinky"):** work in pairs, on the floor. Stretch the spring between you (about 3 m).
+
+1. Move one end quickly **from side to side**. Draw the wave you see. Which type is it?
+2. Push one end quickly **forwards and backwards**, along the spring. Draw the wave. Which type is it? Find a compression and a rarefaction.
+3. Tie a small piece of ribbon to one coil. Make a wave again. Does the ribbon travel along the spring?
+
+**In the simulation:** the red point is like the ribbon.
+
+<WaveSim />
+
+1. Watch the red point in the transverse wave. Does it move along the spring?
+2. Change to **Longitudinal**. How does the red coil move now?
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={10}>
+
+<Quiz questions={[
+  {
+    question: 'What does a wave transfer?',
+    options: [
+      { text: 'energy, but not matter', correct: true, why: 'The particles vibrate around one place. The energy travels.' },
+      { text: 'matter, but not energy', why: 'The matter stays in the same place.' },
+      { text: 'energy and matter', why: 'A wave does not transfer matter.' },
+      { text: 'nothing', why: 'A wave transfers energy.' },
+    ],
+  },
+  {
+    question: 'In a transverse wave, how is the vibration compared to the direction of travel?',
+    options: [
+      { text: 'at right angles (90°)', correct: true, why: 'For example, up and down while the wave goes to the right.' },
+      { text: 'parallel (along the same line)', why: 'This is a longitudinal wave.' },
+      { text: 'in the opposite direction', why: 'The vibration is at right angles.' },
+      { text: 'there is no vibration', why: 'All waves are vibrations that travel.' },
+    ],
+  },
+  {
+    question: 'Which wave is longitudinal?',
+    options: [
+      { text: 'sound', correct: true, why: 'The air particles vibrate along the direction of travel.' },
+      { text: 'light', why: 'Light is transverse.' },
+      { text: 'a water wave', why: 'Water waves are transverse.' },
+      { text: 'a seismic S-wave', why: 'S-waves are transverse. P-waves are longitudinal.' },
+    ],
+  },
+  {
+    question: 'What is a rarefaction?',
+    options: [
+      { text: 'A place in a longitudinal wave where the particles are far apart', correct: true, why: 'Where they are close together is a compression.' },
+      { text: 'A place where the particles are close together', why: 'This is a compression.' },
+      { text: 'The top of a transverse wave', why: 'This is a crest.' },
+      { text: 'The speed of a wave', why: 'A rarefaction is a place where the particles are far apart.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A duck sits on a pond. A wave passes. What does the duck do?',
+    options: [
+      { text: 'It moves up and down, and stays in about the same place', correct: true, why: 'Waves transfer energy, not matter.' },
+      { text: 'It travels across the pond with the wave', why: 'The wave does not carry the water (or the duck) with it.' },
+      { text: 'It does not move at all', why: 'It moves up and down as the wave passes.' },
+      { text: 'It moves backwards', why: 'It moves up and down.' },
+    ],
+  },
+  {
+    question: 'Seismic P-waves are…',
+    options: [
+      { text: 'longitudinal', correct: true, why: 'Like sound: the vibration is along the direction of travel.' },
+      { text: 'transverse', why: 'S-waves are transverse. P-waves are longitudinal.' },
+      { text: 'not waves', why: 'They are waves that travel through the Earth.' },
+      { text: 'electromagnetic', why: 'They are longitudinal waves in the Earth.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Draw a transverse wave and a longitudinal wave. On each drawing, add one arrow for the vibration and one arrow for the direction of travel. Label a compression and a rarefaction on the longitudinal wave.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 22 min, slinky and simulation 18 min, check 10 min, exit ticket 5 min.
+
+**Syllabus wording:** the syllabus says water waves, electromagnetic waves and S-waves *can be modelled as* transverse, and sound and P-waves *can be modelled as* longitudinal. (Real water waves are a little more complex: the water particles move in small circles.)
+
+**Note:** the words *compression* and *rarefaction* are in the syllabus under sound (3.4 S10, Extended). We introduce them here because they help all students to picture a longitudinal wave; Core students are not tested on them.
+
+**Common mistakes:**
+
+- "The wave carries the water with it."
+- Mixing up *parallel* and *at right angles*. Use arms: one arm for the vibration, one arm for the direction of travel.
+- Drawing a longitudinal wave as a curve.
+
+**Language support:**
+
+- *transverse* = across; *longitudinal* = along (like *longitude* lines on a map, which go along the Earth).
+- *parallel* = along the same line, like railway tracks.
+
+**Differentiation:**
+
+- Support: a matching task: picture → transverse or longitudinal.
+- Stretch: in an earthquake, P-waves arrive before S-waves. What does this tell you about their speeds?
+
+**Safety:** slinky springs can snap back and hurt. Do not let go of a stretched spring.
+
+</Step>

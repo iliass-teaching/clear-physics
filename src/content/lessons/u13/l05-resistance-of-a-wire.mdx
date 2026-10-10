@@ -1,0 +1,118 @@
+---
+unit: 13
+lesson: 5
+title: Resistance of a wire
+syllabus: ['4.2.4 C3', '4.2.4 S5']
+goals:
+  - Describe how the resistance of a metal wire depends on its length and its cross-sectional area.
+  - 'Extended: use the proportional relationships for length and area.'
+keyWords: [resistance, cross-sectional area, ohm, electrical conductor]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { wireResistanceSvg } from '../../../lib/electricFigures';
+
+<Step kind="starter" title="Busy corridors" minutes={5}>
+
+Students walk through a corridor. Is it easier to get through a **long** corridor or a **short** one? A **wide** corridor or a **narrow** one? Link your answer to electrons in a wire.
+
+</Step>
+
+<Step kind="learn" title="Length and thickness" minutes={12}>
+
+For a wire of one metal, at a constant temperature:
+
+- A **longer** wire has a **bigger** resistance. (The electrons collide with more ions on the way.)
+- A **thicker** wire (a bigger **cross-sectional area**) has a **smaller** resistance. (There is more space for the electrons to flow.)
+
+<Figure svg={wireResistanceSvg()} caption="How length and area change the resistance of a wire." width="30rem" />
+
+**Extended: the relationships**
+
+- Resistance is **directly proportional** to length: $R \propto L$. Double the length → double the resistance.
+- Resistance is **inversely proportional** to cross-sectional area: $R \propto \dfrac{1}{A}$. Double the area → half the resistance.
+
+**Careful with diameter:** the cross-section of a wire is a circle: $A = \pi r^2$. **Twice** the diameter gives **4 times** the area, so **a quarter** of the resistance.
+
+</Step>
+
+<Step kind="do" title="Investigate length" minutes={18}>
+
+**Equipment:** a 1 m length of thin constantan (or nichrome) wire taped to a metre rule, two crocodile clips, a cell, an ammeter, a voltmeter, leads.
+
+1. Connect one clip at 0 cm. Connect the other clip at 10 cm.
+2. Measure $V$ and $I$. Calculate $R = \dfrac{V}{I}$.
+3. Repeat at 20, 30, … 100 cm.
+4. Plot a graph of $R$ (vertical axis) against length (horizontal axis).
+
+**Questions:**
+
+1. What shape is your graph? Does it go through the origin?
+2. What does this tell you about $R$ and the length?
+3. Predict the resistance of 1 m of a wire with twice the cross-sectional area.
+
+**Safety:** the wire can get hot: keep the current small and switch off between readings.
+
+</Step>
+
+<Step kind="practice" title="Practice (Extended)" minutes={17}>
+
+<Practice topic="wire-resistance" />
+
+**Core students:** answer the quiz below, then do level 1 of the practice.
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={8}>
+
+<Quiz questions={[
+  {
+    question: 'Which wire (same metal) has the biggest resistance?',
+    options: [
+      { text: 'long and thin', correct: true, why: 'Longer: more resistance. Thinner: more resistance.' },
+      { text: 'short and thick', why: 'This has the smallest resistance.' },
+      { text: 'long and thick', why: 'Thinner would give more resistance.' },
+      { text: 'short and thin', why: 'Longer would give more resistance.' },
+    ],
+  },
+  {
+    question: 'Extended: a wire has a resistance of 6 Ω. What is the resistance of a wire of the same metal, twice as long and with twice the cross-sectional area?',
+    options: [
+      { text: '6 Ω', correct: true, why: '× 2 for the length, ÷ 2 for the area.' },
+      { text: '12 Ω', why: 'The bigger area halves the resistance.' },
+      { text: '3 Ω', why: 'The longer length doubles the resistance.' },
+      { text: '24 Ω', why: 'Length: multiply. Area: divide.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** the qualitative relationships (4.2.4 C3) are Core. The proportional relationships (S5) are Extended.
+
+**Timing:** starter 5 min, learn 12 min, investigation 18 min, practice 17 min, exit ticket 8 min.
+
+**Practical tips:** constantan wire (about 0.3 mm diameter) gives resistances of a few ohms per metre. Use a single cell. Contact resistance at the clips can give a small intercept.
+
+**Common mistakes:**
+
+- "A thicker wire has more resistance because there is more metal."
+- Twice the diameter → half the resistance (it is a quarter).
+
+**Language support:**
+
+- *directly proportional*: when one doubles, the other doubles.
+- *inversely proportional*: when one doubles, the other halves.
+
+**Differentiation:**
+
+- Support: give the results table with lengths already filled.
+- Stretch: why are the cables for a kettle thicker than the cables for a lamp?
+
+</Step>

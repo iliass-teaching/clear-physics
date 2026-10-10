@@ -1,0 +1,186 @@
+---
+unit: 11
+lesson: 5
+title: Sound waves
+syllabus: ['3.4 C1–C5', '3.4 S10', '3.4 S11']
+goals:
+  - Describe how vibrating objects make sound, and why sound is a longitudinal wave.
+  - Know the range of human hearing and the speed of sound in air.
+  - Know that sound needs a medium.
+  - 'Extended: describe compressions and rarefactions, and compare the speed of sound in solids, liquids and gases.'
+keyWords: [vibration, longitudinal wave, compression, rarefaction, medium, frequency]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { soundCompressionSvg } from '../../../lib/emSoundFigures';
+
+<Step kind="starter" title="Feel the sound" minutes={5}>
+
+Put your fingers gently on your throat and hum. What do you feel? Now touch a loudspeaker playing music (gently). What do you feel?
+
+</Step>
+
+<Step kind="learn" title="How sound is made and how it travels" minutes={14}>
+
+- Sound is made by **vibrating** objects: a guitar string, your vocal cords, a loudspeaker cone.
+- The vibrating object pushes and pulls the air particles next to it. They push the next particles, and so on. The **energy** travels, but the air does not travel with it.
+- The particles vibrate **along** the direction the sound travels: sound is a **longitudinal** wave.
+
+<Figure svg={soundCompressionSvg()} caption="A loudspeaker makes compressions and rarefactions in the air." width="34rem" />
+
+**Extended:**
+
+- A **compression** is a region where the air particles are **close together** (higher pressure).
+- A **rarefaction** is a region where the particles are **further apart** (lower pressure).
+
+</Step>
+
+<Step kind="learn" title="Key facts about sound" minutes={10}>
+
+- **Human hearing:** about **20 Hz to 20 000 Hz** (20 kHz). Older people often cannot hear the highest frequencies.
+- **Sound needs a medium** (a solid, a liquid or a gas). It **cannot** travel through a vacuum, so it cannot travel through space.
+- **Speed of sound in air:** about **330–350 m/s** (it depends on the temperature). We often use 340 m/s.
+
+**Extended: speed in different materials.** In general, sound travels faster in **solids** than in **liquids**, and faster in **liquids** than in **gases**:
+
+<div class="table-wrap">
+
+| Material | Speed of sound (about) |
+|---|---|
+| air | 340 m/s |
+| water | 1500 m/s |
+| steel | 5000–6000 m/s |
+
+</div>
+
+Compare light: $3.0 \times 10^8$ m/s, almost a million times faster than sound in air. This is why you see lightning before you hear the thunder.
+
+</Step>
+
+<Step kind="do" title="The bell in a jar" minutes={13}>
+
+**Demonstration:** an electric bell rings inside a glass bell jar. A vacuum pump slowly removes the air.
+
+1. Listen as the air is pumped out. What happens to the sound?
+2. Can you still **see** the hammer hitting the bell? What does this tell you about light?
+3. Let the air back in. What happens?
+
+If you do not have the apparatus, watch a video of the experiment, and answer the same questions.
+
+**Then:** put your ear on the table. A partner taps the other end gently. Is the sound louder through the table or through the air?
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={13}>
+
+<Quiz questions={[
+  {
+    question: 'What makes a sound?',
+    options: [
+      { text: 'a vibrating object', correct: true, why: 'For example a string, a loudspeaker or your vocal cords.' },
+      { text: 'light', why: 'Sound is made by vibrations.' },
+      { text: 'a vacuum', why: 'Sound cannot travel in a vacuum.' },
+      { text: 'electricity only', why: 'Any vibrating object can make sound.' },
+    ],
+  },
+  {
+    question: 'Why can sound not travel through space?',
+    options: [
+      { text: 'Space is a vacuum: there are no particles to pass on the vibrations', correct: true, why: 'Sound needs a medium.' },
+      { text: 'Space is too cold', why: 'The reason is that there is no medium.' },
+      { text: 'Sound is too slow', why: 'Sound needs a medium.' },
+      { text: 'Space is too dark', why: 'Light does not matter for sound.' },
+    ],
+  },
+  {
+    question: 'What is the range of human hearing?',
+    options: [
+      { text: 'about 20 Hz to 20 000 Hz', correct: true, why: '20 kHz = 20 000 Hz.' },
+      { text: 'about 0 Hz to 100 Hz', why: 'We hear much higher frequencies.' },
+      { text: 'about 20 000 Hz to 100 000 Hz', why: 'Above 20 000 Hz is ultrasound.' },
+      { text: 'all frequencies', why: 'We hear about 20 Hz to 20 000 Hz.' },
+    ],
+  },
+  {
+    question: 'What type of wave is sound?',
+    options: [
+      { text: 'longitudinal', correct: true, why: 'The particles vibrate along the direction of travel.' },
+      { text: 'transverse', why: 'Light and water waves are transverse.' },
+      { text: 'electromagnetic', why: 'Sound is a mechanical wave: it needs a medium.' },
+      { text: 'it is not a wave', why: 'Sound is a longitudinal wave.' },
+    ],
+  },
+  {
+    question: 'Extended: in which material is sound the fastest?',
+    options: [
+      { text: 'steel', correct: true, why: 'In general: solids > liquids > gases.' },
+      { text: 'water', why: 'Sound is faster in solids.' },
+      { text: 'air', why: 'Sound is slowest in gases.' },
+      { text: 'a vacuum', why: 'Sound cannot travel in a vacuum.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'What is the approximate speed of sound in air?',
+    options: [
+      { text: '330–350 m/s', correct: true, why: 'We often use 340 m/s.' },
+      { text: '$3.0 \\times 10^8$ m/s', why: 'This is the speed of light.' },
+      { text: '1500 m/s', why: 'This is about the speed of sound in water.' },
+      { text: '30 m/s', why: 'Sound in air: about 340 m/s.' },
+    ],
+  },
+  {
+    question: 'Extended: what is a compression?',
+    options: [
+      { text: 'a region where the particles are close together', correct: true, why: 'Where they are far apart is a rarefaction.' },
+      { text: 'a region where the particles are far apart', why: 'This is a rarefaction.' },
+      { text: 'the top of a transverse wave', why: 'This is a crest.' },
+      { text: 'a vacuum', why: 'A compression is a region of particles close together.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+You see a flash of lightning. You hear the thunder 3 seconds later. How far away is the storm? (Use 340 m/s. Light arrives almost at once.)
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** 3.4 C1–C5 are Core. Compression and rarefaction (S10) and the speed in solids, liquids and gases (S11) are Extended.
+
+**Timing:** starter 5 min, learn 24 min, demonstration 13 min, check 13 min, exit ticket 5 min.
+
+**Values:** air about 340 m/s at room temperature (the syllabus says 330–350 m/s); water about 1500 m/s; steel about 5000–6000 m/s. These are typical values; the syllabus only asks for the order solid > liquid > gas.
+
+**Common mistakes:**
+
+- "Sound is faster in air because air is lighter."
+- "Sound travels in space."
+- Confusing sound waves with electromagnetic waves (radio).
+
+**Language support:**
+
+- *vocal cords* = the parts in your throat that vibrate when you speak.
+- *medium* = the material a wave travels through.
+
+**Differentiation:**
+
+- Support: sentence cards to order: "The cone vibrates → it pushes the air particles → … ".
+- Stretch: why does the bell jar never become completely silent? (The bell touches the base; the vacuum is not perfect.)
+
+**Safety:** the bell jar is under low pressure: use a safety screen.
+
+</Step>

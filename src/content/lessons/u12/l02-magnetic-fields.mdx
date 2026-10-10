@@ -1,0 +1,170 @@
+---
+unit: 12
+lesson: 2
+title: Magnetic fields
+syllabus: ['4.1 C5–C8', '4.1 S10', '4.1 S11']
+goals:
+  - Describe a magnetic field.
+  - Draw the field lines around a bar magnet, with their direction.
+  - Describe how to plot field lines with a compass or with iron filings.
+  - 'Extended: link the spacing of field lines to the strength of the field.'
+keyWords: [magnetic field, field line, compass, magnetic pole]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import MagnetSim from '../../../components/MagnetSim.astro';
+import { magnetFieldSvg } from '../../../lib/magnetField';
+
+<Step kind="starter" title="An invisible force" minutes={5}>
+
+Hold a magnet under a table. Move it. A paper clip on the table moves too, without being touched. What is around the magnet?
+
+</Step>
+
+<Step kind="learn" title="The magnetic field" minutes={14}>
+
+A **magnetic field** is a **region** around a magnet where a **magnetic pole feels a force**.
+
+We draw the field with **field lines**:
+
+<Figure svg={magnetFieldSvg('one', 'Magnetic field lines around a bar magnet, from N to S')} caption="The magnetic field of a bar magnet." width="34rem" />
+
+- Outside the magnet, field lines go **from N to S**.
+- The **direction** of the field at a point is the direction of the **force on a N pole** at that point. A compass needle's north end points along the field.
+- Field lines **never cross**.
+- **Extended:** where the lines are **closer together**, the field is **stronger** (near the poles).
+
+</Step>
+
+<Step kind="do" title="Plot the field" minutes={18}>
+
+**With a compass:**
+
+1. Put a bar magnet on a sheet of paper. Draw around it.
+2. Put a small plotting compass near the N pole. Mark a dot at the end the needle points to.
+3. Move the compass so its other end is on the dot. Mark the next dot. Repeat until you reach the S pole.
+4. Join the dots: this is one field line. Add an arrow (N → S). Repeat from other starting points.
+
+**With iron filings:** put a sheet of paper on the magnet. Sprinkle iron filings and tap the paper gently. The filings line up along the field lines. (They show the **pattern**, but not the **direction**.)
+
+**In the simulation:** drag the compass around the magnet. Then tick "show many compasses" and "show the field lines".
+
+<MagnetSim />
+
+</Step>
+
+<Step kind="learn" title="Two magnets (Extended)" minutes={8}>
+
+<div class="graph-grid">
+<Figure svg={magnetFieldSvg('attract', 'Field lines between a N pole and a S pole: they go across the gap')} caption="N facing S: the lines join the two magnets (attraction)." />
+<Figure svg={magnetFieldSvg('repel', 'Field lines between two N poles: they push away from each other, with a neutral point in the middle')} caption="N facing N: the lines push apart (repulsion)." />
+</div>
+
+**Magnetic forces are caused by the interaction between magnetic fields.** Between two N poles, the fields push against each other: there is a **neutral point** in the middle, where the field is zero.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={10}>
+
+<Quiz questions={[
+  {
+    question: 'What is a magnetic field?',
+    options: [
+      { text: 'A region where a magnetic pole feels a force', correct: true, why: 'This is the definition.' },
+      { text: 'The N pole of a magnet', why: 'The field is the region around the magnet.' },
+      { text: 'A line from N to S', why: 'That is a field line, which shows the field.' },
+      { text: 'A region where a charge feels a force', why: 'That is an electric field.' },
+    ],
+  },
+  {
+    question: 'Outside a bar magnet, the field lines go…',
+    options: [
+      { text: 'from N to S', correct: true, why: 'The direction of the force on a N pole.' },
+      { text: 'from S to N', why: 'Outside the magnet: N to S.' },
+      { text: 'in circles around the middle', why: 'They go from N to S.' },
+      { text: 'they have no direction', why: 'They go from N to S.' },
+    ],
+  },
+  {
+    question: 'Which way does the north end of a compass needle point?',
+    options: [
+      { text: 'in the direction of the magnetic field', correct: true, why: 'The direction of the force on a N pole.' },
+      { text: 'towards the N pole of the magnet', why: 'It points away from N and towards S.' },
+      { text: 'always to the top of the page', why: 'It follows the field.' },
+      { text: 'at 90° to the field', why: 'It points along the field.' },
+    ],
+  },
+  {
+    question: 'Extended: where is the field of a bar magnet strongest?',
+    options: [
+      { text: 'near the poles, where the lines are closest together', correct: true, why: 'Closer lines: stronger field.' },
+      { text: 'far from the magnet', why: 'The lines are far apart there: weak field.' },
+      { text: 'in the middle of the long side', why: 'The field is strongest at the poles.' },
+      { text: 'it is the same everywhere', why: 'The spacing of the lines changes.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Iron filings show the pattern of a magnetic field. What do they NOT show?',
+    options: [
+      { text: 'the direction of the field', correct: true, why: 'Use a compass to find the direction.' },
+      { text: 'the shape of the field lines', why: 'Filings show the shape.' },
+      { text: 'where the poles are', why: 'Filings collect near the poles.' },
+      { text: 'where the field is strong', why: 'Filings collect where the field is strong.' },
+    ],
+  },
+  {
+    question: 'Can two field lines cross?',
+    options: [
+      { text: 'No: the field has only one direction at each point', correct: true, why: 'So the lines never cross.' },
+      { text: 'Yes, near the poles', why: 'They never cross.' },
+      { text: 'Yes, in the middle', why: 'They never cross.' },
+      { text: 'Only with two magnets', why: 'They never cross.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Draw the magnetic field lines around a bar magnet, with arrows. Then draw the field between two magnets with their N poles facing each other, and mark the neutral point.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** 4.1 C5–C8 are Core. Forces as interactions between fields (S10) and spacing of lines (S11) are Extended.
+
+**Timing:** starter 5 min, learn 14 min, plotting and simulation 18 min, two magnets 8 min, check 10 min, exit ticket 5 min.
+
+**About the simulation:** the field is computed from a simple model (each pole acts like a point source). The patterns are realistic outside the magnets. Inside a real magnet, the field goes from S to N; the model does not show the inside.
+
+**Common mistakes:**
+
+- Arrows from S to N.
+- Field lines that cross or that start in the air.
+- "The compass needle points to the N pole of the magnet."
+
+**Language support:**
+
+- *field* here means "a region where a force acts".
+- *plot* = mark points and join them.
+
+**Differentiation:**
+
+- Support: a printed magnet outline with the compass positions marked.
+- Stretch: the Earth behaves like a big bar magnet. A compass N pole points to the Earth's geographic north. So what kind of magnetic pole is near the geographic North Pole? (A magnetic S pole.)
+
+**Safety:** iron filings: do not touch the eyes; put a sheet of paper or plastic between the filings and the magnet.
+
+</Step>

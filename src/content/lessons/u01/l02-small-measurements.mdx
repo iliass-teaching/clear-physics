@@ -1,0 +1,176 @@
+---
+unit: 1
+lesson: 2
+title: Measuring very small things
+syllabus: ['1.1 C3']
+goals:
+  - Measure a small thickness by measuring a stack.
+  - Measure a short time by timing many oscillations of a pendulum.
+  - Calculate the mean of repeated readings.
+keyWords: [oscillation, period, mean, reading, reaction time]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="One page" minutes={5}>
+
+Measure the thickness of **one page** of your book with a ruler.
+
+Can you do it? What is the problem?
+
+</Step>
+
+<Step kind="learn" title="Measure many, then divide" minutes={15}>
+
+Some things are too small to measure one by one:
+
+- One page is thinner than 1 mm, the smallest line on a ruler.
+- One swing of a pendulum is short. Your **reaction time** (about 0.2 s) is big compared to it.
+
+**The method:** measure many of them together. Then divide by how many there are.
+
+### A small thickness
+
+<WorkedExample
+  question="A stack of 200 pages is 1.8 cm thick. Calculate the thickness of one page in mm."
+  given={['number of pages $= 200$', 'thickness of the stack $= 1.8\\,\\text{cm}$']}
+  find="the thickness of one page, in mm"
+  answer="$0.09\,\text{mm}$"
+>
+
+Change cm to mm: $1.8\,\text{cm} = 18\,\text{mm}$
+
+$\text{thickness of one page} = \dfrac{18}{200} = 0.09\,\text{mm}$
+
+</WorkedExample>
+
+### A short time: the pendulum
+
+One **oscillation** is one full swing: from one side to the other side, and back again.
+The **period** is the time for one oscillation.
+
+1. Start the stopwatch when the pendulum passes the middle. Count "zero".
+2. Count each time it passes the middle **in the same direction**: 1, 2, 3 …
+3. Stop the stopwatch at 20.
+4. $\text{period} = \dfrac{\text{time for 20 oscillations}}{20}$
+
+**Why 20?** Your reaction time adds an error of about 0.2 s. For 20 oscillations, the same error is shared by 20. So the error for one oscillation is 20 times smaller.
+
+### Repeat and find the mean
+
+Do the measurement 3 times. Then find the **mean**: add the readings and divide by 3.
+
+<WorkedExample
+  question="A student times 20 oscillations three times. Calculate the mean period."
+  given={['times for 20 oscillations: $28.2\\,\\text{s},\\ 28.6\\,\\text{s},\\ 28.4\\,\\text{s}$']}
+  find="the mean period"
+  answer="$1.42\,\text{s}$"
+>
+
+$\text{mean time} = \dfrac{28.2 + 28.6 + 28.4}{3} = 28.4\,\text{s}$
+
+$\text{period} = \dfrac{28.4}{20} = 1.42\,\text{s}$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="do" title="The period of a pendulum" minutes={20}>
+
+**Equipment:** clamp stand, string (about 50 cm), a small mass (the bob), stopwatch.
+
+1. Hang the pendulum from the clamp stand. Put the stand near the edge of the table, with a heavy weight on its base.
+2. Pull the bob a small distance to the side (about 10 cm). Let it go.
+3. Time **1** oscillation. Do it 3 times.
+4. Time **20** oscillations. Do it 3 times.
+5. Find the period from each method.
+
+<div class="table-wrap">
+
+| | reading 1 / s | reading 2 / s | reading 3 / s | mean / s | period / s |
+|---|---|---|---|---|---|
+| 1 oscillation | | | | | |
+| 20 oscillations | | | | | |
+
+</div>
+
+**Question:** which method gives readings that are closer together? Why?
+*Start your answer like this: "The method with 20 oscillations is better because …"*
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={15}>
+
+<Practice topic="multiples" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A pendulum makes 10 oscillations in 15.0 s. What is its period?',
+    options: [
+      { text: '1.5 s', correct: true, why: '$\\text{period} = \\dfrac{15.0}{10} = 1.5\\,\\text{s}$.' },
+      { text: '150 s', why: 'You multiplied. Divide the total time by the number of oscillations.' },
+      { text: '0.67 s', why: 'You divided the wrong way: total time ÷ number of oscillations.' },
+      { text: '15.0 s', why: 'This is the time for 10 oscillations. Divide by 10.' },
+    ],
+  },
+  {
+    question: 'Why do we time 20 oscillations, not just 1?',
+    options: [
+      { text: 'To make the effect of reaction time smaller', correct: true, why: 'The reaction time error is shared by 20 oscillations.' },
+      { text: 'To make the period longer', why: 'The period does not change. Only the error gets smaller.' },
+      { text: 'Because the pendulum is too fast to see', why: 'We can see it. The problem is our reaction time.' },
+      { text: 'To make the pendulum swing faster', why: 'Counting does not change how the pendulum swings.' },
+    ],
+  },
+  {
+    question: 'A stack of 50 cards is 0.5 cm thick. What is the thickness of one card?',
+    options: [
+      { text: '0.1 mm', correct: true, why: '$0.5\\,\\text{cm} = 5\\,\\text{mm}$, and $\\dfrac{5}{50} = 0.1\\,\\text{mm}$.' },
+      { text: '0.01 mm', why: '$\\dfrac{0.5}{50} = 0.01$, but this is in cm. In mm it is 0.1 mm.' },
+      { text: '1 mm', why: 'Check: $0.5\\,\\text{cm} = 5\\,\\text{mm}$, then divide by 50.' },
+      { text: '25 mm', why: 'You multiplied. Divide by the number of cards.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Measure the thickness of one page of a book at home. Write your method in 3 steps.
+2. Do 5 questions at **Level 3** of the practice.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 15 min, practical 20 min, practice 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Counting "1" when starting the stopwatch, so the count is one too high.
+- Counting each pass of the middle in both directions (this counts half oscillations).
+- Forgetting to divide by the number of oscillations after finding the mean.
+- Mixing cm and mm in the thickness calculation.
+
+**Language support:**
+
+- Show one oscillation with your arm while you say the word.
+- Write "measure many → divide" on the board as the key idea.
+
+**Differentiation:**
+
+- Support: use 10 oscillations and numbers that divide easily.
+- Stretch: does the period change if you use a heavier bob, or a longer string? Make a prediction, then test it.
+
+**Safety:** put a heavy weight on the base of the clamp stand so it cannot fall.
+
+</Step>

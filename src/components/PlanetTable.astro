@@ -1,0 +1,46 @@
+---
+// Table of planetary data (NASA Planetary Fact Sheet), with a choice of columns.
+import { planets } from '../data/planets';
+import { renderMath } from '../lib/math';
+
+type Column = 'distance' | 'period' | 'orbitalSpeed' | 'density' | 'temperature' | 'g' | 'diameter' | 'type';
+
+interface Props {
+  columns: Column[];
+}
+
+const headings: Record<Column, string> = {
+  distance: 'distance from the Sun / 10⁶ km',
+  period: 'orbital period / days',
+  orbitalSpeed: 'orbital speed / (km/s)',
+  density: 'density / (kg/m³)',
+  temperature: 'mean surface temperature / °C',
+  g: '$g$ at the surface / (N/kg)',
+  diameter: 'diameter / km',
+  type: 'type',
+};
+
+const { columns } = Astro.props;
+---
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>planet</th>
+        {columns.map((c) => <th set:html={renderMath(headings[c])} />)}
+      </tr>
+    </thead>
+    <tbody>
+      {
+        planets.map((p) => (
+          <tr>
+            <td>{p.name}</td>
+            {columns.map((c) => <td>{p[c]}</td>)}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+<p class="small muted">Data: NASA Planetary Fact Sheet.</p>

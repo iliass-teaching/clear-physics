@@ -1,0 +1,65 @@
+---
+// Virtual practical: a converging lens (focal length 10 cm). Move the object and watch the image.
+// The ray diagram is drawn with the three standard rays; the image is described with the exam words.
+---
+
+<div class="lens-sim" data-lens-sim>
+  <div class="drawing"></div>
+  <div class="controls">
+    <label>
+      object distance <input type="range" class="u" min="4" max="35" step="1" value="26" />
+      <output class="u-out">26 cm</output>
+    </label>
+  </div>
+  <p class="readout" aria-live="polite"></p>
+  <p class="small muted">The focal length of the lens is 10 cm. F is the principal focus, 2F is at twice the focal length.</p>
+</div>
+
+<script>
+  import { lensDiagram } from '../lib/lightFigures';
+
+  const F_CM = 10;
+
+  document.querySelectorAll<HTMLElement>('[data-lens-sim]').forEach((root) => {
+    const drawing = root.querySelector<HTMLElement>('.drawing')!;
+    const slider = root.querySelector<HTMLInputElement>('.u')!;
+    const out = root.querySelector<HTMLOutputElement>('.u-out')!;
+    const readout = root.querySelector<HTMLElement>('.readout')!;
+
+    function update(): void {
+      const ucm = Number(slider.value);
+      out.textContent = `${ucm} cm`;
+      const { svg, v, m } = lensDiagram(ucm / F_CM, { width: 640 });
+      drawing.innerHTML = svg;
+      if (!Number.isFinite(v)) {
+        readout.innerHTML = 'The object is <strong>at F</strong>: the rays leave the lens parallel. <strong>No image</strong> is formed (or it is "at infinity").';
+        return;
+      }
+      const real = v > 0;
+      const size = Math.abs(m) > 1.05 ? 'enlarged' : Math.abs(m) < 0.95 ? 'diminished' : 'same size';
+      const words = [real ? 'real' : 'virtual', m < 0 ? 'inverted' : 'upright', size];
+      const where = real
+        ? `on the other side of the lens, ${(v * F_CM).toFixed(1)} cm from it. You can catch it on a screen.`
+        : `on the same side as the object, ${(-v * F_CM).toFixed(1)} cm from the lens. You cannot catch it on a screen: look through the lens to see it.`;
+      readout.innerHTML = `Image: <strong>${words.join(', ')}</strong>, ${where}`;
+    }
+
+    slider.addEventListener('input', update);
+    update();
+  });
+</script>
+
+<style>
+  .lens-sim {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .drawing :global(svg) { width: 100%; height: auto; display: block; }
+  .controls label { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.6rem; }
+  .controls output { font-variant-numeric: tabular-nums; min-width: 3.5rem; }
+  .controls input { flex: 1; min-width: 12rem; }
+  .readout { margin: 0.8rem 0 0.2rem; }
+</style>

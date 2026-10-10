@@ -1,0 +1,152 @@
+---
+unit: 15
+lesson: 2
+title: Electromagnets, relays and loudspeakers
+syllabus: ['4.5.3 C3']
+goals:
+  - Describe how a relay uses the magnetic effect of a current, with examples.
+  - Describe how a loudspeaker uses the magnetic effect of a current.
+keyWords: [electromagnet, relay, solenoid, alternating current, temporary magnet]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { relaySvg, loudspeakerSvg } from '../../../lib/emEffectsFigures';
+
+<Step kind="starter" title="Build an electromagnet" minutes={10}>
+
+Wrap 20 turns of insulated wire around an iron nail. Connect it to a cell (briefly). How many paper clips can it pick up? Try with 40 turns. Switch off: what happens to the paper clips?
+
+</Step>
+
+<Step kind="learn" title="Electromagnets" minutes={8}>
+
+An **electromagnet** is a solenoid with a **soft-iron core**. The iron makes the field much stronger.
+
+- It is magnetic **only when the current is on**: soft iron is a temporary magnet (Unit 12).
+- It is **stronger** with more current, more turns, and an iron core.
+
+</Step>
+
+<Step kind="learn" title="The relay" minutes={12}>
+
+<Figure svg={relaySvg()} caption="A relay: an electromagnetic switch." width="32rem" />
+
+1. A **small current** flows in the coil of the relay.
+2. The coil and its iron core become an electromagnet.
+3. It pulls the **iron armature**, which closes the **contacts** of a second circuit.
+4. A **big current** can now flow in the second circuit.
+
+**Why use a relay?** A small, safe current (for example from a sensor circuit, or a switch in a car) can switch on a big current (for example a car starter motor, a big motor in a factory, or a mains appliance). The two circuits are separate: this is safer.
+
+</Step>
+
+<Step kind="learn" title="The loudspeaker" minutes={12}>
+
+<Figure svg={loudspeakerSvg()} caption="A loudspeaker." width="30rem" />
+
+1. An **alternating current** (from the amplifier) flows in the **coil**.
+2. The coil is in the field of a **permanent magnet**, so it feels a **force**.
+3. The current changes direction again and again, so the force changes direction: the coil and the **cone** move **in and out**.
+4. The vibrating cone makes the air vibrate: **sound** waves.
+
+A bigger current gives a bigger vibration (a louder sound). A higher frequency of current gives a higher pitch.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={13}>
+
+<Quiz questions={[
+  {
+    question: 'Why does an electromagnet have a soft-iron core?',
+    options: [
+      { text: 'Iron makes the field much stronger, and soft iron loses its magnetism when the current stops', correct: true, why: 'A temporary magnet.' },
+      { text: 'Iron is an insulator', why: 'Iron is a magnetic material (and a conductor).' },
+      { text: 'Soft iron keeps its magnetism for ever', why: 'That is steel.' },
+      { text: 'To make it lighter', why: 'The reason is magnetic.' },
+    ],
+  },
+  {
+    question: 'In a relay, what closes the contacts of the second circuit?',
+    options: [
+      { text: 'The electromagnet pulls the iron armature', correct: true, why: 'The armature pushes the contacts together.' },
+      { text: 'A person presses them', why: 'The relay works automatically.' },
+      { text: 'Heat from the coil', why: 'It is a magnetic effect.' },
+      { text: 'A spring only', why: 'The electromagnet pulls the armature.' },
+    ],
+  },
+  {
+    question: 'Give one use of a relay.',
+    options: [
+      { text: 'A small current from the ignition switch starts a car’s starter motor', correct: true, why: 'The starter motor needs a very big current.' },
+      { text: 'Measuring a current', why: 'That is an ammeter.' },
+      { text: 'Making sound', why: 'That is a loudspeaker.' },
+      { text: 'Changing a.c. to a bigger p.d.', why: 'That is a transformer.' },
+    ],
+  },
+  {
+    question: 'Why does the cone of a loudspeaker vibrate?',
+    options: [
+      { text: 'The alternating current makes the force on the coil change direction again and again', correct: true, why: 'The coil is in the field of a permanent magnet.' },
+      { text: 'Sound waves push it', why: 'The cone makes the sound waves.' },
+      { text: 'The magnet vibrates', why: 'The coil and cone move; the magnet is fixed.' },
+      { text: 'The current is direct', why: 'It is alternating.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'An electromagnet is switched off. What happens to the paper clips it was holding?',
+    options: [
+      { text: 'They fall', correct: true, why: 'The soft-iron core loses its magnetism.' },
+      { text: 'They stay', why: 'Soft iron is a temporary magnet.' },
+      { text: 'They become electromagnets', why: 'With no current, there is no electromagnet.' },
+      { text: 'They are repelled', why: 'There is no force: they fall.' },
+    ],
+  },
+  {
+    question: 'Name two ways to make an electromagnet stronger.',
+    options: [
+      { text: 'more current; more turns', correct: true, why: 'An iron core also helps.' },
+      { text: 'a thinner wire; a plastic core', why: 'More current, more turns, an iron core.' },
+      { text: 'fewer turns; less current', why: 'This makes it weaker.' },
+      { text: 'a steel core; no current', why: 'It needs a current.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core:** 4.5.3 C3.
+
+**Timing:** starter 10 min, electromagnets 8 min, relay 12 min, loudspeaker 12 min, check 13 min, exit ticket 5 min.
+
+**Demonstration:** connect a loudspeaker (without its amplifier) to a signal generator at low frequency (2–5 Hz) and low power: the cone visibly moves in and out.
+
+**Common mistakes:**
+
+- "The relay coil is connected to the big current." (The circuits are separate.)
+- "The magnet in a loudspeaker vibrates."
+
+**Language support:**
+
+- *armature* = the moving iron part.
+- *contacts* = two metal parts that touch to complete a circuit.
+
+**Differentiation:**
+
+- Support: label the relay diagram with five given words.
+- Stretch: draw a circuit where a thermistor and a relay switch on a fan when it gets hot.
+
+**Safety:** the wire on the nail gets hot; use a cell, not a power supply, and switch on briefly.
+
+</Step>

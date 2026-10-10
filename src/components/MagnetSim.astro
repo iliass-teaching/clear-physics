@@ -1,0 +1,150 @@
+---
+// Virtual practical: plot the magnetic field with a compass.
+// Drag the compass around the magnet(s). The red end of the needle (its N pole) points along the field.
+// Options: one magnet, two magnets that attract, two magnets that repel; show the field lines; show many compasses.
+---
+
+<div class="magnet-sim" data-magnet-sim>
+  <p class="setups" role="group" aria-label="Choose the magnets">
+    <button type="button" class="setup" data-setup="one" aria-pressed="true">One magnet</button>
+    <button type="button" class="setup secondary" data-setup="attract" aria-pressed="false">N facing S</button>
+    <button type="button" class="setup secondary" data-setup="repel" aria-pressed="false">N facing N</button>
+  </p>
+  <svg class="fig" viewBox="0 0 600 340" role="img" aria-label="Magnets and a compass. Drag the compass to see the direction of the magnetic field.">
+    <rect class="paper" x="0" y="0" width="600" height="340" />
+    <g class="lines"></g>
+    <g class="many"></g>
+    <g class="mags"></g>
+    <g class="compass" transform="translate(300,80)">
+      <circle r="20" class="body" />
+      <g class="needle">
+        <polygon points="0,-3.5 15,0 0,3.5" class="north" />
+        <polygon points="0,-3.5 -15,0 0,3.5" class="south" />
+      </g>
+      <circle r="2.5" class="pin" />
+    </g>
+  </svg>
+  <div class="controls">
+    <label class="check"><input type="checkbox" class="show-lines" /> show the field lines</label>
+    <label class="check"><input type="checkbox" class="show-many" /> show many compasses</label>
+  </div>
+  <p class="small muted">Drag the compass (with a mouse or a finger). The red end of the needle is its north pole: it points in the direction of the magnetic field.</p>
+</div>
+
+<script>
+  import { fieldLinesSvg, magnetsSvg, magnets, poles, field, W, H, type Setup } from '../lib/magnetField';
+
+  document.querySelectorAll<HTMLElement>('[data-magnet-sim]').forEach((root) => {
+    const svg = root.querySelector('svg')!;
+    const linesG = root.querySelector<SVGGElement>('.lines')!;
+    const manyG = root.querySelector<SVGGElement>('.many')!;
+    const magsG = root.querySelector<SVGGElement>('.mags')!;
+    const compass = root.querySelector<SVGGElement>('.compass')!;
+    const needle = root.querySelector<SVGGElement>('.needle')!;
+    const showLines = root.querySelector<HTMLInputElement>('.show-lines')!;
+    const showMany = root.querySelector<HTMLInputElement>('.show-many')!;
+    let setup: Setup = 'one';
+    let cx = 300;
+    let cy = 80;
+
+    const angleAt = (x: number, y: number) => {
+      const ps = poles(magnets(setup));
+      const [bx, by] = field(ps, x, y);
+      return (Math.atan2(by, bx) * 180) / Math.PI;
+    };
+
+    function drawCompass(): void {
+      compass.setAttribute('transform', `translate(${cx.toFixed(1)},${cy.toFixed(1)})`);
+      needle.setAttribute('transform', `rotate(${angleAt(cx, cy).toFixed(1)})`);
+    }
+
+    function drawMany(): void {
+      if (!showMany.checked) {
+        manyG.replaceChildren();
+        return;
+      }
+      const ms = magnets(setup);
+      let html = '';
+      for (let x = 30; x < W; x += 45) {
+        for (let y = 25; y < H; y += 45) {
+          if (ms.some((m) => x > m.x - 14 && x < m.x + m.w + 14 && y > m.y - 14 && y < m.y + m.h + 14)) continue;
+          const a = angleAt(x, y);
+          html += `<g transform="translate(${x},${y}) rotate(${a.toFixed(1)})"><polygon points="0,-2.5 10,0 0,2.5" class="north"/><polygon points="0,-2.5 -10,0 0,2.5" class="south"/></g>`;
+        }
+      }
+      manyG.innerHTML = html;
+    }
+
+    function redraw(): void {
+      magsG.innerHTML = magnetsSvg(setup);
+      linesG.innerHTML = showLines.checked ? fieldLinesSvg(setup, 14) : '';
+      drawMany();
+      drawCompass();
+    }
+
+    root.querySelectorAll<HTMLButtonElement>('.setup').forEach((b) =>
+      b.addEventListener('click', () => {
+        setup = b.dataset.setup as Setup;
+        root.querySelectorAll<HTMLButtonElement>('.setup').forEach((x) => {
+          const on = x === b;
+          x.setAttribute('aria-pressed', String(on));
+          x.classList.toggle('secondary', !on);
+        });
+        redraw();
+      }),
+    );
+    showLines.addEventListener('change', redraw);
+    showMany.addEventListener('change', redraw);
+
+    // Dragging the compass.
+    const toSvg = (e: PointerEvent) => {
+      const pt = svg.createSVGPoint();
+      pt.x = e.clientX;
+      pt.y = e.clientY;
+      const p = pt.matrixTransform(svg.getScreenCTM()!.inverse());
+      return [Math.min(W - 22, Math.max(22, p.x)), Math.min(H - 22, Math.max(22, p.y))];
+    };
+    let dragging = false;
+    compass.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      compass.setPointerCapture(e.pointerId);
+      e.preventDefault();
+    });
+    compass.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      [cx, cy] = toSvg(e);
+      drawCompass();
+    });
+    compass.addEventListener('pointerup', () => (dragging = false));
+    // A click (or tap) anywhere also moves the compass there.
+    svg.addEventListener('click', (e) => {
+      if ((e.target as Element).closest('.compass')) return;
+      [cx, cy] = toSvg(e as PointerEvent);
+      drawCompass();
+    });
+
+    redraw();
+
+    // For testing.
+    (root as HTMLElement & { _mag?: unknown })._mag = { angleAt, moveTo: (x: number, y: number) => { cx = x; cy = y; drawCompass(); } };
+  });
+</script>
+
+<style>
+  .magnet-sim {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .setups { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0; }
+  svg { width: 100%; height: auto; display: block; touch-action: none; overflow: hidden; border-radius: 8px; }
+  .paper { fill: var(--bg); }
+  .compass { cursor: grab; }
+  .compass .body { fill: var(--surface); stroke: var(--ink); stroke-width: 2; }
+  .compass .pin { fill: var(--ink); }
+  svg :global(.north) { fill: #d84b3a; }
+  svg :global(.south) { fill: #9aa0a6; }
+  .controls { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-top: 0.6rem; }
+</style>

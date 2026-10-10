@@ -1,0 +1,64 @@
+---
+// All the equations the syllabus asks students to recall and use, grouped by section.
+import { equations, values } from '../data/equations';
+import { renderMath } from '../lib/math';
+import { unitUrl } from '../lib/url';
+
+interface Props {
+  showValues?: boolean;
+}
+const { showValues = true } = Astro.props;
+---
+
+<div class="equation-sheet">
+  {
+    equations.map((g) => (
+      <section>
+        <h3>{g.title}</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Equation</th><th>In words</th><th>Syllabus</th></tr></thead>
+            <tbody>
+              {g.items.map((e) => (
+                <tr>
+                  <td class="eq" set:html={renderMath(`$${e.tex}$`)} />
+                  <td>{e.words} <a class="unit-link" href={unitUrl(e.unit)}>Unit {e.unit}</a></td>
+                  <td class="code">{e.code}{e.ext && <span class="tag ext">Extended</span>}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    ))
+  }
+  {
+    showValues && (
+      <section>
+        <h3>Values to know</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Value</th><th>What it is</th><th>Syllabus</th></tr></thead>
+            <tbody>
+              {values.map((v) => (
+                <tr>
+                  <td class="eq" set:html={renderMath(`$${v.tex}$`)} />
+                  <td>{v.words}</td>
+                  <td class="code">{v.code}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )
+  }
+</div>
+
+<style>
+  .equation-sheet h3 { margin: 1.4rem 0 0.4rem; }
+  .eq { white-space: nowrap; }
+  .code { white-space: nowrap; font-size: 0.85rem; color: var(--ink-soft); }
+  .code :global(.tag) { margin-left: 0.4rem; font-size: 0.68rem; }
+  .unit-link { font-size: 0.8rem; margin-left: 0.3rem; white-space: nowrap; }
+</style>

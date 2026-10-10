@@ -1,0 +1,183 @@
+---
+unit: 12
+lesson: 3
+title: Electric charge
+syllabus: ['4.2.1 C1–C4', '4.2.1 S7']
+goals:
+  - State that there are positive and negative charges, and how they affect each other.
+  - Describe how to charge objects by friction, and how to detect charge.
+  - Explain charging by friction with the transfer of electrons.
+keyWords: [electric charge, electron, electrostatic, attract, repel, coulomb]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { chargesSvg, frictionSvg, electroscopeSvg } from '../../../lib/chargeFigures';
+
+<Step kind="starter" title="A charged balloon" minutes={5}>
+
+Rub a balloon on your hair or on a wool jumper. Hold it near your hair, then near small pieces of paper, then against a wall. What happens? What do you think has changed on the balloon?
+
+</Step>
+
+<Step kind="learn" title="Two kinds of charge" minutes={12}>
+
+There are two kinds of **electric charge**: **positive (+)** and **negative (−)**.
+
+<Figure svg={chargesSvg()} caption="Forces between charges." width="28rem" />
+
+- Positive charges **repel** positive charges.
+- Negative charges **repel** negative charges.
+- Positive charges **attract** negative charges.
+
+All matter is made of atoms. An atom has a positive **nucleus** and negative **electrons** around it. Normally an object has the same amount of + and − charge: it is **neutral** (uncharged).
+
+**Extended:** charge is measured in **coulombs** (C).
+
+</Step>
+
+<Step kind="learn" title="Charging by friction" minutes={12}>
+
+When we rub two insulators together, **electrons** (negative charges) move from one to the other.
+
+<Figure svg={frictionSvg()} caption="A polythene rod rubbed with a cloth." width="30rem" />
+
+- The object that **gains** electrons becomes **negative**.
+- The object that **loses** electrons becomes **positive**.
+- **Only negative charges (electrons) move.** The positive charges stay in the nuclei, which do not move.
+
+Examples: a **polythene** rod rubbed with a cloth gains electrons: it becomes **negative**. An **acetate** rod rubbed with a cloth loses electrons: it becomes **positive**.
+
+**Detecting charge:**
+
+- A charged object attracts small pieces of paper.
+- A **gold-leaf electroscope**: touch the metal cap with a charged object. The charge spreads to the rod and the gold leaf. They have the same charge, so they **repel**: the leaf rises.
+
+<Figure svg={electroscopeSvg()} caption="A gold-leaf electroscope." width="30rem" />
+
+</Step>
+
+<Step kind="do" title="Charge it" minutes={14}>
+
+**Equipment:** a polythene rod, an acetate rod, a dry cloth, a watch glass (or a stand with a stirrup to hang a rod), small pieces of paper, an electroscope (if available).
+
+1. Rub the polythene rod with the cloth. Bring it near the pieces of paper. What happens?
+2. Rub the polythene rod again and put it on the watch glass, so it can turn freely.
+3. Rub a second polythene rod. Bring it near the end of the first one. What happens?
+4. Now rub the acetate rod and bring it near the polythene rod. What happens?
+5. Explain your results with the words *gains*, *loses*, *electrons*, *attract* and *repel*.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={12}>
+
+<Quiz questions={[
+  {
+    question: 'A polythene rod is rubbed with a cloth and becomes negative. Why?',
+    options: [
+      { text: 'It gains electrons from the cloth', correct: true, why: 'Electrons are negative.' },
+      { text: 'It loses electrons', why: 'Losing electrons makes an object positive.' },
+      { text: 'It gains positive charges', why: 'Only electrons (negative) move.' },
+      { text: 'The cloth gives it heat', why: 'The charge comes from electrons moving.' },
+    ],
+  },
+  {
+    question: 'After rubbing, what is the charge on the cloth?',
+    options: [
+      { text: 'positive', correct: true, why: 'It has lost electrons.' },
+      { text: 'negative', why: 'The rod is negative; the cloth lost electrons.' },
+      { text: 'neutral', why: 'It lost electrons, so it is positive.' },
+      { text: 'it depends on the colour', why: 'It has lost electrons: positive.' },
+    ],
+  },
+  {
+    question: 'Two negatively charged rods are brought close. They…',
+    options: [
+      { text: 'repel', correct: true, why: 'Like charges repel.' },
+      { text: 'attract', why: 'Unlike charges attract.' },
+      { text: 'do nothing', why: 'Like charges repel.' },
+      { text: 'become positive', why: 'They repel.' },
+    ],
+  },
+  {
+    question: 'Which charges move when objects are charged by friction?',
+    options: [
+      { text: 'only negative charges (electrons)', correct: true, why: 'Positive charges stay in the nuclei.' },
+      { text: 'only positive charges', why: 'Positive charges do not move.' },
+      { text: 'both positive and negative', why: 'Only electrons move.' },
+      { text: 'no charges move', why: 'Electrons move.' },
+    ],
+  },
+  {
+    question: 'The leaf of an electroscope rises. Why?',
+    options: [
+      { text: 'The leaf and the rod have the same charge, so they repel', correct: true, why: 'Like charges repel.' },
+      { text: 'The leaf and the rod have opposite charges', why: 'Opposite charges would attract.' },
+      { text: 'The leaf gets hot', why: 'The reason is repulsion of like charges.' },
+      { text: 'Air pushes the leaf', why: 'Like charges repel.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'An acetate rod is rubbed and becomes positive. What happened?',
+    options: [
+      { text: 'It lost electrons', correct: true, why: 'Fewer electrons: more + than −.' },
+      { text: 'It gained electrons', why: 'That would make it negative.' },
+      { text: 'It gained positive charges', why: 'Positive charges do not move.' },
+      { text: 'Nothing moved', why: 'Electrons moved from the rod to the cloth.' },
+    ],
+  },
+  {
+    question: 'A positive and a negative charge are close together. They…',
+    options: [
+      { text: 'attract', correct: true, why: 'Unlike charges attract.' },
+      { text: 'repel', why: 'Like charges repel.' },
+      { text: 'do nothing', why: 'Unlike charges attract.' },
+      { text: 'both become neutral at once', why: 'They attract.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Explain what happened to the balloon in the starter. Use the words *electrons*, *gains*, *negative* and *attract*. (Why does a charged balloon also stick to a neutral wall? Try to find out.)
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** 4.2.1 C1–C4 are Core; the coulomb (S7) is Extended.
+
+**Timing:** starter 5 min, learn 24 min, practical 14 min, check 12 min, exit ticket 5 min.
+
+**Tips:** electrostatic experiments work best on dry days. Warm the rods and the cloth a little to dry them.
+
+**Common mistakes:**
+
+- "Positive charges move to the rod."
+- "Rubbing creates charge." Charge is not created; electrons are transferred. The total charge stays the same.
+- Thinking a charged object only attracts objects with the opposite charge (it also attracts neutral objects, like small pieces of paper).
+
+**Language support:**
+
+- *gain* = get more; *lose* = have fewer.
+- *neutral* = the same amount of + and −.
+
+**Differentiation:**
+
+- Support: a table with columns "object / gains or loses electrons / charge".
+- Stretch: why does a charged balloon stick to a neutral wall? (The charges in the wall move a little: the near side gets the opposite charge.)
+
+**Safety:** do not use charged objects near flammable vapours. Van de Graaff generators: follow school rules (not for students with heart conditions).
+
+</Step>

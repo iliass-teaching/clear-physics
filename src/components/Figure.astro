@@ -1,0 +1,20 @@
+---
+// Shows an SVG figure built in code (for example vectorsSvg), with an optional caption.
+interface Props {
+  svg: string;
+  caption?: string;
+  width?: string;
+}
+
+const { svg, caption, width = '24rem' } = Astro.props;
+---
+
+<figure style={`max-width:${width}`}>
+  <Fragment set:html={svg} />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  figure { margin: 1rem auto; }
+  figcaption { text-align: center; font-size: 0.9rem; color: var(--ink-soft); }
+</style>

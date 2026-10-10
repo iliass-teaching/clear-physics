@@ -1,0 +1,152 @@
+---
+unit: 13
+lesson: 6
+title: Current–voltage graphs
+syllabus: ['4.2.4 S4']
+goals:
+  - 'Extended: sketch and explain the current–voltage graph of a resistor of constant resistance.'
+  - 'Extended: sketch and explain the current–voltage graph of a filament lamp.'
+  - 'Extended: sketch and explain the current–voltage graph of a diode.'
+keyWords: [resistance, filament lamp, diode, electric current, potential difference]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import IvSim from '../../../components/IvSim.astro';
+import { ivGraphsSvg } from '../../../lib/electricFigures';
+
+<Step kind="starter" title="Predict" minutes={5}>
+
+If you double the p.d. across a resistor, what happens to the current? Sketch a graph of current (vertical axis) against p.d. (horizontal axis) to show your prediction.
+
+</Step>
+
+<Step kind="do" title="Collect the data" minutes={22}>
+
+<IvSim />
+
+For **each** component (fixed resistor, filament lamp, diode):
+
+1. Record at least 8 readings, with **negative and positive** values of the p.d. (negative = the supply the other way round).
+2. Look at the graph. Describe its shape in one sentence.
+3. Calculate the resistance $R = \dfrac{V}{I}$ at a small p.d. and at a big p.d. Is it the same?
+
+</Step>
+
+<Step kind="learn" title="The three graphs" minutes={15}>
+
+<Figure svg={ivGraphsSvg()} caption="Current–voltage graphs." width="38rem" />
+
+**Resistor (at constant temperature):**
+
+- A **straight line through the origin**: $I$ is **directly proportional** to $V$.
+- So the resistance $\dfrac{V}{I}$ is **constant**. Reversing the p.d. reverses the current, with the same size.
+
+**Filament lamp:**
+
+- A curve that gets **less steep** as $V$ increases (an S shape, through the origin).
+- As the current increases, the filament gets **hotter**. The ions in the metal vibrate more, so the electrons collide more: the **resistance increases**.
+
+**Diode:**
+
+- In one direction (**reverse**), there is almost **no current**: very high resistance.
+- In the other direction (**forward**), there is no current at first, then the current rises very quickly above about 0.6 V: low resistance.
+- A diode lets current flow in **one direction only**.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={13}>
+
+<Quiz questions={[
+  {
+    question: 'The I–V graph of a component is a straight line through the origin. What does this mean?',
+    options: [
+      { text: 'Its resistance is constant', correct: true, why: '$I$ is proportional to $V$.' },
+      { text: 'Its resistance increases with the current', why: 'That would give a curve (like a lamp).' },
+      { text: 'It lets current flow one way only', why: 'That is a diode.' },
+      { text: 'It has no resistance', why: 'It has a constant resistance.' },
+    ],
+  },
+  {
+    question: 'Why does the resistance of a filament lamp increase as the current increases?',
+    options: [
+      { text: 'The filament gets hotter, the ions vibrate more, and electrons collide more', correct: true, why: 'Higher temperature: higher resistance in a metal.' },
+      { text: 'The filament gets longer', why: 'The main reason is the temperature.' },
+      { text: 'The lamp uses up the current', why: 'Current is not used up.' },
+      { text: 'The voltage gets smaller', why: 'The reason is the temperature of the filament.' },
+    ],
+  },
+  {
+    question: 'What does a diode do?',
+    options: [
+      { text: 'It lets current flow in one direction only', correct: true, why: 'Very high resistance in the reverse direction.' },
+      { text: 'It makes the current bigger', why: 'It only lets current through one way.' },
+      { text: 'It has the same resistance both ways', why: 'Low one way, very high the other way.' },
+      { text: 'It stores charge', why: 'It lets current flow one way only.' },
+    ],
+  },
+  {
+    question: 'For a filament lamp, $V = 2$ V gives $I = 0.25$ A and $V = 6$ V gives $I = 0.5$ A. What happens to the resistance?',
+    options: [
+      { text: 'It increases from 8 Ω to 12 Ω', correct: true, why: '$\\dfrac{2}{0.25} = 8\\,\\Omega$; $\\dfrac{6}{0.5} = 12\\,\\Omega$.' },
+      { text: 'It stays at 8 Ω', why: 'Calculate $\\dfrac{V}{I}$ for each pair.' },
+      { text: 'It decreases from 12 Ω to 8 Ω', why: 'Check: $\\dfrac{2}{0.25} = 8$, $\\dfrac{6}{0.5} = 12$.' },
+      { text: 'It increases from 0.125 Ω to 0.083 Ω', why: 'Use $R = \\dfrac{V}{I}$, not $\\dfrac{I}{V}$.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Which I–V graph is curved, getting less steep as V increases?',
+    options: [
+      { text: 'a filament lamp', correct: true, why: 'Its resistance increases as it gets hotter.' },
+      { text: 'a fixed resistor', why: 'A fixed resistor gives a straight line.' },
+      { text: 'a diode in reverse', why: 'In reverse, the current is almost zero.' },
+      { text: 'a copper wire at constant temperature', why: 'That gives a straight line.' },
+    ],
+  },
+  {
+    question: 'A diode is connected the "wrong way" (reverse). The current is…',
+    options: [
+      { text: 'almost zero', correct: true, why: 'Very high resistance in reverse.' },
+      { text: 'very big', why: 'Big currents only flow forwards.' },
+      { text: 'the same as forwards', why: 'A diode lets current flow one way only.' },
+      { text: 'alternating', why: 'There is almost no current.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Extended only** (4.2.4 S4). Core students can use the simulation to practise $R = \dfrac{V}{I}$ (lesson 13.4).
+
+**Timing:** starter 5 min, simulation 22 min, learn 15 min, check 13 min, exit ticket 5 min.
+
+**About the simulation:** the lamp model is $I \propto V^{0.55}$ (rated 6 V, 0.5 A). The diode model is an exponential that rises above about 0.5–0.6 V; a real circuit would need a protective resistor in series with the diode.
+
+**Common mistakes:**
+
+- Drawing the lamp curve bending upwards (it bends towards the V axis: less steep).
+- Saying the resistance of a lamp is $\dfrac{1}{\text{gradient}}$ (use $\dfrac{V}{I}$ at a point).
+- Forgetting the negative quadrant.
+
+**Language support:**
+
+- *forward* / *reverse* bias: the two ways to connect a diode.
+- *steep* = rising quickly.
+
+**Differentiation:**
+
+- Support: three empty axes to sketch on, with the names of the components.
+- Stretch: an LED is a diode that gives out light. How would its I–V graph look?
+
+</Step>

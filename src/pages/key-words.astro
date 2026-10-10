@@ -1,0 +1,107 @@
+---
+import Base from '../layouts/Base.astro';
+import { glossary, commandWords } from '../data/glossary';
+import { renderMath } from '../lib/math';
+
+const words = [...glossary].sort((a, b) => a.word.localeCompare(b.word, 'en', { sensitivity: 'base' }));
+const groups = new Map<string, typeof words>();
+for (const w of words) {
+  const letter = w.word[0].toUpperCase();
+  groups.set(letter, [...(groups.get(letter) ?? []), w]);
+}
+---
+
+<Base title="Key words" description="Physics key words and exam command words, explained in clear English.">
+  <p class="kicker">Glossary</p>
+  <h1>Key words</h1>
+  <p class="lead">The physics words of the course, explained in simple English, and the command words used in exam questions.</p>
+  <p class="jump">
+    {[...groups.keys()].map((l) => <a href={`#letter-${l}`}>{l}</a>)}
+    <a href="#command-words" class="cw">Command words</a>
+  </p>
+
+  {
+    [...groups.entries()].map(([letter, list]) => (
+      <section class="group" id={`letter-${letter}`}>
+        <h2 class="letter">{letter}</h2>
+        <dl>
+          {list.map((w) => (
+            <div class="entry">
+              <dt>{w.word}</dt>
+              <dd>
+                <Fragment set:html={renderMath(w.meaning)} />
+                {w.example && <p class="example" set:html={renderMath(`Example: ${w.example}`)} />}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    ))
+  }
+
+  <h2 id="command-words">Command words</h2>
+  <p>
+    Exam questions start with a <strong>command word</strong>. It tells you what kind of answer to write.
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Command word</th><th>What to do</th><th>Example</th></tr></thead>
+      <tbody>
+        {
+          commandWords.map((c) => (
+            <tr>
+              <td><strong>{c.word}</strong></td>
+              <td>{c.meaning}</td>
+              <td class="muted">{c.example}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</Base>
+
+<style>
+  .kicker { margin: 0; font-size: 0.85rem; color: var(--ink-soft); }
+  .lead { font-size: 1.1rem; }
+  .jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .jump a {
+    min-width: 1.9rem;
+    text-align: center;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  .jump a:hover { background: var(--surface-2); }
+  .jump .cw { margin-left: auto; }
+  .group { scroll-margin-top: 5rem; }
+  .letter {
+    font-size: 1.3rem;
+    color: var(--accent);
+    margin: 1.8rem 0 0.2rem;
+  }
+  dl { margin: 0; }
+  .entry {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: 1rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  dt { font-weight: 700; }
+  dd { margin: 0; }
+  .example { margin: 0.25rem 0 0; font-size: 0.88rem; color: var(--ink-soft); }
+  @media (max-width: 560px) {
+    .entry { grid-template-columns: 1fr; gap: 0.1rem; }
+  }
+  #command-words { scroll-margin-top: 5rem; margin-top: 3rem; }
+</style>

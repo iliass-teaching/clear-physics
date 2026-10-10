@@ -1,0 +1,163 @@
+---
+unit: 7
+lesson: 3
+title: Temperature and Brownian motion
+syllabus: ['2.1.2 C2', '2.1.2 C4', '2.1.2 C5', '2.1.2 S8', '2.1.3 C2']
+goals:
+  - Describe how the motion of particles changes with temperature.
+  - 'Convert temperatures between °C and kelvin: $T = \theta + 273$.'
+  - Explain Brownian motion and why it is evidence for moving particles.
+keyWords: [temperature, absolute zero, kelvin, Brownian motion, random]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import GasSim from '../../../components/GasSim.astro';
+import { temperatureScalesSvg, brownianSvg } from '../../../lib/particleFigures';
+
+<Step kind="starter" title="Hot and cold tea" minutes={5}>
+
+Put one tea bag in a cup of cold water and one in a cup of hot water. Wait one minute.
+
+In which cup does the colour spread faster? What does this tell you about the water particles?
+
+</Step>
+
+<Step kind="learn" title="Temperature and the motion of particles" minutes={10}>
+
+- When the temperature **goes up**, the particles move **faster**: they have more kinetic energy.
+- When the temperature **goes down**, the particles move **slower**.
+- There is a **lowest possible temperature**: **−273 °C**. It is called **absolute zero**. At absolute zero, the particles have the **least** kinetic energy possible. Nothing can be colder.
+
+**The kelvin scale** starts at absolute zero. One kelvin (1 K) is the same size as one degree Celsius (1 °C).
+
+<Figure svg={temperatureScalesSvg()} caption="The Celsius scale and the kelvin scale." width="24rem" />
+
+$$
+T\,(\text{in K}) = \theta\,(\text{in }^\circ\text{C}) + 273
+$$
+
+- To go from °C to K: **add 273**.
+- To go from K to °C: **subtract 273**.
+- We write **K**, not °K.
+
+<WorkedExample
+  question="Liquid nitrogen boils at 77 K. What is this temperature in °C?"
+  given={['$T = 77\\,\\text{K}$']}
+  find="the temperature $\theta$ in °C"
+  answer="$\theta = -196\,^\circ\text{C}$"
+>
+
+$T = \theta + 273$, so $\theta = T - 273$
+
+$\theta = 77 - 273 = -196\,^\circ\text{C}$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="practice" title="Practice: kelvin and Celsius" minutes={12}>
+
+<Practice topic="kelvin" />
+
+</Step>
+
+<Step kind="learn" title="Brownian motion" minutes={13}>
+
+We cannot see the particles of a gas. So how do we know they move?
+
+In 1827, the scientist Robert Brown looked at very small particles from pollen grains in water, with a microscope. They moved in a **random zigzag**, all the time. We can see the same motion with **smoke particles in air**.
+
+<Figure svg={brownianSvg()} caption="In a microscope, each smoke particle moves in a random zigzag." width="20rem" />
+
+**Explanation:**
+
+- The air molecules are too small to see. They move **fast**, in **random** directions.
+- They **collide** with the smoke particle from all sides.
+- At each moment, more molecules hit one side than the other. So the smoke particle moves a little, then changes direction.
+
+This motion is called **Brownian motion**. It is **evidence** for the **kinetic particle model**: matter is made of particles that move all the time.
+
+**Extended:** the air molecules are **light** and **fast**. The smoke particle is much bigger and heavier, but many collisions with light, fast molecules can still move it. In your answers, use *molecules* (or *atoms*) for the air, and *microscopic particles* for the smoke.
+
+</Step>
+
+<Step kind="do" title="See it in a simulation" minutes={15}>
+
+The big red particle is like a smoke particle. The small blue particles are like air molecules.
+
+<GasSim mode="brownian" />
+
+1. Watch the big particle for 30 seconds. Describe its path.
+2. Tick **hide the small particles**. Now you see what we see in a microscope. Can you still explain the motion?
+3. Change the temperature to 600 K, then to 50 K. What happens to the motion of the big particle? Why?
+
+*Start your answer like this: "At a higher temperature, the small particles move … , so they hit the big particle …"*
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'What is 20 °C in kelvin?',
+    options: [
+      { text: '293 K', correct: true, why: '$20 + 273 = 293\\,\\text{K}$.' },
+      { text: '253 K', why: 'To go from °C to K, add 273.' },
+      { text: '−253 K', why: 'Add 273. There are no negative temperatures in kelvin.' },
+      { text: '20 K', why: 'Add 273.' },
+    ],
+  },
+  {
+    question: 'Smoke particles in air move in a random zigzag. Why?',
+    options: [
+      { text: 'Fast air molecules hit them unevenly from all sides', correct: true, why: 'This is Brownian motion.' },
+      { text: 'The smoke particles are alive', why: 'They are not alive. Air molecules hit them.' },
+      { text: 'The light from the microscope pushes them', why: 'The cause is collisions with air molecules.' },
+      { text: 'The smoke particles are very hot', why: 'The cause is collisions with fast air molecules.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Convert to kelvin: 0 °C, 100 °C, 37 °C, −40 °C.
+2. Convert to °C: 300 K, 250 K, 0 K.
+3. Explain Brownian motion in 3 sentences. Use the words *molecules*, *collide*, *random*.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** temperature and motion, absolute zero, Brownian motion and the kelvin scale are Core. The idea of light, fast molecules moving heavier particles, and the correct use of *molecules* versus *microscopic particles* (2.1.2 S8), are Extended.
+
+**Timing:** starter 5 min, learn 23 min, practice 12 min, simulation (or smoke cell) 15 min, exit ticket 5 min.
+
+**Smoke cell demonstration (optional):** use a smoke cell with a microscope. Fill the cell with smoke from a burning straw, light it from the side and look through the microscope. Students see bright specks that move in a random zigzag. Follow your school's rules for flames and smoke.
+
+**Common mistakes:**
+
+- "The smoke particles move because they are hot" or "because they are alive".
+- Calling the smoke particles *molecules*. They are much bigger: each one contains many molecules.
+- "At absolute zero the particles stop." The syllabus says the particles have the *least* kinetic energy. Use this wording.
+- Writing °K, or subtracting 273 to go from °C to K.
+
+**About the simulation:** it is a 2D model with only 70 small particles, so the big particle moves more than a real smoke particle would. The small particles do not collide with each other in the model.
+
+**Language support:**
+
+- *Random* = no pattern; we cannot predict the next direction.
+- *Evidence* = something we can see that shows an idea is true.
+
+**Differentiation:**
+
+- Support: give a number line from −273 °C to 100 °C with the kelvin values under it.
+- Stretch: why does Brownian motion get faster when the temperature goes up?
+
+</Step>

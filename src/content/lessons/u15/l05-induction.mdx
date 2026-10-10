@@ -1,0 +1,152 @@
+---
+unit: 15
+lesson: 5
+title: Electromagnetic induction
+syllabus: ['4.5.1 C1–C3']
+goals:
+  - Know that a conductor moving across a magnetic field, or a changing field through a conductor, can induce an e.m.f.
+  - Describe an experiment to show electromagnetic induction.
+  - State the factors that affect the size of the induced e.m.f.
+keyWords: [electromagnetic induction, induced, magnetic field, electromotive force]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import InductionSim from '../../../components/InductionSim.astro';
+import { inductionSvg } from '../../../lib/emEffectsFigures';
+
+<Step kind="starter" title="The other way round?" minutes={5}>
+
+A current can make a magnetic field (lesson 15.1). Can a magnet make a current? What do you think you would need to do?
+
+</Step>
+
+<Step kind="learn" title="Inducing an e.m.f." minutes={12}>
+
+An **e.m.f.** is **induced** in a conductor when:
+
+- the conductor **moves across** a magnetic field (it "cuts" the field lines), or
+- the magnetic field through the conductor **changes** (for example, a magnet moves into a coil).
+
+If the conductor is part of a complete circuit, the e.m.f. makes a **current** flow. This is **electromagnetic induction**.
+
+<Figure svg={inductionSvg()} caption="Pushing a magnet into a coil induces an e.m.f." width="32rem" />
+
+- **No movement → no e.m.f.** A magnet that stays still inside a coil induces nothing.
+- Pushing the magnet **in** and pulling it **out** give e.m.f.s in **opposite** directions.
+
+</Step>
+
+<Step kind="do" title="Investigate" minutes={20}>
+
+**Real experiment:** connect a coil to a sensitive centre-zero meter (a galvanometer). Move a bar magnet in and out of the coil. You can also move a straight wire up and down between the poles of a U-shaped magnet.
+
+**Virtual experiment:**
+
+<InductionSim />
+
+Find out what changes the size of the deflection of the needle:
+
+1. Push the magnet in slowly, then quickly.
+2. Use 5, 10 and 20 turns.
+3. Use the stronger magnet.
+4. Stop the magnet inside the coil. What does the needle do?
+5. Turn the magnet round. Push it in. Compare with step 1.
+
+</Step>
+
+<Step kind="learn" title="What affects the size of the e.m.f.?" minutes={8}>
+
+The induced e.m.f. is **bigger** with:
+
+1. a **faster** movement (or a faster change of the field);
+2. a **stronger** magnet (a stronger field);
+3. **more turns** on the coil.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={10}>
+
+<Quiz questions={[
+  {
+    question: 'A magnet is held still inside a coil. What does the meter show?',
+    options: [
+      { text: 'zero', correct: true, why: 'No movement, no change of field: no e.m.f.' },
+      { text: 'a big reading', why: 'There must be movement or a changing field.' },
+      { text: 'a reading that grows', why: 'Without movement, nothing is induced.' },
+      { text: 'it depends on the colour of the magnet', why: 'No movement: zero.' },
+    ],
+  },
+  {
+    question: 'Which change gives a bigger induced e.m.f.?',
+    options: [
+      { text: 'moving the magnet faster', correct: true, why: 'Also a stronger magnet or more turns.' },
+      { text: 'using fewer turns', why: 'Fewer turns: smaller e.m.f.' },
+      { text: 'moving the magnet more slowly', why: 'Slower: smaller e.m.f.' },
+      { text: 'using a weaker magnet', why: 'Weaker: smaller e.m.f.' },
+    ],
+  },
+  {
+    question: 'A magnet is pushed into a coil: the needle moves to the left. The magnet is pulled out. The needle moves…',
+    options: [
+      { text: 'to the right', correct: true, why: 'Opposite movement: opposite e.m.f.' },
+      { text: 'to the left', why: 'The direction reverses.' },
+      { text: 'not at all', why: 'Pulling out also changes the field.' },
+      { text: 'to the left, but further', why: 'The direction reverses.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'What is electromagnetic induction?',
+    options: [
+      { text: 'An e.m.f. is induced when a conductor cuts a magnetic field or the field through it changes', correct: true, why: 'This is how generators work.' },
+      { text: 'A current-carrying wire feels a force in a field', why: 'That is the motor effect.' },
+      { text: 'A current makes a magnetic field', why: 'That is the magnetic effect of a current.' },
+      { text: 'A magnet attracts iron', why: 'That is magnetism.' },
+    ],
+  },
+  {
+    question: 'Name three factors that increase the induced e.m.f.',
+    options: [
+      { text: 'faster movement, stronger magnet, more turns', correct: true, why: 'These are the three factors.' },
+      { text: 'slower movement, weaker magnet, fewer turns', why: 'These decrease it.' },
+      { text: 'a bigger meter, a longer wire, a colder room', why: 'Speed, field strength and turns.' },
+      { text: 'only a stronger magnet', why: 'There are three factors.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core:** 4.5.1 C1–C3. The direction of the induced e.m.f. comes in the next lesson (Extended).
+
+**Timing:** starter 5 min, learn 12 min, investigation 20 min, factors 8 min, check 10 min, exit ticket 5 min.
+
+**About the simulation:** the needle shows a value proportional to (number of turns) × (strength of the magnet) × (rate of change of the field through the coil). The numbers on the scale are not given: it is a qualitative model.
+
+**Common mistakes:**
+
+- "A magnet inside a coil makes a current" (only while it moves).
+- Confusing induction (motion → current) with the motor effect (current → motion).
+
+**Language support:**
+
+- *induce* = cause, without touching.
+- *cut field lines* = move across them.
+
+**Differentiation:**
+
+- Support: a results table with columns "what I changed / what the needle did".
+- Stretch: why does a bicycle dynamo light glow brighter when you ride faster?
+
+</Step>

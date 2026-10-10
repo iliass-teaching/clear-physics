@@ -1,0 +1,161 @@
+---
+unit: 3
+lesson: 9
+title: Centre of gravity and stability
+syllabus: ['1.5.3 C1', '1.5.3 C2', '1.5.3 C3']
+goals:
+  - State what is meant by the centre of gravity.
+  - Describe how to find the centre of gravity of a flat, irregular shape.
+  - Describe how the position of the centre of gravity affects stability.
+keyWords: [centre of gravity, stable, weight, pivot]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { plumbLineSvg, stabilitySvg } from '../../../lib/forceFigures';
+
+<Step kind="starter" title="Balance a ruler" minutes={5}>
+
+Balance a ruler on one finger. Where is your finger?
+
+Now tape a coin to one end and balance it again. Where is your finger now? Why?
+
+</Step>
+
+<Step kind="learn" title="Centre of gravity" minutes={8}>
+
+Every part of an object has weight. But we can think of the **whole weight** acting at **one point**: the **centre of gravity**.
+
+- For a regular, uniform object (a ruler, a square card, a ball), the centre of gravity is at its **centre**.
+- When you balance an object on one point, that point is under its centre of gravity.
+
+In the starter, the coin moves the centre of gravity towards that end of the ruler.
+
+</Step>
+
+<Step kind="learn" title="Finding the centre of gravity of a flat shape" minutes={10}>
+
+<Figure svg={plumbLineSvg()} caption="The card hangs from a pin. Its centre of gravity G is always on the vertical plumb line." width="28rem" />
+
+A **plumb line** is a string with a small weight at the end. It always hangs vertically.
+
+1. Make 3 small holes near the edge of the card, far apart.
+2. Hang the card from a pin through the first hole. It must swing freely.
+3. Hang the plumb line from the same pin. When it stops moving, draw a line along it on the card.
+4. Repeat with the second hole, then the third.
+5. The centre of gravity is where the lines **cross**.
+
+The third line is a check: it should pass through the same point.
+
+**Why does it work?** When the card hangs at rest, its centre of gravity is directly below the pin.
+
+</Step>
+
+<Step kind="learn" title="Stability" minutes={7}>
+
+An object is **stable** if it is hard to knock over. An object is more stable when it has:
+
+- a **low** centre of gravity;
+- a **wide** base.
+
+<Figure svg={stabilitySvg()} caption="Both objects are tipped by the same angle." width="34rem" />
+
+When you tip an object, it **falls back** if the weight (acting at the centre of gravity) still acts **inside the base**. It **falls over** if the weight acts **outside the base**.
+
+Examples: racing cars are low and wide. A bus has heavy parts (engine, fuel tank) low down. A tall vase is more stable with some heavy stones at the bottom: they lower its centre of gravity.
+
+</Step>
+
+<Step kind="do" title="Plumb line practical" minutes={15}>
+
+**Equipment:** a piece of thick card cut into an irregular shape, a clamp stand with a pin (or a nail), a plumb line, a pencil, a ruler.
+
+1. Follow the 5 steps above to find the centre of gravity of your card.
+2. Check: try to balance the card on the tip of a pencil at the point you found.
+3. Compare with another group. Did the third line pass through the crossing point?
+
+**Question:** your card does not balance exactly on the pencil. Suggest two reasons.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={10}>
+
+<Quiz questions={[
+  {
+    question: 'What is the centre of gravity of an object?',
+    options: [
+      { text: 'the point where its whole weight seems to act', correct: true, why: 'This is the definition.' },
+      { text: 'the heaviest part of the object', why: 'It is the point where the whole weight seems to act.' },
+      { text: 'always the middle of the object', why: 'Only for regular, uniform objects.' },
+      { text: 'the point where the object touches the ground', why: 'That is the base.' },
+    ],
+  },
+  {
+    question: 'Which change makes a bottle more stable?',
+    options: [
+      { text: 'a wider base and a lower centre of gravity', correct: true, why: 'Both make it harder to knock over.' },
+      { text: 'a higher centre of gravity', why: 'A high centre of gravity makes it less stable.' },
+      { text: 'a narrower base', why: 'A narrow base makes it less stable.' },
+      { text: 'making it taller', why: 'A taller bottle usually has a higher centre of gravity.' },
+    ],
+  },
+  {
+    question: 'A tipped box falls over. Where does its weight act?',
+    options: [
+      { text: 'outside its base', correct: true, why: 'The weight gives a moment that turns the box over.' },
+      { text: 'inside its base', why: 'Then the box falls back.' },
+      { text: 'at the corner of the base', why: 'At this exact point it balances. A little more tipping and it falls.' },
+      { text: 'nowhere', why: 'The weight always acts, at the centre of gravity.' },
+    ],
+  },
+  {
+    question: 'Why do you hang the card from three holes, not one?',
+    options: [
+      { text: 'Two lines are needed to find the crossing point; the third checks it', correct: true, why: 'One line only tells you that G is somewhere on it.' },
+      { text: 'To make the card heavier', why: 'The holes do not change the weight.' },
+      { text: 'Three holes make the card swing faster', why: 'You need two lines to cross, and a third to check.' },
+      { text: 'The plumb line needs three holes to work', why: 'Each hole gives one line.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+Explain why a racing car is low and wide. Use the words *centre of gravity*, *base* and *stable*.
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Find two objects at home that are designed to be stable (for example a desk lamp, a vase). Draw them and mark the centre of gravity and the base.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 25 min, practical 15 min, check 10 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "The centre of gravity is always in the middle."
+- Drawing the plumb-line lines when the card is not yet at rest.
+- Thinking a heavier object is always more stable (the position of the centre of gravity matters).
+
+**Practical answer:** the card does not balance exactly because the lines are not drawn perfectly, the card is not uniform, or the pin hole was too tight (friction stopped the card from swinging freely).
+
+**Language support:**
+
+- Sentence frame: *"The object falls back because its weight acts … its base."*
+
+**Differentiation:**
+
+- Support: start with a regular shape, where students can predict the answer.
+- Stretch: link to moments: when the weight acts outside the base, it has a moment about the edge that turns the object over.
+
+**Safety:** take care with the pin and with scissors when cutting the card.
+
+</Step>

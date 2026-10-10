@@ -1,0 +1,142 @@
+---
+unit: 16
+lesson: 2
+title: Evidence for the nucleus
+syllabus: ['5.1.1 S3']
+goals:
+  - 'Extended: describe the alpha-particle scattering experiment.'
+  - 'Extended: explain how its results show a very small, massive, positive nucleus.'
+keyWords: [nucleus, alpha particle, proton, electron]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import AlphaSim from '../../../components/AlphaSim.astro';
+import { alphaScatterSvg } from '../../../lib/nuclearFigures';
+
+<Step kind="starter" title="A mystery box" minutes={5}>
+
+You cannot open a box. You can only throw small balls into it through a hole and see where they come out. How could you find out what is inside?
+
+</Step>
+
+<Step kind="learn" title="The old model: the plum pudding" minutes={8}>
+
+Before 1911, many scientists thought an atom was a ball of **positive** charge with small **negative** electrons inside it, like plums in a pudding. The positive charge and the mass were **spread out** through the whole atom.
+
+</Step>
+
+<Step kind="learn" title="The experiment (Extended)" minutes={12}>
+
+In 1909, Hans Geiger and Ernest Marsden, working with Ernest Rutherford, fired **alpha particles** (small, fast, positive particles) at a very **thin gold foil**. A detector around the foil counted where the alpha particles went.
+
+<Figure svg={alphaScatterSvg()} caption="Results of the alpha-particle scattering experiment." width="34rem" />
+
+**Results and what they show:**
+
+<div class="table-wrap">
+
+| Result | Conclusion |
+|---|---|
+| **Most** α-particles went **straight through** | The atom is **mostly empty space**; the nucleus is **very small**. |
+| **Some** were **deflected** (bent) | The nucleus is **positively charged**: it repels the positive α-particles. |
+| **A very few bounced back** | The nucleus contains **most of the mass** of the atom (and its charge is concentrated in a tiny space). |
+
+</div>
+
+The plum pudding model could not explain the bouncing back: in that model, the forces are too small and too spread out. So Rutherford proposed the **nuclear model** (1911).
+
+</Step>
+
+<Step kind="do" title="Test both models" minutes={17}>
+
+<AlphaSim />
+
+1. With the **nuclear model**, fire 50 α-particles several times (at least 200 in total). Record how many go almost straight, are deflected, and bounce back.
+2. Switch to the **plum pudding model**. Fire 200 α-particles. Record the results.
+3. Which model agrees with the real experiment? Explain.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={13}>
+
+<Quiz questions={[
+  {
+    question: 'Most α-particles went straight through the gold foil. What does this show?',
+    options: [
+      { text: 'The atom is mostly empty space', correct: true, why: 'The tiny nucleus is hit very rarely.' },
+      { text: 'The nucleus is very big', why: 'It shows the nucleus is very small.' },
+      { text: 'Gold is not made of atoms', why: 'It shows atoms are mostly empty space.' },
+      { text: 'α-particles have no charge', why: 'α-particles are positive.' },
+    ],
+  },
+  {
+    question: 'Some α-particles were deflected. Why?',
+    options: [
+      { text: 'The positive nucleus repelled the positive α-particles', correct: true, why: 'Like charges repel.' },
+      { text: 'The electrons attracted them strongly', why: 'Electrons are far too light to deflect α-particles much.' },
+      { text: 'The foil was too thick', why: 'The foil was very thin.' },
+      { text: 'Gravity pulled them', why: 'The force is electric repulsion.' },
+    ],
+  },
+  {
+    question: 'A very few α-particles bounced back. What does this show?',
+    options: [
+      { text: 'The nucleus contains most of the mass, in a tiny space', correct: true, why: 'Only something massive and concentrated can turn a fast α-particle back.' },
+      { text: 'The atom is empty', why: 'Something massive turned them back.' },
+      { text: 'Electrons are very heavy', why: 'Electrons are light.' },
+      { text: 'The α-particles were too slow', why: 'They were fast.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Why could the plum pudding model not explain the results?',
+    options: [
+      { text: 'Its positive charge is spread out, so the forces are too small to bounce α-particles back', correct: true, why: 'Only a concentrated nucleus can do it.' },
+      { text: 'It has no electrons', why: 'It has electrons.' },
+      { text: 'It has a very big nucleus', why: 'It has no nucleus.' },
+      { text: 'It explained all the results', why: 'It could not explain the bouncing back.' },
+    ],
+  },
+  {
+    question: 'Which three things about the nucleus does the experiment show?',
+    options: [
+      { text: 'very small; contains most of the mass; positively charged', correct: true, why: 'These are the three conclusions.' },
+      { text: 'very big; light; negative', why: 'The opposite.' },
+      { text: 'it contains electrons only', why: 'The nucleus is positive.' },
+      { text: 'it does not exist', why: 'The experiment is evidence for the nucleus.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Extended only** (5.1.1 S3). Core students can use the simulation to see why the atom is "mostly empty space" (lesson 16.1).
+
+**Timing:** starter 5 min, plum pudding 8 min, experiment 12 min, simulation 17 min, check 13 min, exit ticket 5 min.
+
+**History:** the experiment was done by Geiger and Marsden (1909) under Rutherford's direction; Rutherford published the nuclear model in 1911.
+
+**About the simulation:** one atom is shown, much enlarged, and the nucleus is drawn far bigger than its real size. So more α-particles are deflected than in the real experiment (Geiger and Marsden, 1909: with a platinum foil, about 1 in 8000 α-particles was turned back by more than 90°).
+
+**Common mistakes:**
+
+- "The α-particles bounced off electrons."
+- "The atom is a solid ball."
+
+**Differentiation:**
+
+- Support: match the three results to the three conclusions.
+- Stretch: why did the experiment need a very thin foil, and a vacuum?
+
+</Step>

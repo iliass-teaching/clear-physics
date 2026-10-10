@@ -1,0 +1,179 @@
+---
+// Virtual practical: measure current and p.d. for a component, then plot the current–voltage graph.
+// Components: a fixed resistor (10 Ω), a filament lamp (6 V, 0.5 A), a diode.
+import { wire, symbol, junction } from '../lib/circuit';
+
+const circuit = (type: 'resistor' | 'lamp' | 'diode') => `
+  ${wire([[40, 70], [300, 70], [300, 170], [40, 170], [40, 70]])}
+  ${wire([[120, 70], [120, 22], [220, 22], [220, 70]])}
+  ${junction(120, 70)}${junction(220, 70)}
+  ${symbol('power-supply', 40, 120, 90)}
+  ${symbol(type, 170, 70)}
+  ${symbol('voltmeter', 170, 22)}
+  ${symbol('ammeter', 300, 120, 90)}
+  ${symbol('variable-resistor', 170, 170)}`;
+---
+
+<div class="iv-sim" data-iv-sim>
+  <div class="top">
+    <div class="diagram">
+      <svg class="fig circuit c-resistor" viewBox="0 0 340 196" role="img" aria-label="Circuit with a resistor, an ammeter in series and a voltmeter in parallel"><Fragment set:html={circuit('resistor')} /></svg>
+      <svg class="fig circuit c-lamp" viewBox="0 0 340 196" role="img" aria-label="Circuit with a filament lamp, an ammeter and a voltmeter" hidden><Fragment set:html={circuit('lamp')} /></svg>
+      <svg class="fig circuit c-diode" viewBox="0 0 340 196" role="img" aria-label="Circuit with a diode, an ammeter and a voltmeter" hidden><Fragment set:html={circuit('diode')} /></svg>
+    </div>
+    <div class="meters">
+      <div class="meter"><span class="name">voltmeter</span><span class="value v">0.0</span><span class="unit">V</span></div>
+      <div class="meter"><span class="name">ammeter</span><span class="value i">0.000</span><span class="unit">A</span></div>
+      <p class="r small"></p>
+    </div>
+  </div>
+
+  <div class="controls">
+    <label>
+      component
+      <select class="comp">
+        <option value="resistor">fixed resistor</option>
+        <option value="lamp">filament lamp</option>
+        <option value="diode">diode</option>
+      </select>
+    </label>
+    <label>
+      p.d. <input type="range" class="volt" min="-6" max="6" step="0.5" value="0" />
+    </label>
+    <button type="button" class="record">Record</button>
+    <button type="button" class="clear secondary">Clear</button>
+  </div>
+  <p class="small muted">Negative values: the supply is connected the other way round. Record at least 8 readings, with negative and positive p.d.</p>
+
+  <svg class="plot" viewBox="0 0 360 240" role="img" aria-label="Graph of current against p.d. with the recorded points">
+    <g class="axes"></g>
+    <g class="points"></g>
+  </svg>
+</div>
+
+<script>
+  type Comp = 'resistor' | 'lamp' | 'diode';
+  const NS = 'http://www.w3.org/2000/svg';
+
+  const current = (c: Comp, v: number): number => {
+    if (c === 'resistor') return v / 10;
+    if (c === 'lamp') return Math.sign(v) * 0.5 * Math.pow(Math.abs(v) / 6, 0.55);
+    if (v <= 0.5) return 0;
+    return Math.min(1, 0.002 * (Math.exp((v - 0.5) / 0.05) - 1));
+  };
+  const ranges: Record<Comp, { min: number; max: number; step: number; vMax: number; iMax: number }> = {
+    resistor: { min: -6, max: 6, step: 0.5, vMax: 6, iMax: 0.8 },
+    lamp: { min: -6, max: 6, step: 0.5, vMax: 6, iMax: 0.8 },
+    diode: { min: -2, max: 0.8, step: 0.05, vMax: 2, iMax: 1 },
+  };
+
+  document.querySelectorAll<HTMLElement>('[data-iv-sim]').forEach((root) => {
+    const q = <T extends Element>(s: string) => root.querySelector<T>(s)!;
+    const comp = q<HTMLSelectElement>('.comp');
+    const volt = q<HTMLInputElement>('.volt');
+    const axes = q<SVGGElement>('.axes');
+    const pointsG = q<SVGGElement>('.points');
+    let points: [number, number][] = [];
+
+    const c = () => comp.value as Comp;
+    const X = (v: number) => 180 + (v / ranges[c()].vMax) * 160;
+    const Y = (i: number) => 120 - (i / ranges[c()].iMax) * 105;
+
+    function drawAxes(): void {
+      const { vMax, iMax } = ranges[c()];
+      const step = vMax >= 6 ? 2 : 0.5;
+      let html = `<line class="ax" x1="10" y1="120" x2="350" y2="120"/><line class="ax" x1="180" y1="8" x2="180" y2="232"/>`;
+      for (let v = -vMax; v <= vMax + 1e-9; v += step) {
+        if (Math.abs(v) < 1e-9) continue;
+        html += `<line class="tick" x1="${X(v)}" y1="116" x2="${X(v)}" y2="124"/><text x="${X(v)}" y="137" text-anchor="middle">${+v.toFixed(1)}</text>`;
+      }
+      for (const i of [-iMax / 2, iMax / 2, iMax]) {
+        html += `<line class="tick" x1="176" y1="${Y(i)}" x2="184" y2="${Y(i)}"/><text x="172" y="${Y(i) + 4}" text-anchor="end">${+i.toFixed(2)}</text>`;
+      }
+      html += `<text x="350" y="112" text-anchor="end" class="lab">p.d. / V</text><text x="188" y="18" class="lab">current / A</text>`;
+      axes.innerHTML = html;
+    }
+
+    function drawPoints(): void {
+      pointsG.replaceChildren();
+      for (const [v, i] of points) {
+        const p = document.createElementNS(NS, 'path');
+        const x = X(v);
+        const y = Y(i);
+        p.setAttribute('d', `M${x - 5},${y - 5} L${x + 5},${y + 5} M${x - 5},${y + 5} L${x + 5},${y - 5}`);
+        p.setAttribute('class', 'cross');
+        pointsG.appendChild(p);
+      }
+    }
+
+    function read(): void {
+      const v = Number(volt.value);
+      const i = current(c(), v);
+      q<HTMLElement>('.v').textContent = v.toFixed(c() === 'diode' ? 2 : 1);
+      q<HTMLElement>('.i').textContent = i.toFixed(3);
+      q<HTMLElement>('.r').textContent =
+        Math.abs(v) < 1e-9
+          ? 'no p.d., so no current'
+          : Math.abs(i) > 0.0005
+            ? `resistance R = V ÷ I = ${(v / i).toFixed(1)} Ω`
+            : 'almost no current: very high resistance';
+    }
+
+    function setComp(): void {
+      const r = ranges[c()];
+      volt.min = String(r.min);
+      volt.max = String(r.max);
+      volt.step = String(r.step);
+      volt.value = '0';
+      root.querySelectorAll<SVGElement>('.diagram svg').forEach((s) => s.toggleAttribute('hidden', !s.classList.contains(`c-${c()}`)));
+      points = [];
+      drawAxes();
+      drawPoints();
+      read();
+    }
+
+    comp.addEventListener('change', setComp);
+    volt.addEventListener('input', read);
+    q<HTMLButtonElement>('.record').addEventListener('click', () => {
+      const v = Number(volt.value);
+      points = points.filter(([pv]) => Math.abs(pv - v) > 1e-9);
+      points.push([v, current(c(), v)]);
+      drawPoints();
+    });
+    q<HTMLButtonElement>('.clear').addEventListener('click', () => {
+      points = [];
+      drawPoints();
+    });
+    setComp();
+
+    // For testing.
+    (root as HTMLElement & { _iv?: unknown })._iv = { current };
+  });
+</script>
+
+<style>
+  .iv-sim {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .top { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 1rem; align-items: center; }
+  @media (max-width: 640px) { .top { grid-template-columns: 1fr; } }
+  .iv-sim :global(.fig .cut), .iv-sim :global(.fig .sym-fill) { fill: var(--surface); }
+  .meters { display: flex; flex-direction: column; gap: 0.5rem; }
+  .meter { display: flex; align-items: baseline; gap: 0.4rem; background: #10261a; border-radius: 8px; padding: 0.4rem 0.8rem; }
+  .meter .name { font-size: 0.8rem; color: #9fd8ae; min-width: 5.5rem; }
+  .meter .value { font-family: monospace; font-size: 1.5rem; color: #7dff9a; min-width: 5rem; text-align: right; }
+  .meter .unit { color: #7dff9a; }
+  .r { margin: 0.2rem 0 0; }
+  .controls { display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; align-items: center; margin-top: 0.8rem; }
+  .controls label { display: flex; align-items: center; gap: 0.5rem; }
+  .plot { width: 100%; max-width: 30rem; display: block; margin: 0.6rem auto 0; }
+  .plot :global(.ax) { stroke: var(--ink); stroke-width: 1.5; }
+  .plot :global(.tick) { stroke: var(--ink); stroke-width: 1; }
+  .plot :global(text) { fill: var(--ink-soft); font-size: calc(11px * var(--tz, 1)); font-family: var(--sans); }
+  .plot :global(.lab) { fill: var(--ink); font-weight: 700; font-size: calc(12px * var(--tz, 1)); }
+  .plot :global(.cross) { stroke: var(--exit); stroke-width: 2.2; fill: none; }
+</style>

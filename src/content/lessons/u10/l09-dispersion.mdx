@@ -1,0 +1,177 @@
+---
+unit: 10
+lesson: 9
+title: Dispersion of light
+syllabus: ['3.2.4 C1', '3.2.4 C2', '3.2.4 S3']
+goals:
+  - Describe the dispersion of white light by a glass prism.
+  - Know the seven colours of the spectrum in order of frequency and of wavelength.
+  - 'Extended: know what monochromatic light is.'
+keyWords: [dispersion, spectrum, refraction, frequency, wavelength, monochromatic]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { prismSvg } from '../../../lib/lightFigures';
+
+<Step kind="starter" title="Rainbows" minutes={5}>
+
+When do you see a rainbow? Where is the Sun, and where is the rain? What colours do you see, and in what order?
+
+</Step>
+
+<Step kind="learn" title="White light splits into colours" minutes={14}>
+
+<Figure svg={prismSvg()} caption="A glass prism splits white light into a spectrum." width="32rem" />
+
+- **White light** is a mixture of many colours.
+- In glass, each colour travels at a slightly different speed, so each colour **refracts by a different amount**.
+- **Violet** refracts the **most**. **Red** refracts the **least**.
+- So a prism spreads white light into a band of colours: a **spectrum**. This is **dispersion**.
+
+**The seven colours** (traditional), in order:
+
+<div class="table-wrap">
+
+| red | orange | yellow | green | blue | indigo | violet |
+|---|---|---|---|---|---|---|
+| longest wavelength | | | | | | shortest wavelength |
+| lowest frequency | | | | | | highest frequency |
+
+</div>
+
+A memory sentence: **R**ichard **O**f **Y**ork **G**ave **B**attle **I**n **V**ain (ROYGBIV). You can also make your own.
+
+**Extended:** light of **one single frequency** (one pure colour) is called **monochromatic** ("mono" = one, "chroma" = colour). A laser gives nearly monochromatic light.
+
+</Step>
+
+<Step kind="do" title="Make a spectrum" minutes={15}>
+
+**Equipment:** a ray box with a single slit (white light), a triangular glass prism, white paper or a screen. Dim the room.
+
+1. Shine the ray at one side of the prism.
+2. Turn the prism slowly until you see a spectrum on the paper.
+3. Draw the prism and the path of the light. Label the red and violet edges of the spectrum.
+
+**No prism?** Put a glass of water in sunlight near a window, or look at a CD in bright light.
+
+**Questions:**
+
+1. Which colour is bent the most? Which the least?
+2. Put a red filter in front of the ray box. What do you see after the prism now? Why?
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={16}>
+
+<Quiz questions={[
+  {
+    question: 'What is dispersion?',
+    options: [
+      { text: 'White light splits into colours because each colour refracts by a different amount', correct: true, why: 'Violet bends most, red least.' },
+      { text: 'Light reflects from a mirror', why: 'That is reflection.' },
+      { text: 'Light spreads out through a gap', why: 'That is diffraction.' },
+      { text: 'Light is totally internally reflected', why: 'Dispersion is the splitting of white light into colours.' },
+    ],
+  },
+  {
+    question: 'Which colour refracts the most in a prism?',
+    options: [
+      { text: 'violet', correct: true, why: 'Violet has the highest frequency and refracts the most.' },
+      { text: 'red', why: 'Red refracts the least.' },
+      { text: 'green', why: 'Green is in the middle.' },
+      { text: 'all the same', why: 'Then there would be no spectrum.' },
+    ],
+  },
+  {
+    question: 'Which colour has the longest wavelength?',
+    options: [
+      { text: 'red', correct: true, why: 'Red: longest wavelength, lowest frequency.' },
+      { text: 'violet', why: 'Violet has the shortest wavelength.' },
+      { text: 'yellow', why: 'Red has the longest wavelength.' },
+      { text: 'blue', why: 'Red has the longest wavelength.' },
+    ],
+  },
+  {
+    question: 'Put the colours in order of increasing frequency: green, red, violet, yellow.',
+    options: [
+      { text: 'red, yellow, green, violet', correct: true, why: 'Frequency increases from red to violet.' },
+      { text: 'violet, green, yellow, red', why: 'This is decreasing frequency.' },
+      { text: 'red, green, yellow, violet', why: 'Yellow comes before green: ROYGBIV.' },
+      { text: 'green, yellow, red, violet', why: 'Start at red: ROYGBIV.' },
+    ],
+  },
+  {
+    question: 'Extended: what is monochromatic light?',
+    options: [
+      { text: 'light of a single frequency', correct: true, why: 'One colour only.' },
+      { text: 'white light', why: 'White light is a mixture of many frequencies.' },
+      { text: 'very bright light', why: 'Monochromatic means one frequency.' },
+      { text: 'light that cannot refract', why: 'It refracts, but it does not disperse.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Which list is in order of decreasing wavelength?',
+    options: [
+      { text: 'red, orange, yellow, green, blue, indigo, violet', correct: true, why: 'Red has the longest wavelength.' },
+      { text: 'violet, indigo, blue, green, yellow, orange, red', why: 'This is increasing wavelength.' },
+      { text: 'red, yellow, orange, green, blue, violet, indigo', why: 'Check the order: ROYGBIV.' },
+      { text: 'green, blue, red, violet, orange, yellow, indigo', why: 'Use ROYGBIV.' },
+    ],
+  },
+  {
+    question: 'Why does a prism split white light?',
+    options: [
+      { text: 'Different colours travel at different speeds in glass, so they refract by different amounts', correct: true, why: 'This is dispersion.' },
+      { text: 'The prism adds colours to the light', why: 'The colours are already in white light.' },
+      { text: 'The prism reflects the light', why: 'The light refracts through the prism.' },
+      { text: 'The prism absorbs white light', why: 'It separates the colours that are already there.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Find out how a rainbow forms. Draw a raindrop with sunlight going in, and the colours coming out. Write three sentences with the words *refraction*, *dispersion* and *reflection*.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** dispersion and the seven colours (3.2.4 C1, C2) are Core. Monochromatic (S3) is Extended.
+
+**Timing:** starter 5 min, learn 14 min, prism 15 min, check 16 min, exit ticket 5 min.
+
+**Note:** the "seven colours" are traditional (Newton chose seven). The real spectrum is continuous; indigo is hard to see. The syllabus asks for the traditional seven.
+
+**Common mistakes:**
+
+- Reversing the order of frequency and wavelength.
+- "The prism makes the colours."
+- Thinking red refracts the most because it is "strongest".
+
+**Language support:**
+
+- *disperse* = spread out in different directions.
+- *spectrum* (plural *spectra*).
+
+**Differentiation:**
+
+- Support: a colour strip to cut out and stick in order.
+- Stretch: in the visible spectrum, how does the speed of light in glass change from red to violet?
+
+**Safety:** do not use a laser without supervision; never look into a laser beam.
+
+</Step>

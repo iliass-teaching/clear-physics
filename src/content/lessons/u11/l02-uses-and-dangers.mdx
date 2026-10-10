@@ -1,0 +1,180 @@
+---
+unit: 11
+lesson: 2
+title: Uses and dangers of electromagnetic waves
+syllabus: ['3.3 C3', '3.3 C4']
+goals:
+  - Describe typical uses of each region of the electromagnetic spectrum.
+  - Describe the harmful effects of too much electromagnetic radiation.
+keyWords: [electromagnetic spectrum, infrared, ultraviolet, frequency]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Quiz from '../../../components/Quiz.astro';
+import EmSpectrum from '../../../components/EmSpectrum.astro';
+
+<Step kind="starter" title="Around the house" minutes={5}>
+
+Think about your home. Find three objects that use electromagnetic waves. Which region does each one use?
+
+</Step>
+
+<Step kind="learn" title="Uses" minutes={15}>
+
+<div class="table-wrap">
+
+| Region | Typical uses |
+|---|---|
+| **radio waves** | radio and television transmissions; astronomy; RFID (contactless cards, tags in shops) |
+| **microwaves** | satellite television; mobile phones (cell phones); microwave ovens |
+| **infrared** | electric grills; TV remote controls; intruder alarms; thermal imaging; optical fibres |
+| **visible light** | vision; photography; illumination (lighting) |
+| **ultraviolet** | security marking; detecting fake bank notes; sterilising water |
+| **X-rays** | medical scanning (bones); security scanners |
+| **gamma rays** | sterilising food and medical equipment; detecting and treating cancer |
+
+</div>
+
+Click each region to see the uses again:
+
+<EmSpectrum />
+
+</Step>
+
+<Step kind="learn" title="Dangers" minutes={10}>
+
+Too much exposure to some electromagnetic waves is harmful:
+
+<div class="table-wrap">
+
+| Region | Harmful effect |
+|---|---|
+| **microwaves** | internal heating of body cells |
+| **infrared** | skin burns |
+| **ultraviolet** | damage to surface cells and eyes: can lead to skin cancer and eye conditions |
+| **X-rays** and **gamma rays** | mutation or damage to cells in the body |
+
+</div>
+
+**In general:** the **higher the frequency**, the more energy each wave carries, and the more dangerous it is. X-rays and gamma rays can go deep into the body and damage cells.
+
+**Protection:** sunscreen and sunglasses (UV); short X-ray exposures, and lead aprons for staff (X-rays); the metal box of a microwave oven keeps the microwaves inside.
+
+</Step>
+
+<Step kind="do" title="See the invisible" minutes={13}>
+
+1. **Infrared:** point a TV remote control at the camera of a mobile phone (many phone cameras can detect infrared; the front camera often works best). Press a button. What do you see on the screen?
+2. **Ultraviolet:** write a secret message with a UV security pen. Shine a UV lamp on it. (Do not look at the UV lamp.)
+3. **Card sort:** match 14 cards (7 regions, 7 uses or dangers).
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={12}>
+
+<Quiz questions={[
+  {
+    question: 'Which region is used in a TV remote control?',
+    options: [
+      { text: 'infrared', correct: true, why: 'Short-range communication.' },
+      { text: 'ultraviolet', why: 'UV is used for security marking.' },
+      { text: 'X-rays', why: 'X-rays are used for medical scanning.' },
+      { text: 'gamma rays', why: 'Gamma rays are used to sterilise and to treat cancer.' },
+    ],
+  },
+  {
+    question: 'Which region is used to sterilise medical equipment?',
+    options: [
+      { text: 'gamma rays', correct: true, why: 'They kill bacteria, even inside sealed packets.' },
+      { text: 'radio waves', why: 'Radio waves are used for communication.' },
+      { text: 'infrared', why: 'Infrared is used for heating and short-range communication.' },
+      { text: 'visible light', why: 'Gamma rays are used.' },
+    ],
+  },
+  {
+    question: 'What is the danger of too much ultraviolet?',
+    options: [
+      { text: 'damage to surface cells and eyes, which can lead to skin cancer', correct: true, why: 'Use sunscreen and sunglasses.' },
+      { text: 'internal heating of body cells', why: 'This is microwaves.' },
+      { text: 'no danger at all', why: 'UV can damage skin and eyes.' },
+      { text: 'only skin burns from heat', why: 'Heat burns are from infrared.' },
+    ],
+  },
+  {
+    question: 'Which region is used to check for fake bank notes?',
+    options: [
+      { text: 'ultraviolet', correct: true, why: 'Real notes have marks that glow under UV.' },
+      { text: 'microwaves', why: 'Microwaves are used for phones and cooking.' },
+      { text: 'radio waves', why: 'UV is used.' },
+      { text: 'X-rays', why: 'X-rays are used in security scanners for bags, not for bank notes.' },
+    ],
+  },
+  {
+    question: 'Which two regions can cause mutation of cells in the body?',
+    options: [
+      { text: 'X-rays and gamma rays', correct: true, why: 'They have the highest frequencies.' },
+      { text: 'radio waves and microwaves', why: 'These have low frequencies.' },
+      { text: 'infrared and visible light', why: 'These do not cause mutation.' },
+      { text: 'microwaves and infrared', why: 'They heat, but they do not cause mutation.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Thermal imaging cameras use…',
+    options: [
+      { text: 'infrared', correct: true, why: 'Warm objects emit more infrared.' },
+      { text: 'ultraviolet', why: 'Thermal = infrared.' },
+      { text: 'microwaves', why: 'Thermal imaging uses infrared.' },
+      { text: 'gamma rays', why: 'Thermal imaging uses infrared.' },
+    ],
+  },
+  {
+    question: 'What is the danger of too much microwave radiation?',
+    options: [
+      { text: 'internal heating of body cells', correct: true, why: 'Microwaves heat water inside the body.' },
+      { text: 'skin cancer', why: 'This is ultraviolet.' },
+      { text: 'mutation of cells', why: 'This is X-rays and gamma rays.' },
+      { text: 'no danger', why: 'Too much can heat body cells.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Make a poster of the electromagnetic spectrum: for each region, one picture of a use and (if there is one) one danger.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, uses 15 min, dangers 10 min, activities 13 min, check 12 min, exit ticket 5 min.
+
+**Syllabus:** the lists of uses and dangers follow 3.3 C3 and C4. Students should know at least these examples.
+
+**Common mistakes:**
+
+- Mixing up the uses of UV and X-rays.
+- "Radio waves are sound waves." Radio waves are electromagnetic; a radio turns them into sound.
+- "All radiation is dangerous." Low-frequency radiation (radio, visible) is not dangerous in normal amounts.
+
+**Language support:**
+
+- *sterilise* = kill all bacteria; *mutation* = a change in the DNA of a cell; *RFID* = radio frequency identification.
+
+**Differentiation:**
+
+- Support: the card sort with pictures.
+- Stretch: why are gamma rays good for sterilising food that is already in sealed packets?
+
+**Safety:** do not look directly at UV lamps; use low-power UV torches.
+
+</Step>

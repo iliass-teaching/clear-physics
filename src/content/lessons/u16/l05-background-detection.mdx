@@ -1,0 +1,131 @@
+---
+unit: 16
+lesson: 5
+title: Background radiation and detection
+syllabus: ['5.2.1 C1–C4', '5.2.1 S5']
+goals:
+  - Know what background radiation is, and its main sources.
+  - Know that ionising radiation is measured with a detector and a counter.
+  - Use count rates in counts/s or counts/minute.
+  - 'Extended: calculate a corrected count rate.'
+keyWords: [background radiation, count rate, ionising, nucleus]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { detectorSvg } from '../../../lib/nuclearFigures';
+
+<Step kind="starter" title="Always there" minutes={5}>
+
+A detector is switched on in an empty room, with no radioactive source. It still clicks every few seconds. Where could this radiation come from?
+
+</Step>
+
+<Step kind="learn" title="Background radiation" minutes={12}>
+
+**Background radiation** is the ionising radiation that is around us **all the time**. Most of it is natural.
+
+Main sources:
+
+- **radon gas** in the air (from rocks under the ground);
+- **rocks and buildings** (for example granite);
+- **food and drink** (they contain small amounts of radioactive isotopes, like potassium-40);
+- **cosmic rays** (radiation from space).
+
+Smaller sources: medical uses (X-rays, scans) and the nuclear industry.
+
+</Step>
+
+<Step kind="learn" title="Detecting radiation" minutes={12}>
+
+<Figure svg={detectorSvg()} caption="A detector connected to a counter." width="30rem" />
+
+- Ionising radiation is measured with a **detector** (for example a Geiger–Müller tube) connected to a **counter**.
+- Each time radiation enters the detector, the counter adds 1 (a "count").
+- The **count rate** is the number of counts each second (**counts/s**) or each minute (**counts/minute**):
+
+$$
+\text{count rate} = \frac{\text{number of counts}}{\text{time}}
+$$
+
+**Extended: corrected count rate.** The detector also counts the background. To find the count rate from a source only:
+
+$$
+\text{corrected count rate} = \text{measured count rate} - \text{background count rate}
+$$
+
+</Step>
+
+<Step kind="do" title="Measure the background" minutes={12}>
+
+**With a detector (if your school has one):**
+
+1. Remove all sources from the room. Count for 5 minutes. Calculate the background count rate in counts/minute.
+2. Repeat 3 times. Are the results exactly the same? Why not? (Radioactive decay is random.)
+3. Calculate the mean background count rate.
+
+**No detector?** Use these results from a school: 103, 95, 118, 99, 110 counts in 5 minutes each. Calculate the mean count rate in counts/minute and in counts/s.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={14}>
+
+<Practice topic="count-rate" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Which is a natural source of background radiation?',
+    options: [
+      { text: 'radon gas', correct: true, why: 'It comes from rocks under the ground.' },
+      { text: 'mobile phones', why: 'Phones use microwaves, which are not ionising.' },
+      { text: 'televisions', why: 'Radon, rocks, food, cosmic rays.' },
+      { text: 'light bulbs', why: 'Light is not ionising radiation from nuclei.' },
+    ],
+  },
+  {
+    question: 'A detector counts 600 counts in 2 minutes. What is the count rate?',
+    options: [
+      { text: '300 counts/minute', correct: true, why: '$\\dfrac{600}{2}$.' },
+      { text: '1200 counts/minute', why: 'Divide by the time.' },
+      { text: '600 counts/minute', why: 'That was in 2 minutes.' },
+      { text: '3000 counts/minute', why: 'Divide the counts by the time: $\\dfrac{600}{2}$.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** 5.2.1 C1–C4 are Core. The corrected count rate (S5) is Extended.
+
+**Timing:** starter 5 min, background 12 min, detection 12 min, measurement 12 min, practice 14 min, exit ticket 5 min.
+
+**Activity data:** the mean of 103, 95, 118, 99, 110 is 105 counts in 5 minutes: 21 counts/minute, or 0.35 counts/s.
+
+**Common mistakes:**
+
+- "Background radiation comes only from nuclear power stations."
+- Forgetting to subtract the background (Extended).
+- Mixing counts/s and counts/minute.
+
+**Language support:**
+
+- *background* = always there, behind everything else.
+- *cosmic* = from space.
+
+**Differentiation:**
+
+- Support: level 1 of the practice.
+- Stretch: why is the background higher in some regions (for example on granite rock)?
+
+**Safety:** follow your school's rules for radioactive sources (see lesson 16.9).
+
+</Step>

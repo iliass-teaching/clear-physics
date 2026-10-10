@@ -1,0 +1,173 @@
+---
+unit: 4
+lesson: 3
+title: Impulse and force
+syllabus: ['1.6 S2', '1.6 S4']
+goals:
+  - 'Define impulse and use the equation $F\Delta t = \Delta(mv)$.'
+  - 'Use the equation $F = \dfrac{\Delta p}{\Delta t}$.'
+  - Explain how crumple zones, airbags and helmets reduce the force in a crash.
+keyWords: [impulse, momentum, force]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="Catch an egg" minutes={5}>
+
+How do you catch a raw egg without breaking it? Do you keep your hands still, or do you move them back with the egg? Why?
+
+</Step>
+
+<Step kind="learn" title="Impulse" minutes={10}>
+
+A force that acts for a time changes the momentum of an object.
+
+The **impulse** is the force × the time for which the force acts. It is equal to the **change in momentum**:
+
+$$
+\text{impulse} = F\Delta t = \Delta(mv)
+$$
+
+The unit of impulse is the **newton second (N s)**. It is the same as kg m/s.
+
+<WorkedExample
+  question="A tennis racket hits a ball with an average force of 200 N for 0.005 s. Calculate the impulse on the ball."
+  given={['$F = 200\\,\\text{N}$', '$\\Delta t = 0.005\\,\\text{s}$']}
+  find="the impulse"
+  answer="$1\,\text{N s}$"
+>
+
+$\text{impulse} = F\Delta t = 200 \times 0.005$
+
+$\text{impulse} = 1\,\text{N s}$ (so the momentum of the ball changes by $1\,\text{kg m/s}$)
+
+</WorkedExample>
+
+**Be careful with bouncing:** a ball that hits a wall at $+5\,\text{m/s}$ and bounces back at $-3\,\text{m/s}$ has a change in velocity of $-3 - 5 = -8\,\text{m/s}$, not $2\,\text{m/s}$.
+
+</Step>
+
+<Step kind="learn" title="Force = rate of change of momentum" minutes={10}>
+
+Divide both sides of $F\Delta t = \Delta p$ by $\Delta t$:
+
+$$
+F = \frac{\Delta p}{\Delta t}
+$$
+
+The **resultant force** is the **change in momentum per unit time**.
+
+So, for the **same change in momentum**:
+
+- a **short** time gives a **big** force;
+- a **long** time gives a **small** force.
+
+### Safety in a crash
+
+In a crash, a car and its passengers lose all their momentum. Safety features make this change take **longer**, so the force is **smaller**:
+
+- **crumple zones**: the front of the car squashes slowly;
+- **airbags**: the head slows down over a longer time;
+- **seat belts**: they stretch a little;
+- **helmets**: the soft foam inside squashes.
+
+This is also why you move your hands back when you catch an egg.
+
+<WorkedExample
+  question="A 70 kg passenger moving at 15 m/s stops in a crash. Calculate the force on him if he stops in 0.05 s (hitting the dashboard), and in 0.5 s (with an airbag)."
+  given={['$m = 70\\,\\text{kg}$', '$\\Delta v = 15\\,\\text{m/s}$', '$\\Delta t = 0.05\\,\\text{s}$ or $0.5\\,\\text{s}$']}
+  find="the force in each case"
+  answer="$21\,000\,\text{N}$ without the airbag, $2100\,\text{N}$ with it"
+>
+
+$\Delta p = 70 \times 15 = 1050\,\text{kg m/s}$
+
+without airbag: $F = \dfrac{1050}{0.05} = 21\,000\,\text{N}$
+
+with airbag: $F = \dfrac{1050}{0.5} = 2100\,\text{N}$ (ten times smaller)
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="do" title="Egg drop challenge" minutes={12}>
+
+Design a package to protect a raw egg dropped from 2 m.
+
+**Rules:** you can use paper, straws, tape and cotton wool. No more than 30 cm in any direction.
+
+1. Draw your design and label it.
+2. Explain, using **impulse** and **time**, how it reduces the force on the egg.
+3. Test it (outside, or over a tray).
+
+*Start your explanation like this: "The egg loses the same momentum, but the … makes the time longer, so …"*
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={18}>
+
+<Practice topic="impulse" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A force of 400 N acts on a ball for 0.02 s. What is the impulse?',
+    options: [
+      { text: '8 N s', correct: true, why: '$400 \\times 0.02 = 8\\,\\text{N s}$.' },
+      { text: '20 000 N s', why: 'Multiply: $F\\Delta t$.' },
+      { text: '400 N s', why: 'Multiply the force by the time.' },
+      { text: '8 N', why: 'Impulse is in N s.' },
+    ],
+  },
+  {
+    question: 'Why does an airbag reduce the force on a passenger?',
+    options: [
+      { text: 'It makes the time to stop longer, for the same change in momentum', correct: true, why: '$F = \\dfrac{\\Delta p}{\\Delta t}$: a bigger $\\Delta t$ gives a smaller force.' },
+      { text: 'It reduces the change in momentum', why: 'The passenger still stops: the change in momentum is the same.' },
+      { text: 'It makes the passenger lighter', why: 'The mass does not change.' },
+      { text: 'It stops the car faster', why: 'It makes the passenger stop more slowly.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Explain why a gymnast lands on a soft mat and bends her knees. Use the words *momentum*, *time* and *force*. Then do 5 questions at **Level 3** of the practice.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Extended content** (1.6 S2, S4).
+
+**Timing:** starter 5 min, learn 20 min, egg drop 12 min, practice 18 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- In a bounce, subtracting the speeds instead of using signed velocities.
+- Thinking safety features reduce the change in momentum (they increase the time).
+- Mixing up impulse (N s) and force (N).
+
+**Egg drop:** the full challenge can take longer. Do the design and explanation in class, and the test in another lesson if needed.
+
+**Language support:**
+
+- Read $\Delta$ as "change in". Sentence frame: *"For the same change in momentum, a longer time gives a … force."*
+
+**Differentiation:**
+
+- Support: start with Level 1 (impulse = force × time).
+- Stretch: a ball hits a wall and bounces back with the same speed. Is the impulse zero? (No: the change in velocity is $2v$.)
+
+**Safety:** clean up broken eggs quickly. Check for egg allergies.
+
+</Step>

@@ -1,0 +1,168 @@
+---
+unit: 2
+lesson: 3
+title: Density
+syllabus: ['1.4 C1']
+goals:
+  - Define density as mass per unit volume.
+  - 'Use the equation $\rho = \dfrac{m}{V}$ to find density, mass or volume.'
+  - Change a density between g/cm³ and kg/m³.
+keyWords: [density, mass, volume]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="Heavy or big?" minutes={5}>
+
+Which has more mass: 1 kg of iron or 1 kg of feathers?
+
+Now: which takes up more space? Why is iron "heavier" than feathers in everyday language?
+
+</Step>
+
+<Step kind="learn" title="What is density?" minutes={12}>
+
+**Density** is the **mass per unit volume**: the mass of each cubic centimetre (or each cubic metre) of a material.
+
+$$
+\rho = \frac{m}{V}
+$$
+
+The symbol $\rho$ is the Greek letter "rho".
+
+<div class="table-wrap">
+
+| Quantity | Symbol | Units |
+|---|---|---|
+| density | $\rho$ | g/cm³ or kg/m³ |
+| mass | $m$ | g or kg |
+| volume | $V$ | cm³ or m³ |
+
+</div>
+
+Iron is dense: each cm³ of iron has a mass of 7.9 g. Feathers are not dense: 1 kg of feathers takes up a lot of space.
+
+<WorkedExample
+  question="A block of aluminium has a mass of 54 g and a volume of 20 cm³. Calculate its density."
+  given={['$m = 54\\,\\text{g}$', '$V = 20\\,\\text{cm}^3$']}
+  find="the density $\rho$"
+  answer="$\rho = 2.7\,\text{g/cm}^3$"
+>
+
+$\rho = \dfrac{m}{V} = \dfrac{54}{20}$
+
+$\rho = 2.7\,\text{g/cm}^3$
+
+</WorkedExample>
+
+**Find the mass or the volume:**
+
+$$
+m = \rho \times V \qquad\qquad V = \frac{m}{\rho}
+$$
+
+</Step>
+
+<Step kind="learn" title="Two units" minutes={8}>
+
+$1\,\text{m}^3 = 100\,\text{cm} \times 100\,\text{cm} \times 100\,\text{cm} = 1\,000\,000\,\text{cm}^3$ and $1\,\text{kg} = 1000\,\text{g}$. So:
+
+$$
+1\,\text{g/cm}^3 = 1000\,\text{kg/m}^3
+$$
+
+Example: water has a density of $1.0\,\text{g/cm}^3 = 1000\,\text{kg/m}^3$.
+
+<div class="table-wrap">
+
+| material | density / (g/cm³) | density / (kg/m³) |
+|---|---|---|
+| cork | 0.24 | 240 |
+| ice | 0.92 | 920 |
+| water | 1.0 | 1000 |
+| aluminium | 2.7 | 2700 |
+| iron | 7.9 | 7900 |
+| lead | 11.3 | 11 300 |
+| gold | 19.3 | 19 300 |
+
+</div>
+
+<p class="small muted">Typical values at room temperature.</p>
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={25}>
+
+<Practice topic="density" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={10}>
+
+<Quiz questions={[
+  {
+    question: 'A stone has a mass of 75 g and a volume of 30 cm³. What is its density?',
+    options: [
+      { text: '2.5 g/cm³', correct: true, why: '$\\rho = \\dfrac{75}{30} = 2.5\\,\\text{g/cm}^3$.' },
+      { text: '0.4 g/cm³', why: 'You divided the wrong way: $\\rho = \\dfrac{m}{V}$.' },
+      { text: '2250 g/cm³', why: 'You multiplied: $\\rho = \\dfrac{m}{V}$.' },
+      { text: '2.5 kg/m³', why: '$2.5\\,\\text{g/cm}^3 = 2500\\,\\text{kg/m}^3$.' },
+    ],
+  },
+  {
+    question: 'Gold has a density of 19.3 g/cm³. What is this in kg/m³?',
+    options: [
+      { text: '19 300 kg/m³', correct: true, why: '$1\\,\\text{g/cm}^3 = 1000\\,\\text{kg/m}^3$.' },
+      { text: '0.0193 kg/m³', why: 'The number gets bigger: multiply by 1000.' },
+      { text: '1930 kg/m³', why: 'Multiply by 1000, not by 100.' },
+      { text: '19.3 kg/m³', why: 'The units are different, so the number changes: × 1000.' },
+    ],
+  },
+  {
+    question: 'Which has the bigger volume: 100 g of cork or 100 g of iron?',
+    options: [
+      { text: 'cork', correct: true, why: 'Cork has a lower density, so the same mass takes up more space.' },
+      { text: 'iron', why: 'Iron is denser: 100 g of iron is small.' },
+      { text: 'the same', why: 'Same mass, but different densities, so different volumes.' },
+      { text: 'it is impossible to say', why: 'Use $V = \\dfrac{m}{\\rho}$: the lower the density, the bigger the volume.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. A gold bar has a volume of 50 cm³. Calculate its mass in g and in kg.
+2. Do 5 questions at **Level 2** of the practice.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 20 min, practice 25 min, exit ticket 10 min.
+
+**Common mistakes:**
+
+- Dividing the wrong way ($V/m$).
+- Mixing units: g with m³, or kg with cm³.
+- Changing g/cm³ to kg/m³ by dividing, or by 100.
+
+**Homework answer:** $m = 19.3 \times 50 = 965\,\text{g} = 0.965\,\text{kg}$.
+
+**Data:** densities are typical values from standard reference tables, rounded. Real samples vary a little (especially wood, cork and oils).
+
+**Language support:**
+
+- Use the phrase "how much mass in each cm³" before the word *density*.
+
+**Differentiation:**
+
+- Support: use g and cm³ only (Levels 1 and 2).
+- Stretch: air has a density of about $1.2\,\text{kg/m}^3$. Estimate the mass of the air in your classroom.
+
+</Step>

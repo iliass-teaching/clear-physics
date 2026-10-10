@@ -1,0 +1,133 @@
+---
+unit: 14
+lesson: 5
+title: Sensors and potential dividers
+syllabus: ['4.3.3 C1', '4.3.3 S2', '4.3.3 S3']
+goals:
+  - Know that, for a constant current, the p.d. across a conductor is bigger when its resistance is bigger.
+  - 'Extended: describe how a variable potential divider works.'
+  - 'Extended: use $\dfrac{R_1}{R_2} = \dfrac{V_1}{V_2}$ for a potential divider.'
+keyWords: [potential divider, thermistor, light-dependent resistor, resistance, potential difference]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import DividerSim from '../../../components/DividerSim.astro';
+import { potentialDividerSvg } from '../../../lib/safetyFigures';
+
+<Step kind="starter" title="Automatic lights" minutes={5}>
+
+A street light switches on by itself when it gets dark. Which component from lesson 14.1 could "sense" the dark? How could a change in resistance switch something on?
+
+</Step>
+
+<Step kind="learn" title="Bigger resistance, bigger p.d." minutes={10}>
+
+In a series circuit, the **same current** flows through every component. Since $V = IR$:
+
+- the component with the **bigger resistance** has the **bigger p.d.** across it.
+
+<Figure svg={potentialDividerSvg()} caption="A potential divider: two resistors share the supply p.d." width="24rem" />
+
+Two resistors in series **divide** (share) the supply p.d. This is a **potential divider**.
+
+</Step>
+
+<Step kind="learn" title="The potential divider equation (Extended)" minutes={12}>
+
+The p.d.s are in the **same ratio** as the resistances:
+
+$$
+\frac{R_1}{R_2} = \frac{V_1}{V_2}
+$$
+
+and $V_1 + V_2 = V$ (the supply p.d.).
+
+<WorkedExample
+  question="A 9 V supply is connected across a 2 kΩ resistor and a 1 kΩ resistor in series. Calculate the p.d. across each resistor."
+  given={['$V = 9\\,\\text{V}$', '$R_1 = 2\\,\\text{k}\\Omega$', '$R_2 = 1\\,\\text{k}\\Omega$']}
+  find="$V_1$ and $V_2$"
+  answer="$V_1 = 6\,\text{V}$; $V_2 = 3\,\text{V}$"
+>
+
+$\dfrac{V_1}{V_2} = \dfrac{R_1}{R_2} = \dfrac{2}{1}$: $V_1$ is twice $V_2$.
+
+The 9 V is shared in the ratio 2 : 1 (3 parts): $V_1 = 6\,\text{V}$ and $V_2 = 3\,\text{V}$.
+
+</WorkedExample>
+
+**A variable potential divider:** if one resistor is a variable resistor, a thermistor or an LDR, the output p.d. **changes**:
+
+- LDR at the bottom: in the **dark**, its resistance is **high**, so the p.d. across it is **high**. This can switch on a street light.
+- Thermistor at the top: when it is **hot**, its resistance is **low**, so the p.d. across the bottom resistor is **high**. This can switch on a fire alarm.
+
+</Step>
+
+<Step kind="do" title="Design a sensor circuit" minutes={15}>
+
+<DividerSim />
+
+1. **Street light:** choose the LDR, at the bottom. Change the light level. At what light level does the output device switch on? Change the fixed resistor: what happens to this light level?
+2. **Fire alarm:** choose the thermistor. Should it be at the top or at the bottom, so that the alarm switches on when it gets **hot**? Test your answer.
+
+</Step>
+
+<Step kind="practice" title="Practice (Extended)" minutes={13}>
+
+<Practice topic="potential-divider" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Two resistors are in series. Which one has the bigger p.d. across it?',
+    options: [
+      { text: 'the one with the bigger resistance', correct: true, why: 'Same current, so $V = IR$ is bigger.' },
+      { text: 'the one with the smaller resistance', why: '$V = IR$: bigger R, bigger V.' },
+      { text: 'they always have the same p.d.', why: 'Only if their resistances are equal.' },
+      { text: 'the one nearer the battery', why: 'Position does not matter; resistance does.' },
+    ],
+  },
+  {
+    question: 'Extended: 12 V is across 1 kΩ and 3 kΩ in series. What is the p.d. across the 3 kΩ resistor?',
+    options: [
+      { text: '9 V', correct: true, why: 'Ratio 1 : 3, so 3/4 of 12 V.' },
+      { text: '3 V', why: 'That is the p.d. across the 1 kΩ resistor.' },
+      { text: '4 V', why: 'Share in the ratio 1 : 3.' },
+      { text: '6 V', why: 'Not equal shares: ratio 1 : 3.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** 4.3.3 C1 is Core. The variable potential divider (S2) and the ratio equation (S3) are Extended. Core students can use the simulation to see how sensors change the output.
+
+**Timing:** starter 5 min, learn 22 min, simulation 15 min, practice 13 min, exit ticket 5 min.
+
+**About the simulation:** the LDR goes from about 100 kΩ (dark) to 1 kΩ (bright light). The thermistor is an NTC thermistor of 10 kΩ at 25 °C. These are typical values for school sensors. The output device switches on above 3.0 V.
+
+**Common mistakes:**
+
+- Giving the bigger p.d. to the smaller resistor.
+- Forgetting that the output is taken across one particular resistor (usually the bottom one).
+
+**Language support:**
+
+- *divide* = share.
+- *ratio* 2 : 1 = two parts and one part.
+
+**Differentiation:**
+
+- Support: the worked example with resistors of equal value first.
+- Stretch: design a circuit that switches on a heater when it gets cold.
+
+</Step>

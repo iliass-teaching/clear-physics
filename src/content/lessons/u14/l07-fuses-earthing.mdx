@@ -1,0 +1,125 @@
+---
+unit: 14
+lesson: 7
+title: Fuses, trip switches and earthing
+syllabus: ['4.4 C3', '4.4 C4', '4.4 C5']
+goals:
+  - Explain how fuses and trip switches work, and choose fuse ratings.
+  - Explain why an appliance needs a non-conducting (double-insulated) case or an earthed case.
+  - Know that a fuse protects the circuit and the cable of a double-insulated appliance.
+keyWords: [fuse, trip switch, earth wire, double-insulated, live wire]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { earthFaultSvg, doubleInsulationSvg } from '../../../lib/safetyFigures';
+
+<Step kind="starter" title="Why a weak wire?" minutes={5}>
+
+A fuse is a **thin** wire, put on purpose in the live wire of a circuit. Why would engineers put a weak part in a circuit?
+
+</Step>
+
+<Step kind="learn" title="Fuses and trip switches" minutes={14}>
+
+**A fuse** is a short, thin wire in the **live** wire. If the current becomes **bigger than its rating**, the wire **gets hot and melts**. This **breaks the circuit**: the current stops, and the cables cannot overheat.
+
+**Choosing a fuse:** calculate the **normal** current $I = \dfrac{P}{V}$. Choose the **smallest** fuse rating that is **a little bigger** than the normal current. (Common ratings in plugs: 3 A, 5 A and 13 A.)
+
+<WorkedExample
+  question="A 920 W microwave oven works on the 230 V mains. Which fuse should it have: 3 A, 5 A or 13 A?"
+  given={['$P = 920\\,\\text{W}$', '$V = 230\\,\\text{V}$']}
+  find="the fuse rating"
+  answer="5 A"
+>
+
+$I = \dfrac{P}{V} = \dfrac{920}{230} = 4\,\text{A}$
+
+3 A is too small (it would melt in normal use). 13 A would not protect well. Choose **5 A**.
+
+</WorkedExample>
+
+**A trip switch** (circuit breaker) does the same job: it **switches off** automatically when the current is too big. It can be **reset** (switched on again) after the fault is repaired, and it acts **faster** than a fuse. Trip switches have a **setting** (for example 6 A for a lighting circuit, 32 A for an oven circuit), chosen in the same way.
+
+</Step>
+
+<Step kind="learn" title="Earthing and double insulation" minutes={14}>
+
+**Appliances with a metal case must be earthed.**
+
+<Figure svg={earthFaultSvg()} caption="A fault: the live wire touches the metal case." width="34rem" />
+
+If a loose live wire touches the metal case, the case becomes **live**. Without an earth wire, a person touching the case would get a shock.
+
+With an **earth wire**: a **big current** flows from the live wire, through the case, to the **earth**. This big current **melts the fuse** (or trips the switch), and the appliance is disconnected. The case is safe to touch.
+
+**Double-insulated appliances** have a case that does **not conduct** (plastic), and all live parts are insulated twice. Even if a wire comes loose, the case cannot become live. They do **not** need an earth wire. Look for this symbol:
+
+<Figure svg={doubleInsulationSvg()} caption="The double-insulation symbol." width="6rem" />
+
+For a double-insulated appliance, the **fuse** (without an earth wire) still **protects the circuit and the cable** from too big a current (for example a short circuit inside).
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={20}>
+
+<Practice topic="fuse" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={7}>
+
+<Quiz questions={[
+  {
+    question: 'What happens to a fuse when the current is too big?',
+    options: [
+      { text: 'The thin wire melts and breaks the circuit', correct: true, why: 'The current stops.' },
+      { text: 'It makes the current smaller', why: 'It breaks the circuit.' },
+      { text: 'It connects the case to earth', why: 'That is the earth wire.' },
+      { text: 'Nothing: fuses only work with d.c.', why: 'Fuses work with a.c. too.' },
+    ],
+  },
+  {
+    question: 'Why does a hair dryer with a plastic case not need an earth wire?',
+    options: [
+      { text: 'It is double-insulated: the case cannot become live', correct: true, why: 'Plastic does not conduct.' },
+      { text: 'It uses very little current', why: 'The reason is the non-conducting case.' },
+      { text: 'Plastic is a good conductor', why: 'Plastic is an insulator.' },
+      { text: 'It has no fuse', why: 'It still has a fuse to protect the cable.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core:** 4.4 C3–C5.
+
+**Timing:** starter 5 min, fuses 14 min, earthing 14 min, practice 20 min, exit ticket 7 min.
+
+**Local context:** fuse ratings of 3 A, 5 A and 13 A are typical for plugs that contain a fuse (for example in the UK). In many countries, plugs have no fuse and protection is by trip switches (circuit breakers) in the distribution board. The principles are the same. Some homes also have a residual-current device (RCD), which is not in this syllabus.
+
+**Common mistakes:**
+
+- Choosing a fuse rating smaller than the normal current.
+- "The earth wire protects the person by carrying the current through them."
+- "Double-insulated appliances do not need a fuse."
+
+**Language support:**
+
+- *rating* = the current at which the fuse melts.
+- *trip* = switch off suddenly.
+
+**Differentiation:**
+
+- Support: a table of appliances with power and current, to choose the fuse.
+- Stretch: why must the fuse be in the live wire and not in the neutral wire?
+
+**Safety:** demonstrate a fuse melting only with a low-voltage supply and fuse wire, under supervision, on a heatproof mat.
+
+</Step>

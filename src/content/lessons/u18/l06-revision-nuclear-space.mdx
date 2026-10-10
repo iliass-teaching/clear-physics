@@ -1,0 +1,150 @@
+---
+unit: 18
+lesson: 6
+title: 'Revision: nuclear and space physics'
+syllabus: ['5', '6']
+goals:
+  - Revise the key ideas of syllabus sections 5 and 6 (Units 16–17).
+  - Practise half-life, nuclide and space calculations.
+  - Avoid common mistakes.
+keyWords: [nucleus, isotope, half-life, light-year, orbit, galaxy]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="learn" title="What to revise" minutes={10}>
+
+<div class="table-wrap">
+
+| Topic | Key ideas | Unit |
+|---|---|---|
+| the atom and nucleus | nucleus (protons, neutrons), electrons; ions; ${}^{A}_{Z}\text{X}$; isotopes; α-scattering, fission, fusion (E) | [16](../../16/) |
+| radioactivity | background (radon, rocks, food, cosmic rays); α, β, γ; decay is random; half-life; uses (E) and safety | [16](../../16/) |
+| Earth and Solar System | day and night (spin, 24 h), seasons (tilt), Moon phases; planets; light travel time; $v = \dfrac{2\pi r}{T}$ (E) | [17](../../17/) |
+| stars and the Universe | the Sun, galaxies, light-years; life cycle of stars (E); redshift; Big Bang; CMBR; $H_0$ (E) | [17](../../17/) |
+
+</div>
+
+**Mistakes to avoid:**
+
+- "γ is the most ionising" (α is the most ionising; γ is the most penetrating);
+- half-life: dividing by the number of half-lives instead of halving again and again;
+- β-decay: $Z$ goes **up** by 1 (E);
+- seasons explained by the distance from the Sun (the reason is the **tilt** of the axis);
+- the light-year is a **distance**, not a time.
+
+</Step>
+
+<Step kind="practice" title="Mixed practice" minutes={28}>
+
+### Protons, neutrons and electrons
+
+<Practice topic="nuclide" level={1} />
+
+### Half-life
+
+<Practice topic="half-life" level={2} />
+
+### Light travel time
+
+<Practice topic="light-time" level={1} />
+
+### Extended: decay equations
+
+<Practice topic="decay-equation" level={3} />
+
+### Extended: orbital speed
+
+<Practice topic="orbital-speed" level={1} />
+
+</Step>
+
+<Step kind="exit" title="Exam-style questions" minutes={22}>
+
+<Quiz questions={[
+  {
+    question: '1. How many neutrons are in ${}^{60}_{27}\\text{Co}$?',
+    options: [
+      { text: '33', correct: true, why: '$60 - 27$.' },
+      { text: '27', why: 'That is the number of protons.' },
+      { text: '60', why: 'That is the number of nucleons.' },
+      { text: '87', why: 'Subtract.' },
+    ],
+  },
+  {
+    question: '2. Which radiation is stopped by a few millimetres of aluminium but not by paper?',
+    options: [
+      { text: 'beta', correct: true, why: 'α is stopped by paper; γ needs thick lead.' },
+      { text: 'alpha', why: 'α is stopped by paper.' },
+      { text: 'gamma', why: 'γ passes through aluminium.' },
+      { text: 'all three', why: 'Only β.' },
+    ],
+  },
+  {
+    question: '3. A sample has a half-life of 3 days. What fraction is left after 9 days?',
+    options: [
+      { text: '1/8', correct: true, why: '3 half-lives: 1/2 × 1/2 × 1/2.' },
+      { text: '1/3', why: 'Halve three times.' },
+      { text: '1/9', why: 'Halve three times: 1/8.' },
+      { text: '1/6', why: 'Halve three times.' },
+    ],
+  },
+  {
+    question: '4. Why do we have seasons?',
+    options: [
+      { text: 'The Earth’s axis is tilted', correct: true, why: 'Each hemisphere is tilted towards the Sun for part of the year.' },
+      { text: 'The Earth is closer to the Sun in summer', why: 'The tilt is the reason.' },
+      { text: 'The Earth spins faster in summer', why: 'The tilt is the reason.' },
+      { text: 'The Moon blocks the Sun in winter', why: 'The tilt is the reason.' },
+    ],
+  },
+  {
+    question: '5. What is a light-year?',
+    options: [
+      { text: 'the distance light travels in one year', correct: true, why: 'A distance, not a time.' },
+      { text: 'the time light takes to reach the Earth', why: 'It is a distance.' },
+      { text: 'one year on another planet', why: 'It is a distance.' },
+      { text: 'the speed of light', why: 'It is a distance.' },
+    ],
+  },
+  {
+    question: '6. What evidence supports the Big Bang theory?',
+    options: [
+      { text: 'redshift of distant galaxies, and the CMBR', correct: true, why: 'The Universe is expanding, and the CMBR is left over from the early Universe.' },
+      { text: 'the phases of the Moon', why: 'These are caused by the Moon’s orbit.' },
+      { text: 'the seasons', why: 'These are caused by the tilt of the Earth.' },
+      { text: 'background radiation from rocks', why: 'That is radioactivity on Earth.' },
+    ],
+  },
+  {
+    question: '7. (E) ${}^{90}_{38}\\text{Sr}$ emits a β-particle. What is the proton number of the new nucleus?',
+    options: [
+      { text: '39', correct: true, why: 'β-decay: Z + 1.' },
+      { text: '37', why: 'Z goes up in β-decay.' },
+      { text: '36', why: 'That would be α-decay.' },
+      { text: '38', why: 'Z changes in β-decay.' },
+    ],
+  },
+  {
+    question: '8. (E) A satellite orbits at radius 7.0 × 10⁶ m with a period of 6000 s. What is its orbital speed?',
+    options: [
+      { text: 'about 7300 m/s', correct: true, why: '$\\dfrac{2\\pi \\times 7.0 \\times 10^6}{6000} \\approx 7330\\,\\text{m/s}$.' },
+      { text: 'about 1170 m/s', why: 'Multiply by $2\\pi$.' },
+      { text: 'about 4.2 × 10¹⁰ m/s', why: 'Divide by the period.' },
+      { text: 'about 0.00086 m/s', why: 'Upside down.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** what to revise 10 min, practice 28 min, exam questions 22 min.
+
+**Questions 7–8 are Extended.** The decay and alpha-scattering simulations of Unit 16 are good for quick revision.
+
+</Step>

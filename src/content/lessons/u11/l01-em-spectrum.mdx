@@ -1,0 +1,139 @@
+---
+unit: 11
+lesson: 1
+title: The electromagnetic spectrum
+syllabus: ['3.3 C1', '3.3 C2', '3.3 S6']
+goals:
+  - Know the regions of the electromagnetic spectrum in order of frequency and of wavelength.
+  - Know that all electromagnetic waves travel at the same speed in a vacuum.
+  - 'Use $v = f\lambda$ with electromagnetic waves.'
+keyWords: [electromagnetic spectrum, vacuum, wavelength, frequency, wave speed]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import EmSpectrum from '../../../components/EmSpectrum.astro';
+import { emSpectrumSvg } from '../../../lib/emSoundFigures';
+
+<Step kind="starter" title="More than we can see" minutes={5}>
+
+In Unit 10, a prism split white light into seven colours. Is there "light" beyond red and beyond violet that our eyes cannot see? What examples do you know?
+
+</Step>
+
+<Step kind="learn" title="A family of waves" minutes={14}>
+
+Visible light is one member of a big family: the **electromagnetic spectrum**.
+
+<Figure svg={emSpectrumSvg()} caption="The electromagnetic spectrum." width="38rem" />
+
+In order of **increasing frequency** (and **decreasing wavelength**):
+
+**radio waves → microwaves → infrared → visible light → ultraviolet → X-rays → gamma rays**
+
+A memory sentence: **R**abbits **M**ate **I**n **V**ery **U**nusual e**X**pensive **G**ardens.
+
+What all electromagnetic waves have in common:
+
+- They are **transverse** waves.
+- They can travel through a **vacuum** (empty space).
+- They all travel at the **same speed** in a vacuum: $3.0 \times 10^8$ m/s. In air, the speed is almost the same.
+- They obey $v = f\lambda$. So a **higher frequency** means a **shorter wavelength**.
+
+</Step>
+
+<Step kind="do" title="Explore the spectrum" minutes={10}>
+
+<EmSpectrum />
+
+Click each region. Write in your book: the name, a typical wavelength, and one use.
+
+</Step>
+
+<Step kind="learn" title="Calculations" minutes={8}>
+
+<WorkedExample
+  question="A radio station broadcasts at 100 MHz. Calculate the wavelength of its radio waves."
+  given={['$f = 100\\,\\text{MHz} = 1.00 \\times 10^8\\,\\text{Hz}$', '$v = 3.0 \\times 10^8\\,\\text{m/s}$']}
+  find="the wavelength $\lambda$"
+  answer="$\lambda = 3.0\,\text{m}$"
+>
+
+$v = f\lambda$, so $\lambda = \dfrac{v}{f}$
+
+$\lambda = \dfrac{3.0 \times 10^8}{1.00 \times 10^8}$
+
+$\lambda = 3.0\,\text{m}$
+
+</WorkedExample>
+
+**Units:** 1 MHz = $10^6$ Hz; 1 GHz = $10^9$ Hz; 1 nm = $10^{-9}$ m.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={18}>
+
+<Practice topic="em-waves" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Which list is in order of increasing frequency?',
+    options: [
+      { text: 'radio, microwaves, infrared, visible, ultraviolet, X-rays, gamma', correct: true, why: 'Radio waves have the lowest frequency; gamma rays the highest.' },
+      { text: 'gamma, X-rays, ultraviolet, visible, infrared, microwaves, radio', why: 'This is increasing wavelength.' },
+      { text: 'radio, infrared, microwaves, visible, X-rays, ultraviolet, gamma', why: 'Microwaves come before infrared, and UV before X-rays.' },
+      { text: 'visible, infrared, ultraviolet, radio, microwaves, X-rays, gamma', why: 'Start with radio waves.' },
+    ],
+  },
+  {
+    question: 'What is the same for all electromagnetic waves in a vacuum?',
+    options: [
+      { text: 'their speed', correct: true, why: '$3.0 \\times 10^8$ m/s.' },
+      { text: 'their frequency', why: 'Each region has different frequencies.' },
+      { text: 'their wavelength', why: 'Each region has different wavelengths.' },
+      { text: 'their dangers', why: 'The dangers are different; the speed is the same.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Make your own memory sentence for the seven regions of the electromagnetic spectrum. Then calculate the wavelength of microwaves with a frequency of 3.0 GHz.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** the order of the regions (3.3 C1) and the same speed in a vacuum (C2) are Core. The value $3.0 \times 10^8$ m/s and "approximately the same in air" (S6) are Extended; Core questions give the value.
+
+**Timing:** starter 5 min, learn 22 min, explore 10 min, practice 18 min, exit ticket 5 min.
+
+**About the wavelengths:** the boundaries between regions are not sharp and books give different values. The values in the interactive spectrum are typical. The exam asks for the **order**, not exact boundaries.
+
+**Common mistakes:**
+
+- Putting microwaves after infrared, or X-rays before ultraviolet.
+- Thinking that higher frequency waves travel faster.
+- Forgetting MHz/GHz or nm conversions.
+
+**Language support:**
+
+- *spectrum* = the full range, in order.
+- Sentence frame: *"… has a higher frequency than …, so it has a shorter wavelength."*
+
+**Differentiation:**
+
+- Support: a strip of seven cards to put in order.
+- Stretch: which region has wavelengths about the size of an atom? (X-rays: about $10^{-10}$ m.)
+
+</Step>

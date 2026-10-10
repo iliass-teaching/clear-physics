@@ -1,0 +1,187 @@
+---
+unit: 8
+lesson: 4
+title: Melting and boiling
+syllabus: ['2.2.3 C1', '2.2.3 C2', '2.2.3 C3']
+goals:
+  - Describe melting and boiling as energy input without a change in temperature.
+  - Know the melting and boiling points of water.
+  - Describe condensation and solidification with particles.
+keyWords: [melting point, boiling point, melting, boiling, condensation, freezing]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Graph from '../../../components/Graph.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="Ice in a pan" minutes={5}>
+
+You heat a pan of ice on a cooker. A thermometer is in the ice. The ice starts to melt. The cooker still gives energy. Predict: what does the thermometer show while the ice melts?
+
+</Step>
+
+<Step kind="learn" title="A heating curve" minutes={14}>
+
+We heat some ice at a steady rate and read its temperature every 30 seconds:
+
+<Graph
+  xLabel="time / min" yLabel="temperature / °C"
+  xMax={20} yMin={-20} yMax={120} xStep={2} yStep={20}
+  points={[[0, -20], [2, 0], [6, 0], [14, 100], [20, 100]]}
+  labels={[{ x: 4, y: 8, text: 'melting' }, { x: 17, y: 108, text: 'boiling' }]}
+  title="Heating curve of water: the temperature rises, stays at 0 °C while the ice melts, rises again, then stays at 100 °C while the water boils."
+  caption="Heating curve of water. The flat parts: melting and boiling."
+/>
+
+- **0–2 min:** ice gets hotter.
+- **2–6 min:** the ice **melts**. The temperature stays at **0 °C**, but the ice still gets energy.
+- **6–14 min:** the water gets hotter.
+- **14–20 min:** the water **boils**. The temperature stays at **100 °C**.
+
+**Where does the energy go when the temperature does not change?** It is used to **separate the particles**: to break them out of their fixed places (melting), or to pull them far apart (boiling). The internal energy goes up, but the temperature does not.
+
+For **water**, at normal air pressure:
+
+- **melting point** (and freezing point): **0 °C**
+- **boiling point**: **100 °C**
+
+</Step>
+
+<Step kind="learn" title="Condensation and solidification" minutes={8}>
+
+When we cool a substance, the changes go the other way, and **energy is given out**.
+
+- **Condensation (gas → liquid):** the gas particles lose energy and move more slowly. They come close together and the forces between them hold them together: they form a liquid.
+- **Solidification (liquid → solid):** the liquid particles lose energy. They stop moving around each other and settle into fixed places in a regular pattern: they form a solid.
+
+During condensation and solidification, the temperature also stays the same until the change is finished.
+
+</Step>
+
+<Step kind="do" title="Measure a cooling curve" minutes={15}>
+
+**Equipment:** a test tube of stearic acid (or another solid that melts at about 70 °C), a beaker of hot water, a thermometer, a stopwatch.
+
+1. Melt the stearic acid in the hot water. Put the thermometer in it.
+2. Take the tube out of the water. Read the temperature every 30 seconds for 10 minutes.
+3. Plot a graph: temperature (vertical axis) against time (horizontal axis).
+
+**Questions:**
+
+1. Where is the graph flat? What happens in the tube at this time?
+2. What is the melting point of the substance?
+3. The tube gives out energy to the air during the flat part. Why does the temperature not go down?
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={13}>
+
+<Quiz questions={[
+  {
+    question: 'What happens to the temperature of ice while it melts?',
+    options: [
+      { text: 'It stays at 0 °C', correct: true, why: 'The energy separates the particles. The temperature does not change.' },
+      { text: 'It goes up fast', why: 'During melting, the temperature stays the same.' },
+      { text: 'It goes down', why: 'During melting, the temperature stays the same.' },
+      { text: 'It stays at 100 °C', why: '100 °C is the boiling point of water.' },
+    ],
+  },
+  {
+    question: 'Water boils in a pan. The cooker is still on. Where does the energy go?',
+    options: [
+      { text: 'It separates the particles: liquid water becomes gas', correct: true, why: 'The temperature stays at 100 °C until all the water has boiled.' },
+      { text: 'It makes the water hotter than 100 °C', why: 'Boiling water stays at 100 °C (at normal air pressure).' },
+      { text: 'It is destroyed', why: 'Energy is never destroyed.' },
+      { text: 'It makes the particles bigger', why: 'The particles do not change size.' },
+    ],
+  },
+  {
+    question: 'What is the boiling point of water at normal air pressure?',
+    options: [
+      { text: '100 °C', correct: true, why: 'And the melting point is 0 °C.' },
+      { text: '0 °C', why: 'This is the melting point.' },
+      { text: '373 °C', why: '373 is the boiling point in kelvin: 373 K = 100 °C.' },
+      { text: '50 °C', why: 'Water boils at 100 °C.' },
+    ],
+  },
+  {
+    question: 'Steam condenses on a cold window. What happens to the particles?',
+    options: [
+      { text: 'They lose energy, slow down and come close together', correct: true, why: 'They form drops of liquid water.' },
+      { text: 'They gain energy and move apart', why: 'This is boiling or evaporation.' },
+      { text: 'They settle into a regular pattern', why: 'This is solidification (freezing).' },
+      { text: 'They disappear', why: 'They become liquid water.' },
+    ],
+  },
+  {
+    question: 'In the heating curve above, the line is flat from 14 to 20 minutes. What is happening?',
+    options: [
+      { text: 'The water is boiling', correct: true, why: 'The temperature stays at 100 °C.' },
+      { text: 'The ice is melting', why: 'Melting happens at 0 °C (2–6 min).' },
+      { text: 'The heater is off', why: 'The heater is on: the energy makes the water boil.' },
+      { text: 'The water is freezing', why: 'Freezing happens when water cools at 0 °C.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Which sentence about melting is correct?',
+    options: [
+      { text: 'The substance gets energy, but its temperature does not change', correct: true, why: 'The energy separates the particles.' },
+      { text: 'The substance gives out energy', why: 'Melting needs energy. Freezing gives out energy.' },
+      { text: 'The temperature rises quickly', why: 'The temperature stays the same during melting.' },
+      { text: 'The particles get smaller', why: 'The particles do not change size.' },
+    ],
+  },
+  {
+    question: 'What happens to the particles when a liquid solidifies?',
+    options: [
+      { text: 'They settle into fixed places in a regular pattern', correct: true, why: 'They lose energy and can only vibrate.' },
+      { text: 'They move far apart', why: 'This happens when a liquid boils.' },
+      { text: 'They move faster', why: 'They lose energy.' },
+      { text: 'They escape from the surface', why: 'This is evaporation.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Sketch a **cooling curve** for water: from steam at 110 °C to ice at −10 °C. Label the parts where the water condenses and where it freezes, with the temperatures.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 22 min, cooling curve 15 min, check 13 min, exit ticket 5 min.
+
+**Syllabus note:** specific latent heat is not in this syllabus. Keep to "energy input without a change in temperature".
+
+**Practical:** stearic acid (melting point about 69 °C) or salol (about 42 °C) gives a clear flat section. Use a water bath, not a direct flame. If no chemicals are available, give a table of results and ask students to plot it.
+
+**Common mistakes:**
+
+- "During boiling, the temperature keeps rising."
+- "The energy disappears during melting."
+- Mixing up *boiling point* in °C (100) and in K (373).
+
+**Language support:**
+
+- *solidification* = *freezing*. Both words are used in exam papers.
+- Sentence frame: *"Between … and … minutes, the line is flat because the substance is … . The energy is used to … ."*
+
+**Differentiation:**
+
+- Support: give the heating curve with the five parts labelled A to E, and sentences to match.
+- Stretch: why does pasta cook faster in a pressure cooker? (At higher pressure, water boils at a higher temperature.)
+
+**Safety:** hot water and hot test tubes. Stearic acid: wear eye protection.
+
+</Step>

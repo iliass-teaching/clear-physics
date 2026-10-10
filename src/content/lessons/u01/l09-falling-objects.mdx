@@ -1,0 +1,198 @@
+---
+unit: 1
+lesson: 9
+title: Falling objects
+syllabus: ['1.2 C8', '1.2 S13']
+goals:
+  - State that the acceleration of free fall near the Earth is constant, about 9.8 m/s².
+  - Describe how an object falls with and without air resistance (Extended).
+  - Explain what terminal velocity is (Extended).
+keyWords: [free fall, acceleration of free fall, air resistance, terminal velocity]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Graph from '../../../components/Graph.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { graphSvg } from '../../../lib/graph';
+
+<Step kind="starter" title="Book and paper" minutes={5}>
+
+Your teacher drops a book and a flat sheet of paper at the same time, from the same height.
+
+1. Which one lands first?
+2. Now the teacher puts the paper **on top of** the book and drops them together. Predict: what happens to the paper?
+
+</Step>
+
+<Step kind="learn" title="Falling with no air resistance" minutes={10}>
+
+Near the surface of the Earth, every object falls with the same acceleration, **if there is no air resistance**.
+This is the **acceleration of free fall**, with the symbol $g$:
+
+$$
+g \approx 9.8\,\text{m/s}^2
+$$
+
+$g$ is (approximately) constant. So the speed of a falling object increases by about 9.8 m/s **every second**.
+
+<div class="table-wrap">
+
+| time / s | 0 | 1 | 2 | 3 |
+|---|---|---|---|---|
+| speed / (m/s) | 0 | 9.8 | 19.6 | 29.4 |
+
+</div>
+
+<Graph
+  xLabel="time / s" yLabel="speed / (m/s)" xMax={4} yMax={40} xStep={1} yStep={10}
+  points={[[0, 0], [4, 39.2]]}
+  caption="Free fall: a straight line. The gradient is 9.8 m/s²."
+/>
+
+In 1971, an astronaut on the Moon dropped a hammer and a feather together. There is no air on the Moon. They landed **at the same time**.
+
+On Earth, the paper in the starter falls slowly because of **air resistance**. On top of the book, the air does not push on it, so it falls with the book.
+
+<WorkedExample
+  question="Extended: a stone falls from rest. Ignore air resistance. Calculate its speed after 2.5 s."
+  given={['$g = 9.8\\,\\text{m/s}^2$', 'start speed $= 0\\,\\text{m/s}$', 'time $\\Delta t = 2.5\\,\\text{s}$']}
+  find="the speed after 2.5 s"
+  answer="$24.5\,\text{m/s}$"
+>
+
+$a = \dfrac{\Delta v}{\Delta t}$, so $\Delta v = a \times \Delta t$
+
+$\Delta v = 9.8 \times 2.5 = 24.5\,\text{m/s}$
+
+It starts from rest, so the speed is $24.5\,\text{m/s}$.
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="learn" title="Falling with air resistance (Extended)" minutes={10}>
+
+In air, a falling object feels **air resistance**. Air resistance gets bigger when the speed gets bigger.
+
+1. **At the start**, the speed is low. Air resistance is small. The object accelerates at about 9.8 m/s².
+2. **As it falls faster**, air resistance increases. The acceleration gets smaller.
+3. **In the end**, air resistance is as big as the weight. The forces balance. The acceleration is zero, so the speed stays constant.
+
+This constant top speed is the **terminal velocity**.
+
+<Graph
+  xLabel="time / s" yLabel="speed / (m/s)" xMax={14} yMax={60} xStep={2} yStep={10}
+  points={[[0, 0], [2, 18], [4, 32], [6, 42], [8, 48], [10, 51], [12, 52.5], [14, 53]]} curve
+  caption="A skydiver: the curve gets less steep, then flat at terminal velocity."
+/>
+
+When the skydiver opens the parachute, air resistance becomes much bigger. The skydiver slows down to a new, **lower** terminal velocity, and can land safely.
+
+</Step>
+
+<Step kind="do" title="Falling muffin cases" minutes={15}>
+
+**Equipment:** paper muffin cases, metre ruler, stopwatch.
+
+1. Hold 1 muffin case at a height of 2.0 m. Drop it and time the fall. Do it 3 times.
+2. Repeat with 2, 3 and 4 cases stacked inside each other.
+3. Calculate the mean time and the average speed (2.0 m ÷ mean time) for each stack.
+
+<div class="table-wrap">
+
+| number of cases | time 1 / s | time 2 / s | time 3 / s | mean time / s | average speed / (m/s) |
+|---|---|---|---|---|---|
+| 1 | | | | | |
+| 2 | | | | | |
+| 3 | | | | | |
+| 4 | | | | | |
+
+</div>
+
+**Predict first:** which stack falls fastest? Why?
+*Start your answer like this: "The stack of … falls fastest because …"*
+
+The cases reach terminal velocity very quickly, so most of the fall is at constant speed.
+
+</Step>
+
+<Step kind="practice" title="Practice (Extended)" minutes={15}>
+
+Ignore air resistance in all these questions.
+
+<Practice topic="free-fall" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'What is the acceleration of free fall near the surface of the Earth?',
+    options: [
+      { text: 'about 9.8 m/s²', correct: true, why: '$g \\approx 9.8\\,\\text{m/s}^2$, and it is approximately constant.' },
+      { text: 'about 9.8 m/s', why: 'The unit of acceleration is m/s², not m/s.' },
+      { text: 'about 98 m/s²', why: 'Check the number: $g \\approx 9.8\\,\\text{m/s}^2$.' },
+      { text: 'about 1.6 m/s²', why: 'This is the value on the Moon.' },
+    ],
+  },
+  {
+    question: `Extended: this graph shows a falling ball in air. What happens in the flat part? ${graphSvg({ xLabel: 'time / s', yLabel: 'speed / (m/s)', xMax: 10, yMax: 20, xStep: 2, yStep: 5, points: [[0, 0], [1, 8], [2, 12.5], [3, 15], [4, 16.3], [6, 17], [10, 17]], curve: true })}`,
+    options: [
+      { text: 'It falls at terminal velocity', correct: true, why: 'Air resistance = weight, so the speed is constant.' },
+      { text: 'It stops', why: 'The speed is 17 m/s, not zero. It moves at a constant speed.' },
+      { text: 'It accelerates at 9.8 m/s²', why: 'The line is flat, so the acceleration is zero.' },
+      { text: 'It slows down', why: 'The line is flat, so the speed does not change.' },
+    ],
+  },
+  {
+    question: 'On the Moon, an astronaut drops a hammer and a feather together. What happens?',
+    options: [
+      { text: 'They land at the same time', correct: true, why: 'There is no air, so there is no air resistance. They have the same acceleration.' },
+      { text: 'The hammer lands first', why: 'On Earth, yes, because of air resistance. On the Moon there is no air.' },
+      { text: 'The feather lands first', why: 'With no air, both have the same acceleration.' },
+      { text: 'They float', why: 'The Moon has gravity. Objects fall, with an acceleration of about 1.6 m/s².' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Describe the fall of a skydiver in 4 sentences: jump, speeding up, terminal velocity, parachute. Use the words *air resistance*, *weight* and *terminal velocity*.
+2. Extended: do 5 questions at **Level 1** of the practice.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** $g \approx 9.8\,\text{m/s}^2$ and constant (1.2 C8) is Core. Falling with air resistance and terminal velocity (1.2 S13) is Extended. The calculations use $a = \dfrac{\Delta v}{\Delta t}$ (1.2 S9, Extended).
+
+**Timing:** starter 5 min, learn 20 min, practical 15 min, practice 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "Heavy objects fall faster." True in air for objects of the same shape, but not in free fall.
+- Thinking the object stops at terminal velocity.
+- Thinking the skydiver goes up when the parachute opens (the skydiver slows down; still moving down).
+- Unit of $g$ written as m/s.
+
+**Language support:**
+
+- Act out the three stages of the fall with your hand (fast, slower, constant).
+- Key sentence to learn: *"Air resistance increases until it is equal to the weight."*
+
+**Differentiation:**
+
+- Support: focus on the table and the straight-line graph of free fall.
+- Stretch: why does a stack of 4 muffin cases have a higher terminal velocity than 1 case? (Same shape, so similar air resistance at the same speed, but 4 times the weight: it must fall faster before air resistance balances the weight.)
+
+**Note:** forces and resultant force are taught in Unit 3. Here, "the forces balance" is enough.
+
+**Safety:** for the muffin cases, stand on the floor. Do not climb on chairs or tables.
+
+</Step>

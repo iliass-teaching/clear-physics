@@ -1,0 +1,156 @@
+---
+unit: 5
+lesson: 8
+title: Generating electricity
+syllabus: ['1.7.3 C1', '1.7.3 S4', '1.7.3 S5', '1.7.3 S6']
+goals:
+  - Describe how a power station uses a boiler, a turbine and a generator.
+  - Describe how electricity is generated from different energy resources.
+  - Know that the Sun is the main source of energy for most of our resources (Extended).
+keyWords: [turbine, generator, renewable, non-renewable]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { powerStationSvg } from '../../../lib/energyFigures';
+
+<Step kind="starter" title="Where does your electricity come from?" minutes={5}>
+
+When you switch on a light, the energy comes from a power station far away.
+
+List all the ways you know to generate electricity. Which ones have you seen?
+
+</Step>
+
+<Step kind="learn" title="Boiler, turbine, generator" minutes={10}>
+
+Many power stations work in the same way:
+
+<Figure svg={powerStationSvg()} caption="A thermal power station." width="38rem" />
+
+1. **Boiler:** a fuel heats water. The water boils and becomes high-pressure steam.
+2. **Turbine:** the steam pushes the blades of a turbine, which spins (kinetic store).
+3. **Generator:** the turbine turns the generator, which generates electricity.
+
+Coal, oil, gas, biofuels and nuclear fuel all heat water in a boiler. Wind, water and waves turn the turbine **directly**, with no boiler.
+
+</Step>
+
+<Step kind="learn" title="Energy resources" minutes={15}>
+
+<div class="table-wrap">
+
+| Resource | Where the energy comes from | How it works |
+|---|---|---|
+| fossil fuels (coal, oil, gas) | chemical store | burned to heat water in a boiler → turbine → generator |
+| biofuels (wood, plant oils, biogas) | chemical store | burned like fossil fuels |
+| nuclear fuel (uranium) | nuclear store | nuclear fission heats water in a boiler → turbine → generator |
+| geothermal | hot rocks underground | hot rocks heat water to make steam → turbine → generator |
+| hydroelectric | gravitational potential store of water behind a dam | water flows down through turbines → generator |
+| tides | the rise and fall of the sea | water flows through turbines in a barrage → generator |
+| waves | kinetic store of the waves | waves move floats or push air through turbines → generator |
+| wind | kinetic store of the air | wind turns the blades of a wind turbine → generator |
+| solar cells | light from the Sun | light is transferred directly into electrical energy |
+| solar panels | infrared from the Sun | heat water for homes (no electricity) |
+
+</div>
+
+**Extended:**
+
+- **Radiation from the Sun** is the main source of energy for all our resources, **except** geothermal, nuclear and tidal. (Fossil fuels and biofuels come from plants that used sunlight. The Sun heats the air to make wind, and evaporates water that falls as rain for hydroelectric dams.)
+- The Sun releases its energy by **nuclear fusion**.
+- Scientists are researching how to use nuclear fusion to generate electricity on a large scale.
+
+</Step>
+
+<Step kind="do" title="Resource cards" minutes={15}>
+
+Work in pairs. For each resource in the table:
+
+1. Draw a short flow diagram: *store at the start → … → electrical work*.
+2. Say if it uses a boiler (yes or no).
+3. **Extended:** say if its energy comes from the Sun (yes or no). Explain one of the "no" answers.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={10}>
+
+<Quiz questions={[
+  {
+    question: 'In a coal power station, what turns the generator?',
+    options: [
+      { text: 'a turbine pushed by steam', correct: true, why: 'Burning coal boils water; the steam spins the turbine, which turns the generator.' },
+      { text: 'the burning coal directly', why: 'The coal heats water in a boiler first.' },
+      { text: 'the wind', why: 'In a coal power station, steam turns the turbine.' },
+      { text: 'a solar cell', why: 'Solar cells do not turn generators.' },
+    ],
+  },
+  {
+    question: 'Which resource does NOT need a turbine?',
+    options: [
+      { text: 'solar cells', correct: true, why: 'They transfer light directly into electrical energy.' },
+      { text: 'wind', why: 'Wind turns the blades of a turbine.' },
+      { text: 'hydroelectric', why: 'Water flows through turbines.' },
+      { text: 'nuclear', why: 'Steam from the reactor turns a turbine.' },
+    ],
+  },
+  {
+    question: 'In a hydroelectric power station, where is the energy stored at the start?',
+    options: [
+      { text: 'the gravitational potential store of the water behind the dam', correct: true, why: 'The water is high up.' },
+      { text: 'the chemical store of the water', why: 'The water is not burned.' },
+      { text: 'the nuclear store of the water', why: 'Height is what matters here.' },
+      { text: 'the elastic store of the dam', why: 'The energy is in the water, because of its height.' },
+    ],
+  },
+  {
+    question: 'Extended: which resource does NOT get its energy from the Sun?',
+    options: [
+      { text: 'geothermal', correct: true, why: 'The energy comes from hot rocks inside the Earth.' },
+      { text: 'wind', why: 'The Sun heats the air and makes the wind.' },
+      { text: 'coal', why: 'Coal formed from plants that used sunlight.' },
+      { text: 'hydroelectric', why: 'The Sun evaporates the water that falls as rain into the dam.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+Describe in 3 steps how a gas power station generates electricity. Use the words *boiler*, *turbine* and *generator*.
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Find out which resources generate most of the electricity in your country. Make a pie chart or a list from the largest to the smallest.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** 1.7.3 C1 is Core. The Sun as the main source (S4), fusion in the Sun (S5) and fusion research (S6) are Extended.
+
+**Timing:** starter 5 min, learn 25 min, resource cards 15 min, check 10 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Thinking the generator makes energy. It transfers energy from the kinetic store to electrical work.
+- Mixing up solar cells (electricity) and solar panels (hot water).
+- Thinking nuclear power stations use fusion. Today they use fission; fusion is still being researched.
+
+**Language support:**
+
+- Show a bicycle dynamo or a small hand generator: turning it lights a lamp.
+
+**Differentiation:**
+
+- Support: give the flow diagrams with gaps to fill.
+- Stretch: why is tidal energy not from the Sun? (Tides are mainly caused by the Moon’s gravity.)
+
+**Homework:** the answer depends on the country. For example, natural gas generates more than half of Thailand’s electricity (2024 data). Check a recent national source.
+
+</Step>

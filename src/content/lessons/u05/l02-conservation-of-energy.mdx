@@ -1,0 +1,146 @@
+---
+unit: 5
+lesson: 2
+title: Conservation of energy
+syllabus: ['1.7.1 C3', '1.7.1 S6']
+goals:
+  - State the principle of conservation of energy.
+  - Use it in simple energy flow diagrams.
+  - Read and draw Sankey diagrams (Extended).
+keyWords: [conservation of energy, energy, Sankey diagram]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { sankeySvg, flowSvg } from '../../../lib/energyFigures';
+
+<Step kind="starter" title="Where did it go?" minutes={5}>
+
+A ball is dropped. It bounces, but each bounce is lower. In the end it stops.
+
+Has the energy disappeared? Where did it go?
+
+</Step>
+
+<Step kind="learn" title="Energy is conserved" minutes={10}>
+
+The **principle of conservation of energy**:
+
+> Energy cannot be created or destroyed. It can only be transferred from one store to another.
+
+So the **total** energy is always the same. In the starter, the energy of the ball is not destroyed: at each bounce, some is transferred to the internal (thermal) store of the ball, the floor and the air, and some is carried away by sound.
+
+Energy that ends up spread out in the surroundings, usually as heating, is **wasted**: we cannot use it again easily. We say it is **dissipated**.
+
+<Figure svg={flowSvg(['chemical store|(petrol)', 'kinetic store|of the car', 'internal store|of the surroundings'])} caption="A car journey: in the end, all the energy heats the surroundings (brakes, engine, air)." width="34rem" />
+
+</Step>
+
+<Step kind="learn" title="Sankey diagrams (Extended)" minutes={12}>
+
+A **Sankey diagram** shows the energy transfers in a device. The **width** of each arrow shows the amount of energy.
+
+<Figure svg={sankeySvg('electrical input', 100, [{ label: 'light', value: 10, useful: true }, { label: 'heating', value: 90 }])} caption="A filament lamp: for every 100 J in, only 10 J become light." width="36rem" />
+
+- The arrow going straight on is the **useful** output.
+- The arrows that bend down are the **wasted** outputs.
+- Conservation of energy: input = useful + wasted. Here: $100 = 10 + 90$.
+
+A more complex example, with several stages: a power station burns fuel (chemical store) to heat water, the steam turns a turbine (kinetic store), and the generator gives electrical work. At each stage, some energy is wasted by heating. The Sankey diagram has a wasted arrow at each stage.
+
+</Step>
+
+<Step kind="do" title="Draw Sankey diagrams" minutes={15}>
+
+On squared paper, draw a Sankey diagram for each device. Use 1 square = 10 J.
+
+1. An LED lamp: 100 J in → 40 J light, 60 J heating.
+2. A kettle: 2000 J in → 1800 J into the water, 200 J heating the kettle and the air. (Use 1 square = 200 J.)
+3. An electric motor: 500 J in → 350 J kinetic, 100 J heating, 50 J sound. (Use 1 square = 50 J.)
+
+For each one, check that **input = total output**.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={13}>
+
+<Quiz questions={[
+  {
+    question: 'Which statement is the principle of conservation of energy?',
+    options: [
+      { text: 'Energy cannot be created or destroyed, only transferred', correct: true, why: 'The total amount of energy stays the same.' },
+      { text: 'Energy is used up when we use it', why: 'Energy is not used up. It is transferred.' },
+      { text: 'Machines create energy', why: 'Machines transfer energy. They do not create it.' },
+      { text: 'Wasted energy is destroyed', why: 'Wasted energy still exists, usually in the surroundings.' },
+    ],
+  },
+  {
+    question: `Look at this Sankey diagram for a motor. How much energy is wasted? ${sankeySvg('input', 200, [{ label: 'kinetic', value: 140, useful: true }, { label: 'heating', value: 40 }, { label: 'sound', value: 20 }])}`,
+    options: [
+      { text: '60 J', correct: true, why: 'Wasted = heating + sound = 40 + 20 = 60 J.' },
+      { text: '140 J', why: 'This is the useful output.' },
+      { text: '40 J', why: 'Add the sound as well: 40 + 20.' },
+      { text: '200 J', why: 'This is the total input.' },
+    ],
+  },
+  {
+    question: 'A TV uses 500 J. It gives 150 J of light and 50 J of sound. How much energy heats the surroundings?',
+    options: [
+      { text: '300 J', correct: true, why: '500 − 150 − 50 = 300 J (energy is conserved).' },
+      { text: '200 J', why: 'This is the useful output. The rest heats the surroundings.' },
+      { text: '700 J', why: 'Subtract the useful outputs from the input.' },
+      { text: '0 J', why: 'Energy is conserved: the rest must go somewhere.' },
+    ],
+  },
+  {
+    question: 'In a Sankey diagram, what does a wide arrow show?',
+    options: [
+      { text: 'a large amount of energy', correct: true, why: 'The width shows the amount of energy.' },
+      { text: 'a fast transfer', why: 'The width shows the amount of energy, not the speed.' },
+      { text: 'useful energy only', why: 'Wasted arrows can be wide too.' },
+      { text: 'a long time', why: 'The width shows the amount of energy.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+A hair dryer uses 1200 J every second. 1000 J heat the air and 50 J are sound. How much energy is used to move the air (kinetic)? Explain using the principle of conservation of energy.
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Explain in 3 sentences why a bouncing ball does not bounce back to the same height. Use the words *conserved*, *wasted* and *surroundings*.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** conservation of energy with simple flow diagrams (1.7.1 C3) is Core. Complex multi-stage examples and Sankey diagrams (1.7.1 S6) are Extended.
+
+**Timing:** starter 5 min, learn 22 min, Sankey drawing 15 min, check 13 min, exit ticket 5 min.
+
+**Exit ticket answer:** 1200 − 1000 − 50 = 150 J.
+
+**Common mistakes:**
+
+- "Energy is used up" or "lost". Insist on "transferred" and "wasted".
+- Drawing Sankey arrows with widths that do not match the numbers.
+- Forgetting one of the wasted outputs.
+
+**Language support:**
+
+- *Dissipated* = spread out into the surroundings.
+- Sentence frame: *"… J goes into the … store. The rest, … J, is wasted by …"*
+
+**Differentiation:**
+
+- Support: give Sankey diagrams to complete, with the input already drawn.
+- Stretch: draw a Sankey diagram with two stages for a power station: 1000 J fuel → 400 J to the turbine (600 J wasted in the boiler) → 350 J electrical (50 J wasted in the generator).
+
+</Step>

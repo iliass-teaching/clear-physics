@@ -1,0 +1,179 @@
+---
+unit: 10
+lesson: 7
+title: Images formed by a converging lens
+syllabus: ['3.2.3 C3', '3.2.3 C4', '3.2.3 C5']
+goals:
+  - Draw ray diagrams for a real image formed by a converging lens.
+  - Describe an image with the words enlarged / same size / diminished, upright / inverted, real / virtual.
+  - Explain what a virtual image is.
+keyWords: [converging lens, real image, virtual image, inverted, magnified, principal focus]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import LensSim from '../../../components/LensSim.astro';
+import { lensRealImageSvg } from '../../../lib/lightFigures';
+
+<Step kind="starter" title="Upside down" minutes={5}>
+
+Hold a converging lens at arm's length and look through it at a window. What do you notice about the image?
+
+</Step>
+
+<Step kind="learn" title="Drawing a ray diagram" minutes={15}>
+
+To find the image of an object (an arrow standing on the principal axis), draw **two** (or three) rays from the **top** of the object:
+
+1. A ray **parallel to the principal axis**. After the lens, it goes **through F** (on the other side).
+2. A ray through the **centre of the lens**. It goes **straight on**.
+3. (A check) A ray **through F** on the object side. After the lens, it goes **parallel** to the principal axis.
+
+Where the rays **meet** is the top of the image.
+
+<Figure svg={lensRealImageSvg()} caption="The object is further away than 2F: the image is real, inverted and diminished." width="36rem" />
+
+**Describing an image:** use three words.
+
+<div class="table-wrap">
+
+| Question | Words |
+|---|---|
+| Is it bigger or smaller? | **enlarged** / **same size** / **diminished** |
+| Which way up? | **upright** / **inverted** (upside down) |
+| Do the rays really meet? | **real** (you can catch it on a screen) / **virtual** |
+
+</div>
+
+A **virtual image** forms where rays that spread out (diverge) **seem** to come from, when we follow them **backwards** (dashed lines). It does **not** appear on a screen.
+
+</Step>
+
+<Step kind="do" title="Move the object" minutes={20}>
+
+<LensSim />
+
+Move the object and complete the table (focal length 10 cm).
+
+<div class="table-wrap">
+
+| Object distance | Where is the object? | Image: real/virtual, upright/inverted, size |
+|---|---|---|
+| 30 cm | beyond 2F | |
+| 20 cm | at 2F | |
+| 15 cm | between F and 2F | |
+| 10 cm | at F | |
+| 6 cm | between F and the lens | |
+
+</div>
+
+**Uses:** match each one to a row of the table.
+
+- A **camera** makes a small image of a far object on the sensor.
+- A **projector** makes a big image of a small slide on a far screen.
+- A **magnifying glass** (next lesson).
+
+**Real practical:** use a lamp (or a candle), a converging lens and a screen on a metre rule. Find a sharp image for each object distance.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={15}>
+
+<Quiz questions={[
+  {
+    question: 'In a ray diagram, a ray goes through the centre of a converging lens. What happens to it?',
+    options: [
+      { text: 'It goes straight on', correct: true, why: 'This ray does not bend.' },
+      { text: 'It goes through F', why: 'That is the ray that arrives parallel to the axis.' },
+      { text: 'It becomes parallel to the axis', why: 'That is the ray that goes through F first.' },
+      { text: 'It reflects back', why: 'A lens refracts light.' },
+    ],
+  },
+  {
+    question: 'A ray arrives parallel to the principal axis. After the converging lens, it…',
+    options: [
+      { text: 'goes through the principal focus F', correct: true, why: 'This is the definition of F.' },
+      { text: 'goes straight on', why: 'Only the ray through the centre goes straight on.' },
+      { text: 'stays parallel', why: 'It bends towards F.' },
+      { text: 'goes back to the object', why: 'It goes through F on the other side.' },
+    ],
+  },
+  {
+    question: 'An object is beyond 2F. What is its image?',
+    options: [
+      { text: 'real, inverted, diminished', correct: true, why: 'Like in a camera.' },
+      { text: 'virtual, upright, enlarged', why: 'That happens when the object is between F and the lens.' },
+      { text: 'real, inverted, enlarged', why: 'That happens when the object is between F and 2F.' },
+      { text: 'real, upright, same size', why: 'A real image from one lens is always inverted.' },
+    ],
+  },
+  {
+    question: 'What is special about a virtual image?',
+    options: [
+      { text: 'The rays only seem to come from it; it cannot be shown on a screen', correct: true, why: 'Follow the rays backwards to find it.' },
+      { text: 'It is always upside down', why: 'A virtual image from a lens is upright.' },
+      { text: 'It is always smaller', why: 'It can be bigger (magnifying glass).' },
+      { text: 'It forms on the screen', why: 'A real image forms on a screen; a virtual one does not.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'An object is at 2F of a converging lens. Describe the image.',
+    options: [
+      { text: 'real, inverted, same size, at 2F on the other side', correct: true, why: 'Try it in the simulation: 20 cm with f = 10 cm.' },
+      { text: 'virtual, upright, enlarged', why: 'This needs an object closer than F.' },
+      { text: 'real, inverted, diminished', why: 'This is for an object beyond 2F.' },
+      { text: 'there is no image', why: 'There is no image only when the object is exactly at F.' },
+    ],
+  },
+  {
+    question: 'A projector makes a big image of a small slide. Where is the slide?',
+    options: [
+      { text: 'between F and 2F', correct: true, why: 'The image is real, inverted and enlarged. (The slide is put in upside down.)' },
+      { text: 'beyond 2F', why: 'That gives a diminished image (camera).' },
+      { text: 'between F and the lens', why: 'That gives a virtual image, which cannot go on a screen.' },
+      { text: 'exactly at F', why: 'Then there is no image.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+On squared paper (1 square = 1 cm), draw a converging lens with $f = 4$ cm. Draw an object 2 cm tall, 10 cm from the lens. Use two rays to find the image. Describe the image with three words, and measure its distance from the lens.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 15 min, simulation (or practical) 20 min, check 15 min, exit ticket 5 min.
+
+**Syllabus:** ray diagrams for a **real** image are Core (3.2.3 C3). Ray diagrams for a **virtual** image with a converging lens are Extended (next lesson). The meaning of a virtual image (C5) is Core.
+
+**Common mistakes:**
+
+- Drawing rays from the bottom of the object.
+- Drawing the ray through F on the wrong side.
+- Not using a ruler; rays that miss each other.
+- Writing "big" or "upside down": teach the exam words *enlarged* and *inverted*.
+
+**Language support:**
+
+- Three questions → three words: *size? way up? real?*
+- *diminished* = made smaller.
+
+**Differentiation:**
+
+- Support: give a printed diagram with the lens, F and 2F, and the object already drawn.
+- Stretch: what happens to the image when the object moves closer and closer to F?
+
+</Step>

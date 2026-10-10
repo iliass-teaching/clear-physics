@@ -1,0 +1,141 @@
+---
+// Virtual practical: two lamps in series or in parallel.
+// The student changes the supply e.m.f. and the resistance of each lamp, removes a lamp,
+// and reads the currents and p.d.s. The lamps glow brighter with more power.
+// (Lamps are modelled with a constant resistance, to keep the numbers simple.)
+---
+
+<div class="circuit-sim" data-circuit-sim>
+  <p class="modes" role="group" aria-label="Series or parallel">
+    <button type="button" class="mode" data-mode="series" aria-pressed="true">Series</button>
+    <button type="button" class="mode secondary" data-mode="parallel" aria-pressed="false">Parallel</button>
+  </p>
+  <div class="drawing"></div>
+  <div class="controls">
+    <label>e.m.f. <input type="range" class="emf" min="1.5" max="12" step="1.5" value="6" /> <output class="emf-out">6.0 V</output></label>
+    <label>lamp 1 <input type="range" class="r1" min="2" max="20" step="1" value="6" /> <output class="r1-out">6 Ω</output></label>
+    <label>lamp 2 <input type="range" class="r2" min="2" max="20" step="1" value="6" /> <output class="r2-out">6 Ω</output></label>
+    <label class="check"><input type="checkbox" class="remove2" /> remove lamp 2</label>
+  </div>
+  <div class="table-wrap">
+    <table class="readings">
+      <thead><tr><th></th><th>current / A</th><th>p.d. / V</th><th>power / W</th></tr></thead>
+      <tbody>
+        <tr><td>lamp 1</td><td class="i1"></td><td class="v1"></td><td class="p1"></td></tr>
+        <tr><td>lamp 2</td><td class="i2"></td><td class="v2"></td><td class="p2"></td></tr>
+        <tr><td>supply (total)</td><td class="it"></td><td class="vt"></td><td class="pt"></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="rt"></p>
+</div>
+
+<script>
+  import { wire, symbol, junction } from '../lib/circuit';
+
+  const f2 = (x: number) => (Math.abs(x) < 1e-9 ? '0' : x.toFixed(2));
+
+  document.querySelectorAll<HTMLElement>('[data-circuit-sim]').forEach((root) => {
+    const q = <T extends Element>(s: string) => root.querySelector<T>(s)!;
+    const drawing = q<HTMLElement>('.drawing');
+    const emf = q<HTMLInputElement>('.emf');
+    const r1 = q<HTMLInputElement>('.r1');
+    const r2 = q<HTMLInputElement>('.r2');
+    const remove2 = q<HTMLInputElement>('.remove2');
+    let mode: 'series' | 'parallel' = 'series';
+
+    const glow = (x: number, y: number, p: number) =>
+      p > 0 ? `<circle cx="${x}" cy="${y}" r="24" style="fill:#ffd54f;opacity:${(p / (p + 1.5)).toFixed(2)}"/>` : '';
+
+    function compute() {
+      const E = Number(emf.value);
+      const R1 = Number(r1.value);
+      const R2 = Number(r2.value);
+      const gone = remove2.checked;
+      if (mode === 'series') {
+        const R = gone ? Infinity : R1 + R2;
+        const I = gone ? 0 : E / R;
+        return { E, R, I1: I, I2: I, V1: I * R1, V2: I * R2, I: I };
+      }
+      const I1 = E / R1;
+      const I2 = gone ? 0 : E / R2;
+      const R = gone ? R1 : 1 / (1 / R1 + 1 / R2);
+      return { E, R, I1, I2, V1: E, V2: gone ? 0 : E, I: I1 + I2 };
+    }
+
+    function draw(): void {
+      const c = compute();
+      const gone = remove2.checked;
+      const P1 = c.I1 * c.V1;
+      const P2 = c.I2 * c.V2;
+      let svg = '';
+      if (mode === 'series') {
+        svg += wire([[60, 60], [400, 60], [400, 200], [60, 200], [60, 60]]);
+        svg += glow(170, 60, P1) + glow(290, 60, P2);
+        svg += symbol('battery', 60, 130, 90) + symbol('lamp', 170, 60) + symbol('ammeter', 400, 130, 90);
+        svg += gone ? `<rect class="cut" x="270" y="44" width="40" height="32"/><text class="txt" x="290" y="40" text-anchor="middle">removed</text>` : symbol('lamp', 290, 60);
+        svg += `<text class="txt" x="170" y="96" text-anchor="middle">lamp 1</text><text class="txt" x="290" y="96" text-anchor="middle">lamp 2</text>`;
+      } else {
+        svg += wire([[60, 60], [400, 60], [400, 200], [60, 200], [60, 60]]);
+        svg += wire([[160, 60], [160, 130], [320, 130], [320, 60]]);
+        svg += junction(160, 60) + junction(320, 60);
+        svg += glow(240, 60, P1) + glow(240, 130, P2);
+        svg += symbol('battery', 60, 130, 90) + symbol('lamp', 240, 60) + symbol('ammeter', 400, 130, 90);
+        svg += gone ? `<rect class="cut" x="220" y="114" width="40" height="32"/><text class="txt" x="240" y="160" text-anchor="middle">removed</text>` : symbol('lamp', 240, 130);
+        svg += `<text class="txt" x="240" y="34" text-anchor="middle">lamp 1</text>` + (gone ? '' : `<text class="txt" x="240" y="164" text-anchor="middle">lamp 2</text>`);
+      }
+      drawing.innerHTML = `<svg class="fig circuit" viewBox="0 0 460 230" role="img" aria-label="Two lamps in ${mode}">${svg}</svg>`;
+
+      q<HTMLElement>('.emf-out').textContent = `${Number(emf.value).toFixed(1)} V`;
+      q<HTMLElement>('.r1-out').textContent = `${r1.value} Ω`;
+      q<HTMLElement>('.r2-out').textContent = `${r2.value} Ω`;
+      q<HTMLElement>('.i1').textContent = f2(c.I1);
+      q<HTMLElement>('.i2').textContent = f2(c.I2);
+      q<HTMLElement>('.it').textContent = f2(c.I);
+      q<HTMLElement>('.v1').textContent = f2(c.V1);
+      q<HTMLElement>('.v2').textContent = f2(c.V2);
+      q<HTMLElement>('.vt').textContent = c.E.toFixed(2);
+      q<HTMLElement>('.p1').textContent = f2(P1);
+      q<HTMLElement>('.p2').textContent = f2(P2);
+      q<HTMLElement>('.pt').textContent = f2(c.I * c.E);
+      q<HTMLElement>('.rt').innerHTML = Number.isFinite(c.R)
+        ? `combined resistance of the lamps: <strong>${c.R.toFixed(2)} Ω</strong>`
+        : 'the circuit is broken: <strong>no current</strong>';
+    }
+
+    root.querySelectorAll<HTMLButtonElement>('.mode').forEach((b) =>
+      b.addEventListener('click', () => {
+        mode = b.dataset.mode as 'series' | 'parallel';
+        root.querySelectorAll<HTMLButtonElement>('.mode').forEach((x) => {
+          const on = x === b;
+          x.setAttribute('aria-pressed', String(on));
+          x.classList.toggle('secondary', !on);
+        });
+        draw();
+      }),
+    );
+    for (const el of [emf, r1, r2]) el.addEventListener('input', draw);
+    remove2.addEventListener('change', draw);
+    draw();
+
+    (root as HTMLElement & { _c?: unknown })._c = { compute, setMode: (m: 'series' | 'parallel') => { mode = m; draw(); } };
+  });
+</script>
+
+<style>
+  .circuit-sim {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .modes { display: flex; gap: 0.5rem; margin-top: 0; }
+  .drawing :global(svg) { width: 100%; max-width: 32rem; height: auto; display: block; margin: 0 auto; }
+  .circuit-sim :global(.fig .cut), .circuit-sim :global(.fig .sym-fill) { fill: var(--surface); }
+  .controls { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; align-items: center; margin: 0.6rem 0; }
+  .controls label { display: flex; align-items: center; gap: 0.4rem; }
+  .controls output { font-variant-numeric: tabular-nums; min-width: 3.2rem; }
+  .readings td { font-variant-numeric: tabular-nums; }
+  .rt { margin: 0.5rem 0 0; }
+</style>

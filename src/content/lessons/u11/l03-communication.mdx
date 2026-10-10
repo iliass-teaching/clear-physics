@@ -1,0 +1,146 @@
+---
+unit: 11
+lesson: 3
+title: 'Communication: satellites, phones and fibres'
+syllabus: ['3.3 C5', '3.3 S7']
+goals:
+  - Know that communication with artificial satellites is mainly by microwaves.
+  - Know which satellites are in low orbits and which are geostationary.
+  - 'Extended: explain why phones, wireless internet, Bluetooth and optical fibres use different waves.'
+keyWords: [satellite, geostationary, electromagnetic spectrum, optical fibre]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { satellitesSvg } from '../../../lib/emSoundFigures';
+
+<Step kind="starter" title="A dish on the roof" minutes={5}>
+
+Satellite TV dishes in one town all point in the **same direction**, and they never move. What does this tell you about the satellite?
+
+</Step>
+
+<Step kind="learn" title="Satellites" minutes={14}>
+
+Communication with **artificial satellites** is mainly by **microwaves**: they pass easily through the atmosphere.
+
+<Figure svg={satellitesSvg()} caption="A low-orbit satellite and a geostationary satellite (not to scale)." width="32rem" />
+
+**Geostationary satellites:**
+
+- about 36 000 km above the equator;
+- one orbit takes **24 hours**, the same time as the Earth's spin, so the satellite stays **above the same place**;
+- dishes on the ground can point at it and stay still;
+- used for **direct broadcast satellite television** and some **satellite phones**.
+
+**Low-orbit satellites:**
+
+- a few hundred to about 2000 km high; they go around the Earth in about 1.5 to 2 hours;
+- the signal has a shorter distance to travel, so there is less delay;
+- many satellites are needed to cover the Earth; used by some **satellite phones**.
+
+</Step>
+
+<Step kind="learn" title="Phones, Wi-Fi, Bluetooth, fibres (Extended)" minutes={12}>
+
+<div class="table-wrap">
+
+| System | Waves | Why? |
+|---|---|---|
+| mobile phones, wireless internet (Wi-Fi) | **microwaves** | they can pass through some walls; they need only a **short aerial** |
+| Bluetooth | **radio waves** | they pass through walls, but the signal becomes weaker: good for short distances |
+| cable TV, high-speed broadband | **visible light** or **infrared** in **optical fibres** | glass is transparent to them; they can carry **a lot of data** each second |
+
+</div>
+
+</Step>
+
+<Step kind="practice" title="Practice: signal times" minutes={18}>
+
+A signal to a geostationary satellite and back travels a long way. Calculate how long it takes:
+
+<Practice topic="em-waves" level={3} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={11}>
+
+<Quiz questions={[
+  {
+    question: 'Communication with satellites is mainly by…',
+    options: [
+      { text: 'microwaves', correct: true, why: 'They pass through the atmosphere.' },
+      { text: 'sound waves', why: 'Sound cannot travel through space.' },
+      { text: 'X-rays', why: 'Microwaves are used.' },
+      { text: 'visible light', why: 'Microwaves are used.' },
+    ],
+  },
+  {
+    question: 'Why does a geostationary satellite stay above the same place?',
+    options: [
+      { text: 'It orbits once every 24 hours, as the Earth spins', correct: true, why: 'So it moves with the Earth.' },
+      { text: 'It does not move', why: 'It moves very fast, but it goes around with the Earth.' },
+      { text: 'It is very close to the Earth', why: 'It is far: about 36 000 km.' },
+      { text: 'It orbits once a year', why: 'Once every 24 hours.' },
+    ],
+  },
+  {
+    question: 'Which satellites are used for direct broadcast satellite TV?',
+    options: [
+      { text: 'geostationary satellites', correct: true, why: 'The dish can point at one fixed place.' },
+      { text: 'low-orbit satellites', why: 'They move across the sky.' },
+      { text: 'the Moon', why: 'Geostationary satellites are used.' },
+      { text: 'none: TV uses only cables', why: 'Satellite TV uses geostationary satellites.' },
+    ],
+  },
+  {
+    question: 'Extended: why does Bluetooth use radio waves?',
+    options: [
+      { text: 'They pass through walls, but the signal gets weaker', correct: true, why: 'Good for short distances.' },
+      { text: 'They cannot pass through walls', why: 'They can, but they get weaker.' },
+      { text: 'They carry the most data', why: 'Optical fibres carry the most data.' },
+      { text: 'They need a very long aerial', why: 'Bluetooth devices are small.' },
+    ],
+  },
+  {
+    question: 'Extended: why are optical fibres used for high-speed broadband?',
+    options: [
+      { text: 'Glass is transparent to light and infrared, which can carry a lot of data', correct: true, why: 'High rates of data.' },
+      { text: 'Light in glass is faster than radio in air', why: 'The reason is the high data rate.' },
+      { text: 'Fibres use microwaves', why: 'They use visible light or infrared.' },
+      { text: 'Fibres do not need electricity at all', why: 'The reason is the high data rate.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** satellites (3.3 C5) are Core. Mobile phones, Wi-Fi, Bluetooth and optical fibres (S7) are Extended.
+
+**Timing:** starter 5 min, satellites 14 min, Extended table 12 min, practice 18 min, exit ticket 11 min.
+
+**Numbers:** geostationary orbit: about 36 000 km above the equator, period 24 hours. Low orbits: about 160 km to 2000 km, periods of about 90–130 minutes. These are typical values, not syllabus requirements.
+
+**Bluetooth:** it works at about 2.4 GHz (wavelength about 12.5 cm). With the usual boundary (microwaves from about 1 mm to 1 m), this is in the microwave region. The syllabus lists Bluetooth under radio waves: the boundary between radio waves and microwaves is not sharp. Follow the syllabus in exam answers.
+
+**Common mistakes:**
+
+- "A geostationary satellite does not move."
+- "Satellites use sound waves."
+
+**Language support:**
+
+- *geo* = Earth; *stationary* = not moving (it does not move compared to the ground).
+- *aerial* = antenna.
+
+**Differentiation:**
+
+- Support: a diagram of the two orbits to label.
+- Stretch: why do phone calls through a geostationary satellite have a small delay?
+
+</Step>

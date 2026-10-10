@@ -1,0 +1,194 @@
+---
+unit: 17
+lesson: 1
+title: Day, night and the seasons
+syllabus: ['6.1.1 C1', '6.1.1 C2']
+goals:
+  - Explain day and night with the rotation of the Earth.
+  - Explain why the Sun seems to move across the sky.
+  - Explain the seasons with the tilt of the Earth’s axis.
+keyWords: [axis, rotate, orbit, tilt, hemisphere]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { dayNightSvg, seasonsSvg } from '../../../lib/spaceFigures';
+
+<Step kind="starter" title="Does the Sun move?" minutes={5}>
+
+In the morning, the Sun is in the east. In the evening, it is in the west.
+
+Does the Sun move around the Earth? Or is something else happening? Talk with a partner.
+
+</Step>
+
+<Step kind="learn" title="Day and night" minutes={10}>
+
+The Earth **rotates** (spins) around its **axis** once in about **24 hours**.
+
+- The half of the Earth that faces the Sun has **day**.
+- The other half has **night**.
+
+<Figure svg={dayNightSvg()} caption="The Earth spins. The side facing the Sun has day." width="30rem" />
+
+The Earth spins from west to east. So, for us on the Earth, the Sun **seems** to rise in the east, move across the sky, and set in the west.
+The Sun does not go around the Earth: **we** turn.
+
+</Step>
+
+<Step kind="learn" title="The seasons" minutes={12}>
+
+The Earth **orbits** the Sun once in about **365 days** (one year).
+
+The Earth’s axis is **tilted** by about $23.5^\circ$. It always points in the same direction in space.
+
+<Figure svg={seasonsSvg()} caption="In June and in December, the axis points the same way, but the Earth is on the other side of the Sun." width="34rem" />
+
+**In June**, the northern **hemisphere** is tilted towards the Sun:
+
+- the Sun is higher in the sky;
+- the days are longer;
+- the sunlight is more concentrated: each square metre of ground gets more energy.
+
+So it is **summer** in the north. At the same time, the southern hemisphere is tilted away: it is winter there.
+
+**In December**, it is the opposite: winter in the north, summer in the south.
+
+**Be careful:** the seasons do **not** come from the distance to the Sun. The Earth is closest to the Sun in early January, during the northern winter.
+
+</Step>
+
+<Step kind="do" title="Model the Earth and the Sun" minutes={15}>
+
+**Equipment:** a lamp (the Sun), a ball with a stick through it (the Earth and its axis), a torch, squared paper.
+
+**Part 1 — Day and night**
+
+1. Put the lamp in the middle of the table. Switch off the room lights.
+2. Hold the ball near the lamp. Spin it slowly around the stick.
+3. Put a sticker on the ball. When is it day for the sticker? When is it night?
+
+**Part 2 — The seasons**
+
+1. Tilt the stick a little. Keep it pointing at the same wall all the time.
+2. Walk the ball slowly around the lamp.
+3. Which half of the ball gets more light on the left of the lamp? On the right?
+
+**Part 3 — Why summer is warmer**
+
+1. Hold the torch straight above the squared paper. Draw around the bright spot.
+2. Now hold the torch at a low angle, at the same distance. Draw around the spot again.
+3. Count the squares in each spot. In which spot is the light more concentrated?
+
+*Start your answer like this: "When the light comes from a low angle, the same energy is spread over …"*
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={13}>
+
+<Quiz questions={[
+  {
+    question: 'Why do we have day and night?',
+    options: [
+      { text: 'The Earth spins on its axis', correct: true, why: 'One half faces the Sun (day), the other half faces away (night).' },
+      { text: 'The Sun goes around the Earth', why: 'The Sun only seems to move. The Earth spins.' },
+      { text: 'The Earth orbits the Sun', why: 'The orbit takes one year. It gives the seasons, not day and night.' },
+      { text: 'The Moon hides the Sun at night', why: 'The Moon does not cause night. The Earth spins.' },
+    ],
+  },
+  {
+    question: 'How long does the Earth take to spin once on its axis?',
+    options: [
+      { text: 'about 24 hours', correct: true, why: 'One spin gives one day and one night.' },
+      { text: 'about 365 days', why: 'This is the time for one orbit around the Sun.' },
+      { text: 'about one month', why: 'This is about the time for the Moon to orbit the Earth.' },
+      { text: 'about 12 hours', why: 'One full spin, day and night together, takes about 24 hours.' },
+    ],
+  },
+  {
+    question: 'In which direction does the Sun rise?',
+    options: [
+      { text: 'east', correct: true, why: 'The Earth spins from west to east, so the Sun seems to rise in the east.' },
+      { text: 'west', why: 'The Sun sets in the west.' },
+      { text: 'north', why: 'Look at the sky in the morning: the Sun is in the east.' },
+      { text: 'south', why: 'Look at the sky in the morning: the Sun is in the east.' },
+    ],
+  },
+  {
+    question: 'In June, it is summer in the northern hemisphere. Why?',
+    options: [
+      { text: 'The north is tilted towards the Sun', correct: true, why: 'The Sun is higher, the days are longer and the light is more concentrated.' },
+      { text: 'The Earth is closer to the Sun', why: 'No: the Earth is closest to the Sun in January.' },
+      { text: 'The Sun is hotter in June', why: 'The Sun does not change during the year. The tilt does the work.' },
+      { text: 'The Earth spins faster in June', why: 'The spin does not change. The tilt explains the seasons.' },
+    ],
+  },
+  {
+    question: 'It is summer in the north. What season is it in the southern hemisphere?',
+    options: [
+      { text: 'winter', correct: true, why: 'When the north is tilted towards the Sun, the south is tilted away.' },
+      { text: 'summer', why: 'The two hemispheres have opposite seasons.' },
+      { text: 'spring', why: 'The two hemispheres have opposite seasons: summer and winter.' },
+      { text: 'there are no seasons', why: 'The southern hemisphere has seasons too, at the opposite time of year.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'How long does the Earth take to orbit the Sun once?',
+    options: [
+      { text: 'about 365 days', correct: true, why: 'One orbit is one year.' },
+      { text: 'about 24 hours', why: 'This is one spin on its axis.' },
+      { text: 'about 30 days', why: 'This is about one orbit of the Moon around the Earth.' },
+      { text: 'about 100 years', why: 'One orbit of the Earth is one year.' },
+    ],
+  },
+  {
+    question: 'Which sentence explains the seasons?',
+    options: [
+      { text: 'The Earth’s axis is tilted, and the Earth orbits the Sun', correct: true, why: 'During the year, each hemisphere is tilted towards the Sun, then away from it.' },
+      { text: 'The Earth is sometimes much closer to the Sun', why: 'The distance changes only a little, and it is not the cause.' },
+      { text: 'The Earth spins on its axis', why: 'The spin gives day and night.' },
+      { text: 'Clouds block the Sun in winter', why: 'Clouds do not explain the seasons. The tilt does.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+In December, it is summer in Australia. Explain why in 3 sentences. Use the words *axis*, *tilted* and *hemisphere*.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 22 min, model 15 min, check 13 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "Summer is when the Earth is closer to the Sun." The Earth is closest to the Sun in early January.
+- "The Sun goes around the Earth." Use the model to show that the spinning Earth makes the Sun seem to move.
+- Mixing up the spin (24 hours: day and night) and the orbit (365 days: the seasons).
+
+**Language support:**
+
+- Act out *rotate* (spin on the spot) and *orbit* (walk around a chair) before the lesson.
+- Sentence frame: *"In June, the … hemisphere is tilted towards the Sun, so …"*
+
+**Differentiation:**
+
+- Support: start with Part 1 of the model only.
+- Stretch: why are the seasons very small near the equator? (The Sun is high in the sky all year.)
+
+**Safety:** do not touch the hot lamp. Never look directly at the Sun.
+
+</Step>

@@ -1,0 +1,148 @@
+---
+unit: 11
+lesson: 4
+title: Analogue and digital signals
+syllabus: ['3.3 S8', '3.3 S9', '3.3 S10']
+goals:
+  - 'Extended: know the difference between an analogue signal and a digital signal.'
+  - 'Extended: know that sound can be sent as an analogue or a digital signal.'
+  - 'Extended: explain the benefits of digital signals.'
+keyWords: [analogue signal, digital signal, noise, regenerate]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { analogueDigitalSvg, regenerationSvg } from '../../../lib/emSoundFigures';
+
+<Step kind="starter" title="A message in a noisy room" minutes={5}>
+
+In a noisy room, which is easier to understand: a friend who whispers a long sentence, or a friend who shows you a thumb up or a thumb down? Why?
+
+</Step>
+
+<Step kind="learn" title="Two kinds of signal" minutes={12}>
+
+<Figure svg={analogueDigitalSvg()} caption="An analogue signal and a digital signal." width="32rem" />
+
+- An **analogue** signal changes **smoothly** and can have **any value**. Example: the voltage from a microphone follows the sound wave.
+- A **digital** signal has only **two values**: **1** (on, high) and **0** (off, low). Example: the signal in a computer.
+
+**Sound** can be sent as an analogue signal (old telephones, AM and FM radio) or as a digital signal (mobile phones, digital radio, music streaming). To make a digital signal, the sound is measured many times each second and each measurement is sent as a number in 1s and 0s.
+
+</Step>
+
+<Step kind="learn" title="Why digital is better" minutes={14}>
+
+Every signal picks up **noise** on the way (random changes). Over a long distance, it also becomes **weaker**, so it must be **amplified** (made bigger) again and again.
+
+<Figure svg={regenerationSvg()} caption="Noise on a digital signal and on an analogue signal." width="34rem" />
+
+- **Digital:** even with noise, it is easy to see what is a 1 and what is a 0. So the signal can be **regenerated**: made exactly like the start, with no noise. This can be repeated many times, so digital signals can travel **further** (increased **range**).
+- **Analogue:** the amplifier cannot know which part is noise. The noise is amplified **with** the signal, and gets worse at each step.
+- Digital signals can also carry **more data each second** (a higher **rate of transmission**).
+
+</Step>
+
+<Step kind="do" title="Pass the message" minutes={12}>
+
+Work in a line of 6 students.
+
+1. **Analogue:** the first student draws a wavy line on a card. Each student copies the line onto a new card **from memory** after looking for 3 seconds, and passes it on. Compare the last card with the first.
+2. **Digital:** the first student writes a code of 12 digits (only 0 and 1). Each student copies it **from memory** after looking for 3 seconds, and passes it on. Compare.
+
+Which message arrived with fewer errors? Why?
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={12}>
+
+<Quiz questions={[
+  {
+    question: 'What is a digital signal?',
+    options: [
+      { text: 'A signal with only two values, 1 and 0', correct: true, why: 'On and off.' },
+      { text: 'A signal that can have any value', why: 'This is an analogue signal.' },
+      { text: 'A signal that is always very loud', why: 'Digital means two values only.' },
+      { text: 'A signal that cannot carry sound', why: 'Sound can be sent as a digital signal.' },
+    ],
+  },
+  {
+    question: 'Why can a digital signal be regenerated exactly?',
+    options: [
+      { text: 'Even with noise, we can still tell the 1s from the 0s', correct: true, why: 'So the clean signal can be made again.' },
+      { text: 'Digital signals never pick up noise', why: 'They do pick up noise, but it can be removed.' },
+      { text: 'Digital signals are louder', why: 'The reason is the two clear values.' },
+      { text: 'Digital signals travel faster', why: 'The reason is the two clear values.' },
+    ],
+  },
+  {
+    question: 'What happens to noise when an analogue signal is amplified?',
+    options: [
+      { text: 'The noise is amplified too', correct: true, why: 'The amplifier cannot separate noise and signal.' },
+      { text: 'The noise is removed', why: 'That is possible only with digital signals.' },
+      { text: 'The noise becomes digital', why: 'The noise is amplified with the signal.' },
+      { text: 'Nothing happens to the noise', why: 'It gets bigger with the signal.' },
+    ],
+  },
+  {
+    question: 'Give two benefits of digital signals.',
+    options: [
+      { text: 'a higher rate of data, and a longer range (accurate regeneration)', correct: true, why: 'These are the two benefits in the syllabus.' },
+      { text: 'they are analogue, and they are louder', why: 'Digital: more data, longer range.' },
+      { text: 'they need no electricity, and no cables', why: 'Digital: more data, longer range.' },
+      { text: 'they never need amplifying', why: 'They are regenerated; the benefits are data rate and range.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Which is an example of an analogue signal?',
+    options: [
+      { text: 'the voltage from a microphone that follows a sound wave', correct: true, why: 'It changes smoothly and can have any value.' },
+      { text: 'the signal inside a computer', why: 'This is digital.' },
+      { text: 'a code of 1s and 0s', why: 'This is digital.' },
+      { text: 'a light that is only on or off', why: 'Two values: digital.' },
+    ],
+  },
+  {
+    question: 'Can sound be sent as a digital signal?',
+    options: [
+      { text: 'Yes: the sound is measured many times each second and sent as numbers', correct: true, why: 'Mobile phones and streaming do this.' },
+      { text: 'No: sound is always analogue', why: 'Sound can be changed to a digital signal.' },
+      { text: 'Only very loud sounds', why: 'Any sound can be digitised.' },
+      { text: 'Only through optical fibres', why: 'Digital sound can travel in many ways.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Extended only** (3.3 S8–S10). Core students can do the "pass the message" activity and revise lessons 11.1–11.3.
+
+**Timing:** starter 5 min, learn 26 min, activity 12 min, check 12 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "Digital signals do not get noise."
+- "Analogue means old, digital means fast." Use the real definitions: any value / two values.
+
+**Language support:**
+
+- *analogue* (British spelling; *analog* in American English).
+- *regenerate* = make again; *amplify* = make bigger.
+
+**Differentiation:**
+
+- Support: the two graphs to label "analogue" and "digital", with three sentence cards to place.
+- Stretch: a 3-minute song is sent as 44 100 numbers per second, each of 16 bits, in two channels. Estimate the number of bits.
+
+</Step>

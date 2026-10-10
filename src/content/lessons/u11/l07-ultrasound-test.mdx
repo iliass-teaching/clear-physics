@@ -1,0 +1,165 @@
+---
+unit: 11
+lesson: 7
+title: Ultrasound and unit test
+syllabus: ['3.4 C9', '3.4 S12', '3.3', '3.4']
+goals:
+  - Define ultrasound.
+  - 'Extended: describe uses of ultrasound and calculate a depth or a distance from an echo.'
+  - Check your learning of Unit 11 with a test.
+keyWords: [ultrasound, sonar, echo, frequency]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { sonarSvg } from '../../../lib/emSoundFigures';
+
+<Step kind="learn" title="Ultrasound" minutes={12}>
+
+**Ultrasound** is sound with a frequency **higher than 20 kHz** (20 000 Hz). Humans cannot hear it, but bats and dolphins use it.
+
+**Extended: uses of ultrasound.** A short pulse of ultrasound is sent out. It reflects from a surface (an echo). We measure the time for the echo to come back.
+
+<Figure svg={sonarSvg()} caption="Sonar: finding the depth of the sea." width="30rem" />
+
+- **Sonar:** ships find the depth of the sea, or fish and submarines.
+- **Medical scanning of soft tissue:** for example a baby inside its mother. Ultrasound is much safer than X-rays.
+- **Non-destructive testing:** finding cracks inside metal (for example in railway tracks or aircraft parts) without breaking them.
+
+**The calculation:** the pulse goes there **and back**:
+
+$$
+\text{depth} = \frac{\text{speed} \times \text{time}}{2}
+$$
+
+</Step>
+
+<Step kind="practice" title="Practice (Extended)" minutes={15}>
+
+<Practice topic="sound-echo" level={3} />
+
+</Step>
+
+<Step kind="exit" title="Unit test" minutes={33}>
+
+Questions marked **(E)** are for Extended students.
+
+<Quiz questions={[
+  {
+    question: '1. Which region of the electromagnetic spectrum has the longest wavelength?',
+    options: [
+      { text: 'radio waves', correct: true, why: 'And the lowest frequency.' },
+      { text: 'gamma rays', why: 'Gamma rays have the shortest wavelength.' },
+      { text: 'visible light', why: 'Radio waves are much longer.' },
+      { text: 'X-rays', why: 'X-rays are very short.' },
+    ],
+  },
+  {
+    question: '2. Which region is used for medical scanning of bones?',
+    options: [
+      { text: 'X-rays', correct: true, why: 'They pass through soft tissue but not through bone.' },
+      { text: 'ultraviolet', why: 'UV is for security marking and sterilising water.' },
+      { text: 'microwaves', why: 'Microwaves are for phones, ovens and satellites.' },
+      { text: 'radio waves', why: 'X-rays are used.' },
+    ],
+  },
+  {
+    question: '3. What is a danger of too much infrared?',
+    options: [
+      { text: 'skin burns', correct: true, why: 'Infrared heats the skin.' },
+      { text: 'skin cancer', why: 'This is ultraviolet.' },
+      { text: 'mutation of cells', why: 'This is X-rays and gamma rays.' },
+      { text: 'internal heating of body cells', why: 'This is microwaves.' },
+    ],
+  },
+  {
+    question: '4. A geostationary satellite…',
+    options: [
+      { text: 'orbits once every 24 hours and stays above the same place', correct: true, why: 'Used for satellite TV.' },
+      { text: 'orbits once every 1.5 hours', why: 'That is a low orbit.' },
+      { text: 'does not move', why: 'It moves with the spinning Earth.' },
+      { text: 'uses sound to communicate', why: 'It uses microwaves.' },
+    ],
+  },
+  {
+    question: '5. A radio wave has a frequency of 60 MHz. What is its wavelength? (speed $3.0 \\times 10^8$ m/s)',
+    options: [
+      { text: '5.0 m', correct: true, why: '$\\dfrac{3.0 \\times 10^8}{60 \\times 10^6} = 5.0$ m.' },
+      { text: '$5.0 \\times 10^6$ m', why: 'Change MHz to Hz first.' },
+      { text: '0.2 m', why: 'Upside down: $\\lambda = \\dfrac{v}{f}$.' },
+      { text: '$1.8 \\times 10^{16}$ m', why: 'Divide, do not multiply.' },
+    ],
+  },
+  {
+    question: '6. Why can sound not travel through a vacuum?',
+    options: [
+      { text: 'There are no particles to pass on the vibrations', correct: true, why: 'Sound needs a medium.' },
+      { text: 'A vacuum is too cold', why: 'Sound needs a medium.' },
+      { text: 'Sound is electromagnetic', why: 'Sound is a longitudinal mechanical wave.' },
+      { text: 'Sound is too fast', why: 'Sound needs a medium.' },
+    ],
+  },
+  {
+    question: '7. A sound has a higher pitch. What has changed?',
+    options: [
+      { text: 'its frequency is higher', correct: true, why: 'Pitch depends on frequency.' },
+      { text: 'its amplitude is bigger', why: 'This makes it louder.' },
+      { text: 'its speed is higher', why: 'The speed in air does not change.' },
+      { text: 'its wavelength is longer', why: 'Higher frequency: shorter wavelength.' },
+    ],
+  },
+  {
+    question: '8. What is ultrasound?',
+    options: [
+      { text: 'sound with a frequency higher than 20 kHz', correct: true, why: 'Too high for humans to hear.' },
+      { text: 'very loud sound', why: 'Ultrasound is about frequency, not loudness.' },
+      { text: 'sound slower than 20 m/s', why: 'Ultrasound is about frequency.' },
+      { text: 'an electromagnetic wave', why: 'It is a sound wave.' },
+    ],
+  },
+  {
+    question: '9. (E) Why are digital signals better than analogue signals over long distances?',
+    options: [
+      { text: 'They can be regenerated exactly, so the noise is removed', correct: true, why: 'This increases the range.' },
+      { text: 'They never pick up noise', why: 'They pick up noise, but it can be removed.' },
+      { text: 'They travel faster than light', why: 'Nothing travels faster than light.' },
+      { text: 'They do not need to be amplified', why: 'They are regenerated.' },
+    ],
+  },
+  {
+    question: '10. (E) A sonar pulse returns 0.4 s after it is sent. Ultrasound travels at 1500 m/s in sea water. How deep is the sea?',
+    options: [
+      { text: '300 m', correct: true, why: '$\\dfrac{1500 \\times 0.4}{2} = 300$ m.' },
+      { text: '600 m', why: 'The pulse goes down and back: divide by 2.' },
+      { text: '3750 m', why: 'Multiply the speed by the time.' },
+      { text: '1500 m', why: 'Use depth = speed × time ÷ 2.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** the definition of ultrasound (3.4 C9) is Core. Uses and calculations (S12) are Extended.
+
+**Timing:** ultrasound 12 min, practice 15 min, unit test 33 min.
+
+**Values:** ultrasound speeds used in the practice: about 1500 m/s in sea water, about 1540 m/s in soft tissue (the usual value for medical scanners), 5000 m/s in a steel (real values for steel are about 5000–6000 m/s).
+
+**Using the test:** questions 1–8 test Core content; 9–10 are Extended.
+
+**Common mistakes:**
+
+- Forgetting to divide by 2.
+- Times in µs or ms not changed to seconds.
+
+**Differentiation:**
+
+- Support: a worked example on the board before the practice.
+- Stretch: why is ultrasound, not audible sound, used for medical scans? (Shorter wavelength: more detail.)
+
+</Step>

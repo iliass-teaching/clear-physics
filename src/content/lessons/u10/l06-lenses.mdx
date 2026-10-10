@@ -1,0 +1,166 @@
+---
+unit: 10
+lesson: 6
+title: Lenses
+syllabus: ['3.2.3 C1', '3.2.3 C2']
+goals:
+  - Describe what converging and diverging lenses do to a parallel beam of light.
+  - Use the words focal length, principal axis and principal focus.
+  - Measure the focal length of a converging lens.
+keyWords: [converging lens, diverging lens, principal axis, principal focus, focal length]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { lensesSvg } from '../../../lib/lightFigures';
+
+<Step kind="starter" title="Lenses around us" minutes={5}>
+
+Make a list of things that have a lens inside. (There is one in your eye.) What do the lenses do?
+
+</Step>
+
+<Step kind="learn" title="Two types of lens" minutes={14}>
+
+A lens is a curved piece of glass or plastic. Light **refracts** at both surfaces.
+
+<Figure svg={lensesSvg()} caption="A parallel beam of light through a converging lens and a diverging lens." width="36rem" />
+
+**Converging lens** (convex: thicker in the middle):
+
+- Rays parallel to the principal axis **come together** (converge) at one point: the **principal focus** F (or **focal point**).
+- Used in magnifying glasses, cameras, projectors, glasses for long sight.
+
+**Diverging lens** (concave: thinner in the middle):
+
+- Rays parallel to the principal axis **spread out** (diverge). They seem to come from a point F behind the lens.
+- Used in glasses for short sight, and in some door viewers.
+
+**Words:**
+
+- **Principal axis:** the line through the centre of the lens, at 90° to the lens.
+- **Principal focus (focal point) F:** where parallel rays meet (converging lens), or seem to come from (diverging lens). There is one F on each side of the lens.
+- **Focal length $f$:** the distance from the centre of the lens to F.
+
+A **fatter** (more curved) lens bends the light more: its focal length is **shorter**.
+
+</Step>
+
+<Step kind="do" title="Measure the focal length" minutes={18}>
+
+**Equipment:** a converging lens in a holder, a white screen (card), a metre rule. You need a window or a lamp far away.
+
+1. Point the lens at a window (or a distant lamp) on the other side of the room. Light from a far object arrives almost parallel.
+2. Move the screen behind the lens until you see a **sharp** image of the window.
+3. Measure the distance from the centre of the lens to the screen. This is the focal length.
+4. Repeat 3 times and calculate the mean. Do the same with a fatter lens.
+
+**Questions:**
+
+1. Why must the object be far away?
+2. Which lens has the shorter focal length? Is it the fatter or the thinner one?
+3. Try with a diverging lens. Can you find a sharp image on the screen?
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={18}>
+
+<Quiz questions={[
+  {
+    question: 'What does a converging lens do to a parallel beam of light?',
+    options: [
+      { text: 'It brings the rays together at the principal focus', correct: true, why: 'Converge = come together.' },
+      { text: 'It spreads the rays out', why: 'This is a diverging lens.' },
+      { text: 'It reflects the rays back', why: 'A lens refracts light.' },
+      { text: 'Nothing: the rays go straight on', why: 'Only the ray along the principal axis goes straight on.' },
+    ],
+  },
+  {
+    question: 'What is the focal length of a lens?',
+    options: [
+      { text: 'The distance from the centre of the lens to the principal focus', correct: true, why: 'Symbol $f$.' },
+      { text: 'The thickness of the lens', why: 'It is a distance from the lens to F.' },
+      { text: 'The distance from the object to the lens', why: 'This is the object distance.' },
+      { text: 'The diameter of the lens', why: 'It is a distance from the lens to F.' },
+    ],
+  },
+  {
+    question: 'What shape is a diverging lens?',
+    options: [
+      { text: 'thinner in the middle than at the edges', correct: true, why: 'Concave.' },
+      { text: 'thicker in the middle than at the edges', why: 'This is a converging lens.' },
+      { text: 'flat', why: 'A flat piece of glass is not a lens.' },
+      { text: 'a sphere', why: 'A diverging lens is thinner in the middle.' },
+    ],
+  },
+  {
+    question: 'Lens A has a focal length of 5 cm. Lens B has a focal length of 20 cm. Which is more curved (fatter)?',
+    options: [
+      { text: 'lens A', correct: true, why: 'More curved: it bends light more, so the focal length is shorter.' },
+      { text: 'lens B', why: 'A longer focal length means a less curved lens.' },
+      { text: 'they are the same', why: 'Different focal lengths: different curves.' },
+      { text: 'we cannot know', why: 'Shorter focal length: more curved.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'What is the principal axis?',
+    options: [
+      { text: 'The line through the centre of the lens, at 90° to the lens', correct: true, why: 'Rays along it go straight through.' },
+      { text: 'The edge of the lens', why: 'It goes through the centre.' },
+      { text: 'The focal length', why: 'The focal length is a distance along the principal axis.' },
+      { text: 'A ray from the object', why: 'It is a construction line through the centre of the lens.' },
+    ],
+  },
+  {
+    question: 'Parallel rays go through a diverging lens. What do they seem to do?',
+    options: [
+      { text: 'Come from the principal focus on the same side as the light came from', correct: true, why: 'Follow the rays back with dashed lines.' },
+      { text: 'Meet at a point behind the lens', why: 'That is a converging lens.' },
+      { text: 'Stay parallel', why: 'They spread out.' },
+      { text: 'Stop', why: 'They spread out.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Draw a converging lens and a diverging lens, each with three parallel rays. Label: principal axis, principal focus F, focal length $f$.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 14 min, experiment 18 min, check 18 min, exit ticket 5 min.
+
+**Drawing convention:** in ray diagrams we draw a thin lens as a line (or a thin shape), and we bend each ray once, at the centre line of the lens, not at each surface.
+
+**Common mistakes:**
+
+- Confusing *converging* and *diverging*.
+- Thinking a lens has only one focal point.
+- Measuring the focal length from the edge of the lens.
+
+**Language support:**
+
+- *converge* = come together (like roads that meet); *diverge* = go apart.
+- *convex* (bulges out) and *concave* (curves in, like a cave) are also used.
+
+**Differentiation:**
+
+- Support: give the outline of each lens and the parallel rays; students complete the rays.
+- Stretch: why is the image of the window upside down on the screen?
+
+**Safety:** never look at the Sun through a lens, and never focus sunlight on skin or paper.
+
+</Step>

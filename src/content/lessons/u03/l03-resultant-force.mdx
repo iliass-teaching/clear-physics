@@ -1,0 +1,148 @@
+---
+unit: 3
+lesson: 3
+title: Resultant force
+syllabus: ['1.5.1 C3', '1.5.1 C4']
+goals:
+  - Find the resultant of two or more forces along the same straight line.
+  - Say what happens to an object when the forces on it are balanced.
+  - Say what happens when there is a resultant force.
+keyWords: [resultant force, balanced forces, force]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { forceDiagramSvg } from '../../../lib/forceFigures';
+
+<Step kind="starter" title="Tug of war" minutes={5}>
+
+Team A pulls the rope to the left with 500 N. Team B pulls to the right with 500 N.
+
+What happens to the rope? What happens if team B pulls with 600 N?
+
+</Step>
+
+<Step kind="learn" title="Adding forces along a line" minutes={10}>
+
+The **resultant force** is the single force that has the same effect as all the forces together.
+
+- Forces in the **same direction**: **add** them.
+- Forces in **opposite directions**: **subtract** the smaller from the bigger. The resultant acts in the direction of the bigger force.
+
+<Figure svg={forceDiagramSvg([{ dir: 'right', size: 60, label: '80 N' }, { dir: 'left', size: 35, label: '30 N' }])} caption="80 N to the right and 30 N to the left: the resultant is 50 N to the right." width="26rem" />
+
+<WorkedExample
+  question="A boat has a driving force of 1200 N forwards. The water pushes back with a drag of 900 N. Calculate the resultant force."
+  given={['$1200\\,\\text{N}$ forwards', '$900\\,\\text{N}$ backwards']}
+  find="the resultant force"
+  answer="$300\,\text{N}$ forwards"
+>
+
+The forces act in opposite directions: subtract.
+
+$R = 1200 - 900 = 300\,\text{N}$, forwards (the direction of the bigger force)
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="learn" title="Balanced and unbalanced forces" minutes={10}>
+
+When the resultant force is **zero**, the forces are **balanced**. Then the object:
+
+- **stays at rest**, if it is at rest; or
+- **keeps moving at constant speed in a straight line**, if it is moving.
+
+**Be careful:** a moving object does **not** need a resultant force to keep moving. On ice, a puck slides a long way because there is almost no friction.
+
+When there **is** a resultant force, the forces are **unbalanced**. The velocity of the object changes: it speeds up, slows down or changes direction.
+
+<div class="table-wrap">
+
+| resultant force | the object at rest | the moving object |
+|---|---|---|
+| zero (balanced) | stays at rest | constant speed in a straight line |
+| forwards | starts to move forwards | speeds up |
+| backwards | starts to move backwards | slows down |
+
+</div>
+
+</Step>
+
+<Step kind="do" title="Forces on a trolley" minutes={10}>
+
+Work in pairs with a trolley on a flat bench and two force meters.
+
+1. Pull the trolley with 2 N to the right and 2 N to the left at the same time. What happens?
+2. Now pull with 3 N to the right and 2 N to the left. What happens?
+3. Give the trolley a push and let it go. Why does it slow down? Which force acts on it?
+
+*Use these words: balanced, unbalanced, resultant, friction.*
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={20}>
+
+<Practice topic="resultant" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A box has 40 N pushing it to the right and 15 N pushing it to the left. What is the resultant force?',
+    options: [
+      { text: '25 N to the right', correct: true, why: 'Opposite directions: $40 - 15 = 25\\,\\text{N}$, towards the bigger force.' },
+      { text: '55 N to the right', why: 'The forces are in opposite directions: subtract.' },
+      { text: '25 N to the left', why: 'The resultant acts in the direction of the bigger force.' },
+      { text: '0 N', why: 'The forces are not equal.' },
+    ],
+  },
+  {
+    question: 'A car moves at a constant speed in a straight line. What is the resultant force on it?',
+    options: [
+      { text: 'zero', correct: true, why: 'The forces are balanced: the velocity does not change.' },
+      { text: 'forwards', why: 'A forward resultant would make it speed up.' },
+      { text: 'backwards', why: 'A backward resultant would make it slow down.' },
+      { text: 'it depends on the speed', why: 'At constant velocity, the resultant is always zero.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+A skydiver falls at a constant speed. Draw a force diagram and explain why the speed does not change. Use the words *weight*, *air resistance* and *balanced*.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 20 min, trolley 10 min, practice 20 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "A moving object needs a forward force to keep moving." With no resultant force it keeps moving at constant velocity.
+- Giving the size of the resultant without its direction.
+- Adding forces in opposite directions.
+
+**Link:** this is Newton’s first law. The name is not needed for the exam, but the idea (1.5.1 C4) is.
+
+**Language support:**
+
+- Sentence frame: *"The forces are balanced/unbalanced, so the object …"*
+
+**Differentiation:**
+
+- Support: use Level 1 with diagrams only.
+- Stretch: why does a parachute make a skydiver slow down, even though they are still falling? (Air resistance becomes bigger than the weight: the resultant acts upwards.)
+
+**Starter answer:** 500 N each way: the rope does not move. 600 N against 500 N: resultant 100 N towards team B.
+
+</Step>

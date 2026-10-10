@@ -1,0 +1,126 @@
+---
+unit: 11
+lesson: 6
+title: Speed of sound, loudness, pitch and echoes
+syllabus: ['3.4 C6', '3.4 C7', '3.4 C8']
+goals:
+  - Describe a method to measure the speed of sound in air.
+  - Describe how amplitude and frequency change the loudness and the pitch of a sound.
+  - Describe an echo as the reflection of sound.
+keyWords: [pitch, loudness, amplitude, frequency, echo, oscilloscope]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import SoundSim from '../../../components/SoundSim.astro';
+import { speedOfSoundSvg, soundTracesSvg, echoSvg } from '../../../lib/emSoundFigures';
+
+<Step kind="starter" title="Thunder and lightning" minutes={5}>
+
+You see lightning and hear the thunder later. How could you use this idea to measure the speed of sound?
+
+</Step>
+
+<Step kind="learn" title="Measuring the speed of sound" minutes={10}>
+
+<Figure svg={speedOfSoundSvg()} caption="Measuring the speed of sound outdoors." width="32rem" />
+
+1. Measure a long distance (for example 200 m) with a measuring tape.
+2. Student A bangs two wooden blocks together (or uses a starting pistol).
+3. Student B **sees** the blocks hit and starts the stopwatch. The light arrives almost at once.
+4. Student B **hears** the sound and stops the stopwatch.
+5. speed $= \dfrac{\text{distance}}{\text{time}}$. Repeat several times and use the mean time.
+
+**Why a long distance?** The time is longer, so the reaction time of student B is a smaller part of it: the result is more accurate.
+
+**Echo method:** stand far in front of a large wall. Clap, and time the echo (the sound travels to the wall **and back**: distance = $2d$).
+
+</Step>
+
+<Step kind="learn" title="Loudness and pitch" minutes={10}>
+
+A microphone and an **oscilloscope** show a sound as a wave on a screen.
+
+<Figure svg={soundTracesSvg()} caption="Four sounds on an oscilloscope screen." width="32rem" />
+
+- **Bigger amplitude** → **louder** sound.
+- **Higher frequency** (more waves on the screen) → **higher pitch**.
+
+</Step>
+
+<Step kind="do" title="The virtual oscilloscope" minutes={12}>
+
+<SoundSim />
+
+1. Change the amplitude. What happens to the trace? To the sound?
+2. Change the frequency from 200 Hz to 800 Hz. How many waves are on the screen each time? What happens to the pitch?
+3. Draw two traces in your book: (a) a loud, low sound; (b) a quiet, high sound.
+
+</Step>
+
+<Step kind="learn" title="Echoes" minutes={5}>
+
+<Figure svg={echoSvg()} caption="An echo is sound reflected from a surface." width="30rem" />
+
+An **echo** is the **reflection** of a sound wave from a hard surface (a wall, a cliff). Soft materials (curtains, carpets) absorb sound and reduce echoes.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={13}>
+
+<Practice topic="sound-echo" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A sound gets louder, with the same pitch. What changes on the oscilloscope?',
+    options: [
+      { text: 'The amplitude gets bigger', correct: true, why: 'The number of waves stays the same.' },
+      { text: 'There are more waves on the screen', why: 'That is a higher frequency (higher pitch).' },
+      { text: 'There are fewer waves on the screen', why: 'That is a lower pitch.' },
+      { text: 'Nothing changes', why: 'The amplitude gets bigger.' },
+    ],
+  },
+  {
+    question: 'A student hears an echo 0.5 s after clapping. The speed of sound is 340 m/s. How far is the wall?',
+    options: [
+      { text: '85 m', correct: true, why: '$340 \\times 0.5 = 170$ m there and back, so the wall is 85 m away.' },
+      { text: '170 m', why: 'The sound goes to the wall and back: divide by 2.' },
+      { text: '680 m', why: 'Multiply the speed by the time, then divide by 2.' },
+      { text: '0.0015 m', why: 'distance = speed × time.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, speed 10 min, loudness and pitch 10 min, oscilloscope 12 min, echoes 5 min, practice 13 min, exit ticket 5 min.
+
+**About the simulation:** the sound uses the Web Audio API of the browser. It plays only after a click and stops after 3 seconds. Keep the volume low.
+
+**Common mistakes:**
+
+- "Louder sounds travel faster." The speed does not depend on loudness.
+- "Higher pitch = bigger amplitude."
+- Forgetting to halve the distance in echo questions.
+
+**Language support:**
+
+- *pitch* = high or low (like a bird or a lion); *loudness* = loud or quiet.
+
+**Differentiation:**
+
+- Support: level 1 and 2 of the practice only.
+- Stretch: suggest two ways to make the outdoor measurement more accurate.
+
+**Safety:** starting pistols only with school permission; never point them at people. Choose a safe open space.
+
+</Step>

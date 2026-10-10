@@ -1,0 +1,164 @@
+---
+import Base from '../layouts/Base.astro';
+import Practice from '../components/Practice.astro';
+import { lessonUrl, url } from '../lib/url';
+import { practiceGroups, tagText } from '../lib/practiceTopics';
+
+const groups = await practiceGroups();
+const count = groups.reduce((n, g) => n + g.items.length, 0);
+const first = groups[0].items[0];
+---
+
+<Base title="Practice" description="All the practice questions of the course, by unit. New numbers every time, with hints." wide>
+  <h1>Practice</h1>
+  <p class="lead">
+    {count} topics, with new numbers every time. Choose a topic, then a level. If you make a typical mistake, a hint tells you what to check.
+  </p>
+  <p class="small muted">
+    A dot is filled when you get 3 questions right in a row at that level. Your progress is saved in this browser only.
+    Teachers: make <a href={url('worksheets/')}>printable worksheets</a> from these topics.
+  </p>
+
+  <div class="layout">
+    <nav class="topics" id="topics" aria-label="Practice topics">
+      {
+        groups.map((g) => (
+          <section>
+            <h2>
+              <span class="unit-num">Unit {g.unit.number}</span> {g.unit.title}
+            </h2>
+            <ul>
+              {g.items.map((it) => (
+                <li>
+                  <button
+                    type="button"
+                    class="topic"
+                    data-topic={it.id}
+                    data-title={it.topic.title}
+                    data-levels={it.topic.levels.length}
+                    data-tag={it.level}
+                    data-lesson-url={lessonUrl(it.use.unit, it.use.lesson)}
+                    data-lesson-label={`Unit ${it.use.unit}, lesson ${it.use.lesson}: ${it.use.title}`}
+                  >
+                    <span class="name">{it.topic.title}</span>
+                    <span class="meta">
+                      {it.level !== 'core' && <span class={`tag ${it.level === 'extended' ? 'ext' : 'mix'}`}>{tagText[it.level]}</span>}
+                      <span class="dots" aria-hidden="true" />
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </nav>
+
+    <section class="panel" id="panel" aria-live="polite">
+      <p class="where">
+        <span class="tag-slot" />
+        Taught in <a class="lesson-link" href={lessonUrl(first.use.unit, first.use.lesson)}>Unit {first.use.unit}, lesson {first.use.lesson}: {first.use.title}</a>
+      </p>
+      <h2 class="topic-title">{first.topic.title}</h2>
+      <p class="change"><a href="#topics">Choose another topic ↓</a></p>
+      <Practice topic={first.id} />
+    </section>
+  </div>
+</Base>
+
+<script>
+  import { mountPractice, loadBest, STREAK_GOAL } from '../scripts/practice/engine';
+
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('button[data-topic]')];
+  const panel = document.querySelector<HTMLElement>('#panel')!;
+  const root = panel.querySelector<HTMLElement>('[data-practice]')!;
+  const title = panel.querySelector<HTMLElement>('.topic-title')!;
+  const link = panel.querySelector<HTMLAnchorElement>('.lesson-link')!;
+  const tagSlot = panel.querySelector<HTMLElement>('.tag-slot')!;
+  const tagText: Record<string, string> = { extended: 'Extended', mixed: 'Core + Extended' };
+
+  function marks(): void {
+    for (const b of buttons) {
+      const best = loadBest(b.dataset.topic!);
+      const n = Number(b.dataset.levels);
+      const dots = b.querySelector<HTMLElement>('.dots')!;
+      dots.replaceChildren(
+        ...Array.from({ length: n }, (_, i) => {
+          const d = document.createElement('span');
+          d.className = (best[i + 1] ?? 0) >= STREAK_GOAL ? 'dot done' : 'dot';
+          return d;
+        }),
+      );
+      const done = Array.from({ length: n }, (_, i) => (best[i + 1] ?? 0) >= STREAK_GOAL).filter(Boolean).length;
+      b.title = `${done} of ${n} levels done`;
+    }
+  }
+
+  function select(id: string, scroll: boolean): void {
+    const b = buttons.find((x) => x.dataset.topic === id);
+    if (!b) return;
+    for (const x of buttons) x.setAttribute('aria-pressed', String(x === b));
+    title.textContent = b.dataset.title!;
+    link.href = b.dataset.lessonUrl!;
+    link.textContent = b.dataset.lessonLabel!;
+    const tag = b.dataset.tag!;
+    tagSlot.innerHTML = tag in tagText ? `<span class="tag ${tag === 'extended' ? 'ext' : 'mix'}">${tagText[tag]}</span>` : '';
+    root.dataset.practice = id;
+    root.dataset.level = '1';
+    mountPractice(root);
+    history.replaceState(null, '', `#${id}`);
+    if (scroll && window.matchMedia('(max-width: 899px)').matches) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  for (const b of buttons) b.addEventListener('click', () => select(b.dataset.topic!, true));
+  window.addEventListener('cp-practice-progress', marks);
+
+  const fromHash = decodeURIComponent(location.hash.slice(1));
+  select(buttons.some((b) => b.dataset.topic === fromHash) ? fromHash : buttons[0].dataset.topic!, false);
+  marks();
+</script>
+
+<style>
+  .lead { font-size: 1.1rem; max-width: 46rem; }
+  .layout { display: grid; gap: 1.5rem; margin-top: 1.5rem; }
+  @media (min-width: 900px) {
+    .layout { grid-template-columns: 19rem minmax(0, 1fr); align-items: start; }
+    .topics { position: sticky; top: 4.5rem; max-height: calc(100vh - 6rem); overflow-y: auto; padding-right: 0.4rem; }
+  }
+  @media (max-width: 899px) {
+    .panel { order: -1; }
+  }
+  @media (min-width: 900px) {
+    .change { display: none; }
+  }
+  .change { margin: -0.3rem 0 0.6rem; font-size: 0.9rem; }
+  .topics section { margin-bottom: 1rem; }
+  .topics h2 { font-size: 0.95rem; margin: 0 0 0.3rem; font-family: var(--sans); }
+  .unit-num { color: var(--ink-soft); font-weight: 600; margin-right: 0.2rem; }
+  .topics ul { list-style: none; margin: 0; padding: 0; }
+  .topic {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: left;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 0.35rem 0.6rem;
+    font-weight: 400;
+    font-size: 0.95rem;
+  }
+  .topic:hover { background: var(--surface-2); }
+  .topic[aria-pressed='true'] { background: var(--surface); border-color: var(--accent); font-weight: 700; }
+  .meta { display: inline-flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
+  .meta .tag { font-size: 0.68rem; }
+  .dots { display: inline-flex; gap: 3px; }
+  .dots :global(.dot) { width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid var(--ink-soft); }
+  .dots :global(.dot.done) { background: var(--good); border-color: var(--good); }
+  .panel h2 { margin: 0.2rem 0 0.6rem; }
+  .where { margin: 0; font-size: 0.9rem; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+  :global(.tag.mix) { background: var(--surface-2); color: var(--ink-soft); border: 1px solid var(--line); }
+</style>

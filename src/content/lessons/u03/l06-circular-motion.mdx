@@ -1,0 +1,164 @@
+---
+unit: 3
+lesson: 6
+title: Moving in a circle
+syllabus: ['1.5.1 S12']
+goals:
+  - Explain why an object moving in a circle needs a force.
+  - Know that this force acts towards the centre, at right angles to the motion.
+  - Describe how the force depends on the speed, the radius and the mass.
+keyWords: [force, velocity, resultant force]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { circleMotionSvg } from '../../../lib/forceFigures';
+
+<Step kind="starter" title="Constant speed, changing velocity" minutes={5}>
+
+A car goes around a roundabout at a constant speed of 10 m/s.
+
+1. Does its speed change?
+2. Does its velocity change? (Remember: velocity is speed in a given direction.)
+
+</Step>
+
+<Step kind="learn" title="Why a force is needed" minutes={12}>
+
+An object moving in a circle changes direction all the time. So its **velocity changes**, even when its speed is constant.
+
+A change of velocity needs a **resultant force** (Lesson 3). For motion in a circle, this force:
+
+- acts **towards the centre** of the circle;
+- is **at right angles** (perpendicular) to the motion.
+
+<Figure svg={circleMotionSvg()} caption="The velocity is along the circle. The force points to the centre." width="26rem" />
+
+If the force stops, the object moves away in a **straight line**, along the direction of its velocity at that moment.
+
+<div class="table-wrap">
+
+| object moving in a circle | the force towards the centre |
+|---|---|
+| a ball whirled on a string | tension in the string |
+| a car going around a bend | friction between the tyres and the road |
+| the Moon around the Earth | gravity (the Earth’s pull) |
+
+</div>
+
+</Step>
+
+<Step kind="learn" title="What changes the force?" minutes={10}>
+
+1. **Speed:** the mass and the radius stay the same. A **bigger force** gives a **bigger speed**.
+2. **Radius:** the mass and the speed stay the same. A **bigger force** gives a **smaller radius** (a tighter circle).
+3. **Mass:** the speed and the radius stay the same. A **bigger mass** needs a **bigger force**.
+
+Example: a car goes around a bend. If the road is icy, the friction force is small. The car cannot follow a tight circle at high speed: it slides out in a straight line. That is why we slow down before a bend.
+
+</Step>
+
+<Step kind="do" title="Whirling bung" minutes={13}>
+
+**Equipment:** a rubber bung on a strong string, a short plastic tube, masses (washers) on the other end of the string, safety glasses.
+
+1. Hold the tube. Whirl the bung in a horizontal circle above your head. The washers hang below the tube and pull on the string.
+2. Add more washers (a bigger force). Keep the radius the same. What happens to the speed of the bung?
+3. Keep the same washers. Whirl faster. What happens to the radius?
+
+**Question:** what provides the force towards the centre in this experiment?
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={15}>
+
+<Quiz questions={[
+  {
+    question: 'An object moves in a circle at constant speed. Which is true?',
+    options: [
+      { text: 'Its velocity changes, so there is a resultant force', correct: true, why: 'Its direction changes all the time.' },
+      { text: 'There is no resultant force, because the speed is constant', why: 'The direction changes, so the velocity changes. A force is needed.' },
+      { text: 'Its speed changes all the time', why: 'The speed is constant. The direction changes.' },
+      { text: 'Its mass changes', why: 'The mass does not change.' },
+    ],
+  },
+  {
+    question: 'In which direction is the force on an object moving in a circle?',
+    options: [
+      { text: 'towards the centre of the circle', correct: true, why: 'The force is at right angles to the motion, towards the centre.' },
+      { text: 'away from the centre', why: 'The force pulls the object towards the centre.' },
+      { text: 'in the direction of motion', why: 'The force is at right angles to the motion.' },
+      { text: 'backwards', why: 'The force is towards the centre.' },
+    ],
+  },
+  {
+    question: 'The string of a whirling ball breaks. How does the ball move?',
+    options: [
+      { text: 'in a straight line, along its velocity at that moment', correct: true, why: 'With no force towards the centre, the ball keeps its velocity.' },
+      { text: 'straight away from the centre', why: 'It moves along the direction it had when the string broke.' },
+      { text: 'it keeps going in a circle', why: 'It needs a force to move in a circle.' },
+      { text: 'towards the centre', why: 'There is no force towards the centre any more.' },
+    ],
+  },
+  {
+    question: 'A car goes round the same bend at the same speed, but it is heavier. What is true?',
+    options: [
+      { text: 'It needs a bigger force towards the centre', correct: true, why: 'A bigger mass needs a bigger force, for the same speed and radius.' },
+      { text: 'It needs a smaller force', why: 'More mass needs more force.' },
+      { text: 'It needs the same force', why: 'The force depends on the mass.' },
+      { text: 'It needs no force', why: 'Every object moving in a circle needs a force towards the centre.' },
+    ],
+  },
+  {
+    question: 'With the same mass and speed, the force towards the centre increases. What happens to the radius?',
+    options: [
+      { text: 'it decreases', correct: true, why: 'A bigger force gives a tighter circle.' },
+      { text: 'it increases', why: 'A bigger force pulls the object into a tighter circle.' },
+      { text: 'it stays the same', why: 'With the same speed, a bigger force changes the radius.' },
+      { text: 'the object stops', why: 'The force is at right angles to the motion: it does not slow the object.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+Explain why a car can slide off a bend on an icy road. Use the words *friction*, *force towards the centre* and *straight line*.
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Find 3 examples of motion in a circle (a fairground ride, a washing machine, a planet…). For each one, name the force that acts towards the centre.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**This lesson is Extended content** (1.5.1 S12). The syllabus says $F = \dfrac{mv^2}{r}$ is **not** required: keep it qualitative.
+
+**Timing:** starter 5 min, learn 22 min, whirling bung 13 min, check 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "There is an outward force." Avoid the word *centrifugal*: the resultant force is towards the centre.
+- "When the string breaks, the ball flies straight out from the centre." It moves along the tangent.
+- "Constant speed means no force." The direction changes.
+
+**Whirling bung:** the weight of the washers provides the tension in the string, which is the force towards the centre.
+
+**Language support:**
+
+- Show *perpendicular* / *at right angles* with your arms.
+
+**Differentiation:**
+
+- Support: focus on the three examples in the table and the figure.
+- Stretch: the Moon moves in a circle around the Earth. Why does it not fall onto the Earth? (It does "fall" towards the Earth all the time, but it moves sideways fast enough to stay in orbit.)
+
+**Safety:** wear safety glasses. Whirl the bung above head height, in a clear space, away from other students. Check that the string is strong and tied tightly.
+
+</Step>

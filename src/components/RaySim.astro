@@ -1,0 +1,178 @@
+---
+// Virtual practical with a ray box.
+// mode "mirror": reflection at a plane mirror.
+// mode "block": refraction from air into a transparent material.
+// mode "semicircle": a ray inside a semicircular block hits the flat side: refraction, critical angle,
+// total internal reflection.
+interface Props {
+  mode?: 'mirror' | 'block' | 'semicircle';
+}
+const { mode = 'mirror' } = Astro.props;
+const max = mode === 'semicircle' ? 89 : 85;
+const start = mode === 'semicircle' ? 30 : 40;
+---
+
+<div class="ray-sim" data-ray-sim data-mode={mode}>
+  <svg viewBox="0 0 600 300" role="img" aria-label="A ray of light and a surface. Change the angle of incidence.">
+    <g class="scene"></g>
+  </svg>
+  <div class="controls">
+    <label>
+      angle of incidence <input type="range" class="angle" min="0" max={max} step="1" value={start} />
+      <output class="angle-out">{start}°</output>
+    </label>
+    {
+      mode !== 'mirror' && (
+        <label>
+          material
+          <select class="material">
+            <option value="1.50">glass (n = 1.50)</option>
+            <option value="1.33">water (n = 1.33)</option>
+            <option value="2.42">diamond (n = 2.42)</option>
+          </select>
+        </label>
+      )
+    }
+  </div>
+  <p class="readout" aria-live="polite"></p>
+</div>
+
+<script>
+  const NS = 'http://www.w3.org/2000/svg';
+  const rad = (d: number) => (d * Math.PI) / 180;
+  const deg = (r: number) => (r * 180) / Math.PI;
+  const f1 = (x: number) => (Math.round(x * 10) / 10).toFixed(1);
+
+  document.querySelectorAll<HTMLElement>('[data-ray-sim]').forEach((root) => {
+    const mode = root.dataset.mode as 'mirror' | 'block' | 'semicircle';
+    const scene = root.querySelector<SVGGElement>('.scene')!;
+    const angle = root.querySelector<HTMLInputElement>('.angle')!;
+    const material = root.querySelector<HTMLSelectElement>('.material');
+    const readout = root.querySelector<HTMLElement>('.readout')!;
+
+    const add = (tag: string, attrs: Record<string, string | number>, cls = ''): SVGElement => {
+      const el = document.createElementNS(NS, tag);
+      for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, String(v));
+      if (cls) el.setAttribute('class', cls);
+      scene.appendChild(el);
+      return el;
+    };
+    const line = (x1: number, y1: number, x2: number, y2: number, cls: string, opacity = 1) => {
+      const el = add('line', { x1: x1.toFixed(1), y1: y1.toFixed(1), x2: x2.toFixed(1), y2: y2.toFixed(1) }, cls);
+      if (opacity < 1) el.setAttribute('opacity', opacity.toFixed(2));
+      if (cls === 'beam') {
+        // Arrow head in the middle of the ray.
+        const a = Math.atan2(y2 - y1, x2 - x1);
+        const mx = (x1 + x2) / 2;
+        const my = (y1 + y2) / 2;
+        const p = (s: number) => `${(mx - 10 * Math.cos(a + s)).toFixed(1)},${(my - 10 * Math.sin(a + s)).toFixed(1)}`;
+        const h = add('polygon', { points: `${mx.toFixed(1)},${my.toFixed(1)} ${p(0.45)} ${p(-0.45)}` }, 'beam-head');
+        if (opacity < 1) h.setAttribute('opacity', opacity.toFixed(2));
+      }
+    };
+    const text = (x: number, y: number, s: string, anchor = 'middle') => {
+      const t = add('text', { x, y, 'text-anchor': anchor }, 'label');
+      t.textContent = s;
+    };
+    // Arc between two directions given in degrees (SVG angles: 0 = right, 90 = down).
+    const arc = (cx: number, cy: number, r: number, a1: number, a2: number) => {
+      if (Math.abs(a2 - a1) < 1) return;
+      const x1 = cx + r * Math.cos(rad(a1));
+      const y1 = cy + r * Math.sin(rad(a1));
+      const x2 = cx + r * Math.cos(rad(a2));
+      const y2 = cy + r * Math.sin(rad(a2));
+      add('path', { d: `M${x1.toFixed(1)},${y1.toFixed(1)} A${r},${r} 0 0 ${a2 > a1 ? 1 : 0} ${x2.toFixed(1)},${y2.toFixed(1)}`, fill: 'none' }, 'arc');
+    };
+
+    function draw(): void {
+      scene.replaceChildren();
+      const i = Number(angle.value);
+      root.querySelector<HTMLOutputElement>('.angle-out')!.textContent = `${i}°`;
+      const n = material ? Number(material.value) : 1;
+
+      if (mode === 'mirror') {
+        const P = [300, 250];
+        add('line', { x1: 80, y1: 250, x2: 520, y2: 250 }, 'mirror');
+        for (let x = 90; x <= 520; x += 20) add('line', { x1: x, y1: 252, x2: x - 10, y2: 264 }, 'hatch');
+        add('line', { x1: 300, y1: 30, x2: 300, y2: 250 }, 'normal');
+        line(P[0] - 220 * Math.sin(rad(i)), P[1] - 220 * Math.cos(rad(i)), P[0], P[1], 'beam');
+        line(P[0], P[1], P[0] + 220 * Math.sin(rad(i)), P[1] - 220 * Math.cos(rad(i)), 'beam');
+        arc(300, 250, 50, -90 - i, -90);
+        arc(300, 250, 58, -90, -90 + i);
+        text(306, 26, 'normal', 'start');
+        text(300, 290, 'plane mirror');
+        readout.innerHTML = `angle of incidence <strong>${i}°</strong> · angle of reflection <strong>${i}°</strong>`;
+        return;
+      }
+
+      if (mode === 'block') {
+        const P = [300, 150];
+        add('rect', { x: 40, y: 150, width: 520, height: 140 }, 'medium');
+        add('line', { x1: 300, y1: 20, x2: 300, y2: 285 }, 'normal');
+        const r = deg(Math.asin(Math.sin(rad(i)) / n));
+        line(P[0] - 200 * Math.sin(rad(i)), P[1] - 200 * Math.cos(rad(i)), P[0], P[1], 'beam');
+        line(P[0], P[1], P[0] + 160 * Math.sin(rad(r)), P[1] + 160 * Math.cos(rad(r)), 'beam');
+        line(P[0], P[1], P[0] + 200 * Math.sin(rad(i)), P[1] - 200 * Math.cos(rad(i)), 'beam', 0.25);
+        arc(300, 150, 50, -90 - i, -90);
+        arc(300, 150, 58, 90 - r, 90);
+        text(60, 140, 'air', 'start');
+        text(60, 280, material!.selectedOptions[0].text.split(' (')[0], 'start');
+        readout.innerHTML = `angle of incidence <strong>${i}°</strong> · angle of refraction <strong>${f1(r)}°</strong> · the ray bends <strong>towards</strong> the normal`;
+        if (i === 0) readout.innerHTML = 'angle of incidence <strong>0°</strong>: the ray goes straight on (along the normal).';
+        return;
+      }
+
+      // Semicircular block: flat side at the top (y = 80), centre C, ray enters along a radius.
+      const C = [300, 80];
+      const R = 160;
+      add('path', { d: `M${C[0] - R},${C[1]} A${R},${R} 0 0 0 ${C[0] + R},${C[1]} Z` }, 'medium');
+      add('line', { x1: 300, y1: 10, x2: 300, y2: 290 }, 'normal');
+      const s = [C[0] - (R + 50) * Math.sin(rad(i)), C[1] + (R + 50) * Math.cos(rad(i))];
+      line(s[0], s[1], C[0], C[1], 'beam');
+      const c = deg(Math.asin(1 / n));
+      const sinR = n * Math.sin(rad(i));
+      arc(300, 80, 46, 90 + i, 90);
+      const reflEnd = [C[0] + R * Math.sin(rad(i)), C[1] + R * Math.cos(rad(i))];
+      if (sinR < 1) {
+        const r = deg(Math.asin(sinR));
+        line(C[0], C[1], C[0] + 220 * Math.sin(rad(r)), C[1] - 220 * Math.cos(rad(r)), 'beam', Math.max(0.15, 1 - 0.9 * Math.pow(sinR, 6)));
+        // The reflected ray gets brighter near the critical angle.
+        line(C[0], C[1], reflEnd[0], reflEnd[1], 'beam', Math.min(1, 0.2 + 0.8 * Math.pow(sinR, 6)));
+        arc(300, 80, 54, -90, -90 + r);
+        readout.innerHTML = `angle of incidence <strong>${i}°</strong> · angle of refraction <strong>${f1(r)}°</strong> (the ray bends away from the normal) · critical angle <strong>${f1(c)}°</strong>`;
+      } else {
+        line(C[0], C[1], reflEnd[0], reflEnd[1], 'beam');
+        readout.innerHTML = `angle of incidence <strong>${i}°</strong> is bigger than the critical angle <strong>${f1(c)}°</strong>: <strong>total internal reflection</strong>. No light leaves the block.`;
+      }
+      text(560, 40, 'air', 'end');
+      text(300, 270, material!.selectedOptions[0].text.split(' (')[0]);
+    }
+
+    angle.addEventListener('input', draw);
+    material?.addEventListener('change', draw);
+    draw();
+  });
+</script>
+
+<style>
+  .ray-sim {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  svg { width: 100%; max-width: 36rem; height: auto; display: block; margin: 0 auto; overflow: hidden; }
+  .scene :global(.beam) { stroke: #e0a200; stroke-width: 3; }
+  .scene :global(.beam-head) { fill: #e0a200; }
+  .scene :global(.mirror) { stroke: var(--ink); stroke-width: 4; }
+  .scene :global(.hatch) { stroke: var(--ink-soft); stroke-width: 1; }
+  .scene :global(.normal) { stroke: var(--ink-soft); stroke-width: 1.5; stroke-dasharray: 6 5; }
+  .scene :global(.medium) { fill: #4a90d9; fill-opacity: 0.18; stroke: var(--ink); stroke-width: 1.5; }
+  .scene :global(.arc) { stroke: var(--ink); stroke-width: 1.2; }
+  .scene :global(.label) { fill: var(--ink); font-size: calc(14px * var(--tz, 1)); font-family: var(--sans); }
+  .controls { display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem; margin-top: 0.6rem; align-items: center; }
+  .controls label { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .controls output { font-variant-numeric: tabular-nums; min-width: 3rem; }
+  .readout { margin: 0.8rem 0 0.2rem; }
+</style>

@@ -1,0 +1,160 @@
+---
+unit: 5
+lesson: 6
+title: Power
+syllabus: ['1.7.4 C1']
+goals:
+  - Define power as work done per unit time, and as energy transferred per unit time.
+  - 'Use the equations $P = \dfrac{W}{t}$ and $P = \dfrac{\Delta E}{t}$.'
+  - Measure your own power.
+keyWords: [power, watt, work done, energy]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="Walk or run?" minutes={5}>
+
+You walk up the stairs. Then you run up the same stairs.
+
+Do you do more work when you run? What is different?
+
+</Step>
+
+<Step kind="learn" title="What is power?" minutes={12}>
+
+**Power** is how fast energy is transferred: the work done (or energy transferred) **per unit time**.
+
+$$
+P = \frac{W}{t} \qquad\qquad P = \frac{\Delta E}{t}
+$$
+
+<div class="table-wrap">
+
+| Quantity | Symbol | Unit |
+|---|---|---|
+| power | $P$ | watt (W) |
+| work done | $W$ | J |
+| energy transferred | $\Delta E$ | J |
+| time | $t$ | s |
+
+</div>
+
+$1\,\text{W} = 1\,\text{J/s}$: a power of 1 W transfers 1 J every second. Also $1\,\text{kW} = 1000\,\text{W}$ and $1\,\text{MW} = 1\,000\,000\,\text{W}$.
+
+In the starter, the work done is the same, but running does it in less time, so your **power** is bigger.
+
+<div class="table-wrap">
+
+| device | typical power |
+|---|---|
+| LED lamp | 5–10 W |
+| laptop | 50 W |
+| microwave oven | 800 W |
+| kettle | 2–3 kW |
+| car engine | 50–150 kW |
+
+</div>
+
+<WorkedExample
+  question="A kettle transfers 180 000 J of energy in 60 s. Calculate its power."
+  given={['$\\Delta E = 180\\,000\\,\\text{J}$', '$t = 60\\,\\text{s}$']}
+  find="the power $P$"
+  answer="$P = 3000\,\text{W} = 3\,\text{kW}$"
+>
+
+$P = \dfrac{\Delta E}{t} = \dfrac{180\,000}{60}$
+
+$P = 3000\,\text{W}$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="do" title="How powerful are you?" minutes={18}>
+
+Work in groups of 3, on a staircase. **Equipment:** bathroom scales (or use your mass if you know it), tape measure, stopwatch.
+
+1. Measure the height of one step. Count the steps. Calculate the total height $\Delta h$.
+2. Find your mass $m$ in kg.
+3. Walk up the stairs. Your partner times you. Then run up safely, and time again.
+4. Calculate the work done: $W = mg\Delta h$.
+5. Calculate your power for walking and for running: $P = \dfrac{W}{t}$.
+
+<div class="table-wrap">
+
+| | mass / kg | height / m | work done / J | time / s | power / W |
+|---|---|---|---|---|---|
+| walking | | | | | |
+| running | | | | | |
+
+</div>
+
+**Question:** compare your power with the devices in the table.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={20}>
+
+<Practice topic="power" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A motor does 600 J of work in 20 s. What is its power?',
+    options: [
+      { text: '30 W', correct: true, why: '$P = \\dfrac{600}{20} = 30\\,\\text{W}$.' },
+      { text: '12 000 W', why: 'Divide by the time.' },
+      { text: '0.033 W', why: 'You divided the wrong way.' },
+      { text: '30 J', why: 'Power is in watts.' },
+    ],
+  },
+  {
+    question: 'What does "a power of 60 W" mean?',
+    options: [
+      { text: '60 J of energy is transferred every second', correct: true, why: '1 W = 1 J/s.' },
+      { text: '60 J of energy in total', why: 'Power is energy per second.' },
+      { text: '60 N of force', why: 'Power is energy per second, not a force.' },
+      { text: 'it works for 60 seconds', why: '60 W means 60 J every second.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Find the power rating (in W or kW) of 3 devices at home. Calculate the energy each one transfers in 1 hour (3600 s).
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 12 min, stairs 18 min, practice 20 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Forgetting to change kW to W, or minutes to seconds.
+- Confusing power (W) and energy (J).
+- Using the mass instead of the weight in $W = mg\Delta h$.
+
+**Device powers:** typical values only; check the labels of your own devices.
+
+**Language support:**
+
+- In everyday English, *powerful* can mean strong. In physics, power means how fast energy is transferred.
+
+**Differentiation:**
+
+- Support: give the height of the stairs.
+- Stretch: an electric car has a 150 kW motor. How long would it take to transfer the energy in a 60 kWh battery at full power? (24 minutes.)
+
+**Safety:** students with health problems can time others instead of running. Run up the stairs only, carefully, with a clear staircase; walk down.
+
+</Step>

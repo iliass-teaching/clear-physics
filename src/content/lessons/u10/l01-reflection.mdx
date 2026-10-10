@@ -1,0 +1,128 @@
+---
+unit: 10
+lesson: 1
+title: Reflection of light
+syllabus: ['3.2.1 C1', '3.2.1 C3']
+goals:
+  - Use the words normal, angle of incidence and angle of reflection.
+  - State and use the law of reflection.
+keyWords: [normal, angle of incidence, angle of reflection, plane mirror, reflection]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import RaySim from '../../../components/RaySim.astro';
+import { reflectionSvg } from '../../../lib/lightFigures';
+
+<Step kind="starter" title="Light on a mirror" minutes={5}>
+
+You shine a torch at a mirror. Where does the light go? Can you predict where the bright spot will be on the wall? What do you need to know?
+
+</Step>
+
+<Step kind="learn" title="The law of reflection" minutes={12}>
+
+<Figure svg={reflectionSvg()} caption="Reflection at a plane mirror." width="30rem" />
+
+- The **normal** is a line at **90°** to the mirror, at the point where the ray hits it. We draw it as a dashed line.
+- The **angle of incidence** $i$ is between the **incident ray** and the **normal**.
+- The **angle of reflection** $r$ is between the **reflected ray** and the **normal**.
+
+**Law of reflection:**
+
+$$
+\text{angle of incidence} = \text{angle of reflection} \qquad i = r
+$$
+
+**Important:** always measure the angles from the **normal**, not from the mirror.
+
+</Step>
+
+<Step kind="do" title="Test the law" minutes={18}>
+
+**Equipment:** a ray box with a single slit, a plane mirror in a holder, a protractor, a sheet of white paper, a ruler.
+
+1. Draw a line on the paper. Stand the mirror on it. Draw the normal at the middle.
+2. Shine a ray at the point where the normal meets the mirror, at an angle of incidence of 20°.
+3. Mark the reflected ray with two small crosses. Draw it with the ruler.
+4. Measure the angle of reflection. Repeat for 30°, 40°, 50°, 60°, 70°.
+
+<div class="table-wrap">
+
+| $i$ / ° | 20 | 30 | 40 | 50 | 60 | 70 |
+|---|---|---|---|---|---|---|
+| $r$ / ° | | | | | | |
+
+</div>
+
+No ray box? Use the simulation:
+
+<RaySim mode="mirror" />
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={15}>
+
+<Practice topic="reflection" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'The angle of incidence is 35°. What is the angle of reflection?',
+    options: [
+      { text: '35°', correct: true, why: '$i = r$.' },
+      { text: '55°', why: '55° is the angle with the mirror. Measure from the normal.' },
+      { text: '70°', why: 'This is $i + r$.' },
+      { text: '90°', why: '$i = r = 35^\\circ$.' },
+    ],
+  },
+  {
+    question: 'What is the normal?',
+    options: [
+      { text: 'A line at 90° to the surface, where the ray hits it', correct: true, why: 'We measure the angles from the normal.' },
+      { text: 'The surface of the mirror', why: 'The normal is at 90° to the surface.' },
+      { text: 'The reflected ray', why: 'The normal is a construction line at 90° to the surface.' },
+      { text: 'A ray that is not bent', why: 'The normal is a line at 90° to the surface.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+A periscope has two plane mirrors at 45°. Draw a periscope and the path of one ray through it. Mark the normals and the angles.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 12 min, experiment 18 min, practice 15 min, exit ticket 5 min.
+
+**Practical tips:** the reflecting surface of a glass mirror is at the back; draw the line along the back of the mirror. A darkened room helps.
+
+**Common mistakes:**
+
+- Measuring the angles from the mirror instead of the normal.
+- Drawing rays without arrows, or with arrows in the wrong direction.
+- Forgetting the normal.
+
+**Language support:**
+
+- *incident* = arriving; *reflected* = sent back.
+- The letters: $i$ for **i**ncidence, $r$ for **r**eflection (and later, **r**efraction).
+
+**Differentiation:**
+
+- Support: give the drawing with the normal already drawn.
+- Stretch: two mirrors are at 90° to each other. A ray hits the first mirror. Show that the final ray is parallel to the first ray.
+
+**Safety:** ray boxes get hot. Do not touch the lamp.
+
+</Step>

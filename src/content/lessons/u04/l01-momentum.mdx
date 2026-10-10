@@ -1,0 +1,164 @@
+---
+unit: 4
+lesson: 1
+title: Momentum
+syllabus: ['1.6 S1']
+goals:
+  - Define momentum as mass × velocity.
+  - 'Use the equation $p = mv$.'
+  - Use a sign (+ or −) to show the direction of momentum.
+keyWords: [momentum, mass, velocity, vector]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { collisionSvg } from '../../../lib/momentumFigures';
+
+<Step kind="starter" title="Hard to stop" minutes={5}>
+
+Put these in order, from the easiest to stop to the hardest to stop:
+
+a tennis ball thrown gently · a bicycle at 5 m/s · a truck at 5 m/s · a tennis ball at 50 m/s · a parked truck
+
+What makes something hard to stop?
+
+</Step>
+
+<Step kind="learn" title="What is momentum?" minutes={12}>
+
+**Momentum** is mass × velocity:
+
+$$
+p = m \times v
+$$
+
+<div class="table-wrap">
+
+| Quantity | Symbol | Unit |
+|---|---|---|
+| momentum | $p$ | kg m/s |
+| mass | $m$ | kg |
+| velocity | $v$ | m/s |
+
+</div>
+
+An object has a big momentum if it has a big mass, or a big velocity, or both. An object at rest has **zero** momentum.
+
+<WorkedExample
+  question="A truck of mass 12 000 kg moves at 5 m/s. Calculate its momentum."
+  given={['$m = 12\\,000\\,\\text{kg}$', '$v = 5\\,\\text{m/s}$']}
+  find="the momentum $p$"
+  answer="$p = 60\,000\,\text{kg m/s}$"
+>
+
+$p = m \times v = 12\,000 \times 5$
+
+$p = 60\,000\,\text{kg m/s}$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="learn" title="Momentum has a direction" minutes={10}>
+
+Velocity is a vector, so **momentum is a vector** too. In a straight line, we choose one direction as **positive**, for example to the right. Then:
+
+- an object moving to the right has a **positive** momentum;
+- an object moving to the left has a **negative** momentum.
+
+<Figure svg={collisionSvg([{ m: 2, v: 3, label: 'A' }, { m: 1, v: -4, label: 'B' }])} caption="A moves right, B moves left." width="28rem" />
+
+- A: $p = 2 \times (+3) = +6\,\text{kg m/s}$
+- B: $p = 1 \times (-4) = -4\,\text{kg m/s}$
+- total momentum: $+6 + (-4) = +2\,\text{kg m/s}$, so $2\,\text{kg m/s}$ to the right.
+
+</Step>
+
+<Step kind="do" title="Compare momentums" minutes={10}>
+
+Calculate the momentum of each object. Then put them in order.
+
+<div class="table-wrap">
+
+| object | mass / kg | velocity / (m/s) | momentum / (kg m/s) |
+|---|---|---|---|
+| tennis ball (serve) | 0.057 | 50 | |
+| football (kick) | 0.43 | 25 | |
+| sprinter | 70 | 10 | |
+| car in town | 1200 | 13 | |
+| cruise ship | 1.0 × 10⁸ | 10 | |
+
+</div>
+
+**Question:** a tennis ball can be faster than a car. Why does the car have a much bigger momentum?
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={18}>
+
+<Practice topic="momentum" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A 3 kg ball moves at 4 m/s. What is its momentum?',
+    options: [
+      { text: '12 kg m/s', correct: true, why: '$p = 3 \\times 4 = 12\\,\\text{kg m/s}$.' },
+      { text: '0.75 kg m/s', why: 'Multiply: $p = mv$.' },
+      { text: '7 kg m/s', why: 'Multiply, do not add.' },
+      { text: '12 N', why: 'The unit of momentum is kg m/s.' },
+    ],
+  },
+  {
+    question: 'Which object has zero momentum?',
+    options: [
+      { text: 'a parked car', correct: true, why: 'Its velocity is zero, so $p = m \\times 0 = 0$.' },
+      { text: 'a slow snail', why: 'It moves, so it has a (small) momentum.' },
+      { text: 'a falling feather', why: 'It moves, so it has momentum.' },
+      { text: 'a planet in orbit', why: 'It moves very fast: a huge momentum.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Calculate your own momentum when you walk (about 1.5 m/s) and when you run (about 5 m/s).
+2. Do 5 questions at **Level 3** of the practice.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**This unit is Extended content** (1.6 S1–S4). Core students do not need it for the exam.
+
+**Timing:** starter 5 min, learn 22 min, table 10 min, practice 18 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Forgetting the minus sign for objects moving the other way.
+- Using grams instead of kilograms.
+- Writing the unit as N or kg/m/s.
+
+**Table answers:** tennis ball 2.85; football 10.75; sprinter 700; car 15 600; ship 1.0 × 10⁹ kg m/s.
+
+**Language support:**
+
+- In everyday English, *momentum* also means "the energy to keep going" (a team "has momentum"). In physics it is $mv$.
+
+**Differentiation:**
+
+- Support: give the masses in kg and avoid negative velocities at first.
+- Stretch: which has more momentum: a 60 kg runner at 8 m/s or a 0.01 kg bullet at 400 m/s? (Runner 480, bullet 4 kg m/s.)
+
+**Starter answer:** parked truck (zero), gentle tennis ball, fast tennis ball, bicycle, truck at 5 m/s.
+
+</Step>

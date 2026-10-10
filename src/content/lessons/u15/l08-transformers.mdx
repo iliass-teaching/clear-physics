@@ -1,0 +1,136 @@
+---
+unit: 15
+lesson: 8
+title: Transformers
+syllabus: ['4.5.6 C1–C3', '4.5.6 S6', '4.5.6 S7']
+goals:
+  - Describe the construction of a simple transformer with a soft-iron core.
+  - 'Use the words primary, secondary, step-up and step-down, and the equation $\dfrac{V_p}{V_s} = \dfrac{N_p}{N_s}$.'
+  - 'Extended: explain how a transformer works, and use $I_p V_p = I_s V_s$.'
+keyWords: [transformer, primary coil, secondary coil, step-up transformer, step-down transformer]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { transformerSvg } from '../../../lib/emEffectsFigures';
+
+<Step kind="starter" title="230 V to 5 V" minutes={5}>
+
+A phone needs about 5 V to charge. The socket in the wall gives 230 V. What must the charger do? Have you noticed that some chargers get warm?
+
+</Step>
+
+<Step kind="learn" title="The transformer" minutes={14}>
+
+<Figure svg={transformerSvg()} caption="A simple transformer." width="30rem" />
+
+A transformer has:
+
+- a **soft-iron core** (often a closed square ring of thin iron sheets);
+- a **primary coil** (the input), with $N_p$ turns;
+- a **secondary coil** (the output), with $N_s$ turns.
+
+$$
+\frac{V_p}{V_s} = \frac{N_p}{N_s}
+$$
+
+- **Step-up** transformer: more turns on the secondary ($N_s > N_p$), so $V_s > V_p$.
+- **Step-down** transformer: fewer turns on the secondary ($N_s < N_p$), so $V_s < V_p$.
+
+<WorkedExample
+  question="A transformer has 2000 turns on the primary coil and 100 turns on the secondary coil. The primary p.d. is 230 V. Calculate the secondary p.d."
+  given={['$V_p = 230\\,\\text{V}$', '$N_p = 2000$', '$N_s = 100$']}
+  find="the secondary p.d. $V_s$"
+  answer="$V_s = 11.5\,\text{V}$ (a step-down transformer)"
+>
+
+$\dfrac{V_p}{V_s} = \dfrac{N_p}{N_s}$, so $V_s = V_p \times \dfrac{N_s}{N_p}$
+
+$V_s = 230 \times \dfrac{100}{2000}$
+
+$V_s = 11.5\,\text{V}$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="learn" title="How it works (Extended)" minutes={12}>
+
+1. An **alternating** current in the primary coil makes an **alternating magnetic field** in the soft-iron core.
+2. The core carries this changing field through the **secondary coil**.
+3. The changing field **induces** an alternating e.m.f. in the secondary coil (electromagnetic induction).
+
+A transformer works **only with a.c.**: a steady d.c. makes a field that does not change, so nothing is induced.
+
+**Power:** if the transformer is **100% efficient**, power in = power out:
+
+$$
+I_p V_p = I_s V_s
+$$
+
+So a step-down transformer gives a **bigger** current in the secondary than in the primary.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={22}>
+
+<Practice topic="transformer" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={7}>
+
+<Quiz questions={[
+  {
+    question: 'A transformer has 100 turns on the primary and 500 turns on the secondary. Is it step-up or step-down?',
+    options: [
+      { text: 'step-up', correct: true, why: 'More turns on the secondary: bigger output p.d.' },
+      { text: 'step-down', why: 'The secondary has more turns.' },
+      { text: 'neither', why: 'The numbers of turns are different.' },
+      { text: 'it depends on the current', why: 'It depends on the turns.' },
+    ],
+  },
+  {
+    question: 'Extended: why does a transformer not work with d.c.?',
+    options: [
+      { text: 'A steady current makes a field that does not change, so no e.m.f. is induced', correct: true, why: 'Induction needs a changing field.' },
+      { text: 'd.c. is too small', why: 'The reason is that the field must change.' },
+      { text: 'd.c. damages the iron core', why: 'The field must change to induce an e.m.f.' },
+      { text: 'it does work with d.c.', why: 'It needs a.c.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** construction, terms and the turns ratio (4.5.6 C1–C3) are Core. How it works and $I_p V_p = I_s V_s$ (S6, S7) are Extended.
+
+**Timing:** starter 5 min, transformer 14 min, how it works 12 min, practice 22 min, exit ticket 7 min.
+
+**Demonstration:** a demountable transformer (two coils on a C-core) with a low-voltage a.c. supply and lamps. Show what happens with d.c.
+
+**Common mistakes:**
+
+- Turning the ratio upside down.
+- "A step-up transformer gives more energy." (Power out ≤ power in: the current goes down.)
+- Using d.c.
+
+**Language support:**
+
+- *primary* = first (input); *secondary* = second (output).
+- *step up* = make bigger; *step down* = make smaller.
+
+**Differentiation:**
+
+- Support: level 1 only, with the equation rearranged on the board.
+- Stretch: real transformers are about 95–99% efficient. Where does the lost energy go?
+
+**Safety:** use only low-voltage a.c. supplies for demonstrations. Never open a mains transformer.
+
+</Step>

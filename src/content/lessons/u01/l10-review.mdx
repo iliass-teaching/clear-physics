@@ -1,0 +1,235 @@
+---
+unit: 1
+lesson: 10
+title: Review and unit test
+syllabus: ['1.1', '1.2']
+goals:
+  - Remember the key words, equations and graph rules of Unit 1.
+  - Answer exam questions with the right command word in mind.
+  - Check what you know with a unit test.
+keyWords: [speed, velocity, acceleration, gradient, area under a graph]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { graphSvg } from '../../../lib/graph';
+
+<Step kind="starter" title="Key words" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Which word means "speed in a given direction"?',
+    options: [
+      { text: 'velocity', correct: true, why: 'Velocity = speed + direction.' },
+      { text: 'acceleration', why: 'Acceleration is the change in velocity per unit time.' },
+      { text: 'gradient', why: 'Gradient is how steep a line on a graph is.' },
+      { text: 'distance', why: 'Distance is how far something moves.' },
+    ],
+  },
+  {
+    question: 'Which word means "the time for one full swing"?',
+    options: [
+      { text: 'period', correct: true, why: 'The period is the time for one oscillation.' },
+      { text: 'mean', why: 'The mean is an average of several values.' },
+      { text: 'reaction time', why: 'Reaction time is the time you need to react.' },
+      { text: 'oscillation', why: 'An oscillation is the swing itself, not its time.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="learn" title="Unit 1 in one page" minutes={10}>
+
+<div class="table-wrap">
+
+| Idea | Equation or rule | Unit |
+|---|---|---|
+| speed | $v = \dfrac{s}{t}$ | m/s |
+| average speed | $\dfrac{\text{total distance}}{\text{total time}}$ | m/s |
+| acceleration (Extended) | $a = \dfrac{\Delta v}{\Delta t}$ | m/s² |
+| free fall | $g \approx 9.8\,\text{m/s}^2$, constant near the Earth | m/s² |
+| small measurements | measure many, then divide | |
+| vectors at right angles (Extended) | Pythagoras for the size, tan for the direction | |
+
+</div>
+
+**Graph rules:**
+
+- Distance–time graph: **gradient = speed**. Flat line = at rest.
+- Speed–time graph: **gradient = acceleration** (Extended). **Area = distance**. Flat line = constant speed.
+
+</Step>
+
+<Step kind="learn" title="Command words: what kind of answer?" minutes={10}>
+
+<div class="table-wrap">
+
+| Command word | Example question | Example answer |
+|---|---|---|
+| **State** | State the unit of acceleration. | m/s² |
+| **Describe** | Describe the motion in part B of a speed–time graph (a flat line at 8 m/s). | The bus moves at a constant speed of 8 m/s. |
+| **Explain** | Explain why a skydiver reaches terminal velocity. | As the speed increases, air resistance increases. When air resistance is equal to the weight, the forces balance. So the acceleration is zero and the speed is constant. |
+| **Calculate** | Calculate the speed of a car that travels 600 m in 30 s. | $v = \dfrac{s}{t} = \dfrac{600}{30} = 20\,\text{m/s}$ |
+
+</div>
+
+- **State:** short answer, no reason.
+- **Describe:** say *what* happens.
+- **Explain:** say *why* it happens. Use "because" or "so".
+- **Calculate:** write the equation, put in the numbers, give the answer **with the unit**.
+
+<Quiz questions={[
+  {
+    question: '"…… why the paper falls more slowly than the book." Which command word fits?',
+    options: [
+      { text: 'Explain', correct: true, why: 'The question asks why, so the answer needs a reason.' },
+      { text: 'State', why: 'State asks for a short answer, without a reason.' },
+      { text: 'Calculate', why: 'There are no numbers to calculate.' },
+      { text: 'Sketch', why: 'Sketch asks for a drawing.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="practice" title="Mixed practice" minutes={10}>
+
+Choose the topic you find hardest.
+
+### Speed
+
+<Practice topic="speed" level={2} />
+
+### Distance–time graphs
+
+<Practice topic="dt-graph" level={2} />
+
+### Speed–time graphs
+
+<Practice topic="st-graph" level={1} />
+
+</Step>
+
+<Step kind="exit" title="Unit test" minutes={25}>
+
+Answer all the questions. Questions marked **(E)** are for Extended students.
+
+<Quiz questions={[
+  {
+    question: '1. On a measuring cylinder, there are 5 spaces between 20 cm³ and 30 cm³. The bottom of the liquid is 3 small lines above 20. What is the volume?',
+    options: [
+      { text: '26 cm³', correct: true, why: 'Each line is $\\dfrac{10}{5} = 2\\,\\text{cm}^3$, so $20 + 3 \\times 2 = 26\\,\\text{cm}^3$.' },
+      { text: '23 cm³', why: 'Each small line is 2 cm³, not 1 cm³.' },
+      { text: '25 cm³', why: 'Count the lines: $20 + 3 \\times 2 = 26\\,\\text{cm}^3$.' },
+      { text: '32 cm³', why: 'Start from 20, not from 30.' },
+    ],
+  },
+  {
+    question: '2. A pendulum makes 20 oscillations in 36.0 s. What is its period?',
+    options: [
+      { text: '1.8 s', correct: true, why: '$\\text{period} = \\dfrac{36.0}{20} = 1.8\\,\\text{s}$.' },
+      { text: '720 s', why: 'You multiplied. Divide by the number of oscillations.' },
+      { text: '0.56 s', why: 'You divided the wrong way.' },
+      { text: '36.0 s', why: 'This is the time for 20 oscillations.' },
+    ],
+  },
+  {
+    question: '3. (E) Which pair is one scalar and one vector, in that order?',
+    options: [
+      { text: 'speed, velocity', correct: true, why: 'Speed has no direction; velocity has a direction.' },
+      { text: 'velocity, speed', why: 'The order is wrong: velocity is the vector.' },
+      { text: 'mass, time', why: 'Both are scalars.' },
+      { text: 'force, weight', why: 'Both are vectors.' },
+    ],
+  },
+  {
+    question: '4. A boat travels 1500 m in 300 s. What is its speed?',
+    options: [
+      { text: '5 m/s', correct: true, why: '$v = \\dfrac{1500}{300} = 5\\,\\text{m/s}$.' },
+      { text: '0.2 m/s', why: 'You divided the wrong way.' },
+      { text: '450 000 m/s', why: 'You multiplied.' },
+      { text: '1800 m/s', why: 'You added.' },
+    ],
+  },
+  {
+    question: '5. A car moves at 54 km/h. What is this speed in m/s?',
+    options: [
+      { text: '15 m/s', correct: true, why: '$\\dfrac{54}{3.6} = 15\\,\\text{m/s}$.' },
+      { text: '194 m/s', why: 'From km/h to m/s, divide by 3.6.' },
+      { text: '0.9 m/s', why: '1 hour is 3600 s, not 60 s. Divide by 3.6.' },
+      { text: '54 m/s', why: 'The units are different, so the number changes.' },
+    ],
+  },
+  {
+    question: '6. A bus travels 2 km in 10 min, then 4 km in 20 min. What is the average speed?',
+    options: [
+      { text: '12 km/h', correct: true, why: '$30\\,\\text{min} = 0.5\\,\\text{h}$, so $\\dfrac{6\\,\\text{km}}{0.5\\,\\text{h}} = 12\\,\\text{km/h}$.' },
+      { text: '0.2 km/h', why: 'This is $\\dfrac{6}{30}$, in km per minute. Change to hours.' },
+      { text: '6 km/h', why: 'Total time is $30\\,\\text{min} = 0.5\\,\\text{h}$, so $\\dfrac{6}{0.5} = 12\\,\\text{km/h}$.' },
+      { text: '24 km/h', why: 'Check: $\\dfrac{6\\,\\text{km}}{0.5\\,\\text{h}} = 12\\,\\text{km/h}$.' },
+    ],
+  },
+  {
+    question: '7. On a distance–time graph, the line is a curve that gets steeper. What does the object do?',
+    options: [
+      { text: 'It speeds up', correct: true, why: 'A steeper line means a higher speed.' },
+      { text: 'It slows down', why: 'A curve that gets less steep means slowing down.' },
+      { text: 'It is at rest', why: 'At rest, the line is flat.' },
+      { text: 'It moves at constant speed', why: 'Constant speed gives a straight line.' },
+    ],
+  },
+  {
+    question: `8. How far does the car travel in 6 s? ${graphSvg({ xLabel: 'time / s', yLabel: 'speed / (m/s)', xMax: 6, yMax: 12, xStep: 1, yStep: 2, points: [[0, 0], [6, 12]], shade: true })}`,
+    options: [
+      { text: '36 m', correct: true, why: 'Triangle: $\\tfrac{1}{2} \\times 6 \\times 12 = 36\\,\\text{m}$.' },
+      { text: '72 m', why: 'This is a triangle: $\\text{area} = \\tfrac{1}{2} \\times \\text{base} \\times \\text{height}$.' },
+      { text: '2 m', why: 'This is the gradient (the acceleration in m/s²).' },
+      { text: '18 m', why: '$\\text{area} = \\tfrac{1}{2} \\times 6 \\times 12 = 36\\,\\text{m}$.' },
+    ],
+  },
+  {
+    question: '9. (E) A car speeds up from 4 m/s to 16 m/s in 3 s. What is its acceleration?',
+    options: [
+      { text: '4 m/s²', correct: true, why: '$\\Delta v = 16 - 4 = 12\\,\\text{m/s}$, and $a = \\dfrac{12}{3} = 4\\,\\text{m/s}^2$.' },
+      { text: '5.3 m/s²', why: 'Use the change in speed, $16 - 4$, not only 16.' },
+      { text: '36 m/s²', why: 'You multiplied. $a = \\dfrac{\\Delta v}{\\Delta t}$.' },
+      { text: '4 m/s', why: 'The number is right, but the unit of acceleration is m/s².' },
+    ],
+  },
+  {
+    question: '10. (E) Why does a falling skydiver reach a terminal velocity?',
+    options: [
+      { text: 'Air resistance increases until it is equal to the weight', correct: true, why: 'Then the forces balance, so the speed stays constant.' },
+      { text: 'The weight decreases as the skydiver falls', why: 'The weight does not change. Air resistance increases.' },
+      { text: 'Gravity stops acting', why: 'Gravity always acts. Air resistance balances the weight.' },
+      { text: 'The air gets thicker near the ground', why: 'The main reason is that air resistance increases with speed.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Look at the questions you got wrong. Find the lesson for each one and do 5 practice questions on it.
+2. Learn the key words of Unit 1 on the [Key words](../../../key-words/) page.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, review 20 min, mixed practice 10 min, unit test 25 min.
+
+**Using the test:** questions 1, 2, 4–8 test Core content; 3, 9 and 10 are Extended. Ask students to note their wrong answers: the feedback for each wrong option names the mistake, which makes a quick class analysis possible.
+
+**Command words:** the full list, explained in clear English, is on the Key words page. Practise one or two command words in each later unit.
+
+**Differentiation:**
+
+- Support: students can use the "Unit 1 in one page" table during the test the first time.
+- Stretch: ask students to write one exam-style question for each command word, with a model answer.
+
+</Step>

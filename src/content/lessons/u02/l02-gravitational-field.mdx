@@ -1,0 +1,164 @@
+---
+unit: 2
+lesson: 2
+title: Gravitational field strength
+syllabus: ['1.3 C3', '1.3 S5']
+goals:
+  - Define gravitational field strength.
+  - 'Use the equation $g = \dfrac{W}{m}$ to find weight, mass or $g$.'
+  - Know that $g$ is the same as the acceleration of free fall.
+keyWords: [gravitational field strength, weight, mass, newton]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import PlanetTable from '../../../components/PlanetTable.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="The last column" minutes={5}>
+
+In the last lesson, you divided the weight by the mass of 5 objects.
+
+What value did you find? Was it the same for every object? Compare with another group.
+
+</Step>
+
+<Step kind="learn" title="Gravitational field strength" minutes={12}>
+
+Around the Earth there is a **gravitational field**: a region where a mass feels a gravitational force.
+
+The **gravitational field strength** $g$ is the **force per unit mass**: the force on each kilogram.
+
+$$
+g = \frac{W}{m}
+$$
+
+<div class="table-wrap">
+
+| Quantity | Symbol | Unit |
+|---|---|---|
+| gravitational field strength | $g$ | N/kg |
+| weight | $W$ | N |
+| mass | $m$ | kg |
+
+</div>
+
+On the Earth, $g = 9.8\,\text{N/kg}$: the Earth pulls on each kilogram with a force of 9.8 N. This is the value you found in the starter.
+
+We can change the equation to find the weight: multiply both sides by $m$.
+
+$$
+W = m \times g
+$$
+
+<WorkedExample
+  question="A suitcase has a mass of 15 kg. Calculate its weight on the Earth."
+  given={['$m = 15\\,\\text{kg}$', '$g = 9.8\\,\\text{N/kg}$']}
+  find="the weight $W$"
+  answer="$W = 147\,\text{N}$"
+>
+
+$W = m \times g$
+
+$W = 15 \times 9.8 = 147\,\text{N}$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="learn" title="g is also an acceleration" minutes={6}>
+
+In Unit 1, the **acceleration of free fall** near the Earth was $9.8\,\text{m/s}^2$.
+It has the same value and the same symbol as the gravitational field strength. This is not a coincidence: they are the **same quantity**.
+
+$$
+g = 9.8\,\text{N/kg} = 9.8\,\text{m/s}^2
+$$
+
+**Extended:** your weight is the **effect of a gravitational field on your mass**. The stronger the field, the bigger the weight of the same mass.
+
+</Step>
+
+<Step kind="learn" title="Weight on other planets" minutes={5}>
+
+Each planet has its own gravitational field strength.
+
+<PlanetTable columns={['g']} />
+
+On the Moon, $g = 1.6\,\text{N/kg}$. So a 60 kg astronaut has a weight of $60 \times 1.6 = 96\,\text{N}$ on the Moon, but $60 \times 9.8 = 588\,\text{N}$ on the Earth. Her mass is 60 kg in both places.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={22}>
+
+<Practice topic="weight" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={10}>
+
+<Quiz questions={[
+  {
+    question: 'What is the unit of gravitational field strength?',
+    options: [
+      { text: 'N/kg', correct: true, why: 'It is the force (N) on each kilogram (kg).' },
+      { text: 'N', why: 'N is the unit of force, for example weight.' },
+      { text: 'kg', why: 'kg is the unit of mass.' },
+      { text: 'kg/N', why: 'It is force per unit mass: N/kg.' },
+    ],
+  },
+  {
+    question: 'A box has a mass of 5.0 kg. What is its weight on the Earth? ($g = 9.8\\,\\text{N/kg}$)',
+    options: [
+      { text: '49 N', correct: true, why: '$W = m \\times g = 5.0 \\times 9.8 = 49\\,\\text{N}$.' },
+      { text: '5.0 N', why: 'This is the mass. Multiply by $g$ to get the weight.' },
+      { text: '0.51 N', why: 'You divided. $W = m \\times g$.' },
+      { text: '49 kg', why: 'The number is right, but weight is a force, in newtons.' },
+    ],
+  },
+  {
+    question: 'A rock has a weight of 37 N on Mars, where $g = 3.7\\,\\text{N/kg}$. What is its mass?',
+    options: [
+      { text: '10 kg', correct: true, why: '$m = \\dfrac{W}{g} = \\dfrac{37}{3.7} = 10\\,\\text{kg}$.' },
+      { text: '137 kg', why: 'You multiplied. $m = \\dfrac{W}{g}$.' },
+      { text: '3.8 kg', why: 'Use $g$ on Mars (3.7 N/kg), not on the Earth.' },
+      { text: '0.1 kg', why: 'You divided the wrong way: $m = \\dfrac{W}{g}$.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Calculate your own weight on the Earth, on the Moon ($g = 1.6\,\text{N/kg}$) and on Mars ($g = 3.7\,\text{N/kg}$).
+2. Do 5 questions at **Level 3** of the practice.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** $g = W/m$ and the link with the acceleration of free fall (1.3 C3) are Core. Weight as the effect of a gravitational field on a mass (1.3 S5) is Extended.
+
+**Timing:** starter 5 min, learn 23 min, practice 22 min, exit ticket 10 min.
+
+**Common mistakes:**
+
+- Giving a weight in kg, or a mass in N.
+- Using $g = 9.8\,\text{N/kg}$ for other planets.
+- Forgetting to change grams to kilograms before using $W = mg$.
+
+**Language support:**
+
+- Read "N/kg" as "newtons per kilogram" and connect it to "force on each kilogram".
+
+**Differentiation:**
+
+- Support: start with Level 1 and masses in kg only.
+- Stretch: why is $g$ on Venus (8.9 N/kg) almost the same as on the Earth? (Venus has a similar mass and size.)
+
+**Data:** values of $g$ from the NASA Planetary Fact Sheet. For the gas planets, NASA gives $g$ at the cloud tops.
+
+</Step>

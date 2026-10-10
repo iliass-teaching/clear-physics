@@ -1,0 +1,172 @@
+---
+unit: 12
+lesson: 5
+title: Uses of magnets, and unit test
+syllabus: ['4.1 C9', '4.1', '4.2.1']
+goals:
+  - Describe uses of permanent magnets and electromagnets.
+  - Check your learning of Unit 12 with a test.
+keyWords: [permanent magnet, electromagnet, temporary magnet, magnetic field]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="learn" title="Permanent magnets and electromagnets" minutes={14}>
+
+An **electromagnet** is a coil of wire with an electric current in it, usually around a **soft iron** core. When the current is **on**, it is a magnet. When the current is **off**, the soft iron loses its magnetism. (You will build one in Unit 15.)
+
+<div class="table-wrap">
+
+| | Permanent magnet | Electromagnet |
+|---|---|---|
+| Can you switch it off? | no | **yes** |
+| Can you change its strength? | no | **yes** (change the current) |
+| Needs electricity? | no | yes |
+| Uses | fridge doors; compasses; loudspeakers and microphones; electric motors and generators; magnetic catches | scrapyard cranes (pick up and drop cars); relays and circuit breakers; electric bells; MRI scanners in hospitals |
+
+</div>
+
+**Choose:** use an electromagnet when you need to **switch** the magnet on and off, or change its strength. Use a permanent magnet when you need a magnet **all the time** without using energy.
+
+</Step>
+
+<Step kind="practice" title="Quick check" minutes={8}>
+
+<Quiz questions={[
+  {
+    question: 'Why does a scrapyard crane use an electromagnet, not a permanent magnet?',
+    options: [
+      { text: 'It can be switched off to drop the metal', correct: true, why: 'A permanent magnet cannot be switched off.' },
+      { text: 'Permanent magnets cannot lift iron', why: 'They can, but they cannot let it go.' },
+      { text: 'It needs no electricity', why: 'An electromagnet needs electricity.' },
+      { text: 'It is made of steel', why: 'The core is soft iron.' },
+    ],
+  },
+  {
+    question: 'Why is the core of an electromagnet made of soft iron?',
+    options: [
+      { text: 'It loses its magnetism when the current is switched off', correct: true, why: 'A temporary magnet.' },
+      { text: 'It keeps its magnetism', why: 'That would be steel.' },
+      { text: 'It is non-magnetic', why: 'Iron is magnetic.' },
+      { text: 'It conducts heat well', why: 'The reason is magnetic.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Unit test" minutes={38}>
+
+Questions marked **(E)** are for Extended students.
+
+<Quiz questions={[
+  {
+    question: '1. The S pole of a magnet is brought near the S pole of another magnet. They…',
+    options: [
+      { text: 'repel', correct: true, why: 'Like poles repel.' },
+      { text: 'attract', why: 'Unlike poles attract.' },
+      { text: 'do nothing', why: 'Like poles repel.' },
+      { text: 'lose their magnetism', why: 'They repel.' },
+    ],
+  },
+  {
+    question: '2. Which list contains only magnetic materials?',
+    options: [
+      { text: 'iron, steel, nickel, cobalt', correct: true, why: 'These are the magnetic materials.' },
+      { text: 'iron, copper, aluminium', why: 'Copper and aluminium are not magnetic.' },
+      { text: 'steel, plastic, wood', why: 'Plastic and wood are not magnetic.' },
+      { text: 'gold, silver, nickel', why: 'Gold and silver are not magnetic.' },
+    ],
+  },
+  {
+    question: '3. Which test proves that a metal bar is a magnet?',
+    options: [
+      { text: 'It repels one pole of a known magnet', correct: true, why: 'Only a magnet can repel.' },
+      { text: 'It is attracted by a magnet', why: 'Unmagnetised iron is also attracted.' },
+      { text: 'It is heavy', why: 'Weight does not show magnetism.' },
+      { text: 'It conducts electricity', why: 'Many metals conduct; that does not show magnetism.' },
+    ],
+  },
+  {
+    question: '4. What is a magnetic field?',
+    options: [
+      { text: 'a region where a magnetic pole feels a force', correct: true, why: 'This is the definition.' },
+      { text: 'a region where a charge feels a force', why: 'That is an electric field.' },
+      { text: 'the line between N and S', why: 'Field lines show the field.' },
+      { text: 'the inside of a magnet', why: 'The field is around the magnet.' },
+    ],
+  },
+  {
+    question: '5. A plotting compass is near a bar magnet. Its north end points…',
+    options: [
+      { text: 'along the field line, in the direction from N to S', correct: true, why: 'The field direction is the force on a N pole.' },
+      { text: 'always towards the N pole of the magnet', why: 'It points away from N.' },
+      { text: 'at 90° to the field lines', why: 'Along the field lines.' },
+      { text: 'to the geographic north only', why: 'Near a magnet, it follows the magnet’s field.' },
+    ],
+  },
+  {
+    question: '6. A polythene rod becomes negative when rubbed with a cloth. What moved?',
+    options: [
+      { text: 'electrons, from the cloth to the rod', correct: true, why: 'The rod gains electrons.' },
+      { text: 'electrons, from the rod to the cloth', why: 'Then the rod would be positive.' },
+      { text: 'positive charges, from the rod to the cloth', why: 'Only electrons move.' },
+      { text: 'nothing', why: 'Electrons moved.' },
+    ],
+  },
+  {
+    question: '7. Which material is an electrical conductor?',
+    options: [
+      { text: 'copper', correct: true, why: 'Metals have free electrons.' },
+      { text: 'plastic', why: 'Plastic is an insulator.' },
+      { text: 'glass', why: 'Glass is an insulator.' },
+      { text: 'rubber', why: 'Rubber is an insulator.' },
+    ],
+  },
+  {
+    question: '8. Why is an electromagnet used in an electric bell, and not a permanent magnet?',
+    options: [
+      { text: 'It can be switched on and off many times each second', correct: true, why: 'The bell needs a magnet that switches on and off.' },
+      { text: 'It is stronger than any permanent magnet', why: 'The reason is that it can be switched.' },
+      { text: 'It needs no electricity', why: 'It needs a current.' },
+      { text: 'It is made of steel', why: 'The core is soft iron.' },
+    ],
+  },
+  {
+    question: '9. (E) Where are the magnetic field lines of a bar magnet closest together?',
+    options: [
+      { text: 'near the poles', correct: true, why: 'The field is strongest there.' },
+      { text: 'far from the magnet', why: 'The lines spread out far away.' },
+      { text: 'in the middle of the long side', why: 'Near the poles.' },
+      { text: 'they are equally spaced everywhere', why: 'Closer near the poles.' },
+    ],
+  },
+  {
+    question: '10. (E) What is the direction of an electric field at a point?',
+    options: [
+      { text: 'the direction of the force on a positive charge at that point', correct: true, why: 'Field lines go from + to −.' },
+      { text: 'the direction of the force on a N pole', why: 'That is a magnetic field.' },
+      { text: 'the direction of the force on an electron', why: 'An electron is negative: it is pushed the other way.' },
+      { text: 'always downwards', why: 'It depends on the charges.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** uses 14 min, quick check 8 min, unit test 38 min.
+
+**Using the test:** questions 1–8 test Core content; 9–10 are Extended.
+
+**Note:** electromagnets are studied in detail in Unit 15 (4.5.3). Here, students only need to describe uses (4.1 C9).
+
+**Differentiation:**
+
+- Support: allow the table of uses during the test.
+- Stretch: why does an MRI scanner use an electromagnet (in fact a superconducting coil) and not a permanent magnet?
+
+</Step>

@@ -1,0 +1,177 @@
+---
+unit: 3
+lesson: 5
+title: Friction and drag
+syllabus: ['1.5.1 C6', '1.5.1 C7', '1.5.1 C8']
+goals:
+  - Describe friction between two solid surfaces.
+  - Know that friction produces heating.
+  - Know that drag acts on objects moving through liquids and gases.
+keyWords: [friction, drag, air resistance, force]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="Rub your hands" minutes={5}>
+
+Rub your hands together quickly for 10 seconds.
+
+1. What do you feel?
+2. Now press your hands harder together and rub again. What changes?
+
+</Step>
+
+<Step kind="learn" title="Solid friction" minutes={10}>
+
+**Friction** is a force between two surfaces that touch. It acts **against** the motion (or against the start of motion).
+
+- Friction can **stop** an object moving, or **slow it down**.
+- Friction **produces heating**: the surfaces get warm, like your hands in the starter.
+- Rough surfaces, and surfaces pressed hard together, give more friction.
+
+<div class="table-wrap">
+
+| Friction is useful | Friction is a problem |
+|---|---|
+| tyres grip the road | moving parts in machines wear out |
+| brakes stop a bicycle | engines get hot and waste energy |
+| shoes grip the floor | a heavy box is hard to push |
+
+</div>
+
+We can reduce friction with oil or grease (**lubrication**), or with wheels and smooth surfaces.
+
+</Step>
+
+<Step kind="learn" title="Drag" minutes={8}>
+
+**Drag** is friction on an object that moves through a **fluid** (a liquid or a gas).
+
+- In a **liquid**: a swimmer or a boat feels drag from the water.
+- In a **gas**: a cyclist or a car feels drag from the air. Drag in air is **air resistance**.
+
+Drag gets **bigger** when the speed gets bigger. (Remember terminal velocity in Unit 1.)
+
+A **streamlined** shape (smooth and pointed, like a fish or a racing car) reduces drag.
+
+</Step>
+
+<Step kind="do" title="Investigate friction" minutes={17}>
+
+**Equipment:** a wooden block with a hook, a force meter (0–10 N), different surfaces (wood bench, sandpaper, carpet, plastic sheet), masses.
+
+1. Put the block on a surface. Pull it slowly with the force meter.
+2. Read the force **just as the block starts to move**. This is the friction force.
+3. Repeat 3 times. Find the mean.
+4. Repeat on each surface.
+5. Then add 500 g on top of the block and repeat on one surface.
+
+<div class="table-wrap">
+
+| surface | friction 1 / N | friction 2 / N | friction 3 / N | mean / N |
+|---|---|---|---|---|
+| wood | | | | |
+| sandpaper | | | | |
+| carpet | | | | |
+| plastic | | | | |
+
+</div>
+
+**Questions:**
+
+1. Which surface gives the most friction? The least?
+2. What happens to the friction when you add mass on the block?
+3. Touch the surface after pulling the block on sandpaper many times. What do you notice?
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={15}>
+
+<Quiz questions={[
+  {
+    question: 'In which direction does friction act on a box pushed to the right?',
+    options: [
+      { text: 'to the left', correct: true, why: 'Friction acts against the motion.' },
+      { text: 'to the right', why: 'Friction acts against the motion, not with it.' },
+      { text: 'up', why: 'Friction acts along the surface, against the motion.' },
+      { text: 'down', why: 'The weight acts down. Friction acts against the motion.' },
+    ],
+  },
+  {
+    question: 'What does friction produce, as well as slowing objects down?',
+    options: [
+      { text: 'heating', correct: true, why: 'The surfaces get warmer.' },
+      { text: 'light', why: 'Friction mainly produces heating.' },
+      { text: 'mass', why: 'Friction does not produce mass.' },
+      { text: 'more speed', why: 'Friction acts against the motion.' },
+    ],
+  },
+  {
+    question: 'What is drag?',
+    options: [
+      { text: 'friction on an object moving through a liquid or a gas', correct: true, why: 'Air resistance is drag in air.' },
+      { text: 'the pull of gravity', why: 'This is weight.' },
+      { text: 'the force from a rope', why: 'This is tension.' },
+      { text: 'a force that speeds objects up', why: 'Drag acts against the motion.' },
+    ],
+  },
+  {
+    question: 'A cyclist goes faster. What happens to the air resistance on her?',
+    options: [
+      { text: 'it increases', correct: true, why: 'Drag gets bigger when the speed gets bigger.' },
+      { text: 'it decreases', why: 'Drag gets bigger at higher speeds.' },
+      { text: 'it stays the same', why: 'Drag depends on the speed.' },
+      { text: 'it becomes zero', why: 'There is always some air resistance when she moves.' },
+    ],
+  },
+  {
+    question: 'How can we reduce friction between moving parts in an engine?',
+    options: [
+      { text: 'use oil (lubrication)', correct: true, why: 'Oil keeps the surfaces apart, so they slide easily.' },
+      { text: 'use rougher surfaces', why: 'Rough surfaces increase friction.' },
+      { text: 'press the parts harder together', why: 'This increases friction.' },
+      { text: 'use sand', why: 'Sand increases friction and wear.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+Give **one** example where friction is useful and **one** example where friction is a problem. For the problem, say how we can reduce the friction.
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Look at 3 vehicles or animals (for example a racing car, a dolphin, a bird). Explain how their shape reduces drag.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 18 min, investigation 17 min, check 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "Friction always slows things down." Friction can also make motion possible: without friction we cannot walk.
+- Thinking air resistance is not a kind of friction (the syllabus calls it friction/drag).
+- Drawing friction in the direction of motion.
+
+**Investigation:** the force just as the block starts to move is the maximum static friction. More mass on the block gives more friction (bigger contact force).
+
+**Language support:**
+
+- *Fluid* means a liquid or a gas (not only a liquid, as in everyday English).
+
+**Differentiation:**
+
+- Support: give the results table already drawn.
+- Stretch: plot friction force against the total weight of the block. What is the shape of the graph?
+
+**Safety:** sandpaper can scratch skin. Keep masses away from the edge of the bench.
+
+</Step>

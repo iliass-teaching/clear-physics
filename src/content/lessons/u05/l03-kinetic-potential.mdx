@@ -1,0 +1,163 @@
+---
+unit: 5
+lesson: 3
+title: Kinetic and potential energy
+syllabus: ['1.7.1 S4', '1.7.1 S5']
+goals:
+  - 'Use the equation for kinetic energy, $E_k = \tfrac{1}{2}mv^2$.'
+  - 'Use the equation for the change in gravitational potential energy, $\Delta E_p = mg\Delta h$.'
+  - Find a speed or a height from an energy.
+keyWords: [kinetic energy, gravitational potential energy, joule, energy store]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="Twice as fast" minutes={5}>
+
+A car goes twice as fast. Does it have twice as much kinetic energy? More? Less? Make a prediction. We check it today.
+
+</Step>
+
+<Step kind="learn" title="Kinetic energy" minutes={12}>
+
+The energy in the kinetic store of a moving object:
+
+$$
+E_k = \frac{1}{2}mv^2
+$$
+
+<div class="table-wrap">
+
+| Quantity | Symbol | Unit |
+|---|---|---|
+| kinetic energy | $E_k$ | J |
+| mass | $m$ | kg |
+| speed | $v$ | m/s |
+
+</div>
+
+Only the **speed** is squared. So if the speed doubles, the kinetic energy becomes $2^2 = 4$ times bigger.
+
+<WorkedExample
+  question="A car of mass 1000 kg moves at 20 m/s. Calculate its kinetic energy."
+  given={['$m = 1000\\,\\text{kg}$', '$v = 20\\,\\text{m/s}$']}
+  find="the kinetic energy $E_k$"
+  answer="$E_k = 200\,000\,\text{J} = 200\,\text{kJ}$"
+>
+
+$E_k = \tfrac{1}{2}mv^2 = \tfrac{1}{2} \times 1000 \times 20^2$
+
+$E_k = \tfrac{1}{2} \times 1000 \times 400 = 200\,000\,\text{J}$
+
+</WorkedExample>
+
+**Tip:** square the speed first, then multiply.
+
+</Step>
+
+<Step kind="learn" title="Gravitational potential energy" minutes={12}>
+
+When an object is lifted, the energy in its gravitational potential store increases:
+
+$$
+\Delta E_p = mg\Delta h
+$$
+
+- $\Delta E_p$: change in gravitational potential energy (J)
+- $m$: mass (kg)
+- $g$: gravitational field strength ($9.8\,\text{N/kg}$ on the Earth)
+- $\Delta h$: change in height (m)
+
+<WorkedExample
+  question="A student of mass 50 kg climbs stairs 6.0 m high. Calculate her gain in gravitational potential energy."
+  given={['$m = 50\\,\\text{kg}$', '$\\Delta h = 6.0\\,\\text{m}$', '$g = 9.8\\,\\text{N/kg}$']}
+  find="$\Delta E_p$"
+  answer="$\Delta E_p = 2940\,\text{J}$"
+>
+
+$\Delta E_p = mg\Delta h = 50 \times 9.8 \times 6.0$
+
+$\Delta E_p = 2940\,\text{J}$
+
+</WorkedExample>
+
+### Finding a speed or a height
+
+$$
+v = \sqrt{\frac{2E_k}{m}} \qquad\qquad \Delta h = \frac{\Delta E_p}{mg}
+$$
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={23}>
+
+<Practice topic="ke-pe" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={8}>
+
+<Quiz questions={[
+  {
+    question: 'A 2 kg ball moves at 3 m/s. What is its kinetic energy?',
+    options: [
+      { text: '9 J', correct: true, why: '$\\tfrac{1}{2} \\times 2 \\times 3^2 = 9\\,\\text{J}$.' },
+      { text: '18 J', why: 'Do not forget the $\\tfrac{1}{2}$.' },
+      { text: '3 J', why: 'Square the speed: $3^2 = 9$.' },
+      { text: '36 J', why: 'Only the speed is squared, and multiply by $\\tfrac{1}{2}$.' },
+    ],
+  },
+  {
+    question: 'The speed of a car doubles. What happens to its kinetic energy?',
+    options: [
+      { text: 'it becomes 4 times bigger', correct: true, why: '$E_k$ depends on $v^2$: $2^2 = 4$.' },
+      { text: 'it doubles', why: 'The speed is squared, so the energy is multiplied by $2^2$.' },
+      { text: 'it stays the same', why: '$E_k$ depends on the speed.' },
+      { text: 'it halves', why: 'More speed gives more kinetic energy.' },
+    ],
+  },
+  {
+    question: 'A 10 kg box is lifted 2 m. What is its gain in gravitational potential energy? ($g = 9.8\\,\\text{N/kg}$)',
+    options: [
+      { text: '196 J', correct: true, why: '$10 \\times 9.8 \\times 2 = 196\\,\\text{J}$.' },
+      { text: '20 J', why: 'Multiply by $g$ as well.' },
+      { text: '98 J', why: 'Multiply by the height too.' },
+      { text: '5.1 J', why: 'Multiply: $\\Delta E_p = mg\\Delta h$.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Do 5 questions at **Level 3** of the practice. Then answer the starter: a car goes from 10 m/s to 30 m/s. How many times bigger is its kinetic energy? (Answer: 9 times.)
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Extended content** (1.7.1 S4, S5).
+
+**Timing:** starter 5 min, learn 24 min, practice 23 min, exit ticket 8 min.
+
+**Common mistakes:**
+
+- Forgetting the ½, or squaring $\tfrac{1}{2}m$ as well as $v$.
+- Using $g = 10$ when the question gives 9.8 (follow the question).
+- Using the height in cm.
+
+**Language support:**
+
+- Read $\Delta h$ as "change in height". Say the units with every number.
+
+**Differentiation:**
+
+- Support: start with Level 2 ($mg\Delta h$, no squares).
+- Stretch: a 0.06 kg tennis ball is served at 50 m/s. From what height would it need to fall to get the same kinetic energy (ignore air resistance)? ($\Delta h = \dfrac{v^2}{2g} \approx 128\,\text{m}$.)
+
+</Step>

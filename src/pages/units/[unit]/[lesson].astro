@@ -1,0 +1,246 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import KeyWords from '../../../components/KeyWords.astro';
+import { units } from '../../../data/units';
+import { lessonUrl, unitUrl } from '../../../lib/url';
+import { renderMath } from '../../../lib/math';
+
+export async function getStaticPaths() {
+  const lessons = await getCollection('lessons');
+  return lessons.map((entry) => ({
+    params: { unit: String(entry.data.unit), lesson: String(entry.data.lesson) },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+
+const unit = units.find((u) => u.number === d.unit)!;
+const plan = unit.lessons ?? [];
+const idx = plan.findIndex((l) => l.number === d.lesson);
+const prev = idx > 0 ? plan[idx - 1] : undefined;
+const next = idx >= 0 && idx < plan.length - 1 ? plan[idx + 1] : undefined;
+
+const hasExtended = d.syllabus.some((s) => / S\d/.test(s));
+---
+
+<Base title={`${d.title} — Unit ${d.unit}`} wide>
+  <div class="layout">
+    <aside class="toc" aria-label="In this lesson">
+      <p class="toc-title">In this lesson</p>
+      <ol id="toc"></ol>
+    </aside>
+
+    <article class="lesson">
+      <p class="kicker">
+        <a href={unitUrl(d.unit)}>Unit {d.unit} · {unit.title}</a>
+        <span>Lesson {d.lesson} of {unit.lessonCount}</span>
+      </p>
+      <h1>{d.title}</h1>
+      <p class="meta">
+        <span>Syllabus {d.syllabus.join(', ')}</span>
+        <span>{d.minutes} min</span>
+        {hasExtended && <span class="tag ext">includes Extended</span>}
+      </p>
+
+      <section class="intro" data-step="Overview" data-title="Goals and key words">
+        <div>
+          <h2>Goals</h2>
+          <p class="small muted">At the end of this lesson, you will be able to:</p>
+          <ul class="goals">{d.goals.map((g) => <li set:html={renderMath(g)} />)}</ul>
+        </div>
+        <div>
+          <h2>Key words</h2>
+          <KeyWords words={d.keyWords} />
+        </div>
+      </section>
+
+      <Content />
+
+      <nav class="pager" aria-label="Lessons">
+        {prev ? (
+          <a class="prev" href={lessonUrl(d.unit, prev.number)}>
+            <span class="dir">← Previous lesson</span>
+            <span class="t">{prev.title}</span>
+          </a>
+        ) : <span />}
+        {next ? (
+          <a class="next" href={lessonUrl(d.unit, next.number)}>
+            <span class="dir">Next lesson →</span>
+            <span class="t">{next.title}</span>
+          </a>
+        ) : <span />}
+      </nav>
+    </article>
+  </div>
+</Base>
+
+<script>
+  // Build the side menu from the parts of the lesson, and highlight the part on screen.
+  const list = document.getElementById('toc');
+  const parts = [...document.querySelectorAll<HTMLElement>('[data-step]')];
+  if (list) {
+    parts.forEach((part, i) => {
+      if (!part.id) part.id = `part-${i}`;
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = `#${part.id}`;
+      const step = part.dataset.step ?? '';
+      const title = part.dataset.title ?? '';
+      a.innerHTML =
+        title && title !== step
+          ? `<span class="s">${step}</span><span class="n">${title}</span>`
+          : `<span class="n">${step}</span>`;
+      li.append(a);
+      list.append(li);
+    });
+    const links = [...list.querySelectorAll('a')];
+    const observer = new IntersectionObserver(
+      (items) => {
+        for (const item of items) {
+          if (item.isIntersecting) {
+            const i = parts.indexOf(item.target as HTMLElement);
+            links.forEach((l, j) => l.classList.toggle('active', j === i));
+          }
+        }
+      },
+      { rootMargin: '-20% 0px -70% 0px' },
+    );
+    parts.forEach((p) => observer.observe(p));
+  }
+</script>
+
+<style>
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, var(--measure));
+    justify-content: center;
+    gap: 3rem;
+  }
+  .toc { display: none; }
+  @media (min-width: 1080px) {
+    .layout { grid-template-columns: 13rem minmax(0, var(--measure)); }
+    .toc {
+      display: block;
+      position: sticky;
+      top: 5.5rem;
+      align-self: start;
+      max-height: calc(100vh - 7rem);
+      overflow-y: auto;
+      padding-top: 0.6rem;
+    }
+  }
+  .toc-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 0 0.6rem;
+  }
+  .toc ol { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--line); }
+  .toc :global(li) { margin: 0; }
+  .toc :global(a) {
+    display: block;
+    padding: 0.35rem 0 0.35rem 0.9rem;
+    margin-left: -1px;
+    border-left: 2px solid transparent;
+    text-decoration: none;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+  .toc :global(a .s) {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .toc :global(a:hover) { color: var(--ink); }
+  .toc :global(a.active) { color: var(--ink); border-left-color: var(--accent); }
+
+  .kicker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 1rem;
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+  .kicker a { color: var(--accent); text-decoration: none; font-weight: 700; }
+  .kicker a:hover { text-decoration: underline; }
+  h1 { font-size: 2.5rem; margin: 0.4rem 0 0.6rem; }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.3rem 1.2rem;
+    color: var(--ink-soft);
+    font-size: 0.88rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .intro {
+    display: grid;
+    gap: 0 2.5rem;
+    background: var(--surface-2);
+    border-radius: var(--radius);
+    padding: 0.4rem 1.5rem 1.2rem;
+    scroll-margin-top: 5rem;
+  }
+  .intro :global(.keywords) { grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
+  .intro h2 {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 1rem 0 0.5rem;
+  }
+  .goals { padding-left: 0; list-style: none; margin: 0; }
+  .goals li {
+    position: relative;
+    padding-left: 1.6rem;
+    margin-bottom: 0.45rem;
+  }
+  .goals li::before {
+    content: '';
+    position: absolute;
+    left: 0.15rem;
+    top: 0.45rem;
+    width: 0.7rem;
+    height: 0.4rem;
+    border-left: 2px solid var(--good);
+    border-bottom: 2px solid var(--good);
+    transform: rotate(-45deg);
+  }
+
+  .pager {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1rem;
+    margin-top: 3.5rem;
+  }
+  .pager a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    text-decoration: none;
+  }
+  .pager a:hover { border-color: var(--accent); }
+  .pager .next { text-align: right; }
+  .pager .dir { font-size: 0.78rem; color: var(--ink-soft); }
+  .pager a .t { font-weight: 700; color: var(--ink); overflow-wrap: break-word; }
+  @media (max-width: 520px) {
+    .pager { grid-template-columns: minmax(0, 1fr); }
+    h1 { font-size: 1.9rem; }
+  }
+</style>

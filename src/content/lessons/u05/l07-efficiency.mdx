@@ -1,0 +1,154 @@
+---
+unit: 5
+lesson: 7
+title: Efficiency
+syllabus: ['1.7.3 C3', '1.7.3 S7']
+goals:
+  - Explain what efficiency means.
+  - Calculate efficiency from energies or powers (Extended).
+  - Suggest how to make a device more efficient.
+keyWords: [efficiency, energy, power, Sankey diagram]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { sankeySvg } from '../../../lib/energyFigures';
+
+<Step kind="starter" title="Hot lamps" minutes={5}>
+
+Touch (carefully) an old filament lamp and an LED lamp that have been on for a few minutes.
+
+Which one is hotter? Both give about the same light. Which one wastes more energy?
+
+</Step>
+
+<Step kind="learn" title="What is efficiency?" minutes={10}>
+
+No device transfers all its energy usefully: some is always **wasted**, usually by heating the surroundings.
+
+**Efficiency** tells us how much of the energy put in is transferred **usefully**. A more efficient device wastes less energy.
+
+<div class="graph-grid">
+<Figure svg={sankeySvg('input', 100, [{ label: 'light', value: 10, useful: true }, { label: 'heating', value: 90 }])} caption="Filament lamp: 10% efficient." width="22rem" />
+<Figure svg={sankeySvg('input', 100, [{ label: 'light', value: 40, useful: true }, { label: 'heating', value: 60 }])} caption="LED lamp: about 40% efficient." width="22rem" />
+</div>
+
+</Step>
+
+<Step kind="learn" title="Calculating efficiency (Extended)" minutes={12}>
+
+$$
+\text{efficiency} = \frac{\text{useful energy output}}{\text{total energy input}} \times 100\%
+$$
+
+$$
+\text{efficiency} = \frac{\text{useful power output}}{\text{total power input}} \times 100\%
+$$
+
+Efficiency has **no unit**. It is a number less than 1, or a percentage less than 100%.
+
+<WorkedExample
+  question="An electric motor takes in 800 J. It does 600 J of useful work lifting a load. Calculate its efficiency."
+  given={['total energy input $= 800\\,\\text{J}$', 'useful energy output $= 600\\,\\text{J}$']}
+  find="the efficiency"
+  answer="$75\%$"
+>
+
+$\text{efficiency} = \dfrac{600}{800} \times 100\%$
+
+$\text{efficiency} = 0.75 \times 100\% = 75\%$
+
+</WorkedExample>
+
+**No device can be more than 100% efficient**: that would mean creating energy.
+
+</Step>
+
+<Step kind="learn" title="Improving efficiency" minutes={5}>
+
+To make a device more efficient, reduce the wasted energy:
+
+- **lubricate** moving parts (less friction, less heating);
+- **insulate** (a kettle or an oven loses less energy by heating the surroundings);
+- use **better designs** (LED lamps instead of filament lamps; streamlined cars).
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={20}>
+
+Levels 1–3 use the efficiency equation (Extended). Core students: read the Sankey diagram in Level 1 and say which output is useful.
+
+<Practice topic="efficiency" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={8}>
+
+<Quiz questions={[
+  {
+    question: 'What does efficiency tell us?',
+    options: [
+      { text: 'how much of the energy input is transferred usefully', correct: true, why: 'A more efficient device wastes less.' },
+      { text: 'how fast a device transfers energy', why: 'This is power.' },
+      { text: 'how much energy a device creates', why: 'Devices transfer energy. They do not create it.' },
+      { text: 'how long a device lasts', why: 'Efficiency is about useful energy.' },
+    ],
+  },
+  {
+    question: 'Extended: a motor has an input power of 500 W and a useful output power of 400 W. What is its efficiency?',
+    options: [
+      { text: '80%', correct: true, why: '$\\dfrac{400}{500} \\times 100\\% = 80\\%$.' },
+      { text: '125%', why: 'Useful output on top, total input on the bottom. Also, no device is more than 100% efficient.' },
+      { text: '20%', why: 'This is the wasted part.' },
+      { text: '0.8%', why: '0.8 is the fraction. × 100 gives 80%.' },
+    ],
+  },
+  {
+    question: 'A student says her machine is 120% efficient. Why is this impossible?',
+    options: [
+      { text: 'It would give out more energy than it takes in', correct: true, why: 'Energy cannot be created.' },
+      { text: 'Efficiency is always exactly 100%', why: 'Real devices are always less than 100% efficient.' },
+      { text: 'Percentages cannot be above 50', why: 'The reason is conservation of energy.' },
+      { text: 'Machines do not have an efficiency', why: 'All machines have an efficiency.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Look for energy labels on appliances at home or online (for example a fridge or a washing machine). What do the letters mean? Why is a more efficient appliance cheaper to use?
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** the idea of efficiency (1.7.3 C3) is Core. The two equations (1.7.3 S7) are Extended.
+
+**Timing:** starter 5 min, learn 27 min, practice 20 min, exit ticket 8 min.
+
+**Common mistakes:**
+
+- Dividing the wrong way (input ÷ output gives more than 100%).
+- Using the wasted energy instead of the useful energy.
+- Giving efficiency a unit (J or W).
+
+**Data note:** lamp efficiencies are approximate. Filament lamps transfer roughly 5–10% of their energy as light; LEDs much more.
+
+**Safety (starter):** filament lamps get very hot. Students should hold a hand near the lamp, not touch the glass.
+
+**Language support:**
+
+- Sentence frame: *"The … is more efficient because it wastes less energy by …"*
+
+**Differentiation:**
+
+- Support: compare two Sankey diagrams and say which device is more efficient.
+- Stretch: a power station is 35% efficient. It gives 700 MW of electrical power. What is its input power? (2000 MW.)
+
+</Step>

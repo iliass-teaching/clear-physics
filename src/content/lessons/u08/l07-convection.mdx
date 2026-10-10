@@ -1,0 +1,167 @@
+---
+unit: 8
+lesson: 7
+title: Convection
+syllabus: ['2.3.2 C1', '2.3.2 C2', '2.3.4 C1']
+goals:
+  - Know that convection is important in liquids and gases.
+  - Explain convection with changes in density.
+  - Explain how a heater warms a room, and how a pan of water heats up.
+keyWords: [convection, convection current, density, thermal expansion]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { convectionBeakerSvg, roomConvectionSvg } from '../../../lib/heatFigures';
+
+<Step kind="starter" title="Where to put it?" minutes={5}>
+
+In a cold country, the heater in a room is near the **floor**. In a hot country, the air conditioner is high on the **wall**. Why do you think they are in different places?
+
+</Step>
+
+<Step kind="learn" title="How convection works" minutes={12}>
+
+Water and air are bad conductors. But they can still carry energy: they **move**, and take the energy with them. This is **convection**. It happens only in **liquids** and **gases** (fluids).
+
+<Figure svg={convectionBeakerSvg()} caption="A convection current in a beaker of water." width="32rem" />
+
+1. The water near the heat gets hotter. It **expands**.
+2. Same mass, bigger volume: its **density** goes **down** (remember $\rho = \dfrac{m}{V}$).
+3. The less dense hot water **rises**. Cooler, denser water **sinks** to take its place.
+4. At the top, the hot water moves across and cools. It becomes denser and sinks.
+
+This loop is a **convection current**. It carries energy to all of the water.
+
+</Step>
+
+<Step kind="learn" title="Convection in everyday life" minutes={10}>
+
+<Figure svg={roomConvectionSvg()} caption="A heater warms the whole room by convection." width="26rem" />
+
+- **A heater near the floor:** the air near it gets warm, rises, moves across the ceiling, cools and sinks. A convection current warms the whole room.
+- **An air conditioner high on a wall:** the cold air is dense, so it sinks and the warmer air rises to the conditioner.
+- **A pan of water on a cooker:** the metal base conducts energy to the water at the bottom. Then convection carries the energy to all of the water.
+- **Sea breezes** (stretch): on a sunny day the land gets hot faster than the sea. Hot air rises over the land, and cooler air from the sea moves in.
+
+</Step>
+
+<Step kind="do" title="See a convection current" minutes={15}>
+
+**Equipment:** a large beaker of cold water, one small crystal of potassium manganate(VII) (potassium permanganate), a drinking straw (or tweezers), a Bunsen burner or a small heater.
+
+1. Use the straw to put the crystal at the bottom of the beaker, near one side.
+2. Heat gently under the crystal.
+3. Watch the purple colour for 5 minutes. Draw what you see.
+
+**Questions:**
+
+1. Where does the purple water go first? Why?
+2. Draw arrows on your diagram to show the convection current.
+3. Explain the convection current with the words *expands*, *density*, *rises* and *sinks*.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={13}>
+
+<Quiz questions={[
+  {
+    question: 'In which materials can convection happen?',
+    options: [
+      { text: 'liquids and gases', correct: true, why: 'The fluid must move to carry the energy.' },
+      { text: 'only solids', why: 'In a solid, the particles cannot move from place to place.' },
+      { text: 'only metals', why: 'Metals conduct. Convection happens in fluids.' },
+      { text: 'in a vacuum', why: 'There is nothing to move in a vacuum.' },
+    ],
+  },
+  {
+    question: 'Why does hot air rise?',
+    options: [
+      { text: 'It expands, so it is less dense than the cold air around it', correct: true, why: 'Less dense fluid rises; denser fluid sinks.' },
+      { text: 'Heat always rises', why: 'Heat is energy, not a material. The hot air rises because its density is lower.' },
+      { text: 'Hot air particles are lighter', why: 'The particles do not change. They are further apart.' },
+      { text: 'Hot air is denser', why: 'Hot air is less dense.' },
+    ],
+  },
+  {
+    question: 'Why is a heater placed near the floor?',
+    options: [
+      { text: 'The warm air rises and a convection current warms the whole room', correct: true, why: 'If it were near the ceiling, the warm air would stay at the top.' },
+      { text: 'Cold air rises', why: 'Cold air is denser, so it sinks.' },
+      { text: 'Conduction through the floor', why: 'Air is a bad conductor. Convection warms the room.' },
+      { text: 'So that the floor gets hot', why: 'The heater warms the air, which moves around the room.' },
+    ],
+  },
+  {
+    question: 'In the beaker experiment, what happens to the water above the crystal?',
+    options: [
+      { text: 'It gets hotter, becomes less dense, and rises', correct: true, why: 'This starts the convection current.' },
+      { text: 'It gets colder and sinks', why: 'The water above the heat gets hotter.' },
+      { text: 'It does not move', why: 'It rises: you can see the purple colour go up.' },
+      { text: 'It becomes denser', why: 'Hotter water expands: its density goes down.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Put the steps of a convection current in order: (1) the fluid rises, (2) the fluid near the heat expands, (3) its density goes down, (4) it cools and sinks.',
+    options: [
+      { text: '2, 3, 1, 4', correct: true, why: 'Expands → less dense → rises → cools and sinks.' },
+      { text: '1, 2, 3, 4', why: 'The fluid must first expand.' },
+      { text: '3, 2, 4, 1', why: 'It expands first, then the density goes down.' },
+      { text: '4, 3, 2, 1', why: 'Start where the fluid is heated.' },
+    ],
+  },
+  {
+    question: 'Why is an air conditioner placed high on a wall?',
+    options: [
+      { text: 'Cold air is denser, so it sinks and fills the room', correct: true, why: 'Then warm air rises to the conditioner.' },
+      { text: 'Cold air rises', why: 'Cold air sinks.' },
+      { text: 'To make it safe from children', why: 'The physics reason: cold air sinks.' },
+      { text: 'Conduction works better at the top', why: 'The reason is convection.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+A hot-air balloon rises. Explain why, using the words *expands*, *density* and *rises*. Draw a diagram.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core:** 2.3.2 C1, C2 and 2.3.4 C1(a)(b) (pans and heating a room).
+
+**Timing:** starter 5 min, learn 22 min, experiment 15 min, check 13 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "Heat rises." Correct to: *hot fluid rises*.
+- "The particles get bigger / lighter when hot." The particles move further apart; the density goes down.
+- Thinking convection can happen in solids.
+
+**Link:** this lesson uses density (Unit 2) and thermal expansion (lesson 8.1). Remind students: less dense things float, denser things sink.
+
+**Language support:**
+
+- *fluid* = a liquid or a gas (anything that can flow).
+- *current* = a flow in one direction (like a river), not only an electric current.
+
+**Differentiation:**
+
+- Support: give the beaker diagram with arrows; students add the labels.
+- Stretch: explain the sea breeze and the land breeze at night.
+
+**Safety:** potassium manganate(VII) stains skin and clothes and is harmful: use one small crystal, do not touch it, and wear eye protection.
+
+</Step>

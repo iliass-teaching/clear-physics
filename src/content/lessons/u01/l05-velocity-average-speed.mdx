@@ -1,0 +1,167 @@
+---
+unit: 1
+lesson: 5
+title: Velocity and average speed
+syllabus: ['1.2 C2', '1.2 C3']
+goals:
+  - Say the difference between speed and velocity.
+  - Calculate the average speed for a journey.
+keyWords: [velocity, average speed, speed, vector]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="Same speed?" minutes={5}>
+
+Car A moves at 20 m/s to the north.
+Car B moves at 20 m/s to the south.
+
+Do they have the same speed? Do they move in the same way? Talk with a partner.
+
+</Step>
+
+<Step kind="learn" title="Velocity" minutes={8}>
+
+**Velocity** is speed in a given direction.
+
+- speed: 20 m/s (a scalar)
+- velocity: 20 m/s **to the north** (a vector)
+
+In the starter, the two cars have the same speed but **different velocities**.
+
+A car goes around a roundabout at a constant speed. Its direction changes all the time, so its velocity changes too.
+
+</Step>
+
+<Step kind="learn" title="Average speed" minutes={12}>
+
+On a real journey, the speed changes: we speed up, slow down and stop.
+The **average speed** is for the whole journey:
+
+$$
+\text{average speed} = \frac{\text{total distance}}{\text{total time}}
+$$
+
+<WorkedExample
+  question="A bus goes 1200 m in 300 s. It stops for 120 s. Then it goes 2400 m in 480 s."
+  given={['part 1: $1200\\,\\text{m}$ in $300\\,\\text{s}$', 'stop: $120\\,\\text{s}$', 'part 2: $2400\\,\\text{m}$ in $480\\,\\text{s}$']}
+  find="the average speed for the whole journey"
+  answer="$4\,\text{m/s}$"
+>
+
+$\text{total distance} = 1200 + 2400 = 3600\,\text{m}$
+
+$\text{total time} = 300 + 120 + 480 = 900\,\text{s}$ (include the stop)
+
+$\text{average speed} = \dfrac{3600}{900} = 4\,\text{m/s}$
+
+</WorkedExample>
+
+**Be careful:** do not take the mean of the speeds.
+
+Example: a cyclist rides 1000 m at 10 m/s (100 s), then 1000 m at 20 m/s (50 s).
+
+- Wrong: $\dfrac{10 + 20}{2} = 15\,\text{m/s}$.
+- Right: $\text{average speed} = \dfrac{2000}{150} = 13.3\,\text{m/s}$.
+
+The cyclist spends more time at the slow speed, so the average is closer to 10 m/s.
+
+</Step>
+
+<Step kind="do" title="My journey to school" minutes={15}>
+
+Here is Lin's journey to school.
+
+<div class="table-wrap">
+
+| part | what Lin does | distance / m | time / s |
+|---|---|---|---|
+| 1 | walks to the bus stop | 400 | 300 |
+| 2 | waits for the bus | 0 | 240 |
+| 3 | rides the bus | 3000 | 360 |
+| 4 | walks to the classroom | 200 | 100 |
+
+</div>
+
+1. Calculate the speed in parts 1, 3 and 4.
+2. Calculate the average speed for the whole journey.
+3. Why is the average speed much lower than the bus speed?
+
+Then make the same table for **your** journey to school. Estimate the distances with a map.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={15}>
+
+<Practice topic="average-speed" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Which of these is a velocity?',
+    options: [
+      { text: '25 m/s to the east', correct: true, why: 'It has a magnitude and a direction.' },
+      { text: '25 m/s', why: 'This is a speed. A velocity also needs a direction.' },
+      { text: '25 m to the east', why: 'The unit is m, so this is a distance with a direction, not a velocity.' },
+      { text: '25 s', why: 'This is a time.' },
+    ],
+  },
+  {
+    question: 'A runner runs 400 m in 50 s, then 400 m in 100 s. What is the average speed?',
+    options: [
+      { text: '5.3 m/s', correct: true, why: '$\\text{average speed} = \\dfrac{800}{150} = 5.3\\,\\text{m/s}$.' },
+      { text: '6 m/s', why: 'This is the mean of 8 m/s and 4 m/s. Use total distance ÷ total time.' },
+      { text: '8 m/s', why: 'This is the speed in the first part only.' },
+      { text: '4 m/s', why: 'This is the speed in the second part only.' },
+    ],
+  },
+  {
+    question: 'A car goes around a circular track at a constant speed. Which is true?',
+    options: [
+      { text: 'The speed is constant, but the velocity changes', correct: true, why: 'The direction changes all the time, so the velocity changes.' },
+      { text: 'The speed and the velocity are both constant', why: 'The direction changes, so the velocity is not constant.' },
+      { text: 'The velocity is constant, but the speed changes', why: 'The speed is constant. The direction changes.' },
+      { text: 'The speed and the velocity both change', why: 'The question says the speed is constant.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Finish the table for your own journey to school. Calculate your average speed.
+2. Do 5 questions at **Level 2** of the practice.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 20 min, task 15 min, practice 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Taking the mean of two speeds instead of total distance ÷ total time.
+- Forgetting the time spent stopped.
+- Saying velocity is "just a more scientific word for speed".
+
+**Answers for Lin's journey:** part 1: 1.3 m/s; part 3: 8.3 m/s; part 4: 2 m/s. Average: $\dfrac{3600}{1000} = 3.6\,\text{m/s}$.
+
+**Language support:**
+
+- Sentence frame: *"The speed is …, but the velocity is … to the …"*
+- Point to a map on the wall: "to the north", "to the east".
+
+**Differentiation:**
+
+- Support: start with journeys without a stop.
+- Stretch: a car travels 30 km at 60 km/h, then 30 km at 30 km/h. Find the average speed. (Answer: 40 km/h, not 45 km/h.)
+
+</Step>

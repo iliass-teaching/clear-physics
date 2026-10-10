@@ -1,0 +1,195 @@
+---
+unit: 1
+lesson: 1
+title: Measuring length, volume and time
+syllabus: ['1.1 C1', '1.1 C2']
+goals:
+  - Measure a length with a ruler.
+  - Measure the volume of a liquid with a measuring cylinder.
+  - Measure a time with a stopwatch.
+keyWords: [length, volume, time, measuring cylinder, scale, reading, unit]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="How long is your pencil?" minutes={5}>
+
+1. Measure the length of your pencil. Write your answer.
+2. Your partner measures the same pencil.
+3. Compare. Are your answers exactly the same? Why or why not?
+
+</Step>
+
+<Step kind="learn" title="Measuring length" minutes={6}>
+
+We measure **length** with a ruler or a tape measure.
+
+<div class="table-wrap">
+
+| Unit | Symbol | |
+|---|---|---|
+| millimetre | mm | 10 mm = 1 cm |
+| centimetre | cm | 100 cm = 1 m |
+| metre | m | 1000 m = 1 km |
+
+</div>
+
+How to use a ruler:
+
+1. Put the object next to the **scale**.
+2. Look straight down at the scale, not from the side.
+3. Read the start and the end of the object.
+4. $\text{length} = \text{end} - \text{start}$
+
+The end of a ruler is often damaged. So you can start at 1 cm, not at 0. Then do not forget to subtract.
+
+<WorkedExample
+  question="An object starts at the 2.0 cm line and ends at the 9.4 cm line. Calculate its length."
+  given={['start $= 2.0\\,\\text{cm}$', 'end $= 9.4\\,\\text{cm}$']}
+  find="the length"
+  answer="$7.4\,\text{cm}$"
+>
+
+$\text{length} = \text{end} - \text{start}$
+
+$\text{length} = 9.4 - 2.0 = 7.4\,\text{cm}$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="learn" title="Measuring the volume of a liquid" minutes={6}>
+
+We measure the **volume** of a liquid with a **measuring cylinder**.
+The unit is cm³ (cubic centimetre): $1000\,\text{cm}^3 = 1\,\text{dm}^3$.
+
+The top of the liquid is curved. How to read it:
+
+1. Put the cylinder on a flat table.
+2. Put your eyes at the same height as the liquid.
+3. Read the **bottom** of the curved surface.
+
+**What is one small line worth?** Look at two numbers on the scale.
+Divide the difference by the number of spaces between them.
+
+Example: from 10 cm³ to 20 cm³ there are 5 spaces. So one small line $= \dfrac{20 - 10}{5} = 2\,\text{cm}^3$.
+
+</Step>
+
+<Step kind="learn" title="Measuring time" minutes={3}>
+
+We measure **time** with a stopwatch, a clock or a digital timer.
+The unit is the second (s): $1\,\text{min} = 60\,\text{s}$ and $1\,\text{h} = 60\,\text{min} = 3600\,\text{s}$.
+
+When you use a stopwatch, you need some time to react. This **reaction time** is about 0.2 s.
+For a short time, this is a big problem. The next lesson shows how to make it smaller.
+
+</Step>
+
+<Step kind="do" title="Measurement stations" minutes={20}>
+
+Work in groups of 3. Spend about 6 minutes at each station.
+
+**Station 1 — Length.** Measure the length of 3 objects (a pencil, a book, a leaf). Use the start-and-end method.
+
+**Station 2 — Volume.** Your teacher gives you 3 containers of water. Pour each one into a measuring cylinder and read the volume.
+
+**Station 3 — Time.** Let a ball roll down a ramp. Time it from the top to the bottom. Do it 3 times.
+
+Write your results in tables. Put the unit in the column heading, like this:
+
+<div class="table-wrap">
+
+| object | length / cm |
+|---|---|
+| pencil | |
+| book | |
+| leaf | |
+
+</div>
+
+**Question:** at station 3, are your 3 times the same? Why not?
+*Start your answer like this: "The times are different because …"*
+
+</Step>
+
+<Step kind="practice" title="Practice: read the instruments" minutes={15}>
+
+Read the ruler, the measuring cylinder and the stopwatch. Try all three.
+
+<Practice topic="measure" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'An object starts at 1.0 cm and ends at 6.5 cm on a ruler. What is its length?',
+    options: [
+      { text: '5.5 cm', correct: true, why: '$\\text{length} = \\text{end} - \\text{start} = 6.5 - 1.0 = 5.5\\,\\text{cm}$.' },
+      { text: '6.5 cm', why: 'The object does not start at 0. Subtract the start.' },
+      { text: '7.5 cm', why: 'You added. Length = end − start.' },
+      { text: '55 cm', why: '5.5 cm is 55 mm, not 55 cm.' },
+    ],
+  },
+  {
+    question: 'How do you read the volume in a measuring cylinder?',
+    options: [
+      { text: 'Eyes level with the liquid, read the bottom of the curve', correct: true, why: 'This gives the correct reading.' },
+      { text: 'Look from above, read the top of the curve', why: 'Looking from above gives a wrong reading. Put your eyes level with the liquid.' },
+      { text: 'Eyes level with the liquid, read the top of the curve', why: 'Read the bottom of the curved surface.' },
+      { text: 'Hold the cylinder in your hand, read any part', why: 'Put the cylinder on a flat table and read the bottom of the curve.' },
+    ],
+  },
+  {
+    question: 'A stopwatch shows 1 min 12.0 s. What is the time in seconds?',
+    options: [
+      { text: '72.0 s', correct: true, why: '$1\\,\\text{min} = 60\\,\\text{s}$, so $60 + 12.0 = 72.0\\,\\text{s}$.' },
+      { text: '112.0 s', why: '1 minute is 60 s, not 100 s.' },
+      { text: '1.12 s', why: '1 min 12 s is more than one minute.' },
+      { text: '12.0 s', why: 'Do not forget the minute: $1\\,\\text{min} = 60\\,\\text{s}$.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. At home, measure the length of 3 objects. Write each length in cm and in mm.
+2. Do 5 questions of each type in the practice (ruler, cylinder, stopwatch).
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 15 min, stations 20 min, practice 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Reading only the end of the object when it does not start at 0.
+- Looking at the scale from the side (parallax error).
+- Reading the top of the curved surface in a measuring cylinder.
+- Thinking each small line is worth 1, without checking the scale.
+- Treating 1 minute as 100 seconds.
+
+**Language support:**
+
+- Teach *scale* and *reading* with a real ruler in your hand: "This is the scale. 7.4 cm is the reading."
+- Sentence frame for results: *"The length of the … is … cm."*
+
+**Differentiation:**
+
+- Support: give rulers that start at 0 first, then move to the start-and-end method.
+- Stretch: compare the precision of a ruler (1 mm) and a measuring cylinder (2 cm³). Which reading is more precise?
+
+**Safety:** glass measuring cylinders can break. Keep them on the table, away from the edge.
+
+**Note:** the syllabus uses cm³ and dm³ for volume, not litres or millilitres.
+
+</Step>

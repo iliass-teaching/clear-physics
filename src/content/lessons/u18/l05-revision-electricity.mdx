@@ -1,0 +1,153 @@
+---
+unit: 18
+lesson: 5
+title: 'Revision: electricity and magnetism'
+syllabus: ['4']
+goals:
+  - Revise the key ideas of syllabus section 4 (Units 12–15).
+  - Practise circuit calculations.
+  - Avoid common mistakes.
+keyWords: [electric current, potential difference, resistance, series circuit, parallel circuit, transformer]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="learn" title="What to revise" minutes={10}>
+
+<div class="table-wrap">
+
+| Topic | Key ideas | Unit |
+|---|---|---|
+| magnetism and charge | poles; induced magnetism; field lines; charging by friction (electrons move); conductors and insulators; electric fields (E) | [12](../../12/) |
+| electrical quantities | current, e.m.f., p.d.; $R = \dfrac{V}{I}$; wires; I–V graphs (E); $P = IV$, $E = IVt$, kW h | [13](../../13/) |
+| circuits and safety | symbols; series and parallel rules; sensors; potential divider (E); live, neutral, earth; fuses | [14](../../14/) |
+| electromagnetic effects | fields of wires and solenoids; relays; motor effect; d.c. motor; induction; generator (E); transformers; transmission | [15](../../15/) |
+
+</div>
+
+**Mistakes to avoid:**
+
+- ammeter in parallel or voltmeter in series;
+- "the current is used up" in a lamp;
+- adding resistances in parallel;
+- fuse rating smaller than the normal current;
+- confusing the motor effect (current → force) and induction (motion → e.m.f.);
+- turns ratio of a transformer upside down.
+
+</Step>
+
+<Step kind="practice" title="Mixed practice" minutes={28}>
+
+### Resistance
+
+<Practice topic="resistance" level={2} />
+
+### Series circuits
+
+<Practice topic="series" level={2} />
+
+### Power and cost
+
+<Practice topic="kwh-cost" level={3} />
+
+### Transformers
+
+<Practice topic="transformer" level={1} />
+
+### Extended: parallel resistors
+
+<Practice topic="parallel" level={3} />
+
+</Step>
+
+<Step kind="exit" title="Exam-style questions" minutes={22}>
+
+<Quiz questions={[
+  {
+    question: '1. A polythene rod is rubbed with a cloth and becomes negative. What has happened?',
+    options: [
+      { text: 'Electrons moved from the cloth to the rod', correct: true, why: 'Only electrons move.' },
+      { text: 'Protons moved from the rod to the cloth', why: 'Protons do not move.' },
+      { text: 'The rod made new electrons', why: 'Charge is transferred, not made.' },
+      { text: 'Electrons moved from the rod to the cloth', why: 'Then the rod would be positive.' },
+    ],
+  },
+  {
+    question: '2. The p.d. across a 12 Ω resistor is 6.0 V. What is the current?',
+    options: [
+      { text: '0.50 A', correct: true, why: '$I = \\dfrac{V}{R} = \\dfrac{6.0}{12}$.' },
+      { text: '72 A', why: 'Divide V by R.' },
+      { text: '2.0 A', why: 'Upside down.' },
+      { text: '18 A', why: 'Divide.' },
+    ],
+  },
+  {
+    question: '3. A 3 Ω and a 6 Ω resistor are in series with a 9 V battery. What is the current?',
+    options: [
+      { text: '1.0 A', correct: true, why: '$R = 9\\,\\Omega$; $I = \\dfrac{9}{9}$.' },
+      { text: '4.5 A', why: 'That would be parallel (2 Ω).' },
+      { text: '3.0 A', why: 'Use the total resistance.' },
+      { text: '81 A', why: 'Divide.' },
+    ],
+  },
+  {
+    question: '4. Why is the switch in the live wire?',
+    options: [
+      { text: 'So the appliance is disconnected from the high p.d. when it is off', correct: true, why: 'Safe to touch inside.' },
+      { text: 'Because the live wire is the earth', why: 'The earth wire is separate.' },
+      { text: 'To save energy', why: 'The reason is safety.' },
+      { text: 'It does not matter', why: 'It must be in the live wire.' },
+    ],
+  },
+  {
+    question: '5. A 2.0 kW heater is used for 4 hours. 1 kW h costs 30 cents. What is the cost?',
+    options: [
+      { text: '240 cents', correct: true, why: '$2.0 \\times 4 = 8$ kW h; $8 \\times 30$.' },
+      { text: '8 cents', why: 'That is the energy in kW h.' },
+      { text: '60 cents', why: 'Multiply by the time too.' },
+      { text: '24 cents', why: 'Check: 8 kW h × 30 cents.' },
+    ],
+  },
+  {
+    question: '6. A magnet is held still inside a coil. What does a meter connected to the coil show?',
+    options: [
+      { text: 'zero', correct: true, why: 'No movement, no induced e.m.f.' },
+      { text: 'a steady current', why: 'Induction needs a change.' },
+      { text: 'a big a.c.', why: 'Nothing changes.' },
+      { text: 'it depends on the magnet colour', why: 'Zero.' },
+    ],
+  },
+  {
+    question: '7. A transformer has 200 turns on the primary and 50 turns on the secondary. The primary p.d. is 240 V. What is the secondary p.d.?',
+    options: [
+      { text: '60 V', correct: true, why: '$240 \\times \\dfrac{50}{200}$.' },
+      { text: '960 V', why: 'Upside down.' },
+      { text: '240 V', why: 'The turns are different.' },
+      { text: '12 000 V', why: 'Use the ratio of the turns.' },
+    ],
+  },
+  {
+    question: '8. (E) A 4 Ω and a 12 Ω resistor are in parallel. What is the combined resistance?',
+    options: [
+      { text: '3 Ω', correct: true, why: '$\\dfrac{4 \\times 12}{4 + 12} = 3$.' },
+      { text: '16 Ω', why: 'That is series.' },
+      { text: '8 Ω', why: 'Use $\\dfrac{1}{R} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2}$.' },
+      { text: '0.33 Ω', why: 'That is $\\dfrac{1}{R}$.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** what to revise 10 min, practice 28 min, exam questions 22 min.
+
+**Using this lesson:** the circuit, divider and induction simulations of Units 13–15 are useful for quick revision before the practice.
+
+**Question 8 is Extended.**
+
+</Step>

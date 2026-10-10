@@ -1,0 +1,144 @@
+---
+unit: 15
+lesson: 4
+title: The d.c. motor
+syllabus: ['4.5.5 C1', '4.5.5 S2']
+goals:
+  - Know that a current-carrying coil in a magnetic field can turn.
+  - State three ways to increase the turning effect.
+  - 'Extended: describe how a d.c. motor works, with a split-ring commutator and brushes.'
+keyWords: [motor effect, split-ring commutator, magnetic field, electric current]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { dcMotorSvg } from '../../../lib/emEffectsFigures';
+
+<Step kind="starter" title="Motors everywhere" minutes={5}>
+
+List 6 things at home or at school that contain an electric motor. What does the motor do in each one?
+
+</Step>
+
+<Step kind="learn" title="A coil that turns" minutes={14}>
+
+<Figure svg={dcMotorSvg()} caption="A simple d.c. motor." width="34rem" />
+
+A coil carrying a current is between the poles of a magnet.
+
+- On one side of the coil, the current goes one way: the force is **up**.
+- On the other side, the current goes the other way: the force is **down**.
+- These two forces make a **turning effect** (a moment, Unit 3): the coil **turns**.
+
+**The turning effect is bigger if you increase:**
+
+1. the **number of turns** on the coil;
+2. the **current**;
+3. the **strength of the magnetic field**.
+
+</Step>
+
+<Step kind="learn" title="Keeping it turning (Extended)" minutes={12}>
+
+After half a turn, the sides of the coil swap places. If the current stayed the same, the forces would push the coil **back**. It would stop.
+
+The **split-ring commutator** solves this:
+
+- It is a ring cut into two halves, fixed to the coil. It turns with the coil.
+- Two **brushes** (carbon blocks) press on it and connect it to the battery.
+- Every **half turn**, the halves of the ring swap brushes, so the **current in the coil reverses**.
+- So the side of the coil near the N pole always has the current in the same direction: the forces always turn the coil the **same way**.
+
+When the coil is vertical, the brushes touch the gaps; the coil keeps turning because it is already moving (its momentum).
+
+</Step>
+
+<Step kind="do" title="Build a simple motor" minutes={17}>
+
+**Equipment:** a motor kit (coil on a wooden block, magnets, a split-ring commutator made of tape and wire, brushes) **or** a "homopolar motor": a battery, a strong button magnet and a shaped copper wire.
+
+1. Build the motor following the kit instructions.
+2. Make it turn. Then:
+   - reverse the battery: what happens?
+   - turn the magnets round: what happens?
+   - add a second cell (bigger current): what happens?
+3. Explain each result with the motor effect.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={7}>
+
+<Quiz questions={[
+  {
+    question: 'Which change makes a motor turn faster?',
+    options: [
+      { text: 'a bigger current', correct: true, why: 'Also more turns or a stronger magnet.' },
+      { text: 'fewer turns on the coil', why: 'Fewer turns: smaller turning effect.' },
+      { text: 'a weaker magnet', why: 'A weaker field: smaller turning effect.' },
+      { text: 'reversing the current', why: 'This reverses the direction of rotation.' },
+    ],
+  },
+  {
+    question: 'Extended: what does the split-ring commutator do?',
+    options: [
+      { text: 'It reverses the current in the coil every half turn', correct: true, why: 'So the coil keeps turning the same way.' },
+      { text: 'It makes the magnetic field stronger', why: 'It reverses the current.' },
+      { text: 'It changes d.c. to a bigger p.d.', why: 'That is not its job.' },
+      { text: 'It stops the coil', why: 'It keeps the coil turning.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Why does a coil carrying a current turn in a magnetic field?',
+    options: [
+      { text: 'The forces on its two sides are in opposite directions', correct: true, why: 'They make a turning effect.' },
+      { text: 'The magnet pushes the whole coil in one direction', why: 'The two sides feel opposite forces.' },
+      { text: 'The coil is heavier on one side', why: 'The reason is the motor effect.' },
+      { text: 'The current makes the coil spin by itself', why: 'It needs the magnetic field of the magnet.' },
+    ],
+  },
+  {
+    question: 'The battery of a motor is reversed. What happens?',
+    options: [
+      { text: 'The motor turns the other way', correct: true, why: 'Reversing the current reverses the forces.' },
+      { text: 'The motor stops for ever', why: 'It turns the other way.' },
+      { text: 'The motor turns faster', why: 'Only the direction changes.' },
+      { text: 'Nothing changes', why: 'The forces reverse.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** the turning effect and the three factors (4.5.5 C1) are Core. The commutator and brushes (S2) are Extended.
+
+**Timing:** starter 5 min, learn 26 min, build 17 min, check 7 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Confusing slip rings (a.c. generator, lesson 15.7) and the split-ring commutator (d.c. motor).
+- "The commutator reverses the battery."
+
+**Language support:**
+
+- *commutator* = a switch that changes (commutes) the direction of the current.
+- *brush* = a block that rubs (brushes) on the ring.
+
+**Differentiation:**
+
+- Support: a diagram with the forces to add.
+- Stretch: why do real motors have many coils at different angles, and curved magnets?
+
+**Safety:** strong (neodymium) magnets can pinch fingers. Homopolar motors: the wire gets hot; do not leave connected.
+
+</Step>

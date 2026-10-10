@@ -1,0 +1,227 @@
+---
+unit: 18
+lesson: 9
+title: 'Mock exam: multiple choice'
+syllabus: ['all topics']
+goals:
+  - Answer 20 multiple-choice questions on all topics, in exam conditions.
+  - Find your weak topics and plan your revision.
+keyWords: [Calculate, Determine, State]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="learn" title="Instructions" minutes={5}>
+
+- 20 questions, about **25 minutes** (in the real Paper 1 or 2: 40 questions in 45 minutes).
+- Work alone, with a calculator. No notes.
+- Read **all four** options before you choose. Cross out the ones you know are wrong.
+- Questions marked **(E)** are for Extended students.
+- After the test, note the topic of each mistake.
+
+</Step>
+
+<Step kind="exit" title="Mock test" minutes={30}>
+
+<Quiz questions={[
+  {
+    question: '1. Which quantity is a vector?',
+    options: [
+      { text: 'force', correct: true, why: 'It has size and direction.' },
+      { text: 'mass', why: 'Mass is a scalar.' },
+      { text: 'energy', why: 'Energy is a scalar.' },
+      { text: 'speed', why: 'Speed is a scalar; velocity is a vector.' },
+    ],
+  },
+  {
+    question: '2. A cyclist accelerates from 2 m/s to 8 m/s in 3 s. What is the acceleration? (E)',
+    options: [
+      { text: '2 m/s²', correct: true, why: '$\\dfrac{8 - 2}{3}$.' },
+      { text: '3.3 m/s²', why: 'Use the change in velocity: 6 m/s.' },
+      { text: '18 m/s²', why: 'Divide by the time.' },
+      { text: '0.5 m/s²', why: 'Upside down.' },
+    ],
+  },
+  {
+    question: '3. Which object will float in water (density 1.0 g/cm³)?',
+    options: [
+      { text: 'mass 40 g, volume 50 cm³', correct: true, why: 'Density 0.8 g/cm³, less than water.' },
+      { text: 'mass 60 g, volume 50 cm³', why: 'Density 1.2 g/cm³: it sinks.' },
+      { text: 'mass 100 g, volume 50 cm³', why: 'Density 2.0 g/cm³: it sinks.' },
+      { text: 'mass 55 g, volume 50 cm³', why: 'Density 1.1 g/cm³: it sinks.' },
+    ],
+  },
+  {
+    question: '4. A spring extends by 2.0 cm with a 4.0 N load. What is the extension with 6.0 N (below the limit of proportionality)?',
+    options: [
+      { text: '3.0 cm', correct: true, why: 'Extension is proportional to load.' },
+      { text: '4.0 cm', why: 'Use the ratio: 2.0 cm for every 4.0 N.' },
+      { text: '1.3 cm', why: 'More load: more extension.' },
+      { text: '12 cm', why: 'Use the ratio 0.5 cm per N.' },
+    ],
+  },
+  {
+    question: '5. Which energy resource is renewable?',
+    options: [
+      { text: 'wind', correct: true, why: 'It will not run out.' },
+      { text: 'coal', why: 'Coal is a fossil fuel.' },
+      { text: 'natural gas', why: 'Gas is a fossil fuel.' },
+      { text: 'uranium (nuclear fuel)', why: 'Nuclear fuel is not renewable.' },
+    ],
+  },
+  {
+    question: '6. A box of weight 600 N rests on an area of 0.20 m². What pressure does it exert?',
+    options: [
+      { text: '3000 Pa', correct: true, why: '$\\dfrac{600}{0.20}$.' },
+      { text: '120 Pa', why: 'Divide force by area.' },
+      { text: '0.00033 Pa', why: 'Upside down.' },
+      { text: '600 Pa', why: 'Divide by the area.' },
+    ],
+  },
+  {
+    question: '7. A gas in a sealed container is heated. Why does its pressure increase?',
+    options: [
+      { text: 'The particles move faster and hit the walls more often and harder', correct: true, why: 'More force per unit area.' },
+      { text: 'The particles get bigger', why: 'Particles do not change size.' },
+      { text: 'There are more particles', why: 'It is sealed.' },
+      { text: 'The particles stop moving', why: 'They move faster.' },
+    ],
+  },
+  {
+    question: '8. Which method of thermal energy transfer can happen in a vacuum?',
+    options: [
+      { text: 'radiation', correct: true, why: 'It needs no medium.' },
+      { text: 'conduction', why: 'It needs particles.' },
+      { text: 'convection', why: 'It needs a fluid.' },
+      { text: 'none', why: 'Radiation can.' },
+    ],
+  },
+  {
+    question: '9. In a sound wave, the vibration of the air particles is…',
+    options: [
+      { text: 'parallel to the direction the wave travels', correct: true, why: 'Sound is longitudinal.' },
+      { text: 'at right angles to the direction of travel', why: 'That is transverse.' },
+      { text: 'in circles', why: 'Parallel.' },
+      { text: 'there is no vibration', why: 'Sound is a vibration.' },
+    ],
+  },
+  {
+    question: '10. A ray of light goes from air into glass at an angle. It…',
+    options: [
+      { text: 'bends towards the normal', correct: true, why: 'It slows down.' },
+      { text: 'bends away from the normal', why: 'That happens when it leaves the glass.' },
+      { text: 'does not change direction', why: 'Only along the normal.' },
+      { text: 'is totally internally reflected', why: 'That needs glass to air.' },
+    ],
+  },
+  {
+    question: '11. Which electromagnetic wave has the highest frequency?',
+    options: [
+      { text: 'gamma rays', correct: true, why: 'Highest frequency, shortest wavelength.' },
+      { text: 'radio waves', why: 'Lowest frequency.' },
+      { text: 'visible light', why: 'Gamma rays are higher.' },
+      { text: 'microwaves', why: 'Gamma rays are higher.' },
+    ],
+  },
+  {
+    question: '12. What is the range of human hearing?',
+    options: [
+      { text: '20 Hz to 20 000 Hz', correct: true, why: 'Above 20 kHz is ultrasound.' },
+      { text: '20 Hz to 2000 Hz', why: 'We hear up to about 20 000 Hz.' },
+      { text: '200 Hz to 200 000 Hz', why: '20 Hz to 20 000 Hz.' },
+      { text: '0 Hz to 20 Hz', why: 'That is below our hearing.' },
+    ],
+  },
+  {
+    question: '13. What is the direction of the magnetic field lines outside a bar magnet?',
+    options: [
+      { text: 'from N to S', correct: true, why: 'The direction of the force on a N pole.' },
+      { text: 'from S to N', why: 'Outside: N to S.' },
+      { text: 'in circles around the magnet', why: 'From N to S.' },
+      { text: 'they have no direction', why: 'From N to S.' },
+    ],
+  },
+  {
+    question: '14. A 9 V battery is connected to a 3 Ω and a 6 Ω resistor in series. What is the p.d. across the 6 Ω resistor?',
+    options: [
+      { text: '6 V', correct: true, why: '$I = 1$ A; $V = 1 \\times 6$.' },
+      { text: '3 V', why: 'That is across the 3 Ω resistor.' },
+      { text: '9 V', why: 'The p.d. is shared in series.' },
+      { text: '4.5 V', why: 'Not equal shares: 1 : 2.' },
+    ],
+  },
+  {
+    question: '15. An appliance has a power of 920 W on 230 V mains. The fuses available are 3 A, 5 A and 13 A. Which fuse should it have?',
+    options: [
+      { text: '5 A', correct: true, why: '$I = \\dfrac{920}{230} = 4$ A. Choose the fuse just above the normal current.' },
+      { text: '3 A', why: 'The normal current is 4 A: a 3 A fuse would melt.' },
+      { text: '13 A', why: 'Too big: a fault current could flow without melting it.' },
+      { text: 'no fuse', why: 'A fuse is needed.' },
+    ],
+  },
+  {
+    question: '16. A wire carrying a current is in a magnetic field. Both the current and the field are reversed. The force…',
+    options: [
+      { text: 'stays in the same direction', correct: true, why: 'Two reversals cancel.' },
+      { text: 'reverses', why: 'Each reversal reverses it; both together cancel.' },
+      { text: 'becomes zero', why: 'The force is still there.' },
+      { text: 'doubles', why: 'The size does not change.' },
+    ],
+  },
+  {
+    question: '17. Which particles are in the nucleus?',
+    options: [
+      { text: 'protons and neutrons', correct: true, why: 'Electrons orbit outside.' },
+      { text: 'protons and electrons', why: 'Electrons are outside.' },
+      { text: 'only neutrons', why: 'Protons too.' },
+      { text: 'electrons and neutrons', why: 'Protons and neutrons.' },
+    ],
+  },
+  {
+    question: '18. What is the source of most background radiation in many places?',
+    options: [
+      { text: 'radon gas from rocks', correct: true, why: 'Also rocks, buildings, food and cosmic rays.' },
+      { text: 'mobile phones', why: 'Microwaves are not ionising.' },
+      { text: 'televisions', why: 'Not ionising.' },
+      { text: 'the Moon', why: 'Radon, rocks, food, cosmic rays.' },
+    ],
+  },
+  {
+    question: '19. How long does the Moon take to orbit the Earth (approximately)?',
+    options: [
+      { text: 'one month', correct: true, why: 'This gives the cycle of phases.' },
+      { text: 'one day', why: 'That is the Earth’s spin.' },
+      { text: 'one year', why: 'That is the Earth’s orbit.' },
+      { text: 'one week', why: 'About one month.' },
+    ],
+  },
+  {
+    question: '20. (E) What is the refractive index if i = 60° and r = 35°?',
+    options: [
+      { text: '1.51', correct: true, why: '$\\dfrac{\\sin 60^\\circ}{\\sin 35^\\circ} = \\dfrac{0.866}{0.574}$.' },
+      { text: '1.71', why: 'That is $\\dfrac{60}{35}$: use the sines.' },
+      { text: '0.66', why: 'Upside down.' },
+      { text: '25', why: 'Divide the sines.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Plan your revision" minutes={25}>
+
+Write the topic of each question you got wrong. For each topic, open the unit, read the lesson again, and do 5 practice questions on the [Practice page](../../../practice/).
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** instructions 5 min, test 30 min, correction and planning 25 min.
+
+**These are our own questions** in the style of Papers 1 and 2. For real exam practice, use the specimen and past papers from Cambridge.
+
+**Question 15:** the fuse rating should be just above the normal current (4 A here).
+
+</Step>

@@ -1,0 +1,194 @@
+---
+unit: 1
+lesson: 6
+title: Distance–time graphs
+syllabus: ['1.2 C4', '1.2 C5', '1.2 C6']
+goals:
+  - Plot and read a distance–time graph.
+  - Say from the shape of the graph if an object is at rest, at constant speed, speeding up or slowing down.
+  - Calculate the speed from the gradient of a straight line.
+keyWords: [distance, time, gradient, at rest, constant speed]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Graph from '../../../components/Graph.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { graphSvg } from '../../../lib/graph';
+
+<Step kind="starter" title="Tell the story" minutes={5}>
+
+This graph shows a walk to the shop.
+Tell the story of the walk to your partner. What happens in A, B and C?
+
+<Graph
+  xLabel="time / s" yLabel="distance / m"
+  xMax={60} yMax={300} xStep={10} yStep={50}
+  points={[[0, 0], [20, 100], [40, 100], [60, 250]]}
+  labels={[{ x: 8, y: 75, text: 'A' }, { x: 30, y: 120, text: 'B' }, { x: 48, y: 210, text: 'C' }]}
+/>
+
+</Step>
+
+<Step kind="learn" title="Reading the shape" minutes={12}>
+
+On a distance–time graph, **time** is on the horizontal axis and **distance** is on the vertical axis.
+
+<div class="table-wrap">
+
+| Shape of the line | What the object does |
+|---|---|
+| flat (horizontal) | at rest: the distance does not change |
+| straight and sloping | moves at constant speed |
+| curve, getting steeper | speeds up (accelerates) |
+| curve, getting less steep | slows down (decelerates) |
+
+</div>
+
+<div class="graph-grid">
+<Graph
+  xLabel="time / s" yLabel="distance / m" xMax={10} yMax={50} xStep={2} yStep={10}
+  points={[[0, 30], [10, 30]]} caption="At rest"
+/>
+<Graph
+  xLabel="time / s" yLabel="distance / m" xMax={10} yMax={50} xStep={2} yStep={10}
+  points={[[0, 0], [10, 50]]} caption="Constant speed"
+/>
+<Graph
+  xLabel="time / s" yLabel="distance / m" xMax={10} yMax={50} xStep={2} yStep={10}
+  points={[[0, 0], [2, 2], [4, 8], [6, 18], [8, 32], [10, 50]]} curve caption="Speeding up: the curve gets steeper"
+/>
+<Graph
+  xLabel="time / s" yLabel="distance / m" xMax={10} yMax={50} xStep={2} yStep={10}
+  points={[[0, 0], [2, 18], [4, 32], [6, 42], [8, 48], [10, 50]]} curve caption="Slowing down: the curve gets less steep"
+/>
+</div>
+
+**A steeper line means a higher speed.**
+
+</Step>
+
+<Step kind="learn" title="Speed from the gradient" minutes={8}>
+
+The **gradient** of the line tells us how steep it is.
+On a distance–time graph, the gradient of a straight line **is the speed**:
+
+$$
+\text{speed} = \text{gradient} = \frac{\text{change in distance}}{\text{change in time}}
+$$
+
+<WorkedExample
+  question="Look at part C of the starter graph. Calculate the speed."
+  given={['part C starts at $(40\\,\\text{s},\\ 100\\,\\text{m})$', 'part C ends at $(60\\,\\text{s},\\ 250\\,\\text{m})$']}
+  find="the speed in part C"
+  answer="$7.5\,\text{m/s}$"
+>
+
+$\text{change in distance} = 250 - 100 = 150\,\text{m}$
+
+$\text{change in time} = 60 - 40 = 20\,\text{s}$
+
+$\text{speed} = \dfrac{150}{20} = 7.5\,\text{m/s}$
+
+</WorkedExample>
+
+Use two points that are **far apart** on the line, and that are easy to read on the grid.
+
+</Step>
+
+<Step kind="do" title="Plot a graph" minutes={15}>
+
+A toy car moves along the floor. Here are the results.
+
+<div class="table-wrap">
+
+| time / s | 0 | 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 |
+|---|---|---|---|---|---|---|---|---|---|
+| distance / m | 0 | 6 | 12 | 18 | 18 | 18 | 22 | 26 | 30 |
+
+</div>
+
+1. Draw the axes. Label them **time / s** and **distance / m**.
+2. Choose scales so the graph uses more than half of the paper in each direction.
+3. Plot each point with a small cross (×).
+4. Join the points with straight lines, using a ruler.
+5. Find the three parts of the motion. Describe each part in one sentence.
+6. Calculate the speed in each part.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={15}>
+
+<Practice topic="dt-graph" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: `Which part of this graph shows the object at rest? ${graphSvg({ xLabel: 'time / s', yLabel: 'distance / m', xMax: 30, yMax: 60, xStep: 5, yStep: 10, points: [[0, 0], [10, 30], [20, 30], [30, 60]], labels: [{ x: 4, y: 22, text: 'P' }, { x: 15, y: 36, text: 'Q' }, { x: 24, y: 52, text: 'R' }] })}`,
+    options: [
+      { text: 'Q', correct: true, why: 'The line is flat: the distance does not change.' },
+      { text: 'P', why: 'The distance increases in P, so the object moves.' },
+      { text: 'R', why: 'The distance increases in R, so the object moves.' },
+      { text: 'P and R', why: 'In P and R the distance increases. The object moves.' },
+    ],
+  },
+  {
+    question: 'On a distance–time graph, line X is steeper than line Y. What does this mean?',
+    options: [
+      { text: 'X is faster than Y', correct: true, why: 'A steeper line means a higher speed.' },
+      { text: 'X is slower than Y', why: 'A steeper line means a higher speed.' },
+      { text: 'X goes uphill', why: 'A distance–time graph is not a picture of the road.' },
+      { text: 'X is at rest', why: 'At rest, the line is flat.' },
+    ],
+  },
+  {
+    question: 'A straight line goes from (0 s, 0 m) to (5 s, 20 m). What is the speed?',
+    options: [
+      { text: '4 m/s', correct: true, why: '$\\text{gradient} = \\dfrac{20 - 0}{5 - 0} = 4\\,\\text{m/s}$.' },
+      { text: '0.25 m/s', why: 'You divided the wrong way: change in distance ÷ change in time.' },
+      { text: '100 m/s', why: 'You multiplied. Divide the distance by the time.' },
+      { text: '20 m/s', why: '20 m is the distance. Divide by the time.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Sketch a distance–time graph for this story: *"I walk to the bus stop at constant speed. I wait there for 5 minutes. Then I run to school."*
+2. Do 5 questions at **Level 2** of the practice.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 20 min, plotting 15 min, practice 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Reading the graph as a picture of the path (a slope = a hill).
+- Thinking a flat line means "moving at constant speed".
+- Finding the gradient of a later part using the origin, not the start of that part.
+- Using too small a scale, or uneven scales.
+
+**Answers for the plotting task:** 0–6 s: 3 m/s; 6–10 s: at rest; 10–16 s: 2 m/s.
+
+**Language support:**
+
+- Teach *steep* and *flat* with your hand before the graphs.
+- Story frame: *"First, the … moves at constant speed. Then it stops for … s. Then …"*
+
+**Differentiation:**
+
+- Support: give printed axes with scales already drawn.
+- Stretch: in the homework story, which part has the steepest line? Explain why.
+
+**Exam conventions:** axis labels as "quantity / unit"; points as crosses; graph uses more than half of the grid. See "Presentation of data" in the syllabus.
+
+</Step>

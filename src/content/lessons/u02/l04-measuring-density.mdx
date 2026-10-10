@@ -1,0 +1,162 @@
+---
+unit: 2
+lesson: 4
+title: Measuring density
+syllabus: ['1.4 C2']
+goals:
+  - Describe how to measure the density of a regular solid.
+  - Describe how to measure the density of an irregular solid that sinks, by displacement.
+  - Describe how to measure the density of a liquid.
+keyWords: [density, displacement, volume, mass, measuring cylinder]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { cylinderSvg } from '../../../scripts/practice/measure';
+
+<Step kind="starter" title="The volume of a stone" minutes={5}>
+
+You can find the volume of a box with a ruler: length × width × height.
+
+How can you find the volume of a stone? It has no straight sides. Discuss with a partner.
+
+</Step>
+
+<Step kind="learn" title="Three methods" minutes={15}>
+
+To find a density, we always need two measurements: the **mass** (with a balance) and the **volume**. Then $\rho = \dfrac{m}{V}$.
+
+### 1. A regular solid (a block)
+
+1. Measure the mass $m$ on a balance.
+2. Measure the length, width and height with a ruler.
+3. Volume: $V = \text{length} \times \text{width} \times \text{height}$.
+4. Calculate $\rho = \dfrac{m}{V}$.
+
+### 2. An irregular solid that sinks: displacement
+
+1. Measure the mass $m$ of the object on a balance.
+2. Put some water in a measuring cylinder. Read the volume $V_1$.
+3. Put the object in the water carefully. It sinks and pushes the water up (**displacement**). Read the new volume $V_2$.
+4. Volume of the object: $V = V_2 - V_1$.
+5. Calculate $\rho = \dfrac{m}{V}$.
+
+<div class="graph-grid">
+<Figure svg={cylinderSvg(40)} caption="Before: V₁ = 40 cm³" width="12rem" />
+<Figure svg={cylinderSvg(58, { stone: true })} caption="After: V₂ = 58 cm³" width="12rem" />
+</div>
+
+<WorkedExample
+  question="A stone has a mass of 45 g. The water level goes from 40 cm³ to 58 cm³. Calculate the density of the stone."
+  given={['$m = 45\\,\\text{g}$', '$V_1 = 40\\,\\text{cm}^3$', '$V_2 = 58\\,\\text{cm}^3$']}
+  find="the density $\rho$"
+  answer="$\rho = 2.5\,\text{g/cm}^3$"
+>
+
+$V = V_2 - V_1 = 58 - 40 = 18\,\text{cm}^3$
+
+$\rho = \dfrac{m}{V} = \dfrac{45}{18} = 2.5\,\text{g/cm}^3$
+
+</WorkedExample>
+
+### 3. A liquid
+
+1. Measure the mass of an empty measuring cylinder: $m_1$.
+2. Pour some liquid in. Read the volume $V$.
+3. Measure the mass of the cylinder with the liquid: $m_2$.
+4. Mass of the liquid: $m = m_2 - m_1$.
+5. Calculate $\rho = \dfrac{m}{V}$.
+
+</Step>
+
+<Step kind="do" title="Density practical" minutes={20}>
+
+**Equipment:** balance, ruler, measuring cylinder (100 cm³), water, a metal block, a small stone, a liquid (for example cooking oil), paper towels.
+
+Work in groups of 3. Use the three methods. Write your results in a table.
+
+<div class="table-wrap">
+
+| object | mass / g | volume / cm³ | density / (g/cm³) |
+|---|---|---|---|
+| metal block | | | |
+| stone | | | |
+| cooking oil | | | |
+
+</div>
+
+**Questions:**
+
+1. Compare the density of the metal block with the table of the last lesson. What metal could it be?
+2. Why do you put the stone into the water **carefully**? *(Think about splashes.)*
+3. Your method for the liquid uses two masses. Why?
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={15}>
+
+<Practice topic="density-measure" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'The water in a measuring cylinder goes from 30 cm³ to 42 cm³ when a key is added. What is the volume of the key?',
+    options: [
+      { text: '12 cm³', correct: true, why: '$V = 42 - 30 = 12\\,\\text{cm}^3$.' },
+      { text: '42 cm³', why: 'This is the water and the key together.' },
+      { text: '72 cm³', why: 'Subtract: after − before.' },
+      { text: '30 cm³', why: 'This is the water only.' },
+    ],
+  },
+  {
+    question: 'Which method can you use for an irregular stone that sinks?',
+    options: [
+      { text: 'displacement in a measuring cylinder', correct: true, why: 'The rise in the water level is the volume of the stone.' },
+      { text: 'length × width × height', why: 'This works only for a regular block.' },
+      { text: 'weigh it twice', why: 'Weighing gives the mass. You also need the volume: use displacement.' },
+      { text: 'put it in an empty measuring cylinder', why: 'You need water: the stone pushes the water up.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Write a method to find the density of a coin. Use numbered steps, and say which equipment you need.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 15 min, practical 20 min, practice 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Using $V_2$ (water + object) as the volume of the object.
+- Using the mass of the cylinder + liquid as the mass of the liquid.
+- Reading the top of the curved surface in the measuring cylinder.
+
+**Practical tips:** tilt the measuring cylinder and let the stone slide down the side, so no water splashes out. Use a stone that fits easily and sinks. For a precise result with a small stone, use a smaller measuring cylinder (finer scale).
+
+**Answer to question 3:** the balance measures the cylinder too, so you subtract the mass of the empty cylinder.
+
+**Language support:**
+
+- Act out *displace*: push a bottle into a full bowl of water and watch the water rise.
+
+**Differentiation:**
+
+- Support: give the three methods as cards with pictures.
+- Stretch: how could you find the density of a cork that **floats**? (Push it under with a thin pin, or attach a sinker and subtract the sinker’s volume.)
+
+**Safety:** clean water spills at once. Glass measuring cylinders can break.
+
+</Step>

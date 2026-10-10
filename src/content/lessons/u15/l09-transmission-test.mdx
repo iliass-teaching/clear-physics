@@ -1,0 +1,170 @@
+---
+unit: 15
+lesson: 9
+title: High-voltage transmission, and unit test
+syllabus: ['4.5.6 C4', '4.5.6 C5', '4.5.6 S8', '4.5']
+goals:
+  - Describe the use of transformers to transmit electricity at high voltage.
+  - State the advantages of high-voltage transmission.
+  - 'Extended: use $P = I^2 R$ to explain why power losses are smaller at a high voltage.'
+  - Check your learning of Unit 15 with a test.
+keyWords: [transformer, step-up transformer, step-down transformer, power]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { transmissionSvg } from '../../../lib/emEffectsFigures';
+
+<Step kind="learn" title="From the power station to your home" minutes={12}>
+
+<Figure svg={transmissionSvg()} caption="Transformers in the electricity grid." width="38rem" />
+
+1. A **step-up** transformer at the power station increases the p.d. to a very high value (hundreds of kilovolts).
+2. **Cables** (on pylons) carry the electricity over long distances.
+3. **Step-down** transformers near towns reduce the p.d. to a safe value for homes (230 V in many countries; 220 V in Thailand).
+
+**Advantages of high-voltage transmission:**
+
+- For the same power, a high p.d. means a **small current** in the cables.
+- A small current means **less energy lost** as heat in the cables.
+- So **thinner, cheaper** cables can be used, and less energy is wasted.
+
+**Extended: why less loss?** The power lost as heat in a cable of resistance $R$ is:
+
+$$
+P = I^2 R
+$$
+
+$P = IV$: for the same power, if the p.d. is 10 times bigger, the current is 10 times smaller, and the power loss is $10^2 = 100$ times smaller.
+
+</Step>
+
+<Step kind="practice" title="Practice (Extended)" minutes={15}>
+
+<Practice topic="transmission" />
+
+</Step>
+
+<Step kind="exit" title="Unit test" minutes={33}>
+
+Questions marked **(E)** are for Extended students.
+
+<Quiz questions={[
+  {
+    question: '1. What is the shape of the magnetic field around a straight wire carrying a current?',
+    options: [
+      { text: 'circles around the wire', correct: true, why: 'Direction: right-hand grip rule.' },
+      { text: 'lines parallel to the wire', why: 'The field goes around the wire.' },
+      { text: 'like a bar magnet', why: 'That is a solenoid.' },
+      { text: 'there is no field', why: 'A current makes a field.' },
+    ],
+  },
+  {
+    question: '2. In a relay, a small current…',
+    options: [
+      { text: 'magnetises a coil, which closes a switch in a second circuit', correct: true, why: 'A small current switches a big current.' },
+      { text: 'heats a wire until it melts', why: 'That is a fuse.' },
+      { text: 'changes the p.d. of a.c.', why: 'That is a transformer.' },
+      { text: 'makes sound', why: 'That is a loudspeaker.' },
+    ],
+  },
+  {
+    question: '3. A current-carrying wire in a magnetic field feels a force. What happens if you reverse the field?',
+    options: [
+      { text: 'The force reverses', correct: true, why: 'Reverse the current or the field: the force reverses.' },
+      { text: 'The force stays the same', why: 'It reverses.' },
+      { text: 'The force becomes zero', why: 'It reverses.' },
+      { text: 'The current stops', why: 'The force reverses.' },
+    ],
+  },
+  {
+    question: '4. Which change does NOT increase the turning effect on a motor coil?',
+    options: [
+      { text: 'reversing the current', correct: true, why: 'This only reverses the direction of rotation.' },
+      { text: 'more turns on the coil', why: 'This increases the turning effect.' },
+      { text: 'a bigger current', why: 'This increases the turning effect.' },
+      { text: 'a stronger magnet', why: 'This increases the turning effect.' },
+    ],
+  },
+  {
+    question: '5. A magnet is held still inside a coil connected to a meter. The meter reads…',
+    options: [
+      { text: 'zero', correct: true, why: 'No movement, no change: no induced e.m.f.' },
+      { text: 'a steady current', why: 'The field must change.' },
+      { text: 'a big alternating current', why: 'Nothing changes, so nothing is induced.' },
+      { text: 'it depends on the meter', why: 'Zero.' },
+    ],
+  },
+  {
+    question: '6. A transformer has 1000 turns on the primary and 50 turns on the secondary. The primary p.d. is 240 V. What is the secondary p.d.?',
+    options: [
+      { text: '12 V', correct: true, why: '$240 \\times \\dfrac{50}{1000}$.' },
+      { text: '4800 V', why: 'Upside down: fewer secondary turns, smaller p.d.' },
+      { text: '240 V', why: 'The turns are different.' },
+      { text: '20 V', why: 'Check: $240 \\times \\dfrac{50}{1000} = 12$.' },
+    ],
+  },
+  {
+    question: '7. Why is electricity transmitted at a very high p.d.?',
+    options: [
+      { text: 'The current is smaller, so less energy is lost in the cables', correct: true, why: 'And thinner cables can be used.' },
+      { text: 'It travels faster', why: 'The reason is smaller losses.' },
+      { text: 'It is safer near homes', why: 'High p.d. is dangerous; it is stepped down before homes.' },
+      { text: 'Homes need a very high p.d.', why: 'Homes use 230 V (220 V in Thailand).' },
+    ],
+  },
+  {
+    question: '8. Name the factors that increase an induced e.m.f.',
+    options: [
+      { text: 'faster motion, stronger field, more turns', correct: true, why: 'These are the three factors.' },
+      { text: 'slower motion, weaker field', why: 'These decrease it.' },
+      { text: 'a thicker coil only', why: 'Speed, field and turns.' },
+      { text: 'a d.c. supply', why: 'Speed, field and turns.' },
+    ],
+  },
+  {
+    question: '9. (E) In an a.c. generator, when is the e.m.f. biggest?',
+    options: [
+      { text: 'when the coil is parallel to the field', correct: true, why: 'Its sides cut the field lines fastest.' },
+      { text: 'when the coil is at 90° to the field', why: 'Then the e.m.f. is zero.' },
+      { text: 'when the coil stops', why: 'No motion: no e.m.f.' },
+      { text: 'always the same', why: 'It changes with the position.' },
+    ],
+  },
+  {
+    question: '10. (E) A transformer (100% efficient) changes 230 V to 23 V. The secondary current is 2 A. What is the primary current?',
+    options: [
+      { text: '0.2 A', correct: true, why: '$I_p = \\dfrac{I_s V_s}{V_p} = \\dfrac{2 \\times 23}{230}$.' },
+      { text: '20 A', why: 'Upside down: the primary current is smaller in a step-down transformer.' },
+      { text: '2 A', why: 'Power in = power out: the currents are different.' },
+      { text: '46 A', why: 'Use $I_p V_p = I_s V_s$.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** the grid and its advantages (4.5.6 C4, C5) are Core. $P = I^2R$ (S8) is Extended.
+
+**Timing:** transmission 12 min, practice 15 min, unit test 33 min.
+
+**Numbers:** typical values: generators about 25 kV; transmission up to 400 kV in many countries (for example the UK national grid); homes 230 V (220 V in Thailand). These are examples, not syllabus requirements.
+
+**Using the test:** questions 1–8 test Core content; 9–10 are Extended.
+
+**Common mistakes:**
+
+- "High voltage means high current."
+- Forgetting to square the current in $P = I^2R$.
+
+**Differentiation:**
+
+- Support: the grid diagram to label.
+- Stretch: a power station sends 100 MW. Compare the power lost in a 5 Ω cable at 25 kV and at 400 kV.
+
+</Step>

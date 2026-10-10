@@ -1,0 +1,140 @@
+---
+unit: 13
+lesson: 2
+title: Measuring current; charge and current
+syllabus: ['4.2.2 C2', '4.2.2 S5']
+goals:
+  - Use analogue and digital ammeters with different ranges.
+  - 'Extended: define current as charge per unit time, and use $I = \dfrac{Q}{t}$.'
+keyWords: [ammeter, electric current, ampere, coulomb]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { ammeterDialSvg, measureCircuitSvg } from '../../../lib/electricFigures';
+
+<Step kind="starter" title="Read the meter" minutes={5}>
+
+<Figure svg={ammeterDialSvg()} caption="An analogue ammeter and a digital ammeter." width="32rem" />
+
+The analogue ammeter has two scales. If it is set to the **0–1 A** range, what does it read? And on the **0–5 A** range?
+
+</Step>
+
+<Step kind="learn" title="Using an ammeter" minutes={12}>
+
+- An **ammeter** measures current. It is connected **in series**: the current must go **through** it.
+- In a series circuit, the ammeter reads the same anywhere in the loop (Unit 14).
+
+<Figure svg={measureCircuitSvg()} caption="An ammeter is in series. (The voltmeter, in parallel, is for the next lesson.)" width="32rem" />
+
+**Analogue ammeters** have a needle and a scale. Many have two **ranges** (for example 0–1 A and 0–5 A).
+
+- Read the scale that matches the range you connected.
+- Look straight at the needle (not from the side) to avoid a parallax error.
+
+**Digital ammeters** show a number. Choose a range: for a small current (for example 0.025 A), a **milliamp** range (mA) gives more digits: 25.0 mA. 1 mA = 0.001 A.
+
+**Which range?** Start with the **highest** range (so the meter is not damaged), then change to a lower range to get a more precise reading.
+
+</Step>
+
+<Step kind="learn" title="Charge and current (Extended)" minutes={10}>
+
+Current is the **charge** passing a point **each second**:
+
+$$
+I = \frac{Q}{t}
+$$
+
+- $I$: current (A); $Q$: charge (C, coulombs); $t$: time (s).
+- So 1 A = 1 C/s (one coulomb each second).
+
+<WorkedExample
+  question="A current of 0.5 A flows through a lamp for 2 minutes. How much charge passes through the lamp?"
+  given={['$I = 0.5\\,\\text{A}$', '$t = 2\\,\\text{min} = 120\\,\\text{s}$']}
+  find="the charge $Q$"
+  answer="$Q = 60\,\text{C}$"
+>
+
+$I = \dfrac{Q}{t}$, so $Q = I t$
+
+$Q = 0.5 \times 120$
+
+$Q = 60\,\text{C}$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="practice" title="Practice (Extended)" minutes={20}>
+
+<Practice topic="charge-current" />
+
+**Core students:** build a circuit with a cell, a switch, a lamp and an ammeter. Read the current with an analogue and a digital ammeter, on two different ranges. Which reading is more precise?
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={8}>
+
+<Quiz questions={[
+  {
+    question: 'How is an ammeter connected in a circuit?',
+    options: [
+      { text: 'in series', correct: true, why: 'The current must go through it.' },
+      { text: 'in parallel with the lamp', why: 'That is how a voltmeter is connected.' },
+      { text: 'across the cell', why: 'That would damage the ammeter.' },
+      { text: 'it does not matter', why: 'It must be in series.' },
+    ],
+  },
+  {
+    question: 'A digital ammeter reads 0.04 A on the 0–10 A range. What should you do for a more precise reading?',
+    options: [
+      { text: 'change to a lower range (for example mA)', correct: true, why: 'More digits: for example 40.2 mA.' },
+      { text: 'change to a higher range', why: 'A higher range gives fewer digits.' },
+      { text: 'connect it in parallel', why: 'An ammeter must stay in series.' },
+      { text: 'nothing', why: 'A lower range gives a more precise reading.' },
+    ],
+  },
+  {
+    question: 'Extended: 30 C of charge passes in 10 s. What is the current?',
+    options: [
+      { text: '3 A', correct: true, why: '$I = \\dfrac{Q}{t} = \\dfrac{30}{10}$.' },
+      { text: '300 A', why: 'Divide: $I = \\dfrac{Q}{t}$.' },
+      { text: '0.33 A', why: 'Upside down.' },
+      { text: '40 A', why: 'Divide, do not add.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** using ammeters (4.2.2 C2) is Core. $I = \dfrac{Q}{t}$ (S5) is Extended.
+
+**Timing:** starter 5 min, ammeters 12 min, charge and current 10 min, practice 20 min, exit ticket 8 min.
+
+**Starter answer:** 0.62 A on the 0–1 A scale; 3.1 A on the 0–5 A scale.
+
+**Common mistakes:**
+
+- Reading the wrong scale on a two-range meter.
+- Connecting an ammeter in parallel (it has a very small resistance: a big current can damage it).
+- Time in minutes in $Q = It$.
+
+**Language support:**
+
+- *range* = the biggest value a meter can measure with one setting.
+- *precise* = with more digits (smaller steps).
+
+**Differentiation:**
+
+- Support: several printed dials to read.
+- Stretch: an ammeter has a resistance of 0.1 Ω. Why must it be very small?
+
+</Step>

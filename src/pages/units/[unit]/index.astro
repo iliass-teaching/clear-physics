@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { units } from '../../../data/units';
+import { lessonUrl, url } from '../../../lib/url';
+
+export function getStaticPaths() {
+  return units.map((unit) => ({ params: { unit: String(unit.number) }, props: { unit } }));
+}
+
+const { unit } = Astro.props;
+const plan = unit.lessons ?? [];
+const written = new Set(
+  (await getCollection('lessons'))
+    .filter((e) => e.data.unit === unit.number)
+    .map((e) => e.data.lesson),
+);
+// Every planned lesson must exist: stop the build instead of showing a broken link.
+const missing = plan.filter((l) => !written.has(l.number));
+if (missing.length > 0) {
+  throw new Error(`Unit ${unit.number}: no lesson file for ${missing.map((l) => l.number).join(', ')}`);
+}
+---
+
+<Base title={`Unit ${unit.number}: ${unit.title}`}>
+  <p class="kicker"><a href={url('course/')}>Course</a> · Year {unit.year}</p>
+  <h1><span class="n">Unit {unit.number}</span> {unit.title}</h1>
+  <p class="meta">
+    <span>Syllabus {unit.syllabus}</span>
+    <span>{unit.lessonCount} lessons</span>
+    {unit.extended && <span class="tag ext">Extended</span>}
+  </p>
+
+  <ol class="lessons">
+    {plan.map((l) => {
+      const ext = l.extended || l.syllabus.every((s) => / S\d/.test(s));
+      return (
+        <li>
+          <a href={lessonUrl(unit.number, l.number)}>
+            <span class="num">{l.number}</span>
+            <span class="main">
+              <span class="title">{l.title} {ext && <span class="tag ext">Extended</span>}</span>
+              <span class="codes">{l.syllabus.join(' · ')}</span>
+            </span>
+            <span class="go" aria-hidden="true">→</span>
+          </a>
+        </li>
+      );
+    })}
+  </ol>
+</Base>
+
+<style>
+  .kicker { margin: 0; font-size: 0.85rem; color: var(--ink-soft); }
+  .kicker a { font-weight: 700; text-decoration: none; }
+  h1 .n { display: block; font-family: var(--sans); font-size: 0.9rem; font-weight: 700; color: var(--accent); letter-spacing: 0.04em; }
+  .meta { display: flex; flex-wrap: wrap; gap: 0.3rem 1.2rem; color: var(--ink-soft); font-size: 0.88rem; align-items: center; }
+  .lessons { list-style: none; padding: 0; margin: 1.5rem 0; border-top: 1px solid var(--line); }
+  .lessons li { margin: 0; border-bottom: 1px solid var(--line); }
+  .lessons a {
+    display: grid;
+    grid-template-columns: 2.2rem 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 0.4rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .lessons a:hover { background: var(--surface-2); }
+  .num { font-family: var(--serif); font-size: 1.15rem; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .title { font-weight: 700; }
+  .codes { display: block; font-size: 0.8rem; color: var(--ink-soft); }
+  .go { color: var(--ink-soft); }
+  a:hover .go { color: var(--accent); }
+</style>

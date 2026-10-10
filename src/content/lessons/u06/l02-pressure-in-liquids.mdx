@@ -1,0 +1,150 @@
+---
+unit: 6
+lesson: 2
+title: Pressure in liquids
+syllabus: ['1.8 C3', '1.8 S4']
+goals:
+  - Describe how the pressure in a liquid changes with depth.
+  - Describe how it changes with the density of the liquid.
+  - 'Use the equation $\Delta p = \rho g \Delta h$ (Extended).'
+keyWords: [pressure, depth, density, pascal]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { holesSvg, damSvg } from '../../../lib/pressureFigures';
+
+<Step kind="starter" title="Deep water" minutes={5}>
+
+When you swim to the bottom of a deep pool, your ears hurt. Why do you think this happens?
+
+</Step>
+
+<Step kind="learn" title="Depth and density" minutes={12}>
+
+The pressure in a liquid is caused by the **weight of the liquid above**.
+
+- The pressure **increases with depth**: deeper down, there is more liquid above.
+- The pressure is bigger in a **denser** liquid: at the same depth, the liquid above is heavier.
+- At one depth, the pressure acts **in all directions**.
+
+<div class="graph-grid">
+<Figure svg={holesSvg()} caption="Water squirts out faster from the lower holes." width="22rem" />
+<Figure svg={damSvg()} caption="A dam is thicker at the bottom, where the pressure is biggest." width="22rem" />
+</div>
+
+</Step>
+
+<Step kind="learn" title="Calculating the pressure (Extended)" minutes={10}>
+
+The change in pressure beneath the surface of a liquid:
+
+$$
+\Delta p = \rho g \Delta h
+$$
+
+- $\Delta p$: change in pressure (Pa)
+- $\rho$: density of the liquid (kg/m³) — water: $1000\,\text{kg/m}^3$
+- $g$: gravitational field strength ($9.8\,\text{N/kg}$)
+- $\Delta h$: change in depth (m)
+
+<WorkedExample
+  question="Calculate the extra pressure due to the water at the bottom of a swimming pool 2.5 m deep."
+  given={['$\\rho = 1000\\,\\text{kg/m}^3$', '$g = 9.8\\,\\text{N/kg}$', '$\\Delta h = 2.5\\,\\text{m}$']}
+  find="the change in pressure $\Delta p$"
+  answer="$\Delta p = 24\,500\,\text{Pa}$"
+>
+
+$\Delta p = \rho g \Delta h = 1000 \times 9.8 \times 2.5$
+
+$\Delta p = 24\,500\,\text{Pa}$
+
+</WorkedExample>
+
+This is the pressure **due to the water only**. The air above also pushes on the surface (atmospheric pressure, about 100 000 Pa).
+
+</Step>
+
+<Step kind="do" title="Holes in a bottle" minutes={13}>
+
+**Equipment:** a tall plastic bottle with 3 holes at different heights (covered with tape), a tray, water, a ruler.
+
+1. Fill the bottle with water. Put it on the edge of the tray.
+2. Remove the tapes at the same time.
+3. Watch the jets of water. Measure how far each jet reaches on the tray.
+
+**Questions:**
+
+1. Which jet comes out fastest? Explain using *depth* and *pressure*.
+2. Predict what happens if you use salty water (a denser liquid) at the same depths.
+3. As the bottle empties, what happens to the jets? Why?
+
+</Step>
+
+<Step kind="practice" title="Practice (Extended)" minutes={15}>
+
+<Practice topic="liquid-pressure" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Why is a dam thicker at the bottom?',
+    options: [
+      { text: 'The water pressure is biggest at the bottom', correct: true, why: 'Pressure increases with depth.' },
+      { text: 'The water is colder at the bottom', why: 'The reason is the pressure, which increases with depth.' },
+      { text: 'To make it look strong', why: 'The pressure of the water is biggest at the bottom.' },
+      { text: 'The water pressure is smallest at the bottom', why: 'Pressure increases with depth.' },
+    ],
+  },
+  {
+    question: 'Extended: what is the extra pressure 10 m below the surface of water? ($\\rho = 1000\\,\\text{kg/m}^3$, $g = 9.8\\,\\text{N/kg}$)',
+    options: [
+      { text: '98 000 Pa', correct: true, why: '$1000 \\times 9.8 \\times 10 = 98\\,000\\,\\text{Pa}$.' },
+      { text: '10 000 Pa', why: 'Do not forget $g$.' },
+      { text: '98 Pa', why: 'Use the density of water: 1000 kg/m³.' },
+      { text: '9800 Pa', why: 'Multiply by the depth: 10 m.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+A submarine goes from 50 m to 200 m below the surface of the sea. Describe what happens to the pressure on it, and explain why submarines need thick, strong walls.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** the qualitative ideas (1.8 C3) are Core. $\Delta p = \rho g \Delta h$ (1.8 S4) is Extended.
+
+**Timing:** starter 5 min, learn 22 min, bottle 13 min, practice 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Using the density in g/cm³ (use kg/m³).
+- Thinking the pressure depends on the shape or the width of the container (it depends on depth and density only).
+- Adding the atmospheric pressure when the question asks for the change in pressure.
+
+**About the bottle:** the lowest jet comes out fastest, because the pressure is biggest there. How far each jet lands also depends on the height of the hole above the tray, so ask students to compare how fast the water comes out.
+
+**Language support:**
+
+- Sentence frame: *"The deeper the water, the … the pressure, because …"*
+
+**Differentiation:**
+
+- Support: focus on the bottle and the dam.
+- Stretch: the deepest point of the ocean is about 11 000 m. Estimate the pressure due to the sea water there ($\rho = 1030\,\text{kg/m}^3$). (About $1.1 \times 10^8\,\text{Pa}$.)
+
+**Safety:** do the bottle experiment over a tray or a sink. Wipe up spills.
+
+</Step>

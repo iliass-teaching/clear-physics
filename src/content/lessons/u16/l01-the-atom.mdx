@@ -1,0 +1,153 @@
+---
+unit: 16
+lesson: 1
+title: The atom
+syllabus: ['5.1.1 C1', '5.1.1 C2']
+goals:
+  - Describe the structure of an atom (nucleus and electrons).
+  - Describe how atoms form positive and negative ions.
+keyWords: [nucleus, proton, neutron, electron, ion]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { atomSvg, ionsSvg } from '../../../lib/nuclearFigures';
+
+<Step kind="starter" title="How small?" minutes={5}>
+
+A single atom is about 0.000 000 000 1 m across ($10^{-10}$ m). How many atoms would fit across the width of a hair (about 0.1 mm)? What do you think is inside an atom?
+
+</Step>
+
+<Step kind="learn" title="Inside an atom" minutes={15}>
+
+<Figure svg={atomSvg()} caption="The nuclear model of the atom (not to scale)." width="34rem" />
+
+- In the centre is a very small **nucleus**. It has a **positive** charge.
+- The nucleus contains **protons** (positive) and **neutrons** (no charge).
+- **Electrons** (negative) **orbit** the nucleus.
+- An atom has the same number of protons and electrons, so it is **neutral** (no overall charge).
+- The nucleus is about **100 000 times smaller** than the atom: an atom is mostly **empty space**. But the nucleus has almost all the mass.
+
+</Step>
+
+<Step kind="learn" title="Ions" minutes={12}>
+
+<Figure svg={ionsSvg()} caption="Atoms can lose or gain electrons." width="34rem" />
+
+An **ion** is an atom that has lost or gained electrons. (The nucleus does not change.)
+
+- An atom that **loses** electrons becomes a **positive ion** (more protons than electrons).
+- An atom that **gains** electrons becomes a **negative ion** (more electrons than protons).
+
+Example: a sodium atom has 11 protons and 11 electrons. It loses 1 electron: it becomes a positive ion, Na⁺, with 11 protons and 10 electrons.
+
+</Step>
+
+<Step kind="do" title="Model an atom" minutes={13}>
+
+Make a scale model of an atom in the school field (or imagine it): if the nucleus were a pea (about 5 mm) on the centre spot of a football pitch, where would the electrons be? (If the atom is 100 000 times bigger than the nucleus, the atom is about 500 m across: the electrons are outside the stadium.)
+
+Then, with small sticky dots of three colours, build these on paper:
+
+1. A helium atom: 2 protons, 2 neutrons, 2 electrons.
+2. A lithium atom: 3 protons, 4 neutrons, 3 electrons.
+3. A lithium ion Li⁺. What did you change?
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={10}>
+
+<Quiz questions={[
+  {
+    question: 'Where is most of the mass of an atom?',
+    options: [
+      { text: 'in the nucleus', correct: true, why: 'Protons and neutrons are much heavier than electrons.' },
+      { text: 'in the electrons', why: 'Electrons are very light.' },
+      { text: 'spread out evenly', why: 'Almost all the mass is in the tiny nucleus.' },
+      { text: 'in the empty space', why: 'Empty space has no mass.' },
+    ],
+  },
+  {
+    question: 'What is the charge of the nucleus?',
+    options: [
+      { text: 'positive', correct: true, why: 'It contains positive protons (and neutral neutrons).' },
+      { text: 'negative', why: 'Electrons are negative; the nucleus is positive.' },
+      { text: 'zero', why: 'The nucleus is positive; the whole atom is neutral.' },
+      { text: 'it changes all the time', why: 'It is positive.' },
+    ],
+  },
+  {
+    question: 'An atom gains 2 electrons. What does it become?',
+    options: [
+      { text: 'a negative ion', correct: true, why: 'More electrons than protons.' },
+      { text: 'a positive ion', why: 'Losing electrons gives a positive ion.' },
+      { text: 'a different element', why: 'The nucleus does not change.' },
+      { text: 'a neutral atom', why: 'It now has a negative charge.' },
+    ],
+  },
+  {
+    question: 'Why is an atom neutral?',
+    options: [
+      { text: 'It has the same number of protons and electrons', correct: true, why: 'Their charges cancel.' },
+      { text: 'It has no charges inside', why: 'It has + and − charges that cancel.' },
+      { text: 'Neutrons cancel the protons', why: 'Neutrons have no charge; electrons cancel the protons.' },
+      { text: 'Electrons are positive', why: 'Electrons are negative.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A magnesium atom (12 protons) loses 2 electrons. How many electrons does the ion have?',
+    options: [
+      { text: '10', correct: true, why: '$12 - 2 = 10$; the ion is Mg²⁺.' },
+      { text: '14', why: 'It loses electrons.' },
+      { text: '12', why: 'It has lost 2.' },
+      { text: '2', why: '12 − 2 = 10.' },
+    ],
+  },
+  {
+    question: 'Which particles orbit the nucleus?',
+    options: [
+      { text: 'electrons', correct: true, why: 'Negative electrons orbit the positive nucleus.' },
+      { text: 'protons', why: 'Protons are in the nucleus.' },
+      { text: 'neutrons', why: 'Neutrons are in the nucleus.' },
+      { text: 'ions', why: 'An ion is a whole atom with a charge.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core:** 5.1.1 C1, C2.
+
+**Timing:** starter 5 min, atom 15 min, ions 12 min, model 13 min, check 10 min, exit ticket 5 min.
+
+**Numbers:** an atom is about $10^{-10}$ m across, a nucleus about $10^{-15}$ to $10^{-14}$ m: the nucleus is roughly 10 000 to 100 000 times smaller.
+
+**Common mistakes:**
+
+- "Ions form when atoms gain or lose protons."
+- "The atom is like a small solid ball."
+- Confusing *neutron* and *neutral*.
+
+**Language support:**
+
+- *nucleus* (plural *nuclei*) = the centre.
+- *orbit* = go round and round.
+
+**Differentiation:**
+
+- Support: a labelled diagram with blanks.
+- Stretch: why is the word "orbit" only a simple model for electrons? (Modern physics describes them as clouds of probability; not in the syllabus.)
+
+</Step>

@@ -1,0 +1,158 @@
+---
+unit: 14
+lesson: 6
+title: Mains electricity and its hazards
+syllabus: ['4.4 C1', '4.4 C2']
+goals:
+  - State the hazards of damaged insulation, overheating cables, damp conditions and overloading.
+  - Know the three wires of a mains circuit.
+  - Explain why the switch must be in the live wire.
+keyWords: [live wire, neutral wire, earth wire, electrical insulator, alternating current]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { mainsCircuitSvg } from '../../../lib/safetyFigures';
+
+<Step kind="starter" title="Spot the danger" minutes={8}>
+
+Look around a kitchen or a classroom (or a photo of one). Make a list of things that could be dangerous with electricity. Why is each one dangerous?
+
+</Step>
+
+<Step kind="learn" title="Hazards" minutes={14}>
+
+The mains supply is **alternating current** at a high p.d. (about 230 V in many countries; 220 V in Thailand). It can **kill**.
+
+<div class="table-wrap">
+
+| Hazard | Why it is dangerous |
+|---|---|
+| **damaged insulation** (cracked or cut plastic on a cable) | someone can touch the metal wire inside and get an electric shock; it can also cause a short circuit and a fire |
+| **overheating cables** | a big current heats the wire; the insulation can melt and start a **fire** |
+| **damp conditions** (wet hands, water near sockets) | water conducts electricity: a current can flow through a person and give a shock |
+| **overloading** plugs, extension leads and sockets (too many appliances) | the total current is too big: the cables overheat and can start a fire |
+
+</div>
+
+</Step>
+
+<Step kind="learn" title="Three wires" minutes={12}>
+
+<Figure svg={mainsCircuitSvg()} caption="A mains circuit with an appliance that has a metal case." width="34rem" />
+
+- **Live wire** (also called the **line** wire): it carries the high alternating p.d. In many countries it is **brown**.
+- **Neutral wire**: it completes the circuit; it is at (or close to) 0 V. Often **blue**.
+- **Earth wire**: a safety wire, connected to the metal case and to the ground. Often **green and yellow**.
+
+**Why is the switch in the live wire?** When the switch is **off**, it disconnects the appliance from the **high p.d.** If the switch were in the neutral wire, the appliance would still be connected to the live wire when "off": touching a part inside it could still give a shock.
+
+The **fuse** is also in the live wire, for the same reason (next lesson).
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={18}>
+
+<Quiz questions={[
+  {
+    question: 'Why is damaged insulation dangerous?',
+    options: [
+      { text: 'Someone can touch the live wire and get a shock; it can also cause a fire', correct: true, why: 'The insulation keeps people away from the metal wire.' },
+      { text: 'It makes the cable too heavy', why: 'The danger is a shock or a fire.' },
+      { text: 'It stops the current completely', why: 'The current can still flow, and someone can touch the wire.' },
+      { text: 'It is not dangerous', why: 'It is very dangerous.' },
+    ],
+  },
+  {
+    question: 'Why is it dangerous to plug too many appliances into one extension lead?',
+    options: [
+      { text: 'The total current is too big: the cables overheat and can cause a fire', correct: true, why: 'This is overloading.' },
+      { text: 'The p.d. becomes too big', why: 'The p.d. stays the same; the current gets bigger.' },
+      { text: 'The appliances get less energy', why: 'The danger is overheating.' },
+      { text: 'Only the first appliance works', why: 'They all work, but the current is too big.' },
+    ],
+  },
+  {
+    question: 'Why should you never touch switches with wet hands?',
+    options: [
+      { text: 'Water conducts electricity, so a current could flow through you', correct: true, why: 'Damp conditions are a hazard.' },
+      { text: 'Water damages the switch', why: 'The main danger is an electric shock.' },
+      { text: 'Water makes the light brighter', why: 'The danger is an electric shock.' },
+      { text: 'It is fine with clean water', why: 'Tap water conducts.' },
+    ],
+  },
+  {
+    question: 'In which wire must the switch be?',
+    options: [
+      { text: 'the live wire', correct: true, why: 'So that the appliance is disconnected from the high p.d. when it is off.' },
+      { text: 'the neutral wire', why: 'Then the appliance would still be live when it is off.' },
+      { text: 'the earth wire', why: 'The earth wire is a safety wire; it carries no current normally.' },
+      { text: 'any wire', why: 'It must be in the live wire.' },
+    ],
+  },
+  {
+    question: 'Which wire is a safety wire connected to the metal case?',
+    options: [
+      { text: 'the earth wire', correct: true, why: 'It carries current only if there is a fault.' },
+      { text: 'the live wire', why: 'The live wire carries the high p.d.' },
+      { text: 'the neutral wire', why: 'The neutral wire completes the circuit.' },
+      { text: 'none', why: 'The earth wire is connected to the case.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={8}>
+
+<Quiz questions={[
+  {
+    question: 'What does the live wire do?',
+    options: [
+      { text: 'It carries the high alternating p.d. from the supply', correct: true, why: 'It is the dangerous wire.' },
+      { text: 'It is always at 0 V', why: 'That is (about) the neutral wire.' },
+      { text: 'It connects the case to the ground', why: 'That is the earth wire.' },
+      { text: 'It only works with d.c.', why: 'The mains is a.c.' },
+    ],
+  },
+  {
+    question: 'Name one hazard of a cable that overheats.',
+    options: [
+      { text: 'The insulation can melt and start a fire', correct: true, why: 'Overheating is a fire hazard.' },
+      { text: 'The cable becomes a better conductor', why: 'The danger is fire.' },
+      { text: 'The current stops', why: 'The danger is fire.' },
+      { text: 'The appliance becomes double-insulated', why: 'The danger is fire.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core:** 4.4 C1, C2.
+
+**Timing:** starter 8 min, hazards 14 min, three wires 12 min, check 18 min, exit ticket 8 min.
+
+**Local context:** mains p.d. and plug types differ between countries (for example 230 V in the UK and much of Europe, 220 V in Thailand, 120 V in the USA). Wire colours also differ in older installations. Teach the principles; use the local colours and plugs as examples.
+
+**Common mistakes:**
+
+- "The earth wire carries the current back." (That is the neutral wire; the earth wire carries current only in a fault.)
+- "The switch can be in any wire."
+
+**Language support:**
+
+- *hazard* = something that can cause harm.
+- *insulation* = the plastic around a wire.
+
+**Differentiation:**
+
+- Support: a picture of a room with 6 hazards to find and explain.
+- Stretch: why is it dangerous to use a hair dryer in a bathroom, even if it is switched off at the appliance?
+
+**Safety:** never open a mains plug or appliance in class. Use pictures or a sealed demonstration plug only.
+
+</Step>

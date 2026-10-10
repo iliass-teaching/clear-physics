@@ -1,0 +1,101 @@
+---
+// Interactive practice: random questions, checked at once, with hints.
+interface Props {
+  topic: string;
+  level?: number;
+}
+
+const { topic, level = 1 } = Astro.props;
+---
+
+<div class="practice" data-practice={topic} data-level={level}>
+  <p class="muted">Loading questions… (JavaScript is needed for this part.)</p>
+</div>
+
+<script>
+  import '../scripts/practice/engine';
+</script>
+
+<style>
+  .practice {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem 1.1rem;
+    margin: 1rem 0 1.5rem;
+  }
+  /* Level selector: a segmented control */
+  .practice :global(.levels) {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .practice :global(.levels button) {
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--ink-soft);
+    padding: 0.4rem 0.9rem;
+    font-size: 0.85rem;
+  }
+  .practice :global(.levels button + button) { border-left: 1px solid var(--line); }
+  .practice :global(.levels button[aria-selected='true']) {
+    background: var(--accent);
+    color: var(--bg);
+  }
+  .practice :global(.q-text) {
+    font-size: 1.08rem;
+    font-weight: 700;
+    margin: 0 0 0.6rem;
+  }
+  .practice :global(.data) {
+    display: grid;
+    grid-template-columns: 3.8rem 1fr;
+    gap: 0.15rem 0.8rem;
+    background: var(--surface-2);
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+  }
+  .practice :global(.data strong) {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    padding-top: 0.2rem;
+  }
+  .practice :global(.data ul) { margin: 0; padding-left: 1rem; }
+  .practice :global(.data li) { margin: 0; }
+  .practice :global(.data p) { margin: 0; }
+  .practice :global(.answer-row) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0 0.5rem;
+  }
+  .practice :global(.feedback) {
+    padding: 0.5rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+  }
+  .practice :global(.feedback:empty) { padding: 0; }
+  .practice :global(.feedback.good) { background: var(--good-soft); color: var(--good); font-weight: 700; }
+  .practice :global(.feedback.bad) { background: var(--bad-soft); color: var(--bad); }
+  .practice :global(.feedback.info) { background: var(--warn-soft); }
+  .practice :global(.solution) {
+    margin: 0.8rem 0 0;
+    padding: 0.7rem 1rem 0.7rem 2.2rem;
+    border-left: 3px solid var(--good);
+    background: var(--surface-2);
+    border-radius: 0 8px 8px 0;
+  }
+  .practice :global(.solution li) { margin: 0.2rem 0; }
+  .practice :global(.actions) {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+  }
+  .practice :global(.streak) { margin: 0.9rem 0 0; }
+</style>

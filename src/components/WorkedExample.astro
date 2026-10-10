@@ -1,0 +1,81 @@
+---
+// A worked example with the data set apart: Given / Find / Solution / Answer.
+// Strings can contain LaTeX ($...$). The solution is the content of the component (Markdown).
+import { renderMath } from '../lib/math';
+
+interface Props {
+  question: string;
+  given: string[];
+  find: string;
+  answer: string;
+}
+
+const { question, given, find, answer } = Astro.props;
+---
+
+<div class="example">
+  <p class="kicker">Worked example</p>
+  <p class="question" set:html={renderMath(question)} />
+  <dl>
+    <dt>Given</dt>
+    <dd>
+      <ul>{given.map((g) => <li set:html={renderMath(g)} />)}</ul>
+    </dd>
+    <dt>Find</dt>
+    <dd set:html={renderMath(find)} />
+    <dt>Solution</dt>
+    <dd class="solution"><slot /></dd>
+  </dl>
+  <p class="answer"><span>Answer</span> <span set:html={renderMath(answer)} /></p>
+</div>
+
+<style>
+  .example {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 1rem 1.3rem 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .kicker {
+    margin: 0 0 0.2rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .question { margin: 0 0 0.9rem; font-weight: 700; }
+  dl {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 0.35rem 1rem;
+    margin: 0;
+  }
+  dt {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+    padding-top: 0.2rem;
+  }
+  dd { margin: 0; }
+  ul { margin: 0; padding-left: 1.1rem; }
+  ul li { margin: 0; }
+  .solution :global(p) { margin: 0 0 0.45rem; }
+  .answer {
+    margin: 0.8rem 0 0;
+    padding-top: 0.7rem;
+    border-top: 1px dashed var(--line);
+    font-weight: 700;
+  }
+  .answer span:first-child {
+    font-size: 0.8rem;
+    color: var(--good);
+    margin-right: 0.6rem;
+  }
+  @media (max-width: 480px) {
+    dl { grid-template-columns: 1fr; }
+    dt { margin-top: 0.4rem; }
+  }
+</style>

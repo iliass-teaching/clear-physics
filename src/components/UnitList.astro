@@ -1,0 +1,63 @@
+---
+// List of units for one year.
+import { units } from '../data/units';
+import { unitUrl } from '../lib/url';
+
+interface Props {
+  year: 1 | 2;
+}
+
+const { year } = Astro.props;
+---
+
+<ol class="units">
+  {
+    units
+      .filter((u) => u.year === year)
+      .map((u) => {
+        return (
+          <li>
+            <a href={unitUrl(u.number)}>
+              <span class="num">{String(u.number).padStart(2, '0')}</span>
+              <span class="main">
+                <span class="title">
+                  {u.title}
+                  {u.extended && <span class="tag ext">Extended</span>}
+                </span>
+                <span class="sub">Syllabus {u.syllabus} · {u.lessonCount} lessons</span>
+              </span>
+              <span class="go" aria-hidden="true">→</span>
+            </a>
+          </li>
+        );
+      })
+  }
+</ol>
+
+<style>
+  .units { list-style: none; padding: 0; margin: 0.5rem 0 1.5rem; border-top: 1px solid var(--line); }
+  .units li { margin: 0; border-bottom: 1px solid var(--line); }
+  a {
+    display: grid;
+    grid-template-columns: 2.4rem 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 0.4rem;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  a:hover { background: var(--surface-2); }
+  .num {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .title { font-weight: 700; display: flex; flex-wrap: wrap; gap: 0.3rem 0.6rem; align-items: center; }
+  .sub { display: block; font-size: 0.82rem; color: var(--ink-soft); }
+  .go { color: var(--ink-soft); }
+  a:hover .go { color: var(--accent); }
+  @media (max-width: 520px) {
+    a { grid-template-columns: 2rem 1fr auto; }
+  }
+</style>

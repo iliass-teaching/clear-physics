@@ -1,0 +1,172 @@
+---
+unit: 16
+lesson: 9
+title: Uses and safety
+syllabus: ['5.2.4 S3', '5.2.5 C1', '5.2.5 C2', '5.2.5 S3']
+goals:
+  - State the effects of ionising radiation on living things.
+  - Describe how radioactive materials are moved, used and stored safely.
+  - 'Extended: explain how the type of radiation and the half-life determine which isotope is used.'
+  - 'Extended: explain safety in terms of time, distance and shielding.'
+keyWords: [ionising, half-life, gamma radiation, alpha particle, beta particle]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { thicknessGaugeSvg } from '../../../lib/nuclearFigures';
+
+<Step kind="starter" title="Useful and dangerous" minutes={5}>
+
+Radiation can cause cancer, and radiation can treat cancer. How can both be true?
+
+</Step>
+
+<Step kind="learn" title="Dangers and safety" minutes={14}>
+
+**Effects on living things:** ionising radiation can damage the molecules in cells (including DNA). This can cause:
+
+- **cell death**;
+- **mutations** (changes in the DNA);
+- **cancer**.
+
+**Moving, using and storing radioactive materials safely:**
+
+- Store sources in **lead-lined boxes**, in a locked cupboard, with a warning label.
+- Move and handle them with **tongs** (never with your hands); point them **away** from people.
+- Use them for the **shortest time** possible, and put them back at once.
+- People who work with radiation wear a **badge** that measures their dose.
+
+**Extended: three ways to reduce exposure**
+
+- **Time:** a shorter time near the source means less radiation received.
+- **Distance:** further from the source means much less radiation (it spreads out, and α and β are absorbed by air).
+- **Shielding:** put an absorber (lead, concrete, water) between the source and people.
+
+</Step>
+
+<Step kind="learn" title="Uses: choosing the right isotope (Extended)" minutes={18}>
+
+The choice depends on the **type of radiation** (how far it penetrates) and the **half-life** (how long the source lasts).
+
+<div class="table-wrap">
+
+| Use | Radiation | Why | Half-life |
+|---|---|---|---|
+| **smoke alarm** (for example americium-241) | α | α ionises the air between two plates: a small current flows. Smoke absorbs the α-particles: the current falls and the alarm sounds. α does not escape the alarm (stopped by a few cm of air). | **long** (hundreds of years), so the alarm works for many years |
+| **irradiating food** to kill bacteria | γ | γ passes through the packaging and the food | long (the source is used for years) |
+| **sterilising medical equipment** | γ | γ penetrates the sealed packets and kills bacteria | long |
+| **measuring thickness** of paper, plastic or foil | β | some β passes through; the count changes when the thickness changes | long, so the count rate does not fall during use |
+| thickness of **thick metal** | γ | β would be stopped completely | long |
+| **diagnosis**: a tracer injected in the body (for example technetium-99m) | γ | γ escapes from the body and is detected by a camera | **short** (a few hours), so it does not stay active in the body |
+| **treatment of cancer** | γ | high-energy beams from several directions meet at the tumour and kill the cancer cells | long for the machine source |
+
+</div>
+
+<Figure svg={thicknessGaugeSvg()} caption="Controlling the thickness of paper with a β source." width="32rem" />
+
+**Why not α for thickness?** It would be stopped by any paper. **Why not γ for paper?** Almost all of it would pass through: the count would hardly change.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={18}>
+
+<Quiz questions={[
+  {
+    question: 'Which is an effect of ionising radiation on living cells?',
+    options: [
+      { text: 'mutations, which can lead to cancer', correct: true, why: 'Also cell death.' },
+      { text: 'cells become magnetic', why: 'Radiation damages molecules in cells.' },
+      { text: 'cells become radioactive for ever', why: 'The damage is to the DNA and other molecules.' },
+      { text: 'no effect', why: 'It can kill cells or cause mutations.' },
+    ],
+  },
+  {
+    question: 'How should you pick up a radioactive source?',
+    options: [
+      { text: 'with tongs, pointing it away from people', correct: true, why: 'Increase the distance.' },
+      { text: 'with your hand, quickly', why: 'Never with bare hands.' },
+      { text: 'with gloves, holding it close to your face to read the label', why: 'Keep it far from the body.' },
+      { text: 'it does not matter', why: 'Use tongs and point it away.' },
+    ],
+  },
+  {
+    question: 'Extended: why is an α-source used in a smoke alarm?',
+    options: [
+      { text: 'α ionises the air strongly and is easily absorbed by smoke; it cannot escape the alarm', correct: true, why: 'And its long half-life means it lasts for years.' },
+      { text: 'α passes through walls', why: 'α is stopped by paper or a few cm of air.' },
+      { text: 'α has a very short half-life', why: 'The source has a long half-life.' },
+      { text: 'α is an electromagnetic wave', why: 'α is a helium nucleus.' },
+    ],
+  },
+  {
+    question: 'Extended: why does a medical tracer have a short half-life?',
+    options: [
+      { text: 'So it does not stay radioactive in the body for long', correct: true, why: 'Less damage to the patient.' },
+      { text: 'So the hospital can use it for many years', why: 'A short half-life means it decays quickly.' },
+      { text: 'Because α is used', why: 'A tracer uses γ.' },
+      { text: 'So it is not detected', why: 'It must be detected; the short half-life reduces the dose.' },
+    ],
+  },
+  {
+    question: 'Extended: a worker must stand near a source. Give three ways to reduce the dose.',
+    options: [
+      { text: 'less time, more distance, shielding', correct: true, why: 'Time, distance, shielding.' },
+      { text: 'more time, less distance, no shielding', why: 'The opposite.' },
+      { text: 'heat the source, cool the source, shake it', why: 'Decay cannot be changed.' },
+      { text: 'wear sunglasses only', why: 'Time, distance and shielding.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Extended: which radiation is used to control the thickness of paper?',
+    options: [
+      { text: 'beta', correct: true, why: 'Partly absorbed by paper: the count depends on the thickness.' },
+      { text: 'alpha', why: 'α would be stopped completely by paper.' },
+      { text: 'gamma', why: 'γ would pass through almost completely.' },
+      { text: 'none', why: 'β is used.' },
+    ],
+  },
+  {
+    question: 'How are radioactive sources stored at school?',
+    options: [
+      { text: 'in lead-lined boxes, in a locked cupboard, with a label', correct: true, why: 'Lead absorbs the radiation.' },
+      { text: 'in an open box on a shelf', why: 'They must be shielded and locked.' },
+      { text: 'in the fridge', why: 'Temperature does not affect decay; they need lead and a lock.' },
+      { text: 'in the students’ bags', why: 'Never.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** effects and safe handling (5.2.5 C1, C2) are Core. Choosing isotopes (5.2.4 S3) and time, distance, shielding (5.2.5 S3) are Extended.
+
+**Timing:** starter 5 min, safety 14 min, uses 18 min, check 18 min, exit ticket 5 min.
+
+**Facts used:** americium-241 (α, half-life 432 years) in smoke alarms; technetium-99m (γ, half-life 6.0 hours) as a medical tracer; cobalt-60 (γ, half-life 5.3 years) for sterilising and radiotherapy. These examples are common in textbooks; the syllabus does not require the names or values.
+
+**Common mistakes:**
+
+- "Irradiated food becomes radioactive." (It does not.)
+- Choosing γ for a smoke alarm or α for a tracer.
+
+**Language support:**
+
+- *sterilise* = kill all bacteria; *tracer* = something we follow through the body.
+
+**Differentiation:**
+
+- Support: match each use to α, β or γ, with a reason card.
+- Stretch: why does a cancer treatment beam come from several directions?
+
+</Step>

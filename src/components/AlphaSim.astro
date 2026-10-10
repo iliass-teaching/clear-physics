@@ -1,0 +1,148 @@
+---
+// Virtual experiment: alpha particles fired at one gold atom (zoomed in).
+// "Nuclear model": all the positive charge is in a tiny nucleus (force ∝ 1/r²).
+// "Plum pudding model": the positive charge is spread through the whole atom (very small forces).
+---
+
+<div class="alpha-sim" data-alpha-sim>
+  <p class="modes" role="group" aria-label="Model of the atom">
+    <button type="button" class="mode" data-mode="nuclear" aria-pressed="true">Nuclear model</button>
+    <button type="button" class="mode secondary" data-mode="pudding" aria-pressed="false">Plum pudding model</button>
+  </p>
+  <svg class="fig" viewBox="0 0 600 300" role="img" aria-label="Alpha particles fired at a gold atom, with their paths">
+    <rect class="bg" x="0" y="0" width="600" height="300" />
+    <circle class="atom" cx="300" cy="150" r="130" />
+    <circle class="nuc" cx="300" cy="150" r="4" />
+    <g class="paths"></g>
+  </svg>
+  <p class="buttons">
+    <button type="button" class="fire1">Fire 1 α-particle</button>
+    <button type="button" class="fire50">Fire 50</button>
+    <button type="button" class="clear secondary">Clear</button>
+  </p>
+  <div class="table-wrap">
+    <table class="counts">
+      <thead><tr><th>fired</th><th>almost straight (less than 10°)</th><th>deflected (10° to 90°)</th><th>bounced back (more than 90°)</th></tr></thead>
+      <tbody><tr><td class="n"></td><td class="a"></td><td class="b"></td><td class="c"></td></tr></tbody>
+    </table>
+  </div>
+  <p class="small muted">The drawing shows one atom, zoomed in. In a real atom, the nucleus is much smaller than shown, so even fewer α-particles are deflected.</p>
+</div>
+
+<script>
+  const NS = 'http://www.w3.org/2000/svg';
+  const CX = 300;
+  const CY = 150;
+  const K = 135000; // strength of the repulsion (px³/s²)
+  const V0 = 300; // px/s
+  const R_ATOM = 130;
+
+  document.querySelectorAll<HTMLElement>('[data-alpha-sim]').forEach((root) => {
+    const paths = root.querySelector<SVGGElement>('.paths')!;
+    const nuc = root.querySelector<SVGCircleElement>('.nuc')!;
+    let mode: 'nuclear' | 'pudding' = 'nuclear';
+    let counts = [0, 0, 0];
+
+    const accel = (x: number, y: number): [number, number] => {
+      const dx = x - CX;
+      const dy = y - CY;
+      const r = Math.hypot(dx, dy) || 1e-6;
+      // Nuclear: 1/r² everywhere. Pudding: inside the atom the force grows with r (charge spread out).
+      const f = mode === 'nuclear' ? K / (r * r) : r < R_ATOM ? (K * r) / R_ATOM ** 3 : K / (r * r);
+      return [(f * dx) / r, (f * dy) / r];
+    };
+
+    // Follow one α-particle; return its path and its deflection angle (degrees).
+    function trajectory(y0: number): { pts: string; angle: number } {
+      let x = 0;
+      let y = y0;
+      let vx = V0;
+      let vy = 0;
+      const pts: string[] = [`${x},${y.toFixed(1)}`];
+      const dt = 0.0005;
+      for (let k = 0; k < 20000; k++) {
+        const [ax, ay] = accel(x, y);
+        vx += ax * dt;
+        vy += ay * dt;
+        x += vx * dt;
+        y += vy * dt;
+        if (k % 10 === 0) pts.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+        if (x < -5 || x > 605 || y < -5 || y > 305) break;
+      }
+      pts.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+      return { pts: pts.join(' '), angle: (Math.abs(Math.atan2(vy, vx)) * 180) / Math.PI };
+    }
+
+    function fire(n: number): void {
+      for (let i = 0; i < n; i++) {
+        const y0 = 20 + Math.random() * 260;
+        const { pts, angle } = trajectory(y0);
+        const bin = angle < 10 ? 0 : angle <= 90 ? 1 : 2;
+        counts[bin]++;
+        const pl = document.createElementNS(NS, 'polyline');
+        pl.setAttribute('points', pts);
+        pl.setAttribute('class', `path b${bin}`);
+        paths.appendChild(pl);
+        while (paths.childElementCount > 120) paths.firstElementChild!.remove();
+      }
+      show();
+    }
+
+    function show(): void {
+      const n = counts[0] + counts[1] + counts[2];
+      const q = (c: string) => root.querySelector<HTMLElement>(c)!;
+      q('.n').textContent = String(n);
+      q('.a').textContent = String(counts[0]);
+      q('.b').textContent = String(counts[1]);
+      q('.c').textContent = String(counts[2]);
+    }
+
+    function clear(): void {
+      paths.replaceChildren();
+      counts = [0, 0, 0];
+      show();
+    }
+
+    root.querySelectorAll<HTMLButtonElement>('.mode').forEach((b) =>
+      b.addEventListener('click', () => {
+        mode = b.dataset.mode as 'nuclear' | 'pudding';
+        root.querySelectorAll<HTMLButtonElement>('.mode').forEach((x) => {
+          const on = x === b;
+          x.setAttribute('aria-pressed', String(on));
+          x.classList.toggle('secondary', !on);
+        });
+        nuc.style.display = mode === 'nuclear' ? '' : 'none';
+        root.querySelector<SVGCircleElement>('.atom')!.classList.toggle('pudding', mode === 'pudding');
+        clear();
+      }),
+    );
+    root.querySelector('.fire1')!.addEventListener('click', () => fire(1));
+    root.querySelector('.fire50')!.addEventListener('click', () => fire(50));
+    root.querySelector('.clear')!.addEventListener('click', clear);
+    show();
+
+    (root as HTMLElement & { _alpha?: unknown })._alpha = { trajectory, setMode: (m: 'nuclear' | 'pudding') => { mode = m; } };
+  });
+</script>
+
+<style>
+  .alpha-sim {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .modes, .buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .modes { margin-top: 0; }
+  svg { width: 100%; height: auto; display: block; border-radius: 8px; }
+  .bg { fill: #10141c; }
+  .atom { fill: none; stroke: #5a6272; stroke-dasharray: 5 5; }
+  .atom.pudding { fill: #d84b3a; fill-opacity: 0.18; stroke: #d84b3a; }
+  .nuc { fill: #d84b3a; }
+  svg :global(.path) { fill: none; stroke-width: 1.2; }
+  svg :global(.path.b0) { stroke: #7fb3ff; stroke-opacity: 0.6; }
+  svg :global(.path.b1) { stroke: #ffd54f; }
+  svg :global(.path.b2) { stroke: #ff6e5a; stroke-width: 1.8; }
+  .counts td { font-variant-numeric: tabular-nums; text-align: center; }
+</style>

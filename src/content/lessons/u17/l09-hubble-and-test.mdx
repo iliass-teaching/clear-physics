@@ -1,0 +1,222 @@
+---
+unit: 17
+lesson: 9
+title: The Hubble constant and unit test
+syllabus: ['6.2.3 S7', '6.2.3 S8', '6.2.3 S9', '6.2.3 S10', '6.2.3 S11']
+goals:
+  - Know how astronomers find the speed and the distance of a far galaxy (Extended).
+  - 'Use the equation $H_0 = \dfrac{v}{d}$ (Extended).'
+  - Estimate the age of the Universe (Extended).
+  - Check your learning of Unit 17 with a test.
+keyWords: [redshift, Hubble constant, galaxy, light-year]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Graph from '../../../components/Graph.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="Remember the balloon" minutes={5}>
+
+In the balloon model of the last lesson, which "galaxies" moved away fastest: the near ones or the far ones?
+
+</Step>
+
+<Step kind="learn" title="Speed, distance and the Hubble constant (Extended)" minutes={12}>
+
+For a far galaxy, astronomers measure two things:
+
+- its **speed** $v$, from the **change in wavelength** of its light (the redshift): a bigger redshift means a higher speed;
+- its **distance** $d$, from the **brightness of a supernova** in that galaxy.
+
+The further the galaxy, the faster it moves away. The speed divided by the distance is the same for all galaxies: the **Hubble constant** $H_0$.
+
+$$
+H_0 = \frac{v}{d}
+$$
+
+The current estimate is $H_0 = 2.2 \times 10^{-18}\ \text{per second}$ ($\text{s}^{-1}$).
+
+<Graph
+  xLabel="distance / 10²⁴ m" yLabel="speed / 10⁶ m/s"
+  xMax={5} yMax={12} xStep={1} yStep={2}
+  points={[[0, 0], [5, 11]]}
+  markers={[[1, 2.0], [1.5, 3.6], [2, 4.6], [3, 6.4], [3.5, 7.9], [4, 8.6], [5, 11.2]]}
+  caption="Speed against distance for some galaxies (example data). The gradient of the best-fit line is H₀."
+/>
+
+<WorkedExample
+  question="Use the best-fit line on the graph to find the Hubble constant."
+  given={['the line goes through $(0,\\ 0)$ and $(5 \\times 10^{24}\\,\\text{m},\\ 11 \\times 10^{6}\\,\\text{m/s})$']}
+  find="the Hubble constant $H_0$"
+  answer="$H_0 = 2.2 \times 10^{-18}\,\text{s}^{-1}$"
+>
+
+$H_0 = \dfrac{v}{d} = \dfrac{11 \times 10^{6}}{5 \times 10^{24}}$
+
+$H_0 = 2.2 \times 10^{-18}\,\text{s}^{-1}$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="learn" title="The age of the Universe (Extended)" minutes={8}>
+
+A galaxy at distance $d$ moves away at speed $v$. If its speed was always the same, the time since it was at our position is:
+
+$$
+t = \frac{d}{v} = \frac{1}{H_0}
+$$
+
+This is an **estimate of the age of the Universe**:
+
+$$
+\frac{1}{H_0} = \frac{1}{2.2 \times 10^{-18}} = 4.5 \times 10^{17}\,\text{s}
+$$
+
+In years ($1\ \text{year} = 3.15 \times 10^{7}\,\text{s}$): $\dfrac{4.5 \times 10^{17}}{3.15 \times 10^{7}} = 1.4 \times 10^{10}$ years, about **14 billion years**.
+
+This is evidence that all the matter in the Universe was at a single point at the start.
+
+</Step>
+
+<Step kind="practice" title="Practice (Extended)" minutes={10}>
+
+<Practice topic="hubble" />
+
+</Step>
+
+<Step kind="exit" title="Unit test" minutes={25}>
+
+Answer all the questions. Questions marked **(E)** are for Extended students.
+
+<Quiz questions={[
+  {
+    question: '1. Why do we have day and night?',
+    options: [
+      { text: 'The Earth rotates on its axis', correct: true, why: 'The half facing the Sun has day.' },
+      { text: 'The Earth orbits the Sun', why: 'This takes a year and gives the seasons.' },
+      { text: 'The Sun orbits the Earth', why: 'The Sun only seems to move.' },
+      { text: 'The Moon blocks the Sun', why: 'The Earth’s rotation gives day and night.' },
+    ],
+  },
+  {
+    question: '2. Why is it summer in the northern hemisphere in June?',
+    options: [
+      { text: 'The northern hemisphere is tilted towards the Sun', correct: true, why: 'The Sun is higher and the days are longer.' },
+      { text: 'The Earth is closest to the Sun in June', why: 'The Earth is closest to the Sun in January.' },
+      { text: 'The Sun is bigger in June', why: 'The tilt of the axis gives the seasons.' },
+      { text: 'The Moon is closer in June', why: 'The tilt of the axis gives the seasons.' },
+    ],
+  },
+  {
+    question: '3. Which planet is the furthest from the Sun?',
+    options: [
+      { text: 'Neptune', correct: true, why: 'Order: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune.' },
+      { text: 'Uranus', why: 'Uranus comes before Neptune.' },
+      { text: 'Pluto', why: 'Pluto is a dwarf planet, not a planet.' },
+      { text: 'Saturn', why: 'Saturn is the sixth planet.' },
+    ],
+  },
+  {
+    question: '4. Mars is $2.3 \\times 10^{11}\\,\\text{m}$ from the Sun. How long does sunlight take to reach it? ($c = 3.0 \\times 10^{8}\\,\\text{m/s}$)',
+    options: [
+      { text: '$770\\,\\text{s}$', correct: true, why: '$t = \\dfrac{2.3 \\times 10^{11}}{3.0 \\times 10^{8}} = 770\\,\\text{s}$ (about 13 minutes).' },
+      { text: '$6.9 \\times 10^{19}\\,\\text{s}$', why: 'You multiplied. $t = \\dfrac{d}{c}$.' },
+      { text: '$1.3 \\times 10^{-3}\\,\\text{s}$', why: 'You divided the wrong way.' },
+      { text: '$8.3\\,\\text{min}$', why: 'This is the time for the Earth, not for Mars.' },
+    ],
+  },
+  {
+    question: '5. Why are the outer planets large and made mostly of gas?',
+    options: [
+      { text: 'Far from the young Sun it was cold, so more material was solid and the planets could pull in gas', correct: true, why: 'This is the accretion model.' },
+      { text: 'The gas was pushed out by the planets near the Sun', why: 'The low temperature far from the Sun is the reason.' },
+      { text: 'They are older than the inner planets', why: 'All the planets formed at about the same time.' },
+      { text: 'The Sun made them from its own gas', why: 'The planets formed in the accretion disc.' },
+    ],
+  },
+  {
+    question: '6. (E) Where is a planet fastest in its elliptical orbit?',
+    options: [
+      { text: 'closest to the Sun', correct: true, why: 'It has converted gravitational potential energy into kinetic energy.' },
+      { text: 'furthest from the Sun', why: 'This is where it is slowest.' },
+      { text: 'the speed is constant', why: 'In an elliptical orbit, the speed changes.' },
+      { text: 'at the centre of the ellipse', why: 'The planet does not go through the centre. It is fastest closest to the Sun.' },
+    ],
+  },
+  {
+    question: '7. What is a light-year?',
+    options: [
+      { text: 'the distance light travels in one year', correct: true, why: 'It is a unit of distance.' },
+      { text: 'a year on another planet', why: 'It is a unit of distance.' },
+      { text: 'the time light takes to cross the galaxy', why: 'It is a unit of distance.' },
+      { text: 'the age of the Sun', why: 'It is a unit of distance.' },
+    ],
+  },
+  {
+    question: '8. (E) What happens to a very massive star at the end of its life?',
+    options: [
+      { text: 'red supergiant, supernova, then neutron star or black hole', correct: true, why: 'This is the life cycle of a very massive star.' },
+      { text: 'red giant, then white dwarf', why: 'This is for a less massive star like the Sun.' },
+      { text: 'it becomes a protostar again', why: 'A protostar is the start of a star’s life.' },
+      { text: 'it becomes a planet', why: 'It ends as a neutron star or a black hole.' },
+    ],
+  },
+  {
+    question: '9. What does the redshift of distant galaxies show?',
+    options: [
+      { text: 'The Universe is expanding', correct: true, why: 'The galaxies move away from us.' },
+      { text: 'The galaxies are getting colder', why: 'Redshift shows motion away from us.' },
+      { text: 'The galaxies are moving towards us', why: 'That would give a shorter wavelength.' },
+      { text: 'The galaxies are red', why: 'Redshift is a change in wavelength.' },
+    ],
+  },
+  {
+    question: '10. (E) A galaxy is $4.0 \\times 10^{24}\\,\\text{m}$ away. Use $H_0 = 2.2 \\times 10^{-18}\\,\\text{s}^{-1}$. How fast does it move away from us?',
+    options: [
+      { text: '$8.8 \\times 10^{6}\\,\\text{m/s}$', correct: true, why: '$v = H_0 \\times d = 2.2 \\times 10^{-18} \\times 4.0 \\times 10^{24} = 8.8 \\times 10^{6}\\,\\text{m/s}$.' },
+      { text: '$1.8 \\times 10^{42}\\,\\text{m/s}$', why: 'You divided $d$ by $H_0$. Multiply: $v = H_0 \\times d$.' },
+      { text: '$5.5 \\times 10^{-43}\\,\\text{m/s}$', why: 'Multiply: $v = H_0 \\times d$.' },
+      { text: '$8.8 \\times 10^{6}\\,\\text{m}$', why: 'The number is right, but a speed is in m/s.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Look at the questions you got wrong. Find the lesson for each one and read it again.
+2. Learn the key words of Unit 17 on the [Key words](../../../key-words/) page.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** the Hubble constant and the age of the Universe (6.2.3 S7–S11) are Extended. Core students can do the starter, then start the unit test after a short recap of the unit.
+
+**Timing:** starter 5 min, learn 20 min, practice 10 min, unit test 25 min.
+
+**Graph data:** the points are example data, made to fit $H_0 \approx 2.2 \times 10^{-18}\,\text{s}^{-1}$. They are not real measurements.
+
+**Common mistakes:**
+
+- Writing the unit of $H_0$ as s instead of $\text{s}^{-1}$ (per second).
+- Giving the age in seconds when the question asks for years.
+- Thinking $1/H_0$ is exact. It is an estimate: it assumes the speed of the galaxies has always been the same.
+
+**Using the test:** questions 1–5, 7 and 9 test Core content; 6, 8 and 10 are Extended. The feedback for each wrong answer names the mistake.
+
+**Language support:**
+
+- Read $H_0$ as "H nought" and $\text{s}^{-1}$ as "per second".
+
+**Differentiation:**
+
+- Support: give the equation sheet for Unit 17 during the test the first time.
+- Stretch: the accepted age of the Universe is about 13.8 billion years. Why is our estimate a little different?
+
+</Step>

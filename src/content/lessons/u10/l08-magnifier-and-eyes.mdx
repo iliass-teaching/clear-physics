@@ -1,0 +1,174 @@
+---
+unit: 10
+lesson: 8
+title: Magnifying glasses and glasses for the eyes
+syllabus: ['3.2.3 S6', '3.2.3 S7', '3.2.3 S8']
+goals:
+  - 'Extended: draw a ray diagram for a virtual image formed by a converging lens.'
+  - 'Extended: describe how a magnifying glass works.'
+  - 'Extended: describe how lenses correct short sight and long sight.'
+keyWords: [converging lens, diverging lens, virtual image, magnified, principal focus]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import LensSim from '../../../components/LensSim.astro';
+import { lensVirtualImageSvg, eyeSightSvg } from '../../../lib/lightFigures';
+
+<Step kind="starter" title="Read the small print" minutes={5}>
+
+Look at very small writing through a converging lens. Hold the lens close to the writing, then move it away slowly. When is the writing bigger and the right way up?
+
+</Step>
+
+<Step kind="learn" title="The magnifying glass" minutes={14}>
+
+When the object is **between F and the lens**, the rays leave the lens **spreading out** (diverging). They never meet. But if we follow them **backwards** (dashed lines), they seem to come from a point behind the object.
+
+<Figure svg={lensVirtualImageSvg()} caption="The object is closer than F: the image is virtual, upright and enlarged." width="36rem" />
+
+The image is:
+
+- **virtual** (on the same side as the object; it cannot be shown on a screen);
+- **upright**;
+- **enlarged**.
+
+This is how a **magnifying glass** works: hold the lens **close to the object** (closer than its focal length) and look through it.
+
+**Ray diagram (two rays from the top of the object):**
+
+1. Parallel to the axis → after the lens, through F. Extend it backwards (dashed).
+2. Through the centre → straight on. Extend it backwards (dashed).
+3. The image is where the two dashed lines meet.
+
+</Step>
+
+<Step kind="do" title="Try it" minutes={10}>
+
+<LensSim />
+
+1. Set the object distance to 6 cm. Describe the image.
+2. Move the object from 4 cm to 9 cm. What happens to the size of the image?
+
+</Step>
+
+<Step kind="learn" title="Correcting sight" minutes={14}>
+
+In a healthy eye, the eye lens makes a sharp image on the **retina** (at the back of the eye).
+
+<Figure svg={eyeSightSvg()} caption="Short sight and long sight, and the lenses that correct them." width="36rem" />
+
+**Short sight** (you can see near things clearly, but not far things):
+
+- The eye bends the light **too much**: the image of a far object forms **in front of** the retina.
+- Correction: a **diverging** lens. It spreads the rays a little before they enter the eye, so the image moves back onto the retina.
+
+**Long sight** (you can see far things clearly, but not near things):
+
+- The eye does not bend the light **enough**: the image of a near object would form **behind** the retina.
+- Correction: a **converging** lens. It bends the rays a little before they enter the eye, so the image moves forward onto the retina.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={12}>
+
+<Quiz questions={[
+  {
+    question: 'Where must the object be to use a converging lens as a magnifying glass?',
+    options: [
+      { text: 'between the lens and F', correct: true, why: 'Closer than one focal length.' },
+      { text: 'beyond 2F', why: 'That gives a real, diminished image.' },
+      { text: 'between F and 2F', why: 'That gives a real, inverted image.' },
+      { text: 'exactly at F', why: 'Then there is no image.' },
+    ],
+  },
+  {
+    question: 'Describe the image in a magnifying glass.',
+    options: [
+      { text: 'virtual, upright, enlarged', correct: true, why: 'The rays only seem to come from it.' },
+      { text: 'real, inverted, enlarged', why: 'That is a projector.' },
+      { text: 'real, upright, diminished', why: 'A magnifying glass gives a virtual, enlarged image.' },
+      { text: 'virtual, inverted, diminished', why: 'The image is upright and enlarged.' },
+    ],
+  },
+  {
+    question: 'A short-sighted person cannot see far objects clearly. Where does the image of a far object form?',
+    options: [
+      { text: 'in front of the retina', correct: true, why: 'The eye bends the light too much.' },
+      { text: 'behind the retina', why: 'This is long sight.' },
+      { text: 'on the retina', why: 'Then the person would see clearly.' },
+      { text: 'outside the eye', why: 'It forms inside the eye, in front of the retina.' },
+    ],
+  },
+  {
+    question: 'Which lens corrects long sight?',
+    options: [
+      { text: 'a converging lens', correct: true, why: 'It helps the eye to bend the light more.' },
+      { text: 'a diverging lens', why: 'A diverging lens corrects short sight.' },
+      { text: 'a flat piece of glass', why: 'A flat glass does not focus light.' },
+      { text: 'a mirror', why: 'Glasses use lenses.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Why can a virtual image not be shown on a screen?',
+    options: [
+      { text: 'The rays do not really meet there; they only seem to come from it', correct: true, why: 'A screen needs real rays to arrive.' },
+      { text: 'It is too small', why: 'Size is not the reason.' },
+      { text: 'It is upside down', why: 'Virtual images from a lens are upright.' },
+      { text: 'It is too bright', why: 'The rays never meet at the image.' },
+    ],
+  },
+  {
+    question: 'Which lens corrects short sight?',
+    options: [
+      { text: 'a diverging lens', correct: true, why: 'It spreads the rays so the image moves back to the retina.' },
+      { text: 'a converging lens', why: 'A converging lens corrects long sight.' },
+      { text: 'no lens can help', why: 'A diverging lens corrects it.' },
+      { text: 'a prism', why: 'Glasses use lenses.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Draw, to scale, a converging lens with $f = 5$ cm and an object 2 cm tall, 3 cm from the lens. Find the virtual image with two rays and dashed lines. Describe it.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Extended only** (3.2.3 S6–S8). Core students can use this lesson to practise real-image ray diagrams with the simulation.
+
+**Timing:** starter 5 min, magnifying glass 14 min, simulation 10 min, sight 14 min, check 12 min, exit ticket 5 min.
+
+**About the eye diagram:** it is simplified. In a real eye, most of the bending happens at the cornea (the front surface), not only in the lens.
+
+**Common mistakes:**
+
+- Swapping the corrections (short sight → diverging; long sight → converging). Memory help: short sight = the light is focused "too short".
+- Drawing the virtual image on the wrong side of the lens.
+- Solid lines for the backward extensions: they must be dashed.
+
+**Language support:**
+
+- *short-sighted* = you can only see things that are a short distance away. *long-sighted* = you can only see things far away.
+
+**Differentiation:**
+
+- Support: give the eye diagrams; students label "in front of / behind the retina" and choose the lens.
+- Stretch: why does a magnifying glass with a shorter focal length magnify more?
+
+**Safety:** never look at the Sun through a lens.
+
+</Step>

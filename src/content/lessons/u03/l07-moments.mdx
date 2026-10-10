@@ -1,0 +1,160 @@
+---
+unit: 3
+lesson: 7
+title: Moments
+syllabus: ['1.5.2 C1', '1.5.2 C2']
+goals:
+  - Describe the moment of a force as its turning effect, with everyday examples.
+  - Calculate a moment with moment = force × perpendicular distance.
+keyWords: [moment, pivot, force]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="The door handle" minutes={5}>
+
+Push a door open three times: near the hinges, in the middle, and at the handle. Use about the same force each time.
+
+Where is it easiest to open the door? Why do you think the handle is far from the hinges?
+
+</Step>
+
+<Step kind="learn" title="The turning effect of a force" minutes={12}>
+
+A force can make an object **turn** around a fixed point, the **pivot**.
+
+The turning effect of a force is its **moment**. The moment is bigger when:
+
+- the **force** is bigger;
+- the force acts **further from the pivot**.
+
+$$
+\text{moment} = \text{force} \times \text{perpendicular distance from the pivot}
+$$
+
+The unit of moment is the **newton metre (N m)**.
+
+**Perpendicular distance** means the distance measured at right angles to the force. When you push straight (at right angles) on a door, it is just the distance from the hinge to your hand.
+
+<div class="table-wrap">
+
+| Everyday example | Pivot | Why it works |
+|---|---|---|
+| door handle | the hinges | the handle is far from the hinges: a big moment with a small force |
+| spanner | the nut | a long spanner gives a big moment |
+| see-saw | the middle | a light child far from the middle can balance a heavy child near it |
+| wheelbarrow | the wheel | long handles make the load easy to lift |
+
+</div>
+
+</Step>
+
+<Step kind="learn" title="Calculating a moment" minutes={8}>
+
+<WorkedExample
+  question="A mechanic pulls on a spanner with a force of 60 N, at right angles, 25 cm from the nut. Calculate the moment."
+  given={['$F = 60\\,\\text{N}$', '$d = 25\\,\\text{cm} = 0.25\\,\\text{m}$']}
+  find="the moment of the force"
+  answer="$15\,\text{N m}$"
+>
+
+$\text{moment} = F \times d = 60 \times 0.25$
+
+$\text{moment} = 15\,\text{N m}$
+
+</WorkedExample>
+
+**Tip:** change cm to m first, so the answer is in N m.
+
+A moment can be **clockwise** (like the hands of a clock) or **anticlockwise** (the other way).
+
+</Step>
+
+<Step kind="do" title="Spanners and doors" minutes={10}>
+
+Work in pairs with a force meter.
+
+1. Pull a door open with the force meter at right angles to the door, at 3 different distances from the hinges.
+2. For each distance, read the force needed to just start opening the door.
+3. Calculate the moment each time.
+
+<div class="table-wrap">
+
+| distance from hinges / m | force / N | moment / (N m) |
+|---|---|---|
+| | | |
+| | | |
+| | | |
+
+</div>
+
+**Question:** what do you notice about the moments? Explain why.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={20}>
+
+Start at **Level 1**.
+
+<Practice topic="moments" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A force of 20 N acts at right angles, 0.5 m from a pivot. What is the moment?',
+    options: [
+      { text: '10 N m', correct: true, why: '$20 \\times 0.5 = 10\\,\\text{N m}$.' },
+      { text: '40 N m', why: 'You divided. moment = force × distance.' },
+      { text: '20.5 N m', why: 'You added. moment = force × distance.' },
+      { text: '10 N', why: 'The unit of moment is N m.' },
+    ],
+  },
+  {
+    question: 'Why is a long spanner better for undoing a tight nut?',
+    options: [
+      { text: 'The same force gives a bigger moment', correct: true, why: 'The distance from the pivot is bigger.' },
+      { text: 'It makes the force bigger', why: 'The force is the same. The distance is bigger, so the moment is bigger.' },
+      { text: 'It is heavier', why: 'The weight of the spanner is not the reason.' },
+      { text: 'It reduces friction', why: 'The longer distance gives a bigger turning effect.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Find 3 objects at home that use moments (for example scissors, a tap, a bottle opener). For each one, draw it and mark the pivot and the force.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 20 min, activity 10 min, practice 20 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Using the distance in cm and giving the answer in N m.
+- Using a distance that is not perpendicular to the force.
+- Confusing the unit N m (moment) with N/m (spring constant).
+
+**Activity:** the moment needed to start opening the door is about the same at every distance: a smaller distance needs a bigger force.
+
+**Language support:**
+
+- Show *clockwise* and *anticlockwise* with a real clock.
+- In everyday English, *moment* means a short time. In physics, it is a turning effect.
+
+**Differentiation:**
+
+- Support: use distances already in metres.
+- Stretch: why is it hard to open a door if you push near the hinges at an angle? (The perpendicular distance is even smaller.)
+
+</Step>

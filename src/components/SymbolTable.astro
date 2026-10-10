@@ -1,0 +1,64 @@
+---
+// A table of circuit symbols: the symbol, its name, and what it does.
+import { symbol, wire, type SymbolType } from '../lib/circuit';
+
+interface Row {
+  type: SymbolType;
+  name: string;
+  does: string;
+  extended?: boolean;
+}
+
+const rows: Row[] = [
+  { type: 'cell', name: 'cell', does: 'A source of e.m.f. The long line is the positive terminal.' },
+  { type: 'battery', name: 'battery', does: 'Two or more cells joined together.' },
+  { type: 'power-supply', name: 'power supply (d.c.)', does: 'A source of e.m.f. that you can adjust.' },
+  { type: 'switch-open', name: 'switch (open)', does: 'Breaks the circuit: no current.' },
+  { type: 'switch-closed', name: 'switch (closed)', does: 'Completes the circuit.' },
+  { type: 'lamp', name: 'lamp', does: 'Gives out light when there is a current.' },
+  { type: 'resistor', name: 'fixed resistor', does: 'Has a fixed resistance; limits the current.' },
+  { type: 'variable-resistor', name: 'variable resistor', does: 'Its resistance can be changed, to change the current.' },
+  { type: 'heater', name: 'heater', does: 'Transfers electrical energy to thermal energy.' },
+  { type: 'thermistor', name: 'thermistor (NTC)', does: 'Its resistance goes down when its temperature goes up.' },
+  { type: 'ldr', name: 'light-dependent resistor (LDR)', does: 'Its resistance goes down when more light falls on it.' },
+  { type: 'fuse', name: 'fuse', does: 'Melts and breaks the circuit if the current is too big.' },
+  { type: 'ammeter', name: 'ammeter', does: 'Measures current. Connected in series.' },
+  { type: 'voltmeter', name: 'voltmeter', does: 'Measures p.d. Connected in parallel.' },
+  { type: 'motor', name: 'motor', does: 'Transfers electrical energy to kinetic energy.' },
+  { type: 'bell', name: 'bell', does: 'Makes a sound when there is a current.' },
+  { type: 'potential-divider', name: 'potential divider', does: 'A resistor with a sliding contact: gives an output p.d. that you can change.' },
+  { type: 'generator', name: 'generator', does: 'A source of e.m.f. (often a.c.) from a spinning coil and magnet (Unit 15).' },
+  { type: 'coil', name: 'magnetising coil', does: 'A coil of wire: it becomes a magnet when there is a current.' },
+  { type: 'relay', name: 'relay', does: 'A switch worked by an electromagnet: a small current switches a bigger current.' },
+  { type: 'transformer', name: 'transformer', does: 'Changes the size of an alternating p.d. (Unit 15).' },
+  { type: 'diode', name: 'diode', does: 'Lets current flow in one direction only (the direction of the arrow).', extended: true },
+  { type: 'led', name: 'light-emitting diode (LED)', does: 'A diode that gives out light when current flows forwards.', extended: true },
+];
+
+const cell = (t: SymbolType) =>
+  `<svg class="fig circuit" viewBox="-40 -34 80 60" role="img" aria-label="circuit symbol">${wire([[-40, 0], [40, 0]])}${symbol(t, 0, 0)}</svg>`;
+---
+
+<div class="table-wrap">
+  <table class="symbols">
+    <thead><tr><th>Symbol</th><th>Component</th><th>What it does</th></tr></thead>
+    <tbody>
+      {
+        rows.map((r) => (
+          <tr>
+            <td class="sym-cell"><Fragment set:html={cell(r.type)} /></td>
+            <td><strong>{r.name}</strong>{r.extended && <span class="tag ext">Extended</span>}</td>
+            <td>{r.does}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .symbols td { vertical-align: middle; }
+  .sym-cell { width: 6.5rem; }
+  .sym-cell :global(svg) { width: 5.5rem; height: auto; display: block; }
+  .symbols :global(.tag) { margin-left: 0.4rem; font-size: 0.7rem; }
+</style>

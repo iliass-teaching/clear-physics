@@ -1,0 +1,175 @@
+---
+unit: 13
+lesson: 8
+title: Paying for electricity, and unit test
+syllabus: ['4.2.5 C4', '4.2']
+goals:
+  - Define the kilowatt-hour (kW h).
+  - Calculate the cost of using electrical appliances.
+  - Check your learning of Unit 13 with a test.
+keyWords: [kilowatt-hour, power, energy, resistance, electric current]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="learn" title="The kilowatt-hour" minutes={10}>
+
+The joule is a very small unit for the energy used in a home. Electricity companies use the **kilowatt-hour** (kW h):
+
+**1 kW h is the energy transferred by a 1 kW appliance in 1 hour.**
+
+$$
+\text{energy (kW h)} = \text{power (kW)} \times \text{time (h)}
+$$
+
+$$
+\text{cost} = \text{energy (kW h)} \times \text{price of 1 kW h}
+$$
+
+(1 kW h = 1000 W × 3600 s = 3 600 000 J.)
+
+<WorkedExample
+  question="A 2.5 kW air conditioner is used for 6 hours. One kW h costs 4 baht. Calculate the cost."
+  given={['$P = 2.5\\,\\text{kW}$', '$t = 6\\,\\text{h}$', 'price $= 4$ baht per kW h']}
+  find="the cost"
+  answer="60 baht"
+>
+
+energy $= 2.5 \times 6 = 15\,\text{kW h}$
+
+cost $= 15 \times 4 = 60$ baht
+
+</WorkedExample>
+
+**Units first:** W → kW: divide by 1000. Minutes → hours: divide by 60.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={17}>
+
+<Practice topic="kwh-cost" />
+
+</Step>
+
+<Step kind="exit" title="Unit test" minutes={33}>
+
+Questions marked **(E)** are for Extended students.
+
+<Quiz questions={[
+  {
+    question: '1. What is an electric current in a metal wire?',
+    options: [
+      { text: 'a flow of free electrons', correct: true, why: 'Current is a flow of charge.' },
+      { text: 'a flow of positive ions', why: 'The ions stay in place.' },
+      { text: 'a flow of energy only', why: 'Current is a flow of charge.' },
+      { text: 'a vibration of atoms', why: 'Current is a flow of free electrons.' },
+    ],
+  },
+  {
+    question: '2. How are an ammeter and a voltmeter connected?',
+    options: [
+      { text: 'ammeter in series; voltmeter in parallel', correct: true, why: 'Current through, p.d. across.' },
+      { text: 'ammeter in parallel; voltmeter in series', why: 'The other way round.' },
+      { text: 'both in series', why: 'The voltmeter goes in parallel.' },
+      { text: 'both in parallel', why: 'The ammeter goes in series.' },
+    ],
+  },
+  {
+    question: '3. What is the difference between d.c. and a.c.?',
+    options: [
+      { text: 'd.c. flows one way only; a.c. changes direction again and again', correct: true, why: 'Cells give d.c.; the mains is a.c.' },
+      { text: 'd.c. is bigger than a.c.', why: 'The difference is the direction.' },
+      { text: 'a.c. flows one way only', why: 'a.c. alternates.' },
+      { text: 'there is no difference', why: 'The direction is different.' },
+    ],
+  },
+  {
+    question: '4. What is the unit of p.d.?',
+    options: [
+      { text: 'volt (V)', correct: true, why: '1 V = 1 J/C.' },
+      { text: 'ampere (A)', why: 'The ampere is for current.' },
+      { text: 'ohm (Ω)', why: 'The ohm is for resistance.' },
+      { text: 'watt (W)', why: 'The watt is for power.' },
+    ],
+  },
+  {
+    question: '5. The p.d. across a resistor is 9 V and the current is 0.3 A. What is its resistance?',
+    options: [
+      { text: '30 Ω', correct: true, why: '$R = \\dfrac{9}{0.3}$.' },
+      { text: '2.7 Ω', why: 'Divide: $R = \\dfrac{V}{I}$.' },
+      { text: '0.033 Ω', why: 'Upside down.' },
+      { text: '9.3 Ω', why: 'Divide, do not add.' },
+    ],
+  },
+  {
+    question: '6. Which wire of the same metal has the smallest resistance?',
+    options: [
+      { text: 'short and thick', correct: true, why: 'Shorter and thicker: less resistance.' },
+      { text: 'long and thin', why: 'This has the biggest resistance.' },
+      { text: 'long and thick', why: 'Shorter is better.' },
+      { text: 'short and thin', why: 'Thicker is better.' },
+    ],
+  },
+  {
+    question: '7. A heater works at 230 V with a current of 4 A. What is its power?',
+    options: [
+      { text: '920 W', correct: true, why: '$P = IV = 4 \\times 230$.' },
+      { text: '57.5 W', why: 'Multiply: $P = IV$.' },
+      { text: '234 W', why: 'Multiply, do not add.' },
+      { text: '920 J', why: 'Power is in W.' },
+    ],
+  },
+  {
+    question: '8. A 2 kW heater is used for 3 hours. One kW h costs 20 cents. What is the cost?',
+    options: [
+      { text: '120 cents', correct: true, why: '$2 \\times 3 = 6$ kW h; $6 \\times 20 = 120$ cents.' },
+      { text: '6 cents', why: 'This is the energy in kW h; multiply by the price.' },
+      { text: '40 cents', why: 'Multiply by the time too.' },
+      { text: '1200 cents', why: 'Check: 6 kW h × 20 cents.' },
+    ],
+  },
+  {
+    question: '9. (E) A current of 2 A flows for 30 s. How much charge passes?',
+    options: [
+      { text: '60 C', correct: true, why: '$Q = It = 2 \\times 30$.' },
+      { text: '15 C', why: 'Multiply: $Q = It$.' },
+      { text: '32 C', why: 'Multiply, do not add.' },
+      { text: '0.067 C', why: 'Multiply.' },
+    ],
+  },
+  {
+    question: '10. (E) Which I–V graph is a straight line through the origin?',
+    options: [
+      { text: 'a resistor at constant temperature', correct: true, why: 'Constant resistance.' },
+      { text: 'a filament lamp', why: 'Curved: its resistance increases.' },
+      { text: 'a diode', why: 'Almost no current in reverse.' },
+      { text: 'all of them', why: 'Only a constant resistance gives a straight line.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** kilowatt-hour 10 min, practice 17 min, unit test 33 min.
+
+**Using the test:** questions 1–8 test Core content; 9–10 are Extended.
+
+**Context:** the worked example uses Thai baht. The price is only an example: ask students to find the real price per kW h on an electricity bill at home.
+
+**Common mistakes:**
+
+- Using W instead of kW, or minutes instead of hours.
+- Thinking the kilowatt-hour is a unit of power.
+
+**Differentiation:**
+
+- Support: a table "appliance / power in kW / hours / kW h / cost" to complete.
+- Stretch: convert 1 kW h into joules, and explain why the kW h is more useful for bills.
+
+</Step>

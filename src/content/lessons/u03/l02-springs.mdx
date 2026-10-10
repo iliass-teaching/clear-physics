@@ -1,0 +1,176 @@
+---
+unit: 3
+lesson: 2
+title: Stretching springs
+syllabus: ['1.5.1 C2', '1.5.1 S9', '1.5.1 S10']
+goals:
+  - Measure the extension of a spring for different loads.
+  - Plot and read a load–extension graph.
+  - 'Use the equation $k = \dfrac{F}{x}$, and find the limit of proportionality (Extended).'
+keyWords: [load, extension, spring constant, limit of proportionality]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Figure from '../../../components/Figure.astro';
+import Graph from '../../../components/Graph.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { springSvg } from '../../../lib/forceFigures';
+
+<Step kind="starter" title="Twice the load" minutes={5}>
+
+You hang one mass on a spring. It stretches 2 cm.
+
+Predict: how much does it stretch with two masses? With three? Write your predictions.
+
+</Step>
+
+<Step kind="learn" title="Load and extension" minutes={8}>
+
+The **load** is the force that stretches the spring (for example the weight of the masses).
+
+The **extension** is how much longer the spring becomes:
+
+$$
+\text{extension} = \text{new length} - \text{original length}
+$$
+
+**Be careful:** the extension is not the length of the spring.
+
+<Figure svg={springSvg()} caption="Measuring the length of a spring with a load." width="26rem" />
+
+</Step>
+
+<Step kind="do" title="Spring practical" minutes={20}>
+
+**Equipment:** clamp stand, spring, mass hanger and 100 g masses, metre rule, pointer (optional), safety glasses.
+
+A 100 g mass has a weight of about 1 N.
+
+1. Measure the original length of the spring, with no load.
+2. Add one 100 g mass. Measure the new length.
+3. Add masses one by one, up to 600 g. Measure the length each time.
+4. Calculate the extension for each load.
+5. Plot a graph of **load / N** (up) against **extension / cm** (across).
+
+<div class="table-wrap">
+
+| load / N | length / cm | extension / cm |
+|---|---|---|
+| 0 | | 0 |
+| 1 | | |
+| 2 | | |
+| 3 | | |
+| 4 | | |
+| 5 | | |
+| 6 | | |
+
+</div>
+
+**Tip:** read the scale at eye level, at the same point of the spring every time.
+
+</Step>
+
+<Step kind="learn" title="Reading the graph" minutes={8}>
+
+For a spring, the first part of the graph is a **straight line through the origin**: the extension is **proportional** to the load. Twice the load gives twice the extension.
+
+<Graph
+  xLabel="extension / cm" yLabel="load / N"
+  xMax={16} yMax={6} xStep={2} yStep={1}
+  points={[[0, 0], [2, 1], [4, 2], [6, 3], [8, 4], [10, 5], [12.5, 5.6], [15, 5.9]]} curve
+  labels={[{ x: 10, y: 5.4, text: 'P' }]}
+  caption="P is the limit of proportionality. After P, the line is not straight."
+/>
+
+**Extended:** the point where the line stops being straight is the **limit of proportionality** (P).
+
+On the straight part, the **spring constant** $k$ is the force per unit extension:
+
+$$
+k = \frac{F}{x}
+$$
+
+A stiff spring has a big spring constant. The unit is N/m (or N/cm).
+
+<WorkedExample
+  question="Extended: use the graph. A load of 4 N gives an extension of 8 cm. Calculate the spring constant in N/m."
+  given={['$F = 4\\,\\text{N}$', '$x = 8\\,\\text{cm} = 0.08\\,\\text{m}$']}
+  find="the spring constant $k$"
+  answer="$k = 50\,\text{N/m}$"
+>
+
+$k = \dfrac{F}{x} = \dfrac{4}{0.08}$
+
+$k = 50\,\text{N/m}$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={14}>
+
+<Practice topic="spring" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A spring is 12 cm long. With a load, it is 17 cm long. What is the extension?',
+    options: [
+      { text: '5 cm', correct: true, why: '$17 - 12 = 5\\,\\text{cm}$.' },
+      { text: '17 cm', why: 'This is the new length. Subtract the original length.' },
+      { text: '29 cm', why: 'Subtract, do not add.' },
+      { text: '12 cm', why: 'This is the original length.' },
+    ],
+  },
+  {
+    question: 'Extended: a load of 3 N stretches a spring by 0.06 m. What is the spring constant?',
+    options: [
+      { text: '50 N/m', correct: true, why: '$k = \\dfrac{3}{0.06} = 50\\,\\text{N/m}$.' },
+      { text: '0.18 N/m', why: 'You multiplied. $k = \\dfrac{F}{x}$.' },
+      { text: '0.02 N/m', why: 'You divided the wrong way: $k = \\dfrac{F}{x}$.' },
+      { text: '3 N/m', why: 'Divide the force by the extension.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Describe your spring experiment in 5 numbered steps. Say what you measured and how.
+2. Do 5 questions at **Level 1** of the practice (Extended students: **Level 3**).
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** load–extension graphs and the experiment (1.5.1 C2) are Core. The spring constant (S9) and the limit of proportionality (S10) are Extended. The syllabus says an understanding of the **elastic limit** is not required.
+
+**Timing:** starter 5 min, learn 16 min, practical 20 min, practice 14 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Plotting the length instead of the extension.
+- Using cm with N/m (forgetting to change cm to m).
+- Thinking the line is always straight.
+
+**Practical tips:** $100\,\text{g}$ has a weight of $0.98\,\text{N}$, which we round to 1 N. Use a pointer taped to the bottom of the spring to read the scale.
+
+**Language support:**
+
+- Write *extension = new length − original length* on the board.
+
+**Differentiation:**
+
+- Support: give a printed grid with the axes already labelled.
+- Stretch: add masses past the limit of proportionality (with a spare spring). Does the spring go back to its original length?
+
+**Safety:** wear safety glasses. Do not overload the spring: it can snap or fly off. Keep feet away from the falling masses.
+
+</Step>

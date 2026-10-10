@@ -1,0 +1,77 @@
+---
+// Interactive electromagnetic spectrum: click a region to see its wavelength, uses and dangers.
+import { emRegions } from '../data/emSpectrum';
+---
+
+<div class="em" data-em>
+  <p class="arrows small">
+    <span>← longer wavelength, lower frequency</span>
+    <span>shorter wavelength, higher frequency →</span>
+  </p>
+  <div class="band" role="tablist" aria-label="Regions of the electromagnetic spectrum">
+    {
+      emRegions.map((r, i) => (
+        <button type="button" role="tab" class="region" data-id={r.id} aria-selected={i === 3 ? 'true' : 'false'} style={`background:${r.colour}`}>
+          <span>{r.name}</span>
+        </button>
+      ))
+    }
+  </div>
+  {
+    emRegions.map((r, i) => (
+      <div class="detail" data-for={r.id} hidden={i !== 3}>
+        <h4>{r.name}</h4>
+        <p><strong>Wavelength:</strong> {r.wavelength}</p>
+        <p><strong>Uses:</strong></p>
+        <ul>{r.uses.map((u) => <li>{u}</li>)}</ul>
+        {r.dangers ? <p><strong>Danger (too much exposure):</strong> {r.dangers}</p> : <p class="muted small">No special danger listed in the syllabus.</p>}
+      </div>
+    ))
+  }
+  <p class="small muted">All these waves travel at the same speed in a vacuum: 3.0 × 10⁸ m/s.</p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-em]').forEach((root) => {
+    const buttons = [...root.querySelectorAll<HTMLButtonElement>('.region')];
+    const details = [...root.querySelectorAll<HTMLElement>('.detail')];
+    for (const b of buttons) {
+      b.addEventListener('click', () => {
+        for (const x of buttons) x.setAttribute('aria-selected', String(x === b));
+        for (const d of details) d.hidden = d.dataset.for !== b.dataset.id;
+      });
+    }
+  });
+</script>
+
+<style>
+  .em {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .arrows { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.3rem 1rem; margin: 0 0 0.4rem; color: var(--ink-soft); }
+  .band { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 3px; border-radius: 8px; overflow: hidden; }
+  .region {
+    border: 0;
+    border-radius: 0;
+    min-height: 3.6rem;
+    padding: 0.3rem;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.82rem;
+    line-height: 1.15;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    opacity: 0.75;
+  }
+  .region[aria-selected='true'] { opacity: 1; outline: 3px solid var(--ink); outline-offset: -3px; }
+  @media (max-width: 600px) {
+    .band { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+  .detail { margin-top: 0.8rem; }
+  .detail h4 { margin: 0 0 0.3rem; }
+  .detail p { margin: 0.3rem 0; }
+  .detail ul { margin: 0.2rem 0 0.4rem; }
+</style>

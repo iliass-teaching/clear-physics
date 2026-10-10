@@ -1,0 +1,125 @@
+---
+unit: 18
+lesson: 8
+title: 'Practical skills: planning and evaluating'
+syllabus: ['section 4']
+goals:
+  - 'Plan an experiment: variables, number and range of values, method, safety.'
+  - 'Evaluate results: anomalies, errors, accuracy and precision.'
+  - Decide if two values agree within the limits of experimental accuracy (±10%).
+keyWords: [mean, reading, scale, Suggest, Explain]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import ExamQuestion from '../../../components/ExamQuestion.astro';
+
+<Step kind="starter" title="A fair test?" minutes={5}>
+
+Two students test which ball bounces higher. One drops a tennis ball from 1 m onto a carpet; the other drops a rubber ball from 2 m onto a wooden floor. Is it a fair test? What should they change?
+
+</Step>
+
+<Step kind="learn" title="Planning an experiment" minutes={14}>
+
+- **Independent variable:** the one **you change** (for example the length of a wire).
+- **Dependent variable:** the one **you measure** (for example its resistance).
+- **Control variables:** the ones you **keep the same**, so that the test is fair (the same metal, thickness, temperature…). Say **how** you keep each one constant.
+- **Number and range:** use at least **5** different values, spread over a wide range (for example 20 cm, 40 cm, 60 cm, 80 cm, 100 cm). **Repeat** each reading and take the mean.
+- **Method:** numbered steps, with the apparatus, what you measure and how.
+- **Safety:** name a hazard and a precaution (hot wire: switch off between readings; heavy masses: keep feet away).
+- **Results and conclusion:** say how you will record (table) and process them (graph, gradient), and what pattern would support your prediction.
+
+</Step>
+
+<Step kind="learn" title="Evaluating results" minutes={12}>
+
+<div class="table-wrap">
+
+| Word | Meaning |
+|---|---|
+| **accurate** | close to the true value |
+| **precise** | the repeated values are close to each other |
+| **anomaly** | a result outside the pattern of the others |
+| **random error** | unpredictable scatter (for example reaction time); reduce it by repeating and taking a mean |
+| **systematic error** | the same error each time (for example a zero error); repeating does not help — correct it |
+| **range** | from the smallest to the biggest value of a variable |
+
+</div>
+
+**Do two values agree?** At IGCSE, two results agree "within the limits of experimental accuracy" if they differ by **10% or less**.
+
+**Improvements:** suggest a **specific** change and say **why** it helps: "use a longer length of wire, so the p.d. readings are bigger and the percentage error is smaller", not just "be more careful".
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={22}>
+
+### Percentage difference and zero errors
+
+<Practice topic="data-skills" level={2} />
+
+### Intercepts
+
+<Practice topic="graph-skills" level={3} />
+
+<ExamQuestion number="1" marks={6}>
+
+Plan an experiment to find how the resistance of a wire depends on its length. You have: a long constantan wire on a metre rule, a power supply, an ammeter, a voltmeter, crocodile clips and leads.
+
+In your plan, include: the variables, the method, a table for the results, how you will use the results, and one safety precaution.
+
+<div slot="scheme">
+
+Any six of:
+
+- independent variable: length; dependent variable: resistance (from V and I) **[1]**
+- control: the same wire (material, thickness), temperature: small current / switch off between readings **[1]**
+- circuit: ammeter in series, voltmeter across the wire between the clips **[1]**
+- at least 5 lengths over a wide range (for example 20 cm to 100 cm) **[1]**
+- repeat and take the mean **[1]**
+- table with headings length / cm, V / V, I / A, R / Ω **[1]**
+- calculate $R = \dfrac{V}{I}$ and plot R against length; a straight line through the origin shows R ∝ length **[1]**
+- safety: the wire can get hot — keep the current small, switch off between readings **[1]**
+
+</div>
+</ExamQuestion>
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={7}>
+
+<Quiz questions={[
+  {
+    question: 'A student finds g = 10.6 m/s². The accepted value is 9.8 m/s². Do they agree within the limits of experimental accuracy (±10%)?',
+    options: [
+      { text: 'Yes: the difference is about 8%', correct: true, why: '$\\dfrac{0.8}{9.8} \\times 100\\% \\approx 8\\%$, less than 10%.' },
+      { text: 'No: the difference is about 8%', why: '8% is within 10%.' },
+      { text: 'No: any difference means they disagree', why: 'At this level, within 10% counts as agreement.' },
+      { text: 'Yes: the difference is 0.8%', why: 'Check: 0.8 ÷ 9.8 × 100%.' },
+    ],
+  },
+  {
+    question: 'Which error is NOT reduced by repeating measurements?',
+    options: [
+      { text: 'a systematic error, like a zero error', correct: true, why: 'It is the same each time: correct it instead.' },
+      { text: 'a random error, like reaction time', why: 'Repeating and averaging reduces random errors.' },
+      { text: 'scatter in the readings', why: 'Scatter is random.' },
+      { text: 'all errors are reduced by repeating', why: 'Systematic errors are not.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Source:** syllabus section 4: "plan experiments and investigations", "interpret and evaluate", "evaluate methods" and the "Language of measurement" table (students do not need to recall these definitions, but should use the words correctly). The ±10% rule is stated in the syllabus.
+
+**Timing:** starter 5 min, planning 14 min, evaluating 12 min, practice 22 min, exit ticket 7 min.
+
+**Note:** the planning question is our own, not a real exam question.
+
+</Step>

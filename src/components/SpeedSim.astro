@@ -1,0 +1,243 @@
+---
+// Virtual practical: measure the speed of a toy car with a ruler and a stopwatch.
+// The stopwatch starts with the car. The student stops it at the flag,
+// so reaction time adds a real measurement error.
+---
+
+<div class="speed-sim" data-speed-sim>
+  <svg viewBox="0 0 660 150" role="img" aria-label="A toy car on a 10 metre track with a finish flag">
+    <line x1="40" y1="100" x2="620" y2="100" class="track" />
+    <g class="ruler"></g>
+    <g class="flag">
+      <line x1="0" y1="100" x2="0" y2="30" />
+      <polygon points="0,30 28,40 0,50" />
+    </g>
+    <g class="car">
+      <!-- The front of the car is at x = 0, so it touches the flag at the right moment. -->
+      <rect x="-44" y="72" width="44" height="18" rx="5" />
+      <rect x="-36" y="60" width="26" height="14" rx="4" />
+      <circle cx="-34" cy="92" r="7" />
+      <circle cx="-10" cy="92" r="7" />
+    </g>
+  </svg>
+
+  <div class="panel">
+    <div class="watch" aria-live="off"><span class="t">0.00</span> s</div>
+    <button type="button" class="go">Go</button>
+    <button type="button" class="stop" disabled>Stop the watch</button>
+    <button type="button" class="reset secondary">New car</button>
+  </div>
+  <p class="msg" aria-live="polite">Press <strong>Go</strong>. The car starts and the watch starts. Press <strong>Stop</strong> when the car reaches the flag.</p>
+
+  <div class="calc" hidden>
+    <p>Distance to the flag: <strong class="d"></strong> m. Your time: <strong class="tm"></strong> s.</p>
+    <label>Your speed: <input class="v" type="text" inputmode="decimal" size="6" /> m/s</label>
+    <button type="button" class="check">Check</button>
+    <p class="result" aria-live="polite"></p>
+  </div>
+
+  <div class="table-wrap">
+    <table class="results" hidden>
+      <thead><tr><th>Try</th><th>distance / m</th><th>time / s</th><th>speed / (m/s)</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <p class="mean small"></p>
+</div>
+
+<script>
+  const X0 = 40;
+  const PX_PER_M = 58; // 10 m = 580 px
+
+  document.querySelectorAll<HTMLElement>('[data-speed-sim]').forEach((root) => {
+    const svg = root.querySelector('svg')!;
+    const car = svg.querySelector<SVGGElement>('.car')!;
+    const flag = svg.querySelector<SVGGElement>('.flag')!;
+    const ruler = svg.querySelector<SVGGElement>('.ruler')!;
+    const tEl = root.querySelector<HTMLElement>('.t')!;
+    const go = root.querySelector<HTMLButtonElement>('.go')!;
+    const stop = root.querySelector<HTMLButtonElement>('.stop')!;
+    const reset = root.querySelector<HTMLButtonElement>('.reset')!;
+    const msg = root.querySelector<HTMLElement>('.msg')!;
+    const calc = root.querySelector<HTMLElement>('.calc')!;
+    const dEl = calc.querySelector<HTMLElement>('.d')!;
+    const tmEl = calc.querySelector<HTMLElement>('.tm')!;
+    const vIn = calc.querySelector<HTMLInputElement>('.v')!;
+    const check = calc.querySelector<HTMLButtonElement>('.check')!;
+    const result = calc.querySelector<HTMLElement>('.result')!;
+    const table = root.querySelector<HTMLTableElement>('.results')!;
+    const tbody = table.querySelector('tbody')!;
+    const meanEl = root.querySelector<HTMLElement>('.mean')!;
+
+    // Ruler: a mark every metre.
+    for (let m = 0; m <= 10; m++) {
+      const x = X0 + m * PX_PER_M;
+      ruler.insertAdjacentHTML(
+        'beforeend',
+        `<line x1="${x}" y1="100" x2="${x}" y2="112" /><text x="${x}" y="130" text-anchor="middle">${m === 10 ? '10 m' : m}</text>`,
+      );
+    }
+
+    let speed = 1;
+    let flagAt = 8;
+    let start = 0;
+    let running = false;
+    let watchRunning = false;
+    let measured = 0;
+    let tries: { d: number; t: number; v: number }[] = [];
+
+    function place(xm: number): void {
+      car.setAttribute('transform', `translate(${X0 + xm * PX_PER_M}, 0)`);
+    }
+
+    function newCar(): void {
+      speed = Math.round((0.8 + Math.random() * 1.7) * 100) / 100;
+      flagAt = 5 + Math.floor(Math.random() * 6); // 5 to 10 m
+      flag.setAttribute('transform', `translate(${X0 + flagAt * PX_PER_M}, 0)`);
+      tries = [];
+      tbody.replaceChildren();
+      table.hidden = true;
+      meanEl.textContent = '';
+      ready();
+    }
+
+    function ready(): void {
+      running = false;
+      watchRunning = false;
+      place(0);
+      tEl.textContent = '0.00';
+      go.disabled = false;
+      stop.disabled = true;
+      calc.hidden = true;
+      result.textContent = '';
+      vIn.value = '';
+    }
+
+    function frame(now: number): void {
+      if (!running) return;
+      const t = (now - start) / 1000;
+      const x = speed * t;
+      place(Math.min(x, 10.5));
+      if (watchRunning) tEl.textContent = t.toFixed(2);
+      if (x < 10.5) requestAnimationFrame(frame);
+      else {
+        running = false;
+        if (watchRunning) {
+          watchRunning = false;
+          stop.disabled = true;
+          msg.textContent = 'Too late! The car left the track. Press "New car" or try again.';
+          go.disabled = false;
+        }
+      }
+    }
+
+    go.addEventListener('click', () => {
+      ready();
+      go.disabled = true;
+      stop.disabled = false;
+      running = true;
+      watchRunning = true;
+      start = performance.now();
+      msg.textContent = 'Watch the flag…';
+      requestAnimationFrame(frame);
+    });
+
+    stop.addEventListener('click', () => {
+      if (!watchRunning) return;
+      watchRunning = false;
+      measured = (performance.now() - start) / 1000;
+      tEl.textContent = measured.toFixed(2);
+      stop.disabled = true;
+      go.disabled = false;
+      const position = speed * measured;
+      if (position < flagAt - 0.25) {
+        msg.textContent = `Too early! The car was at ${position.toFixed(1)} m, not at the flag. Press Go to try again.`;
+        return;
+      }
+      msg.textContent = 'Now calculate the speed: v = s / t.';
+      dEl.textContent = String(flagAt);
+      tmEl.textContent = measured.toFixed(2);
+      calc.hidden = false;
+      vIn.focus();
+    });
+
+    function onCheck(): void {
+      const v = Number(vIn.value.replace(',', '.'));
+      if (!Number.isFinite(v) || vIn.value.trim() === '') {
+        result.textContent = 'Write a number first.';
+        return;
+      }
+      const tRounded = Number(measured.toFixed(2));
+      const yours = flagAt / tRounded;
+      if (Math.abs(v - yours) / yours > 0.03) {
+        result.className = 'result bad';
+        result.textContent = `Check your calculation: v = ${flagAt} / ${tRounded.toFixed(2)}.`;
+        return;
+      }
+      result.className = 'result good';
+      const gap = Math.abs(yours - speed) / speed;
+      result.textContent =
+        `Good: your speed is ${yours.toFixed(2)} m/s. The real speed is ${speed.toFixed(2)} m/s. ` +
+        (gap < 0.03
+          ? 'Very close! Press Go to repeat.'
+          : 'The difference comes from your reaction time. Press Go to repeat.');
+      tries.push({ d: flagAt, t: tRounded, v: yours });
+      tbody.insertAdjacentHTML(
+        'beforeend',
+        `<tr><td>${tries.length}</td><td>${flagAt}</td><td>${tRounded.toFixed(2)}</td><td>${yours.toFixed(2)}</td></tr>`,
+      );
+      table.hidden = false;
+      if (tries.length >= 2) {
+        const mean = tries.reduce((s, x) => s + x.v, 0) / tries.length;
+        meanEl.textContent = `Mean (average) speed of your ${tries.length} tries: ${mean.toFixed(2)} m/s.`;
+      }
+    }
+
+    check.addEventListener('click', onCheck);
+    vIn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') onCheck();
+    });
+    reset.addEventListener('click', newCar);
+
+    newCar();
+  });
+</script>
+
+<style>
+  .speed-sim {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0.8rem 1rem;
+    margin: 1rem 0;
+  }
+  svg { width: 100%; height: auto; display: block; }
+  svg :global(.track),
+  svg :global(.ruler line) { stroke: var(--ink-soft); stroke-width: 2; }
+  svg :global(.ruler text) { fill: var(--ink-soft); font-size: calc(14px * var(--tz, 1)); }
+  .flag line { stroke: var(--ink); stroke-width: 3; }
+  .flag polygon { fill: var(--bad); }
+  .car rect { fill: var(--accent); }
+  .car circle { fill: var(--ink); }
+  .panel {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+  }
+  .watch {
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 1.4rem;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 6px;
+    padding: 0.1rem 0.7rem;
+    min-width: 6.5rem;
+    text-align: right;
+  }
+  .msg { margin: 0.6rem 0; }
+  .calc label { margin-right: 0.5rem; }
+  .result.good { color: var(--good); }
+  .result.bad { color: var(--bad); }
+</style>

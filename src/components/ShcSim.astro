@@ -1,0 +1,202 @@
+---
+// Virtual practical: measure the specific heat capacity of a material.
+// A 50 W heater warms a block (or some water). The student reads the joulemeter and the thermometer,
+// then calculates c = ΔE / (m Δθ). Some energy is lost to the surroundings, as in a real experiment.
+import { renderMath } from '../lib/math';
+const formula = renderMath('$c = \\dfrac{\\Delta E}{m \\Delta\\theta}$');
+---
+
+<div class="shc-sim" data-shc-sim>
+  <div class="setup">
+    <label>
+      material
+      <select class="material">
+        <option value="aluminium">aluminium block, 1.0 kg</option>
+        <option value="copper">copper block, 1.0 kg</option>
+        <option value="iron">iron block, 1.0 kg</option>
+        <option value="water">water in a beaker, 0.50 kg</option>
+      </select>
+    </label>
+    <label class="check"><input type="checkbox" class="insulate" checked /> insulation around it</label>
+  </div>
+
+  <div class="meters">
+    <div class="meter"><span class="name">clock</span><span class="value clock">0:00</span></div>
+    <div class="meter"><span class="name">joulemeter</span><span class="value energy">0</span><span class="unit">J</span></div>
+    <div class="meter"><span class="name">thermometer</span><span class="value temp">20.0</span><span class="unit">°C</span></div>
+  </div>
+
+  <p class="buttons">
+    <button type="button" class="start">Switch on the heater</button>
+    <button type="button" class="record secondary">Record a reading</button>
+    <button type="button" class="reset secondary">Reset</button>
+  </p>
+  <p class="small muted">The heater power is 50 W. The clock runs 30 times faster than real time.</p>
+
+  <div class="table-wrap">
+    <table class="readings" hidden>
+      <thead><tr><th>time / s</th><th>energy / J</th><th>temperature / °C</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="calc" hidden>
+    <p>Use your first and last readings: <Fragment set:html={formula} />.</p>
+    <label>Your value of <em>c</em>: <input class="c-in" type="text" inputmode="decimal" size="8" /> J/(kg °C)</label>
+    <button type="button" class="check-c">Check</button>
+    <p class="result" aria-live="polite"></p>
+  </div>
+</div>
+
+<script>
+  const MATERIALS: Record<string, { c: number; m: number; name: string }> = {
+    aluminium: { c: 900, m: 1.0, name: 'aluminium' },
+    copper: { c: 385, m: 1.0, name: 'copper' },
+    iron: { c: 450, m: 1.0, name: 'iron' },
+    water: { c: 4200, m: 0.5, name: 'water' },
+  };
+  const P = 50; // W
+  const ROOM = 20; // °C
+  const SPEED = 30; // simulated seconds per real second
+
+  document.querySelectorAll<HTMLElement>('[data-shc-sim]').forEach((root) => {
+    const q = <T extends Element>(s: string) => root.querySelector<T>(s)!;
+    const material = q<HTMLSelectElement>('.material');
+    const insulate = q<HTMLInputElement>('.insulate');
+    const startBtn = q<HTMLButtonElement>('.start');
+    const table = q<HTMLTableElement>('.readings');
+    const tbody = table.querySelector('tbody')!;
+    const calc = q<HTMLElement>('.calc');
+    const result = q<HTMLElement>('.result');
+
+    let t = 0; // s
+    let E = 0; // J
+    let theta = ROOM; // °C
+    let on = false;
+    let last = 0;
+
+    const loss = () => (insulate.checked ? 0.15 : 0.5); // W per °C above the room
+    const reading = () => Math.round(theta * 2) / 2; // thermometer: 0.5 °C divisions
+
+    function show(): void {
+      q<HTMLElement>('.clock').textContent = `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
+      q<HTMLElement>('.energy').textContent = String(Math.round(E / 10) * 10);
+      q<HTMLElement>('.temp').textContent = reading().toFixed(1);
+    }
+
+    // Advance the experiment by dt simulated seconds.
+    function advance(dt: number): void {
+      const { c, m } = MATERIALS[material.value];
+      const steps = Math.ceil(dt);
+      const h = dt / steps;
+      for (let i = 0; i < steps; i++) {
+        const pIn = on ? P : 0;
+        theta += ((pIn - loss() * (theta - ROOM)) / (m * c)) * h;
+        if (on) E += P * h;
+        t += h;
+      }
+    }
+
+    function reset(): void {
+      on = false;
+      t = 0;
+      E = 0;
+      theta = ROOM;
+      tbody.replaceChildren();
+      table.hidden = true;
+      calc.hidden = true;
+      result.textContent = '';
+      startBtn.textContent = 'Switch on the heater';
+      show();
+    }
+
+    function loop(now: number): void {
+      if (!on) return;
+      const dt = Math.min((now - last) / 1000, 0.1) * SPEED;
+      last = now;
+      advance(dt);
+      show();
+      if (t >= 1200) {
+        on = false;
+        startBtn.textContent = 'Switch on the heater';
+        result.textContent = '';
+      } else requestAnimationFrame(loop);
+    }
+
+    startBtn.addEventListener('click', () => {
+      on = !on;
+      startBtn.textContent = on ? 'Switch off the heater' : 'Switch on the heater';
+      if (on) {
+        last = performance.now();
+        requestAnimationFrame(loop);
+      }
+    });
+
+    q<HTMLButtonElement>('.record').addEventListener('click', () => {
+      const tr = document.createElement('tr');
+      for (const v of [Math.round(t), Math.round(E / 10) * 10, reading().toFixed(1)]) {
+        const td = document.createElement('td');
+        td.textContent = String(v);
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+      table.hidden = false;
+      if (tbody.children.length >= 2) calc.hidden = false;
+    });
+
+    q<HTMLButtonElement>('.check-c').addEventListener('click', () => {
+      const { c, name } = MATERIALS[material.value];
+      const v = Number(q<HTMLInputElement>('.c-in').value.replace(',', '.').replace(/\s/g, ''));
+      if (!Number.isFinite(v) || v <= 0) {
+        result.textContent = 'Write a number first.';
+        return;
+      }
+      const diff = Math.round(((v - c) / c) * 100);
+      const ref = `The value in data books for ${name} is about ${c} J/(kg °C).`;
+      if (Math.abs(diff) <= 5) result.textContent = `${ref} Your value is very close. Well done!`;
+      else if (diff > 0)
+        result.textContent = `${ref} Your value is ${diff} % too high. Some energy from the heater went to the surroundings, not into the ${name}, so Δθ was smaller. Try with insulation, or check your calculation.`;
+      else result.textContent = `${ref} Your value is ${-diff} % too low. Check your calculation: did you use the change in temperature, and the mass in kg?`;
+    });
+
+    material.addEventListener('change', reset);
+    insulate.addEventListener('change', reset);
+    q<HTMLButtonElement>('.reset').addEventListener('click', reset);
+    reset();
+
+    // For testing without animation frames.
+    (root as HTMLElement & { _shc?: unknown })._shc = {
+      run(seconds: number) { on = true; advance(seconds); on = false; show(); },
+      get state() { return { t, E, theta, reading: reading() }; },
+    };
+  });
+</script>
+
+<style>
+  .shc-sim {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .setup { display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem; align-items: center; }
+  .setup label { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; max-width: 100%; }
+  .setup select { max-width: 100%; min-width: 0; }
+  .meters { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1rem 0 0.5rem; }
+  .meter {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+  }
+  .meter .name { font-size: 0.8rem; color: var(--ink-soft); }
+  .meter .value { font-size: 1.35rem; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 3.5rem; text-align: right; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .readings { max-width: 28rem; }
+  .calc label { display: inline-flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+  .result { font-weight: 600; }
+</style>

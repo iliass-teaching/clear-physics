@@ -1,0 +1,178 @@
+---
+unit: 1
+lesson: 8
+title: Using speed–time graphs
+syllabus: ['1.2 C7', '1.2 S11']
+goals:
+  - Calculate the distance travelled from the area under a speed–time graph.
+  - Calculate the acceleration from the gradient of a speed–time graph (Extended).
+keyWords: [area under a graph, distance, gradient, acceleration]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Graph from '../../../components/Graph.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { graphSvg } from '../../../lib/graph';
+
+<Step kind="starter" title="Two ways, one answer" minutes={5}>
+
+A cyclist rides at 10 m/s for 5 s.
+
+1. Calculate the distance with $s = v \times t$.
+2. Now look at the graph. Calculate the area of the blue rectangle.
+
+What do you notice?
+
+<Graph
+  xLabel="time / s" yLabel="speed / (m/s)" xMax={6} yMax={12} xStep={1} yStep={2}
+  points={[[0, 10], [5, 10]]} shade
+/>
+
+</Step>
+
+<Step kind="learn" title="Distance = area under the graph" minutes={12}>
+
+On a speed–time graph:
+
+$$
+\text{distance travelled} = \text{area under the graph}
+$$
+
+The area is between the line and the time axis. Check the units: $\text{m/s} \times \text{s} = \text{m}$.
+
+- **Rectangle** (constant speed): $\text{area} = \text{base} \times \text{height}$.
+- **Triangle** (constant acceleration from rest, or deceleration to rest): $\text{area} = \tfrac{1}{2} \times \text{base} \times \text{height}$.
+- **Other shapes:** split them into rectangles and triangles. Add the areas.
+
+<Graph
+  xLabel="time / s" yLabel="speed / (m/s)" xMax={20} yMax={12} xStep={2} yStep={2}
+  points={[[0, 0], [4, 8], [14, 8], [18, 0]]} shade
+  labels={[{ x: 2.6, y: 3, text: 'A' }, { x: 9, y: 4, text: 'B' }, { x: 15.4, y: 3, text: 'C' }]}
+  caption="A bus between two stops"
+/>
+
+<WorkedExample
+  question="Use the graph of the bus. Calculate the total distance."
+  given={['A: triangle, base $4\\,\\text{s}$, height $8\\,\\text{m/s}$', 'B: rectangle, base $10\\,\\text{s}$, height $8\\,\\text{m/s}$', 'C: triangle, base $4\\,\\text{s}$, height $8\\,\\text{m/s}$']}
+  find="the total distance between the two stops"
+  answer="$112\,\text{m}$"
+>
+
+$A = \tfrac{1}{2} \times 4 \times 8 = 16\,\text{m}$
+
+$B = 10 \times 8 = 80\,\text{m}$
+
+$C = \tfrac{1}{2} \times 4 \times 8 = 16\,\text{m}$
+
+$\text{total distance} = 16 + 80 + 16 = 112\,\text{m}$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="learn" title="Acceleration = gradient (Extended)" minutes={8}>
+
+On a speed–time graph, the gradient of the line **is the acceleration**:
+
+$$
+a = \text{gradient} = \frac{\text{change in speed}}{\text{change in time}} = \frac{\Delta v}{\Delta t}
+$$
+
+For the bus:
+
+- part A: $a = \dfrac{8 - 0}{4 - 0} = 2\,\text{m/s}^2$
+- part B: the line is flat, so $a = 0$
+- part C: $a = \dfrac{0 - 8}{18 - 14} = -2\,\text{m/s}^2$ (a deceleration)
+
+**Remember:** area → distance. Gradient → acceleration.
+
+</Step>
+
+<Step kind="do" title="Make your own journey" minutes={15}>
+
+Work in pairs.
+
+1. Write a short story of a journey in 3 parts. Example: *"A train speeds up from rest to 20 m/s in 10 s. It moves at 20 m/s for 30 s. Then it slows down and stops in 20 s."*
+2. Draw the speed–time graph on squared paper.
+3. Swap with your partner. Your partner calculates:
+   - the total distance;
+   - Extended: the acceleration in each part.
+4. Check each other's answers.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={15}>
+
+Level 2 is for Extended students.
+
+<Practice topic="st-graph" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: `A car starts from rest. How far does it go in the first 4 s? ${graphSvg({ xLabel: 'time / s', yLabel: 'speed / (m/s)', xMax: 5, yMax: 12, xStep: 1, yStep: 2, points: [[0, 0], [4, 10]], shade: true })}`,
+    options: [
+      { text: '20 m', correct: true, why: 'Triangle: $\\tfrac{1}{2} \\times 4 \\times 10 = 20\\,\\text{m}$.' },
+      { text: '40 m', why: 'This is a triangle, not a rectangle: $\\text{area} = \\tfrac{1}{2} \\times \\text{base} \\times \\text{height}$.' },
+      { text: '2.5 m', why: 'This is the gradient (the acceleration in m/s²). Distance is the area.' },
+      { text: '14 m', why: 'You added. Area of a triangle $= \\tfrac{1}{2} \\times \\text{base} \\times \\text{height}$.' },
+    ],
+  },
+  {
+    question: 'What does the gradient of a speed–time graph give?',
+    options: [
+      { text: 'the acceleration', correct: true, why: '$\\text{gradient} = \\dfrac{\\Delta v}{\\Delta t} = a$.' },
+      { text: 'the distance', why: 'The distance is the area under the graph.' },
+      { text: 'the speed', why: 'The speed is read on the vertical axis. The gradient of a distance–time graph gives the speed.' },
+      { text: 'the time', why: 'The time is read on the horizontal axis.' },
+    ],
+  },
+  {
+    question: 'A runner moves at a constant 6 m/s for 10 s. What distance does she run?',
+    options: [
+      { text: '60 m', correct: true, why: 'Rectangle: $10 \\times 6 = 60\\,\\text{m}$.' },
+      { text: '30 m', why: 'This is a rectangle, not a triangle: $\\text{area} = \\text{base} \\times \\text{height}$.' },
+      { text: '0.6 m', why: 'Distance = area $= \\text{base} \\times \\text{height}$.' },
+      { text: '16 m', why: 'You added. $\\text{area} = \\text{base} \\times \\text{height}$.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Draw the speed–time graph for the train story in the activity. Calculate the total distance. (Answer: $100 + 600 + 200 = 900\,\text{m}$.)
+2. Do 5 questions at **Level 3** of the practice.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** distance from the area (1.2 C7) is Core, for constant speed or constant acceleration. Acceleration from the gradient (1.2 S11) is Extended.
+
+**Timing:** starter 5 min, learn 20 min, activity 15 min, practice 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Using $\text{base} \times \text{height}$ for a triangle (forgetting the $\tfrac{1}{2}$).
+- Calculating the gradient when the question asks for the distance, or the opposite.
+- Using the whole rectangle under the graph instead of splitting the shape.
+
+**Language support:**
+
+- Keep a poster on the wall: "area → distance; gradient → acceleration".
+- Shade the area with a highlighter on printed graphs.
+
+**Differentiation:**
+
+- Support: rectangles only, then one triangle.
+- Stretch: two cars start together. Car A moves at a constant 10 m/s. Car B starts from rest with an acceleration of 2 m/s². When do they have the same speed? Who is in front at that moment? (5 s; car A: 50 m, car B: 25 m.)
+
+</Step>

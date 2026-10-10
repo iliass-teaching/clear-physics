@@ -1,0 +1,149 @@
+---
+unit: 4
+lesson: 2
+title: Conservation of momentum
+syllabus: ['1.6 S3']
+goals:
+  - State the principle of conservation of momentum.
+  - Use it to find velocities after a collision in a straight line.
+  - Use it to explain recoil when objects push apart.
+keyWords: [conservation of momentum, collision, momentum]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Figure from '../../../components/Figure.astro';
+import CollisionSim from '../../../components/CollisionSim.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { collisionSvg } from '../../../lib/momentumFigures';
+
+<Step kind="starter" title="Newton's cradle" minutes={5}>
+
+Your teacher shows a Newton’s cradle (or a video). One ball hits the row of balls.
+
+What happens? Why does only one ball move at the other end, at about the same speed?
+
+</Step>
+
+<Step kind="learn" title="The principle" minutes={10}>
+
+When objects collide, or push each other apart, and **no outside force** acts on them:
+
+$$
+\text{total momentum before} = \text{total momentum after}
+$$
+
+This is the **principle of conservation of momentum**. Momentum is not lost: it is passed from one object to another.
+
+<Figure svg={collisionSvg([{ m: 2, v: 6, label: 'A' }, { m: 1, v: 0, label: 'B' }])} caption="Before: A moves at 6 m/s, B is at rest." width="28rem" />
+
+<WorkedExample
+  question="Trolley A (2 kg) moves at 6 m/s. It hits trolley B (1 kg), which is at rest. They stick together. Calculate their velocity after the collision."
+  given={['A: $2\\,\\text{kg}$ at $6\\,\\text{m/s}$', 'B: $1\\,\\text{kg}$ at rest', 'they stick together']}
+  find="the velocity $v$ after the collision"
+  answer="$v = 4\,\text{m/s}$"
+>
+
+momentum before $= 2 \times 6 + 1 \times 0 = 12\,\text{kg m/s}$
+
+momentum after $= (2 + 1) \times v = 3v$
+
+$3v = 12$, so $v = 4\,\text{m/s}$
+
+</WorkedExample>
+
+**Check:** after the collision there is more mass moving, so the velocity is smaller.
+
+</Step>
+
+<Step kind="learn" title="Recoil" minutes={8}>
+
+When two objects at rest **push apart** (an explosion, a gun firing, a skater pushing a ball), the total momentum before is **zero**. So the total momentum after is also zero:
+
+$$
+m_A v_A + m_B v_B = 0
+$$
+
+The two objects move in **opposite directions**. The lighter object moves faster.
+
+Example: a cannon (1000 kg) fires a cannonball (10 kg) forwards at 200 m/s.
+$10 \times 200 + 1000 \times v = 0$, so $v = -2\,\text{m/s}$: the cannon recoils (moves backwards) at 2 m/s.
+
+</Step>
+
+<Step kind="do" title="Collision simulation" minutes={15}>
+
+1. Set A: 2 kg at 3 m/s, and B: 1 kg at rest. **Predict** the velocity after the collision, then run it.
+2. Change the masses and velocities. Predict each time before you run.
+3. Try B moving **towards** A (a negative velocity). What happens?
+4. Look at the table each time. Compare the total momentum before and after.
+
+<CollisionSim />
+
+**Question:** in every collision, what do you notice about the total momentum?
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={17}>
+
+<Practice topic="conservation" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A 4 kg trolley at 3 m/s hits a 2 kg trolley at rest. They stick together. What is their velocity after?',
+    options: [
+      { text: '2 m/s', correct: true, why: '$4 \\times 3 = 12$, then $v = \\dfrac{12}{4 + 2} = 2\\,\\text{m/s}$.' },
+      { text: '3 m/s', why: 'More mass moves after the collision, so the velocity is smaller.' },
+      { text: '6 m/s', why: 'Divide by the total mass: $4 + 2 = 6\\,\\text{kg}$.' },
+      { text: '1.5 m/s', why: 'Use the total mass after: $v = \\dfrac{12}{6}$.' },
+    ],
+  },
+  {
+    question: 'A skater at rest throws a ball forwards. What happens to the skater?',
+    options: [
+      { text: 'She moves backwards', correct: true, why: 'Total momentum stays zero: the ball goes forwards, she goes backwards.' },
+      { text: 'She moves forwards with the ball', why: 'The total momentum must stay zero.' },
+      { text: 'She stays at rest', why: 'The ball gains momentum, so she must gain the same momentum the other way.' },
+      { text: 'She moves sideways', why: 'She moves in the opposite direction to the ball.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Explain, using momentum, why a gun moves backwards (recoils) when it fires a bullet. Then do 5 questions at **Level 2** of the practice.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Extended content** (1.6 S3): simple problems in **one dimension** only.
+
+**Timing:** starter 5 min, learn 18 min, simulation 15 min, practice 17 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Dividing by one mass instead of the total mass after a sticking collision.
+- Forgetting the minus sign when an object moves the other way.
+- Thinking momentum is "used up" in a collision.
+
+**About the simulation:** the trolleys always stick together. Energy is not conserved in this kind of collision (some kinetic energy becomes heating and sound), but momentum is. Extended students can check this with $E_k = \tfrac{1}{2}mv^2$ after Unit 5.
+
+**Language support:**
+
+- *Conserved* = the total stays the same. Show with coins: pass them between students, the total does not change.
+
+**Differentiation:**
+
+- Support: Level 1 (one trolley at rest).
+- Stretch: two trolleys of the same mass and the same speed hit head-on and stick. What is their velocity after? (Zero.)
+
+</Step>

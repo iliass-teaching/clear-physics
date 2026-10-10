@@ -1,0 +1,85 @@
+---
+// Interactive: the force on a current-carrying wire (or a beam of charged particles) in a magnetic field.
+// Reverse the current, reverse the field, and see the direction of the force.
+---
+
+<div class="fleming-sim" data-fleming-sim>
+  <div class="drawing"></div>
+  <p class="buttons">
+    <button type="button" class="rev-i">Reverse the current</button>
+    <button type="button" class="rev-b">Reverse the field (swap the poles)</button>
+    <label class="check"><input type="checkbox" class="beam" /> a beam of electrons instead of a wire (Extended)</label>
+  </p>
+  <p class="readout" aria-live="polite"></p>
+</div>
+
+<script>
+  import { arrow, wireEnd } from '../lib/emEffectsFigures';
+
+  const N_COL = '#d84b3a';
+  const S_COL = '#3a6fd8';
+
+  document.querySelectorAll<HTMLElement>('[data-fleming-sim]').forEach((root) => {
+    const drawing = root.querySelector<HTMLElement>('.drawing')!;
+    const beam = root.querySelector<HTMLInputElement>('.beam')!;
+    let iOut = true; // conventional current (or the electrons' motion, for a beam) out of the page
+    let nLeft = true;
+
+    function draw(): void {
+      // For a beam of electrons, the conventional current is opposite to the motion of the electrons.
+      const motionOut = iOut;
+      const currentOut = beam.checked ? !motionOut : motionOut;
+      // F = I × B. With I along ±z (out of the page = +z) and B along ±x: F_y = s_I × s_B (up = +).
+      const up = (currentOut ? 1 : -1) * (nLeft ? 1 : -1) > 0;
+      const left = nLeft ? ['N', N_COL] : ['S', S_COL];
+      const right = nLeft ? ['S', S_COL] : ['N', N_COL];
+      const fieldArrows = [80, 110, 140]
+        .map((y) => (nLeft ? arrow(138, y, 322, y, 'arrow', 1.4, 7) : arrow(322, y, 138, y, 'arrow', 1.4, 7)))
+        .join('');
+      const obj = beam.checked
+        ? `<circle cx="230" cy="110" r="14" style="fill:none;stroke:var(--ink-soft);stroke-dasharray:3 3"/>` +
+          [-6, 0, 6].map((dx) => `<circle cx="${230 + dx}" cy="${110 + (dx === 0 ? -5 : 4)}" r="3" style="fill:${S_COL}"/>`).join('') +
+          `<text class="txt" x="230" y="214" text-anchor="middle">${motionOut ? 'electrons moving out of the page' : 'electrons moving into the page'}</text>`
+        : wireEnd(230, 110, currentOut, 14);
+      const force = up ? arrow(230, 92, 230, 26, 'arrow2', 3.2, 11) : arrow(230, 128, 230, 194, 'arrow2', 3.2, 11);
+      drawing.innerHTML = `<svg class="fig" viewBox="0 0 460 220" role="img" aria-label="A magnet and a wire or a beam: the force is ${up ? 'up' : 'down'}">
+        <rect x="40" y="60" width="90" height="100" style="fill:${left[1]}"/>
+        <rect x="330" y="60" width="90" height="100" style="fill:${right[1]}"/>
+        <text class="txt-light" x="85" y="117" text-anchor="middle" style="font-weight:700;font-size:20px">${left[0]}</text>
+        <text class="txt-light" x="375" y="117" text-anchor="middle" style="font-weight:700;font-size:20px">${right[0]}</text>
+        ${fieldArrows}${obj}${force}
+        <text class="txt" x="${up ? 242 : 242}" y="${up ? 36 : 190}" style="font-weight:700">force</text>
+      </svg>`;
+      const what = beam.checked
+        ? `Electrons move ${motionOut ? 'out of' : 'into'} the page, so the conventional current is ${currentOut ? 'out of' : 'into'} the page.`
+        : `Current ${currentOut ? 'out of' : 'into'} the page.`;
+      root.querySelector<HTMLElement>('.readout')!.innerHTML =
+        `${what} Field from N to S (to the ${nLeft ? 'right' : 'left'}). Force: <strong>${up ? 'up' : 'down'}</strong>.`;
+    }
+
+    root.querySelector<HTMLButtonElement>('.rev-i')!.addEventListener('click', () => {
+      iOut = !iOut;
+      draw();
+    });
+    root.querySelector<HTMLButtonElement>('.rev-b')!.addEventListener('click', () => {
+      nLeft = !nLeft;
+      draw();
+    });
+    beam.addEventListener('change', draw);
+    draw();
+  });
+</script>
+
+<style>
+  .fleming-sim {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .drawing :global(svg) { width: 100%; max-width: 30rem; height: auto; display: block; margin: 0 auto; }
+  .fleming-sim :global(.fig circle[style*='var(--bg)']) { fill: var(--surface) !important; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; }
+  .readout { margin: 0.6rem 0 0.2rem; }
+</style>

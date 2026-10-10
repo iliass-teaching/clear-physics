@@ -1,0 +1,125 @@
+---
+unit: 8
+lesson: 3
+title: Measuring specific heat capacity
+syllabus: ['2.2.2 S4']
+goals:
+  - 'Extended: describe an experiment to measure the specific heat capacity of a solid.'
+  - 'Extended: describe an experiment to measure the specific heat capacity of a liquid.'
+  - Explain why the measured value is often too high.
+keyWords: [specific heat capacity, thermal insulator, internal energy]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import ShcSim from '../../../components/ShcSim.astro';
+import { shcSetupSvg } from '../../../lib/heatFigures';
+
+<Step kind="starter" title="Plan it" minutes={5}>
+
+You have a 1 kg metal block. You want to find its specific heat capacity: $c = \dfrac{\Delta E}{m \Delta\theta}$.
+
+What three quantities must you measure? Which instrument measures each one?
+
+</Step>
+
+<Step kind="learn" title="The method for a solid" minutes={12}>
+
+<Figure svg={shcSetupSvg()} caption="Measuring the specific heat capacity of a metal block." width="32rem" />
+
+1. Measure the **mass** $m$ of the block with a balance.
+2. Put the **heater** and the **thermometer** in the two holes. Put a drop of oil in the thermometer hole: it helps the energy reach the thermometer.
+3. Put **insulation** around the block.
+4. Read the start temperature. Switch on the heater and start the stopwatch.
+5. After about 10 minutes, switch off the heater. Read the **energy** $\Delta E$ on the joulemeter.
+6. Wait. The temperature still goes up a little. Read the **highest** temperature.
+7. Calculate $\Delta\theta$, then $c = \dfrac{\Delta E}{m \Delta\theta}$.
+
+**No joulemeter?** Use the power of the heater: $\Delta E = P t$, with $t$ in seconds.
+
+**For a liquid** (for example water): put a known mass of water in an insulated beaker. Use an immersion heater. **Stir** the water before each reading, so all of it is at the same temperature.
+
+</Step>
+
+<Step kind="do" title="Virtual practical" minutes={20}>
+
+<ShcSim />
+
+1. Choose **aluminium**, with insulation. Record a reading at the start.
+2. Switch on the heater. Record a reading every 2 minutes (on the clock) until 10 minutes. Then switch off.
+3. Use your first and last readings to calculate $c$. Check your value.
+4. Repeat **without insulation**. Is your value better or worse? Why?
+5. If you have time: measure $c$ for water.
+
+</Step>
+
+<Step kind="learn" title="Why is the value too high?" minutes={5}>
+
+Some energy from the heater **does not stay in the block**: it goes to the surroundings (the air, the table).
+
+- So the temperature rise $\Delta\theta$ is **smaller** than it should be.
+- $\Delta\theta$ is at the bottom of the fraction, so the value of $c$ is **too big**.
+
+**To improve:** use insulation; stir liquids; put oil in the thermometer hole; start a little below room temperature (optional).
+
+</Step>
+
+<Step kind="practice" title="Practice: experiment data" minutes={13}>
+
+<Practice topic="shc" level={3} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Why do we put insulation around the block?',
+    options: [
+      { text: 'To reduce the energy lost to the surroundings', correct: true, why: 'Then more of the energy heats the block, and the value of $c$ is better.' },
+      { text: 'To make the block heavier', why: 'Insulation reduces energy losses.' },
+      { text: 'To make the heater more powerful', why: 'Insulation reduces energy losses.' },
+      { text: 'To protect the thermometer', why: 'Insulation reduces energy losses.' },
+    ],
+  },
+  {
+    question: 'A student finds $c = 1050\\,\\text{J/(kg}\\,^\\circ\\text{C)}$ for aluminium. The value in data books is 900. What is the most likely reason?',
+    options: [
+      { text: 'Energy was lost to the surroundings', correct: true, why: 'So $\\Delta\\theta$ was too small and $c$ too big.' },
+      { text: 'The block was too well insulated', why: 'Good insulation makes the value better, not worse.' },
+      { text: 'The heater gave more energy than the joulemeter showed', why: 'Then $c$ would be too small.' },
+      { text: 'The thermometer was very accurate', why: 'The main problem is energy lost to the surroundings.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Write the method for measuring the specific heat capacity of **water**, in numbered steps. Include: the equipment, the measurements, one precaution, and the calculation.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Extended only** (2.2.2 S4). Core students can use the simulation to see that different materials heat up at different rates, without the calculation.
+
+**Timing:** starter 5 min, method 12 min, simulation 20 min, discussion 5 min, practice 13 min, exit ticket 5 min.
+
+**Real practical (if available):** 1 kg aluminium blocks with two holes, 12 V heaters, joulemeters (or a power supply, ammeter, voltmeter and stopwatch; the electrical energy equation comes in Unit 13). Typical results with 50 W for 10 minutes: a rise of about 30 °C for aluminium.
+
+**About the simulation:** the model uses a 50 W heater and simple energy losses (bigger without insulation). The clock runs 30 times faster. Students should find values a few percent above the data-book value with insulation, and clearly higher without it.
+
+**Common mistakes:**
+
+- Reading the temperature as soon as the heater is switched off. The temperature still rises: the heater is hotter than the block.
+- Time in minutes in $\Delta E = Pt$.
+- Saying "the energy is destroyed". It is transferred to the surroundings.
+
+**Safety:** the heater and the block get hot. Do not touch them for several minutes after switching off. Keep water away from the electrical connections.
+
+</Step>

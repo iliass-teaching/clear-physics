@@ -1,0 +1,158 @@
+---
+unit: 14
+lesson: 8
+title: Review and unit test
+syllabus: ['4.3', '4.4']
+goals:
+  - Remember the rules for series and parallel circuits, sensors and electrical safety.
+  - Check your learning of Unit 14 with a test.
+keyWords: [series circuit, parallel circuit, potential divider, fuse, earth wire]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="learn" title="Unit 14 in one page" minutes={8}>
+
+<div class="table-wrap">
+
+| | Series | Parallel |
+|---|---|---|
+| current | the same everywhere | splits: $I = I_1 + I_2$ (junction rule, E) |
+| p.d. | shared: $V = V_1 + V_2$ (E) | the same across each branch (E) |
+| resistance | $R = R_1 + R_2$ | smaller than each; $\dfrac{1}{R} = \dfrac{1}{R_1} + \dfrac{1}{R_2}$ (E) |
+| one lamp breaks | everything stops | the others stay on |
+
+</div>
+
+- **Sensors:** thermistor (NTC): hotter → lower resistance. LDR: brighter → lower resistance.
+- **Potential divider (E):** $\dfrac{R_1}{R_2} = \dfrac{V_1}{V_2}$.
+- **Safety:** live, neutral, earth; switch and fuse in the live wire; earth the metal case or use double insulation; choose the fuse just above the normal current.
+
+</Step>
+
+<Step kind="practice" title="Mixed practice" minutes={20}>
+
+### Series
+
+<Practice topic="series" level={2} />
+
+### Fuses
+
+<Practice topic="fuse" level={2} />
+
+</Step>
+
+<Step kind="exit" title="Unit test" minutes={32}>
+
+Questions marked **(E)** are for Extended students.
+
+<Quiz questions={[
+  {
+    question: '1. What happens to the resistance of an LDR when more light falls on it?',
+    options: [
+      { text: 'it goes down', correct: true, why: 'Bright light: low resistance.' },
+      { text: 'it goes up', why: 'It goes up in the dark.' },
+      { text: 'it does not change', why: 'It depends on the light.' },
+      { text: 'it becomes infinite', why: 'It goes down.' },
+    ],
+  },
+  {
+    question: '2. In a series circuit, the current in one lamp is 0.4 A. What is the current from the battery?',
+    options: [
+      { text: '0.4 A', correct: true, why: 'Same current everywhere in series.' },
+      { text: '0.8 A', why: 'Currents do not add in series.' },
+      { text: '0.2 A', why: 'The current is the same.' },
+      { text: '0 A', why: 'The same current flows everywhere.' },
+    ],
+  },
+  {
+    question: '3. A 5 Ω and a 15 Ω resistor are in series. What is the combined resistance?',
+    options: [
+      { text: '20 Ω', correct: true, why: '$5 + 15$.' },
+      { text: '3.75 Ω', why: 'That is for parallel.' },
+      { text: '10 Ω', why: 'Add the resistances.' },
+      { text: '75 Ω', why: 'Add, do not multiply.' },
+    ],
+  },
+  {
+    question: '4. Two resistors are in parallel. Their combined resistance is…',
+    options: [
+      { text: 'less than either resistor', correct: true, why: 'More paths for the current.' },
+      { text: 'more than either resistor', why: 'That is series.' },
+      { text: 'equal to the bigger resistor', why: 'It is less than both.' },
+      { text: 'the sum of the two', why: 'That is series.' },
+    ],
+  },
+  {
+    question: '5. Give one advantage of connecting house lights in parallel.',
+    options: [
+      { text: 'Each light can be switched on and off on its own', correct: true, why: 'And the others stay on if one breaks.' },
+      { text: 'All the lights go off together', why: 'That is a disadvantage of series.' },
+      { text: 'The current is the same everywhere', why: 'That is series.' },
+      { text: 'It uses less wire', why: 'The advantage is independent switching.' },
+    ],
+  },
+  {
+    question: '6. Why must the switch be in the live wire?',
+    options: [
+      { text: 'So that the appliance is not connected to the high p.d. when it is off', correct: true, why: 'Then it is safe to touch inside.' },
+      { text: 'Because the live wire is blue', why: 'The reason is safety.' },
+      { text: 'So that it uses less energy', why: 'The reason is safety.' },
+      { text: 'It does not matter', why: 'It must be in the live wire.' },
+    ],
+  },
+  {
+    question: '7. A 2300 W kettle is used on the 230 V mains. Which fuse should it have: 3 A, 5 A or 13 A?',
+    options: [
+      { text: '13 A', correct: true, why: '$I = \\dfrac{2300}{230} = 10\\,\\text{A}$: the next rating up is 13 A.' },
+      { text: '3 A', why: 'The normal current is 10 A: a 3 A fuse would melt.' },
+      { text: '5 A', why: 'The normal current is 10 A.' },
+      { text: 'no fuse', why: 'A fuse is needed for safety.' },
+    ],
+  },
+  {
+    question: '8. Why is an appliance with a metal case earthed?',
+    options: [
+      { text: 'If the case becomes live, a big current flows to earth and the fuse melts', correct: true, why: 'So the case is safe.' },
+      { text: 'To make the appliance work better', why: 'The earth wire is for safety.' },
+      { text: 'To save energy', why: 'The earth wire is for safety.' },
+      { text: 'Because metal is an insulator', why: 'Metal conducts: that is why it must be earthed.' },
+    ],
+  },
+  {
+    question: '9. (E) 0.6 A enters a junction. 0.25 A leaves along one branch. What current leaves along the other branch?',
+    options: [
+      { text: '0.35 A', correct: true, why: 'Current in = current out.' },
+      { text: '0.85 A', why: 'Subtract.' },
+      { text: '0.6 A', why: 'It is shared.' },
+      { text: '0.25 A', why: 'Use current in = current out.' },
+    ],
+  },
+  {
+    question: '10. (E) A 6 V supply is across 2 kΩ and 4 kΩ in series. What is the p.d. across the 4 kΩ resistor?',
+    options: [
+      { text: '4 V', correct: true, why: 'Ratio 2 : 4 = 1 : 2, so 2/3 of 6 V.' },
+      { text: '2 V', why: 'That is across the 2 kΩ resistor.' },
+      { text: '3 V', why: 'Share in the ratio of the resistances.' },
+      { text: '6 V', why: 'The 6 V is shared.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** review 8 min, mixed practice 20 min, unit test 32 min.
+
+**Using the test:** questions 1–8 test Core content; 9–10 are Extended.
+
+**Differentiation:**
+
+- Support: allow the summary table during the test the first time.
+- Stretch: level 3 of the parallel and potential-divider practice.
+
+</Step>

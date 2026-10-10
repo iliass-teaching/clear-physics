@@ -1,0 +1,180 @@
+---
+unit: 17
+lesson: 8
+title: Redshift and the expanding Universe
+syllabus: ['6.2.3 C1', '6.2.3 C2', '6.2.3 C3', '6.2.3 C4', '6.2.3 S5', '6.2.3 S6']
+goals:
+  - Know that the Milky Way is one of many billions of galaxies.
+  - Describe redshift.
+  - Explain how redshift is evidence that the Universe is expanding, and supports the Big Bang theory.
+  - Describe the cosmic microwave background radiation (Extended).
+keyWords: [galaxy, redshift, Big Bang theory, CMBR]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { redshiftSvg } from '../../../lib/spaceFigures';
+
+<Step kind="starter" title="A passing ambulance" minutes={5}>
+
+Listen to the sound of an ambulance (your teacher plays a video).
+
+1. How does the sound change when the ambulance comes towards you?
+2. How does it change when it moves away?
+
+The same kind of change happens to light from objects that move away from us.
+
+</Step>
+
+<Step kind="learn" title="Billions of galaxies" minutes={5}>
+
+The **Milky Way** is one of **many billions of galaxies** in the **Universe**.
+The Milky Way is about **100 000 light-years** across.
+
+</Step>
+
+<Step kind="learn" title="Redshift" minutes={12}>
+
+**Redshift** is an increase in the observed **wavelength** of electromagnetic radiation from stars and galaxies that **move away** from us.
+
+When we split the light from a star or a galaxy, we see a spectrum with dark lines. Each element makes lines at fixed wavelengths.
+
+<Figure svg={redshiftSvg()} caption="The same dark lines, shifted towards the red end (longer wavelength) for a distant galaxy." width="36rem" />
+
+For **distant galaxies**, the lines are shifted towards the **red** end of the spectrum, compared with light from a source on the Earth. The light is **redshifted**.
+
+**What does this tell us?**
+
+1. The light from distant galaxies is redshifted, so they are **moving away** from us.
+2. Galaxies in every direction are moving away from each other. So the **Universe is expanding**.
+3. If the Universe is expanding, then in the past everything was closer together. Long ago, all the matter was at a single point.
+
+This supports the **Big Bang theory**: the Universe began from a single point, and has been expanding since then.
+
+</Step>
+
+<Step kind="learn" title="The cosmic microwave background (Extended)" minutes={8}>
+
+Astronomers detect **microwave radiation** of a specific frequency coming from **all directions** in space.
+This is the **cosmic microwave background radiation (CMBR)**.
+
+- The CMBR was produced **shortly after the Universe formed**.
+- As the Universe expanded, the radiation was stretched to longer wavelengths. Today it is in the **microwave** region of the electromagnetic spectrum.
+
+The CMBR is more evidence for the Big Bang theory.
+
+</Step>
+
+<Step kind="do" title="The balloon Universe" minutes={15}>
+
+**Equipment:** a balloon, a marker pen, a piece of string, a ruler.
+
+1. Blow up the balloon a little. Hold the end closed (do not tie it).
+2. Draw 5 dots on it. These are galaxies. Label them A to E.
+3. Measure the distance from A to each other dot with the string. Write the results in a table.
+4. Blow up the balloon more. Measure the same distances again.
+
+<div class="table-wrap">
+
+| from A to | distance before / cm | distance after / cm | increase / cm |
+|---|---|---|---|
+| B | | | |
+| C | | | |
+| D | | | |
+| E | | | |
+
+</div>
+
+**Questions:**
+
+1. Do all the galaxies move away from A?
+2. Which galaxies moved the most: the near ones or the far ones?
+3. Is A at the centre of the balloon’s surface? Would the result be the same from galaxy C?
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={10}>
+
+<Quiz questions={[
+  {
+    question: 'What is redshift?',
+    options: [
+      { text: 'an increase in the observed wavelength of light from an object moving away', correct: true, why: 'The lines in the spectrum move towards the red end.' },
+      { text: 'the red colour of hot stars', why: 'Redshift is about a change in wavelength, not the colour of the star.' },
+      { text: 'a decrease in the wavelength of light', why: 'Redshift is an increase in wavelength.' },
+      { text: 'light that becomes red in the Earth’s atmosphere', why: 'Redshift comes from the motion of the source.' },
+    ],
+  },
+  {
+    question: 'The light from almost all distant galaxies is redshifted. What does this show?',
+    options: [
+      { text: 'the Universe is expanding', correct: true, why: 'The galaxies are moving away from us.' },
+      { text: 'the galaxies are getting hotter', why: 'Redshift shows motion away from us.' },
+      { text: 'the galaxies are moving towards us', why: 'Moving towards us would make the wavelength shorter.' },
+      { text: 'the Universe is getting smaller', why: 'The galaxies move apart: the Universe is expanding.' },
+    ],
+  },
+  {
+    question: 'How does redshift support the Big Bang theory?',
+    options: [
+      { text: 'If the Universe is expanding, everything was closer together in the past', correct: true, why: 'Going back in time, all the matter was at a single point.' },
+      { text: 'Redshift is the light of the Big Bang', why: 'The CMBR is the radiation from the early Universe. Redshift shows expansion.' },
+      { text: 'Red light comes from explosions', why: 'Redshift is about the change in wavelength.' },
+      { text: 'It does not support it', why: 'Redshift shows the Universe is expanding: this supports the Big Bang theory.' },
+    ],
+  },
+  {
+    question: 'Extended: in which region of the electromagnetic spectrum is the CMBR today?',
+    options: [
+      { text: 'microwaves', correct: true, why: 'The expansion stretched it into the microwave region.' },
+      { text: 'gamma rays', why: 'The CMBR is in the microwave region today.' },
+      { text: 'visible light', why: 'The CMBR is in the microwave region today.' },
+      { text: 'X-rays', why: 'The CMBR is in the microwave region today.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+Explain in **three** steps how redshift leads to the Big Bang theory.
+
+*Step 1: The light from distant galaxies … Step 2: So the galaxies … Step 3: So in the past …*
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Write a short text (6 sentences) for a younger student: "How do we know that the Universe is expanding?" Use the words *redshift*, *wavelength*, *galaxies* and *Big Bang*.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** 6.2.3 C1–C4 are Core. The CMBR (S5, S6) is Extended.
+
+**Timing:** starter 5 min, learn 25 min, balloon 15 min, check 10 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "Redshift means the galaxy is red." It is a shift in wavelength.
+- "The Big Bang was an explosion at one place in space." Space itself expands: there is no centre (the balloon surface has no centre either).
+- Mixing redshift and the CMBR.
+
+**About the starter:** the change in the sound is the Doppler effect. It is not in the syllabus, but it is a good everyday example of a change in wavelength due to motion.
+
+**Language support:**
+
+- Reading frame for the figure: *"The lines from the galaxy are … than the lines from the Earth. So the wavelength is …"*
+
+**Differentiation:**
+
+- Support: focus on the figure and the three-step reasoning.
+- Stretch: in the balloon model, show that the far galaxies move away faster. This is the idea of the next lesson (the Hubble constant).
+
+**Safety:** students with a latex allergy should not handle the balloons.
+
+</Step>

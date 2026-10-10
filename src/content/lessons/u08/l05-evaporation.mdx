@@ -1,0 +1,192 @@
+---
+unit: 8
+lesson: 5
+title: Evaporation
+syllabus: ['2.2.3 C4', '2.2.3 C5', '2.2.3 S6–S8']
+goals:
+  - Describe evaporation with particles that escape from the surface.
+  - Know that evaporation cools a liquid.
+  - 'Extended: compare boiling and evaporation, and explain what changes the rate of evaporation.'
+keyWords: [evaporation, boiling, particle, kinetic energy, temperature]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { evaporationSvg } from '../../../lib/heatFigures';
+
+<Step kind="starter" title="Out of the pool" minutes={5}>
+
+On a hot, windy day, you get out of a swimming pool. You feel cold, even in the sun. Why?
+
+</Step>
+
+<Step kind="learn" title="What is evaporation?" minutes={12}>
+
+The particles in a liquid do **not** all move at the same speed. Some are fast, some are slow.
+
+<Figure svg={evaporationSvg()} caption="Evaporation: the fastest particles escape from the surface." width="24rem" />
+
+- Near the surface, the **fastest** particles (with the most kinetic energy) can **escape** from the liquid. They become gas. This is **evaporation**.
+- The **slower** particles stay. So the **average kinetic energy** of the particles left in the liquid goes down.
+- So the temperature of the liquid goes down: **evaporation cools a liquid**.
+
+Evaporation happens at **any temperature**, not only at the boiling point. This is why puddles dry, even on a cold day.
+
+</Step>
+
+<Step kind="learn" title="Boiling and evaporation (Extended)" minutes={10}>
+
+<div class="table-wrap">
+
+| | Evaporation | Boiling |
+|---|---|---|
+| Temperature | any temperature | only at the boiling point |
+| Where? | only at the **surface** | **everywhere** in the liquid: bubbles of gas form inside |
+| Speed | slow | fast |
+| Temperature of the liquid | goes down (the liquid cools) | stays at the boiling point |
+
+</div>
+
+**What makes evaporation faster?**
+
+- **Higher temperature:** more particles have enough energy to escape.
+- **Bigger surface area:** more particles are near the surface.
+- **Air movement (wind) over the surface:** it takes away the gas particles, so fewer go back into the liquid.
+
+**Cooling an object:** when a liquid evaporates from an object, it takes energy from the object. So the object cools.
+
+- Sweat evaporates from your skin and cools you.
+- A wet cloth around a clay water pot keeps the water cool.
+- Alcohol gel on your hands feels cold.
+
+</Step>
+
+<Step kind="do" title="Wet and dry thermometers" minutes={15}>
+
+**Equipment:** two thermometers, cotton wool, water at room temperature, a fan (or a piece of card to wave), a stopwatch.
+
+1. Read both thermometers. They should show the same temperature.
+2. Wrap wet cotton wool around the bulb of one thermometer. Leave the other dry.
+3. Read both thermometers every minute for 5 minutes.
+4. Now use the fan to blow air over both thermometers. Read them again for 3 minutes.
+
+**Questions:**
+
+1. Which thermometer shows a lower temperature? Explain with particles.
+2. What does the fan change? Why?
+3. Predict: what happens with a liquid that evaporates more quickly, like alcohol?
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={13}>
+
+<Quiz questions={[
+  {
+    question: 'Which particles escape from a liquid when it evaporates?',
+    options: [
+      { text: 'The fastest particles near the surface', correct: true, why: 'They have enough kinetic energy to escape.' },
+      { text: 'The slowest particles', why: 'Slow particles do not have enough energy to escape.' },
+      { text: 'All the particles at the same time', why: 'Only the fastest particles near the surface escape.' },
+      { text: 'The particles at the bottom', why: 'Evaporation happens at the surface.' },
+    ],
+  },
+  {
+    question: 'Why does a liquid cool when it evaporates?',
+    options: [
+      { text: 'The fastest particles leave, so the average kinetic energy of the rest goes down', correct: true, why: 'Lower average kinetic energy means lower temperature.' },
+      { text: 'The liquid gains energy', why: 'The liquid loses its most energetic particles.' },
+      { text: 'Cold air goes into the liquid', why: 'The reason is the loss of the fastest particles.' },
+      { text: 'The particles get smaller', why: 'Particles do not change size.' },
+    ],
+  },
+  {
+    question: 'Extended: which is true for boiling but NOT for evaporation?',
+    options: [
+      { text: 'Bubbles of gas form everywhere in the liquid', correct: true, why: 'Evaporation happens only at the surface.' },
+      { text: 'Liquid becomes gas', why: 'This is true for both.' },
+      { text: 'It happens at any temperature', why: 'This is evaporation. Boiling happens at the boiling point.' },
+      { text: 'It happens at the surface', why: 'Evaporation happens at the surface. Boiling happens everywhere in the liquid.' },
+    ],
+  },
+  {
+    question: 'Extended: which change makes wet clothes dry faster?',
+    options: [
+      { text: 'Hang them in the wind', correct: true, why: 'Moving air takes away the water particles.' },
+      { text: 'Fold them', why: 'Folding makes the surface area smaller: slower drying.' },
+      { text: 'Put them in a cold room', why: 'Lower temperature: slower evaporation.' },
+      { text: 'Put them in a closed bag', why: 'No air movement: slower evaporation.' },
+    ],
+  },
+  {
+    question: 'Extended: why does sweating cool you down?',
+    options: [
+      { text: 'The sweat evaporates and takes energy from your skin', correct: true, why: 'Evaporation cools the object it touches.' },
+      { text: 'Sweat is colder than your body', why: 'Sweat is warm. It cools you when it evaporates.' },
+      { text: 'Sweat stops the Sun', why: 'The cooling comes from evaporation.' },
+      { text: 'Sweat makes your skin shiny', why: 'The cooling comes from evaporation.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Can water evaporate at 20 °C?',
+    options: [
+      { text: 'Yes: evaporation happens at any temperature', correct: true, why: 'Some particles are fast enough to escape.' },
+      { text: 'No: water must be at 100 °C', why: 'Water must be at 100 °C to boil, not to evaporate.' },
+      { text: 'No: water must be at 0 °C', why: '0 °C is the melting point.' },
+      { text: 'Only in the dark', why: 'Evaporation happens at any temperature.' },
+    ],
+  },
+  {
+    question: 'A liquid evaporates. What happens to the temperature of the liquid left?',
+    options: [
+      { text: 'It goes down', correct: true, why: 'The fastest particles have left.' },
+      { text: 'It goes up', why: 'The liquid loses its most energetic particles.' },
+      { text: 'It stays the same', why: 'Evaporation cools the liquid.' },
+      { text: 'It reaches 100 °C', why: 'Evaporation cools the liquid.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+In hot countries, people keep water cool in clay pots. The water slowly goes through the clay and evaporates from the outside of the pot. Explain how this keeps the water cool. Use the words *evaporate*, *fastest particles* and *energy*.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** evaporation with particles and evaporative cooling (2.2.3 C4, C5) are Core. Boiling versus evaporation, the three factors and the cooling of an object (S6–S8) are Extended.
+
+**Timing:** starter 5 min, learn 22 min, thermometers 15 min, check 13 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "Evaporation only happens when the water is hot."
+- "The water cools because cold air touches it."
+- Mixing *evaporation* and *condensation*.
+
+**Context:** in hot and humid countries, sweat evaporates slowly because the air already contains a lot of water vapour. This is why humid heat feels worse. (Humidity is not in the syllabus.)
+
+**Language support:**
+
+- *escape* = get out. *surface* = the top of the liquid.
+- Sentence frame: *"The … particles escape from the surface, so the average kinetic energy of the particles left … , so the temperature … ."*
+
+**Differentiation:**
+
+- Support: act it out: students are particles; the fastest ones leave the "liquid" area; what happens to the average speed of the rest?
+- Stretch: explain why a dog pants on a hot day.
+
+**Safety:** keep alcohol away from flames.
+
+</Step>

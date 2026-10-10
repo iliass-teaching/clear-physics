@@ -1,0 +1,133 @@
+---
+unit: 15
+lesson: 7
+title: The a.c. generator
+syllabus: ['4.5.2 S1', '4.5.2 S2']
+goals:
+  - 'Extended: describe a simple a.c. generator, with slip rings and brushes.'
+  - 'Extended: sketch and explain the graph of e.m.f. against time, linked to the position of the coil.'
+keyWords: [generator, slip rings, electromagnetic induction, alternating current]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import GeneratorSim from '../../../components/GeneratorSim.astro';
+import { generatorSvg } from '../../../lib/emEffectsFigures';
+
+<Step kind="starter" title="Power stations" minutes={5}>
+
+A power station burns gas, or uses wind or falling water, to turn something. What is turning, and how does it make electricity?
+
+</Step>
+
+<Step kind="learn" title="A simple a.c. generator (Extended)" minutes={14}>
+
+<Figure svg={generatorSvg()} caption="A simple a.c. generator (rotating coil)." width="34rem" />
+
+- A **coil** is turned in a **magnetic field**. Its sides cut the field lines, so an **e.m.f. is induced**.
+- Each half turn, each side of the coil moves the other way across the field, so the e.m.f. **changes direction**: this is **alternating current**.
+- **Slip rings** (two complete rings) turn with the coil. **Brushes** press on them. Each end of the coil is always connected to the same output wire, so the a.c. reaches the outside circuit.
+
+**Another design:** a **magnet rotates** inside a fixed coil (for example a bicycle dynamo, and the big generators in power stations). Then no slip rings are needed: the coil does not move.
+
+</Step>
+
+<Step kind="do" title="Watch the e.m.f." minutes={16}>
+
+<GeneratorSim />
+
+1. Pause when the e.m.f. is at a **peak**. Where is the coil (vertical or horizontal)?
+2. Pause when the e.m.f. is **zero**. Where is the coil?
+3. Double the speed. What happens to the **height** of the peaks? To the **number** of peaks each second?
+
+</Step>
+
+<Step kind="learn" title="The e.m.f.–time graph (Extended)" minutes={10}>
+
+- **Peak (or trough):** the coil is **parallel to the field** (horizontal in the simulation). Its sides move **across** the field lines as fast as possible.
+- **Zero:** the coil is **at 90° to the field** (vertical). Its sides move **along** the field lines: they do not cut them.
+- Peak and trough: the e.m.f. has the same size but opposite directions (each side of the coil moves the other way).
+- **Faster rotation:** bigger peaks **and** more cycles each second (higher frequency).
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={10}>
+
+<Quiz questions={[
+  {
+    question: 'What do slip rings do in an a.c. generator?',
+    options: [
+      { text: 'They connect the turning coil to the outside circuit, without reversing the connections', correct: true, why: 'Each end of the coil stays connected to the same wire.' },
+      { text: 'They reverse the current every half turn', why: 'That is the split-ring commutator of a d.c. motor.' },
+      { text: 'They make the magnetic field', why: 'The magnet makes the field.' },
+      { text: 'They turn the coil', why: 'Something outside turns the coil (for example a turbine).' },
+    ],
+  },
+  {
+    question: 'When is the e.m.f. of a simple generator zero?',
+    options: [
+      { text: 'When the coil is at 90° to the field', correct: true, why: 'Its sides move along the field lines.' },
+      { text: 'When the coil is parallel to the field', why: 'Then the e.m.f. is biggest.' },
+      { text: 'Never', why: 'Twice in each turn.' },
+      { text: 'Only when the coil stops', why: 'It is also zero twice in each turn.' },
+    ],
+  },
+  {
+    question: 'The coil turns twice as fast. What happens to the graph?',
+    options: [
+      { text: 'Higher peaks and twice as many cycles each second', correct: true, why: 'The sides cut the field faster and more often.' },
+      { text: 'Only higher peaks', why: 'The frequency also doubles.' },
+      { text: 'Only more cycles', why: 'The peaks are also higher.' },
+      { text: 'Nothing changes', why: 'Both the size and the frequency increase.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Why is the output of this generator alternating?',
+    options: [
+      { text: 'Each side of the coil moves up, then down, across the field', correct: true, why: 'So the e.m.f. changes direction every half turn.' },
+      { text: 'The magnet changes its poles', why: 'The magnet is fixed; the coil turns.' },
+      { text: 'The brushes are loose', why: 'The motion of the coil reverses the e.m.f.' },
+      { text: 'The slip rings reverse it', why: 'Slip rings do not reverse the connections.' },
+    ],
+  },
+  {
+    question: 'Which generator does not need slip rings?',
+    options: [
+      { text: 'one where the magnet turns inside a fixed coil', correct: true, why: 'The coil does not move, so it can be wired directly.' },
+      { text: 'one where the coil turns', why: 'A turning coil needs slip rings.' },
+      { text: 'all generators need slip rings', why: 'Not with a rotating magnet.' },
+      { text: 'a d.c. motor', why: 'A motor is not a generator.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Extended only** (4.5.2 S1, S2). Core students can revise induction (lesson 15.5) with the simulation of that lesson.
+
+**Timing:** starter 5 min, generator 14 min, simulation 16 min, graph 10 min, check 10 min, exit ticket 5 min.
+
+**About the simulation:** e.m.f. $= E_0 \sin\alpha$, where $\alpha$ is the angle of the coil from the vertical, and $E_0$ is proportional to the speed.
+
+**Common mistakes:**
+
+- "The e.m.f. is biggest when the coil is vertical (in line with the poles)."
+- Confusing slip rings with the split-ring commutator.
+
+**Differentiation:**
+
+- Support: a set of 4 coil positions to match to points on the graph.
+- Stretch: sketch the graph for a generator turning at the same speed but with twice as many turns.
+
+</Step>

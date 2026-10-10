@@ -1,0 +1,173 @@
+---
+unit: 3
+lesson: 1
+title: What forces do
+syllabus: ['1.5.1 C1', '1.5.1 C5']
+goals:
+  - Name some common forces.
+  - Describe the effects of a force on an object.
+  - Draw a force diagram with arrows.
+keyWords: [force, newton, weight, friction]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { forceDiagramSvg } from '../../../lib/forceFigures';
+
+<Step kind="starter" title="Push or pull?" minutes={5}>
+
+For each action, say if it is a **push** or a **pull**:
+
+opening a door · kicking a ball · lifting a bag · a magnet picking up a nail · the Earth holding you on the ground
+
+</Step>
+
+<Step kind="learn" title="Forces around us" minutes={10}>
+
+A **force** is a push or a pull. We measure forces in **newtons (N)**.
+
+<div class="table-wrap">
+
+| Force | What it does | Example |
+|---|---|---|
+| weight | the Earth pulls objects down | an apple falls from a tree |
+| friction | acts between surfaces, against motion | brakes slow a bicycle |
+| air resistance (drag) | acts against motion through air | a parachute slows a skydiver |
+| tension | the pull in a rope or a string | a rope holds a lamp |
+| contact force | a surface pushes back on an object | a table holds up a book |
+| magnetic force | magnets attract or repel | a magnet picks up a nail |
+
+</div>
+
+A force is a **vector**: it has a size and a direction. We draw a force as an **arrow**:
+
+- the arrow points in the direction of the force;
+- a longer arrow means a bigger force;
+- we write the size next to the arrow.
+
+<Figure svg={forceDiagramSvg([{ dir: 'up', size: 50, label: 'contact force 20 N' }, { dir: 'down', size: 50, label: 'weight 20 N' }])} caption="A book on a table: two forces of the same size, in opposite directions." width="24rem" />
+
+</Step>
+
+<Step kind="learn" title="What can a force do?" minutes={10}>
+
+A force can:
+
+1. **change the shape or the size** of an object: squash a sponge, stretch a spring, bend a ruler;
+2. **change the speed** of an object: start it moving, speed it up, slow it down, stop it;
+3. **change the direction** of motion: a bat hits a ball back, a car turns a corner.
+
+Changes 2 and 3 are both changes of **velocity** (speed in a direction). A **resultant force** can change the velocity of an object by changing its speed, its direction, or both.
+
+</Step>
+
+<Step kind="do" title="Force circus" minutes={15}>
+
+Go to each station. At each one, write: the force (push or pull, and which one), and its effect (shape, speed or direction).
+
+<div class="table-wrap">
+
+| station | what you do | force | effect |
+|---|---|---|---|
+| 1 | squash a sponge ball | | |
+| 2 | stretch a spring | | |
+| 3 | push a toy car to start it | | |
+| 4 | roll a ball, then hit it sideways with a ruler | | |
+| 5 | hold a magnet near a rolling steel ball | | |
+| 6 | drop a ball and catch it | | |
+
+</div>
+
+*Use this sentence: "The … force changes the … of the …"*
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={15}>
+
+<Quiz questions={[
+  {
+    question: 'What is the unit of force?',
+    options: [
+      { text: 'newton (N)', correct: true, why: 'Forces are measured in newtons.' },
+      { text: 'kilogram (kg)', why: 'kg is the unit of mass.' },
+      { text: 'metre (m)', why: 'm is the unit of length.' },
+      { text: 'joule (J)', why: 'J is the unit of energy.' },
+    ],
+  },
+  {
+    question: 'A footballer heads the ball back towards the goal. What does the force change?',
+    options: [
+      { text: 'the direction of the ball', correct: true, why: 'The ball now moves in a different direction.' },
+      { text: 'the mass of the ball', why: 'A force does not change the mass.' },
+      { text: 'the colour of the ball', why: 'A force can change shape, speed or direction.' },
+      { text: 'nothing', why: 'The ball changes direction, so the force had an effect.' },
+    ],
+  },
+  {
+    question: 'You stretch a rubber band. What does the force change?',
+    options: [
+      { text: 'its shape and size', correct: true, why: 'The band becomes longer and thinner.' },
+      { text: 'its speed', why: 'The band is not moving away. Its shape changes.' },
+      { text: 'its weight', why: 'Its weight does not change.' },
+      { text: 'its direction of motion', why: 'The band is not moving. Its shape changes.' },
+    ],
+  },
+  {
+    question: 'In a force diagram, what does a longer arrow show?',
+    options: [
+      { text: 'a bigger force', correct: true, why: 'The length of the arrow shows the size of the force.' },
+      { text: 'a faster object', why: 'Force arrows show forces, not speed.' },
+      { text: 'a heavier object', why: 'The arrow shows the size of one force.' },
+      { text: 'a longer time', why: 'The length shows the size of the force.' },
+    ],
+  },
+  {
+    question: 'Which force acts on a ball falling through the air, against its motion?',
+    options: [
+      { text: 'air resistance', correct: true, why: 'Air resistance acts against motion through the air.' },
+      { text: 'weight', why: 'Weight pulls the ball down, in the direction of its motion.' },
+      { text: 'tension', why: 'There is no rope or string.' },
+      { text: 'magnetic force', why: 'There is no magnet.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+Draw a force diagram for a car moving along a road. Show 4 forces: weight, contact force from the road, driving force, and air resistance.
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Find 5 forces at home. For each one, say if it is a push or a pull, and what it changes (shape, speed or direction).
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 20 min, force circus 15 min, check 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "A moving object needs a force to keep moving." This is corrected in Lesson 3.
+- Drawing arrows of the same length for forces of different sizes.
+- Forgetting the contact force (normal force) from a surface.
+
+**Language support:**
+
+- The word *force* is also used in everyday English ("they forced him"). In physics it only means a push or a pull.
+- Mime each force before writing its name.
+
+**Differentiation:**
+
+- Support: give the force names on cards with pictures.
+- Stretch: a satellite moves in a circle at constant speed. Is there a force on it? (Yes: its direction changes. See Lesson 6.)
+
+**Safety:** at station 6, use a soft ball.
+
+</Step>

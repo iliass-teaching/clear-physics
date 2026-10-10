@@ -1,0 +1,109 @@
+---
+import Base from '../layouts/Base.astro';
+import { lessonUrl, url } from '../lib/url';
+import { renderMath } from '../lib/math';
+import { totalLessons, units } from '../data/units';
+
+const sample = renderMath('$$v = \\frac{s}{t}$$');
+---
+
+<Base title="Home">
+  <section class="hero">
+    <p class="kicker">Cambridge IGCSE Physics · 0625</p>
+    <h1>Physics in clear English</h1>
+    <p class="lead">
+      A full course for students who learn physics in English, when English is not their first language.
+      The lessons use short sentences and simple words.
+    </p>
+    <p class="actions">
+      <a class="button" href={lessonUrl(1, 1)}>Start with Unit 1</a>
+      <a class="button secondary" href={url('course/')}>See the whole course</a>
+    </p>
+  </section>
+
+  <section class="sample" aria-label="Example from a lesson">
+    <div class="eq" set:html={sample} />
+    <div>
+      <p class="sample-kicker">From Unit 1, Lesson 4</p>
+      <p><strong>Speed</strong> tells us how far something moves in one second. To find the speed, divide the distance by the time.</p>
+      <a href={lessonUrl(1, 4)}>Open the lesson →</a>
+    </div>
+  </section>
+
+  <h2>How the lessons work</h2>
+  <ol class="how">
+    <li>
+      <h3>Clear English</h3>
+      <p>Short sentences and common words. The exam key words are taught one by one, with a simple meaning.</p>
+    </li>
+    <li>
+      <h3>One lesson, one hour</h3>
+      <p>A starter, an explanation with a worked example, an activity, practice and a short quiz.</p>
+    </li>
+    <li>
+      <h3>Practice with hints</h3>
+      <p>New numbers every time. If you make a typical mistake, the hint tells you what to check. <a href={url('practice/')}>All practice topics →</a></p>
+    </li>
+    <li>
+      <h3>Follows the syllabus</h3>
+      <p>Every lesson shows the part of the syllabus it covers, for Core and Extended students.</p>
+    </li>
+  </ol>
+
+  <p class="progress-note">
+    All <strong>{totalLessons}</strong> lessons are ready, in {units.length} units.
+    <a href={url('course/')}>See the course →</a>
+  </p>
+</Base>
+
+<style>
+  .hero { padding: 2rem 0 1rem; }
+  .kicker { margin: 0; font-size: 0.85rem; font-weight: 700; color: var(--accent); letter-spacing: 0.04em; }
+  h1 { font-size: 3rem; margin: 0.4rem 0 1rem; max-width: 18ch; }
+  .lead { font-size: 1.2rem; color: var(--ink-soft); max-width: 38rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+  .sample {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    margin: 2rem 0 1rem;
+    padding: 1.2rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .eq { font-size: 1.4rem; padding-right: 1.5rem; border-right: 1px solid var(--line); }
+  .eq :global(.katex-display) { margin: 0; }
+  .sample p { margin: 0 0 0.4rem; }
+  .sample-kicker { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+  .sample a { font-size: 0.9rem; font-weight: 700; text-decoration: none; }
+  @media (max-width: 560px) {
+    .sample { grid-template-columns: 1fr; }
+    .eq { border-right: 0; padding-right: 0; }
+  }
+  .how {
+    list-style: none;
+    counter-reset: how;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 0.5rem 2rem;
+  }
+  .how li { counter-increment: how; border-top: 2px solid var(--ink); padding-top: 0.6rem; }
+  .how li::before {
+    content: '0' counter(how);
+    font-family: var(--serif);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  .how h3 { margin: 0.2rem 0 0.3rem; }
+  .how p { font-size: 0.95rem; color: var(--ink-soft); }
+  .progress-note {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+  }
+  .progress-note a { font-weight: 700; text-decoration: none; margin-left: 0.4rem; }
+</style>

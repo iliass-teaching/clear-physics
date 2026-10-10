@@ -1,0 +1,154 @@
+---
+unit: 18
+lesson: 4
+title: 'Revision: thermal physics and waves'
+syllabus: ['2', '3']
+goals:
+  - Revise the key ideas of syllabus sections 2 and 3 (Units 7–11).
+  - Practise exam-style calculations.
+  - Avoid common mistakes.
+keyWords: [particle, specific heat capacity, wave speed, refraction, electromagnetic spectrum]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="learn" title="What to revise" minutes={10}>
+
+<div class="table-wrap">
+
+| Topic | Key ideas | Unit |
+|---|---|---|
+| particles | solids, liquids, gases; temperature and motion; absolute zero; Brownian motion; gas pressure; $pV$ = constant (E) | [7](../../7/) |
+| thermal physics | expansion; internal energy; $c = \dfrac{\Delta E}{m\Delta\theta}$ (E); melting, boiling, evaporation; conduction, convection, radiation | [8](../../8/) |
+| waves | transverse and longitudinal; $v = f\lambda$; reflection, refraction, diffraction | [9](../../9/) |
+| light | $i = r$; plane mirror image; refraction; $n$ and critical angle (E); lenses and ray diagrams; dispersion | [10](../../10/) |
+| EM spectrum and sound | order, uses, dangers; satellites; digital signals (E); sound, echoes, ultrasound | [11](../../11/) |
+
+</div>
+
+**Mistakes to avoid:**
+
+- "particles expand" (the spaces between them change);
+- "heat rises" (hot fluid rises because it is less dense);
+- mixing up evaporation (any temperature, surface) and boiling;
+- angles of incidence and reflection measured from the surface (use the normal);
+- the order of the EM spectrum (radio, micro, infrared, visible, UV, X-rays, gamma);
+- forgetting to halve the distance in echo questions.
+
+</Step>
+
+<Step kind="practice" title="Mixed practice" minutes={28}>
+
+### Kelvin and Celsius
+
+<Practice topic="kelvin" level={2} />
+
+### Wave speed
+
+<Practice topic="wave-speed" level={2} />
+
+### Echoes
+
+<Practice topic="sound-echo" level={2} />
+
+### Extended: specific heat capacity
+
+<Practice topic="shc" level={2} />
+
+### Extended: refractive index
+
+<Practice topic="refractive-index" level={3} />
+
+</Step>
+
+<Step kind="exit" title="Exam-style questions" minutes={22}>
+
+<Quiz questions={[
+  {
+    question: '1. What is −20 °C in kelvin?',
+    options: [
+      { text: '253 K', correct: true, why: '$-20 + 273$.' },
+      { text: '293 K', why: 'Add 273 to −20, not to 20.' },
+      { text: '−253 K', why: 'There are no negative kelvin temperatures.' },
+      { text: '20 K', why: 'Add 273.' },
+    ],
+  },
+  {
+    question: '2. Why does evaporation cool a liquid?',
+    options: [
+      { text: 'The most energetic particles escape, so the average kinetic energy of the rest goes down', correct: true, why: 'Lower average kinetic energy: lower temperature.' },
+      { text: 'Cold air goes into the liquid', why: 'The fastest particles leave.' },
+      { text: 'The liquid boils', why: 'Evaporation is not boiling.' },
+      { text: 'The particles get smaller', why: 'Particles do not change size.' },
+    ],
+  },
+  {
+    question: '3. Which is the best emitter of infrared radiation?',
+    options: [
+      { text: 'a matt black surface', correct: true, why: 'Best emitter and best absorber.' },
+      { text: 'a shiny silver surface', why: 'This is the worst emitter.' },
+      { text: 'a shiny white surface', why: 'Matt black is best.' },
+      { text: 'they are all the same', why: 'Colour and texture matter.' },
+    ],
+  },
+  {
+    question: '4. A wave has a frequency of 25 Hz and a wavelength of 0.40 m. What is its speed?',
+    options: [
+      { text: '10 m/s', correct: true, why: '$v = f\\lambda = 25 \\times 0.40$.' },
+      { text: '62.5 m/s', why: 'Multiply, do not divide.' },
+      { text: '0.016 m/s', why: 'Multiply.' },
+      { text: '25.4 m/s', why: 'Multiply, do not add.' },
+    ],
+  },
+  {
+    question: '5. An object is between F and 2F of a converging lens. Describe the image.',
+    options: [
+      { text: 'real, inverted, enlarged', correct: true, why: 'Like a projector.' },
+      { text: 'virtual, upright, enlarged', why: 'That needs the object closer than F.' },
+      { text: 'real, inverted, diminished', why: 'That needs the object beyond 2F.' },
+      { text: 'real, upright, same size', why: 'A real image is inverted.' },
+    ],
+  },
+  {
+    question: '6. Which electromagnetic waves are used in TV remote controls?',
+    options: [
+      { text: 'infrared', correct: true, why: 'Short-range communication.' },
+      { text: 'ultraviolet', why: 'UV is for security marking.' },
+      { text: 'gamma rays', why: 'Gamma rays are for sterilising.' },
+      { text: 'X-rays', why: 'X-rays are for medical scans.' },
+    ],
+  },
+  {
+    question: '7. (E) 2.0 kg of water is heated from 20 °C to 70 °C. How much energy is needed? (c = 4200 J/(kg °C))',
+    options: [
+      { text: '420 000 J', correct: true, why: '$2.0 \\times 4200 \\times 50$.' },
+      { text: '588 000 J', why: 'Use the change in temperature: 50 °C.' },
+      { text: '8400 J', why: 'Multiply by the temperature change too.' },
+      { text: '168 000 J', why: 'Check: $2.0 \\times 4200 \\times 50$.' },
+    ],
+  },
+  {
+    question: '8. (E) The refractive index of a glass is 1.5. What is its critical angle?',
+    options: [
+      { text: '42°', correct: true, why: '$\\sin c = \\dfrac{1}{1.5}$, $c = 41.8^\\circ$.' },
+      { text: '0.67°', why: 'That is $\\sin c$.' },
+      { text: '56°', why: 'Use $\\sin c = \\dfrac{1}{n}$.' },
+      { text: '1.5°', why: 'Use $\\sin^{-1}$.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** what to revise 10 min, practice 28 min, exam questions 22 min.
+
+**Using this lesson:** ask students to rate each topic first, then focus the practice on their weakest topics. The simulations of Units 7–11 (gas, lens, ray box, wave, oscilloscope) are good for quick revision.
+
+**Questions 7–8 are Extended.**
+
+</Step>

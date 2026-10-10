@@ -1,0 +1,151 @@
+---
+unit: 9
+lesson: 3
+title: Wave speed
+syllabus: ['3.1 C4']
+goals:
+  - 'Recall and use the equation $v = f\lambda$.'
+  - Change units before you calculate (cm to m, kHz and MHz to Hz).
+keyWords: [wave speed, frequency, wavelength, hertz]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import WaveSim from '../../../components/WaveSim.astro';
+
+<Step kind="starter" title="Think it through" minutes={5}>
+
+3 waves pass you every second. Each wave is 2 m long. How far does the wave travel in one second?
+
+</Step>
+
+<Step kind="learn" title="The wave equation" minutes={12}>
+
+In one second, $f$ waves pass a point. Each wave is $\lambda$ long. So in one second the wave travels $f \times \lambda$:
+
+$$
+v = f\lambda
+$$
+
+<div class="table-wrap">
+
+| Quantity | Symbol | Unit |
+|---|---|---|
+| wave speed | $v$ | m/s |
+| frequency | $f$ | Hz |
+| wavelength | $\lambda$ | m |
+
+</div>
+
+To find $f$ or $\lambda$, change the subject:
+
+$$
+f = \frac{v}{\lambda} \qquad \lambda = \frac{v}{f}
+$$
+
+**Units first:** 1 kHz = 1000 Hz; 1 MHz = 1 000 000 Hz = $10^6$ Hz; 1 cm = 0.01 m.
+
+<WorkedExample
+  question="A sound wave has a frequency of 680 Hz. The speed of sound in air is 340 m/s. Calculate its wavelength."
+  given={['$f = 680\\,\\text{Hz}$', '$v = 340\\,\\text{m/s}$']}
+  find="the wavelength $\lambda$"
+  answer="$\lambda = 0.5\,\text{m}$"
+>
+
+$v = f\lambda$, so $\lambda = \dfrac{v}{f}$
+
+$\lambda = \dfrac{340}{680}$
+
+$\lambda = 0.5\,\text{m}$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="do" title="Test the equation" minutes={13}>
+
+<WaveSim />
+
+Pause the wave at each frequency. Measure the wavelength with the ruler. Complete the table.
+
+<div class="table-wrap">
+
+| frequency / Hz | wavelength / m | $f \times \lambda$ / (m/s) |
+|---|---|---|
+| 0.5 | | |
+| 1.0 | | |
+| 2.0 | | |
+| 2.5 | | |
+
+</div>
+
+**Questions:**
+
+1. What do you notice about $f \times \lambda$?
+2. On this spring, the speed does not change. When you double the frequency, what happens to the wavelength?
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={25}>
+
+<Practice topic="wave-speed" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A wave has a frequency of 4 Hz and a wavelength of 3 m. What is its speed?',
+    options: [
+      { text: '12 m/s', correct: true, why: '$v = f\\lambda = 4 \\times 3 = 12\\,\\text{m/s}$.' },
+      { text: '1.33 m/s', why: 'Multiply, do not divide.' },
+      { text: '0.75 m/s', why: 'Multiply: $v = f\\lambda$.' },
+      { text: '7 m/s', why: 'Multiply, do not add.' },
+    ],
+  },
+  {
+    question: 'Waves on a rope travel at the same speed. The frequency doubles. What happens to the wavelength?',
+    options: [
+      { text: 'It halves', correct: true, why: '$\\lambda = \\dfrac{v}{f}$: same $v$, double $f$, half $\\lambda$.' },
+      { text: 'It doubles', why: 'Same speed: if $f$ goes up, $\\lambda$ goes down.' },
+      { text: 'It stays the same', why: '$\\lambda = \\dfrac{v}{f}$ changes when $f$ changes.' },
+      { text: 'It becomes zero', why: 'It halves.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. A radio station broadcasts at 100 MHz. Radio waves travel at $3.0 \times 10^8$ m/s. Calculate the wavelength.
+2. Water waves in a ripple tank have a wavelength of 1.5 cm and a frequency of 12 Hz. Calculate their speed in m/s.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 12 min, simulation 13 min, practice 25 min, exit ticket 5 min.
+
+**Values used:** speed of sound in air 340 m/s (the syllabus, topic 3.4, gives a range of about 330–350 m/s); speed of electromagnetic waves $3.0 \times 10^8$ m/s (syllabus 3.3).
+
+**Common mistakes:**
+
+- Dividing instead of multiplying.
+- Wavelength in cm, frequency in kHz or MHz.
+- Thinking that a higher frequency makes the wave faster. In one medium, the speed is (nearly) fixed; $f$ and $\lambda$ change together.
+
+**Language support:**
+
+- Read $v = f\lambda$ as "speed equals frequency times wavelength".
+
+**Differentiation:**
+
+- Support: level 1 only, with the three forms of the equation written on the board.
+- Stretch: level 3 (reading a wave graph; counting waves).
+
+</Step>

@@ -1,0 +1,182 @@
+---
+unit: 9
+lesson: 4
+title: Reflection, refraction and diffraction
+syllabus: ['3.1 C7', '3.1 C8', '3.1 S9', '3.1 S10']
+goals:
+  - Describe reflection, refraction and diffraction of waves.
+  - Describe how a ripple tank shows these three effects.
+  - 'Extended: describe how the wavelength and the size of a gap affect diffraction.'
+keyWords: [reflection, refraction, diffraction, ripple tank, wavefront, wavelength]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { rippleTankSvg, reflectionWavesSvg, refractionWavesSvg, diffractionGapSvg, diffractionEdgeSvg } from '../../../lib/waveFigures';
+
+<Step kind="starter" title="Around the corner" minutes={5}>
+
+Your friend is in the corridor, around the corner. You cannot see your friend, but you can hear them. Why can sound go around the corner, but light cannot (or only very little)?
+
+</Step>
+
+<Step kind="learn" title="The ripple tank" minutes={8}>
+
+<Figure svg={rippleTankSvg()} caption="A ripple tank, seen from the side." width="32rem" />
+
+- A **motor** makes a bar **vibrate** on the water: it makes straight waves.
+- A **lamp** above the tank shines through the water. Each crest acts like a lens: we see **bright lines** on the screen below. These lines show the **wavefronts**.
+
+</Step>
+
+<Step kind="learn" title="Reflection and refraction" minutes={14}>
+
+**Reflection:** a wave hits a surface and comes back.
+
+<Figure svg={reflectionWavesSvg()} caption="Reflection at a flat (plane) barrier." width="28rem" />
+
+- In a ripple tank: put a flat metal barrier in the water.
+- The waves come back at the **same angle**. The wavelength, the frequency and the speed do not change.
+
+**Refraction:** a wave **changes speed** when it goes into a different medium. So it can **change direction**.
+
+<Figure svg={refractionWavesSvg()} caption="Refraction: from deep water to shallow water." width="30rem" />
+
+- In a ripple tank: put a glass plate in the tank, so the water above it is **shallower**.
+- Water waves are **slower** in shallow water. So the **wavelength gets shorter**.
+- The **frequency does not change** (the same number of waves arrive each second).
+- If the waves arrive at an angle, they **change direction**.
+
+</Step>
+
+<Step kind="learn" title="Diffraction" minutes={14}>
+
+**Diffraction:** a wave **spreads out** when it goes through a **gap** or past an **edge**. The wavelength, the frequency and the speed do not change.
+
+<Figure svg={diffractionGapSvg()} caption="Diffraction through a gap." width="34rem" />
+
+<Figure svg={diffractionEdgeSvg()} caption="Diffraction at an edge." width="24rem" />
+
+In a ripple tank: put two barriers with a gap between them, or one barrier with an edge.
+
+**Extended: what changes the diffraction?**
+
+- **Gap size:** the waves spread out the most when the gap is about the **same size as the wavelength**. A **wide** gap (much bigger than the wavelength) gives **only a little** spreading.
+- **Wavelength:** waves with a **longer** wavelength spread out **more** (through the same gap, or at an edge).
+
+**Back to the starter:** sound has a wavelength of about 1 m, like the size of a door. So it diffracts a lot. Light has a very, very short wavelength (less than a millionth of a metre), so it diffracts very little at a door.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={14}>
+
+<Quiz questions={[
+  {
+    question: 'Waves go from deep water into shallow water. What happens?',
+    options: [
+      { text: 'They slow down and their wavelength gets shorter', correct: true, why: 'The frequency stays the same, so a lower speed means a shorter wavelength.' },
+      { text: 'They speed up and their wavelength gets longer', why: 'Water waves are slower in shallow water.' },
+      { text: 'Their frequency changes', why: 'The frequency does not change.' },
+      { text: 'Nothing changes', why: 'This is refraction: the speed and the wavelength change.' },
+    ],
+  },
+  {
+    question: 'What is diffraction?',
+    options: [
+      { text: 'A wave spreads out through a gap or past an edge', correct: true, why: 'The wavelength does not change.' },
+      { text: 'A wave bounces back from a surface', why: 'This is reflection.' },
+      { text: 'A wave changes speed in a new medium', why: 'This is refraction.' },
+      { text: 'A wave gets a bigger amplitude', why: 'Diffraction is spreading out.' },
+    ],
+  },
+  {
+    question: 'What does NOT change when a wave is reflected?',
+    options: [
+      { text: 'its wavelength, frequency and speed', correct: true, why: 'Only the direction changes.' },
+      { text: 'its direction', why: 'The direction changes: the wave comes back.' },
+      { text: 'nothing changes at all', why: 'The direction changes.' },
+      { text: 'only its speed changes', why: 'The speed does not change in reflection.' },
+    ],
+  },
+  {
+    question: 'Extended: water waves have a wavelength of 2 cm. Which gap gives the most diffraction?',
+    options: [
+      { text: 'a gap of 2 cm', correct: true, why: 'Most spreading when the gap is about the same size as the wavelength.' },
+      { text: 'a gap of 20 cm', why: 'A gap much wider than the wavelength gives little spreading.' },
+      { text: 'a gap of 50 cm', why: 'Very wide gap: very little spreading.' },
+      { text: 'all the same', why: 'The gap size changes the diffraction.' },
+    ],
+  },
+  {
+    question: 'Extended: two water waves pass the same edge. Which one diffracts more?',
+    options: [
+      { text: 'the wave with the longer wavelength', correct: true, why: 'Longer wavelength: more diffraction.' },
+      { text: 'the wave with the shorter wavelength', why: 'Shorter wavelength: less diffraction.' },
+      { text: 'the wave with the bigger amplitude', why: 'The wavelength is what matters.' },
+      { text: 'both the same', why: 'The wavelength changes the diffraction.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'In a ripple tank, how do we make the water shallower to show refraction?',
+    options: [
+      { text: 'Put a glass plate under the water in one part of the tank', correct: true, why: 'The water above the plate is shallower, so the waves are slower there.' },
+      { text: 'Put a barrier with a gap', why: 'A gap shows diffraction.' },
+      { text: 'Put a flat barrier', why: 'A flat barrier shows reflection.' },
+      { text: 'Make the lamp brighter', why: 'The lamp does not change the depth of the water.' },
+    ],
+  },
+  {
+    question: 'When a wave refracts, which quantity stays the same?',
+    options: [
+      { text: 'frequency', correct: true, why: 'The speed and the wavelength change; the frequency stays the same.' },
+      { text: 'speed', why: 'Refraction is caused by a change of speed.' },
+      { text: 'wavelength', why: 'The wavelength changes with the speed.' },
+      { text: 'direction (always)', why: 'The direction can change if the wave arrives at an angle.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Draw wavefronts for: (a) waves reflecting from a flat barrier; (b) waves going into shallow water; (c) waves going through a narrow gap. Under each drawing, write one sentence to explain it.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** reflection, refraction, diffraction and the ripple tank (3.1 C7, C8) are Core. The effect of gap size and wavelength (S9, S10) is Extended.
+
+**Timing:** starter 5 min, learn 36 min, check 14 min, exit ticket 5 min. If you have a ripple tank, show each effect as you teach it.
+
+**Ripple tank tips:** use very shallow water (about 5 mm), and a thin glass or plastic plate for the shallow region. Dim the room lights. Use a low frequency at first.
+
+**Common mistakes:**
+
+- Drawing a shorter or longer wavelength after diffraction or reflection. The wavelength does not change.
+- Thinking that the frequency changes in refraction.
+- "A wider gap gives more diffraction."
+
+**Language support:**
+
+- *re-flect* = bend back; *re-fract* = break (change direction); *dif-fract* = break apart, spread.
+- Sentence frame: *"When the waves go through a gap that is about the same size as the wavelength, they …"*
+
+**Differentiation:**
+
+- Support: three cards with the names and three pictures to match.
+- Stretch: why can you receive long-wave radio behind a hill, but not some higher-frequency signals?
+
+**Safety:** water and electricity: keep the lamp and the motor dry, and wipe up spills.
+
+</Step>

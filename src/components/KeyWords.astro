@@ -1,0 +1,44 @@
+---
+// The key words of a lesson, with their meaning from the glossary.
+import { glossary, commandWords } from '../data/glossary';
+import { renderMath } from '../lib/math';
+
+interface Props {
+  words: string[];
+}
+
+const { words } = Astro.props;
+const entries = words.map(
+  (w) => glossary.find((g) => g.word === w) ?? commandWords.find((c) => c.word === w) ?? { word: w, meaning: '' },
+);
+---
+
+<dl class="keywords">
+  {
+    entries.map((e) => (
+      <div class="kw">
+        <dt>{e.word}</dt>
+        <dd set:html={renderMath(e.meaning)} />
+      </div>
+    ))
+  }
+</dl>
+
+<style>
+  .keywords {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 0.2rem 2rem;
+    margin: 0;
+  }
+  .kw {
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  dt { font-weight: 700; }
+  dd {
+    margin: 0.1rem 0 0;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+</style>

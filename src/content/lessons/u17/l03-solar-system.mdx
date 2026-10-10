@@ -1,0 +1,182 @@
+---
+unit: 17
+lesson: 3
+title: The Solar System
+syllabus: ['6.1.2 C1', '6.1.2 C4', '6.1.2 S8']
+goals:
+  - Name the objects in the Solar System and the eight planets in order.
+  - 'Calculate the time light takes to travel in the Solar System, with $t = \dfrac{d}{c}$.'
+  - Analyse data about the planets (Extended).
+keyWords: [planet, dwarf planet, asteroid, comet, moon]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import PlanetTable from '../../../components/PlanetTable.astro';
+import { solarSystemSvg } from '../../../lib/spaceFigures';
+
+<Step kind="starter" title="Two-minute list" minutes={5}>
+
+With a partner, write the names of as many objects in the Solar System as you can in 2 minutes.
+
+Then sort your list into groups. What groups did you choose?
+
+</Step>
+
+<Step kind="learn" title="What is in the Solar System?" minutes={10}>
+
+The Solar System contains:
+
+1. **one star**: the Sun;
+2. **eight planets** that orbit the Sun;
+3. **minor planets** that orbit the Sun: **dwarf planets** like Pluto, and **asteroids** (many are in the asteroid belt, between Mars and Jupiter);
+4. **moons** that orbit the planets;
+5. smaller objects, like **comets**.
+
+<Figure svg={solarSystemSvg()} caption="The Sun and the eight planets in order. Sizes and distances are not to scale." width="38rem" />
+
+The planets in order from the Sun:
+
+**Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune**
+
+A sentence to help you remember (look at the first letters): *My Very Easy Method Just Speeds Up Naming.*
+
+</Step>
+
+<Step kind="learn" title="How long does light take?" minutes={8}>
+
+Light is very fast, but the Solar System is very big. Light from the Sun needs time to reach the planets.
+
+$$
+\text{time} = \frac{\text{distance}}{\text{speed}}
+\qquad\text{so}\qquad
+t = \frac{d}{c}
+$$
+
+The speed of light is $c = 3.0 \times 10^{8}\,\text{m/s}$.
+
+<WorkedExample
+  question="The Sun is 1.5 × 10¹¹ m from the Earth. How long does sunlight take to reach us?"
+  given={['$d = 1.5 \\times 10^{11}\\,\\text{m}$', '$c = 3.0 \\times 10^{8}\\,\\text{m/s}$']}
+  find="the time $t$"
+  answer="$t = 500\,\text{s}$ (about 8 minutes)"
+>
+
+$t = \dfrac{d}{c} = \dfrac{1.5 \times 10^{11}}{3.0 \times 10^{8}}$
+
+$t = 500\,\text{s}$
+
+In minutes: $\dfrac{500}{60} = 8.3\,\text{min}$
+
+</WorkedExample>
+
+So when you see the Sun, you see light that left it about 8 minutes ago. (Never look directly at the Sun.)
+
+</Step>
+
+<Step kind="learn" title="Data about the planets (Extended)" minutes={7}>
+
+<PlanetTable columns={['distance', 'period', 'density', 'temperature', 'g']} />
+
+Look for **patterns**:
+
+- The further the planet, the longer its orbital period.
+- The four inner planets have a high density (rock and metal). The four outer planets have a low density (mostly gas).
+- In general, the temperature is lower further from the Sun. **But** Venus is hotter than Mercury: its thick atmosphere traps the heat.
+
+</Step>
+
+<Step kind="do" title="A model of distances" minutes={10}>
+
+Make a model of the distances in the Solar System, in the corridor or outside.
+**Scale:** 1 m in the model = 100 million km (10⁸ km) in space.
+
+<div class="table-wrap">
+
+| Planet | Mercury | Venus | Earth | Mars | Jupiter | Saturn | Uranus | Neptune |
+|---|---|---|---|---|---|---|---|---|
+| distance in the model / m | 0.58 | 1.08 | 1.50 | 2.28 | 7.79 | 14.3 | 28.7 | 45.2 |
+
+</div>
+
+1. Put the "Sun" at one end. Measure each distance with a tape measure.
+2. Put a card with the name of each planet in the right place.
+3. **Question:** describe the distances between the inner planets and between the outer planets.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={15}>
+
+<Practice topic="light-time" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Which list is in order from the Sun?',
+    options: [
+      { text: 'Mercury, Venus, Earth, Mars', correct: true, why: 'These are the four inner planets, in order.' },
+      { text: 'Venus, Mercury, Earth, Mars', why: 'Mercury is the closest planet to the Sun.' },
+      { text: 'Earth, Mars, Saturn, Jupiter', why: 'Jupiter comes before Saturn.' },
+      { text: 'Mars, Jupiter, Neptune, Uranus', why: 'Uranus comes before Neptune.' },
+    ],
+  },
+  {
+    question: 'Where are most asteroids?',
+    options: [
+      { text: 'between Mars and Jupiter', correct: true, why: 'This is the asteroid belt.' },
+      { text: 'between the Earth and the Moon', why: 'The asteroid belt is between Mars and Jupiter.' },
+      { text: 'inside the Sun', why: 'Asteroids orbit the Sun, in the asteroid belt.' },
+      { text: 'after Neptune only', why: 'Most asteroids are between Mars and Jupiter.' },
+    ],
+  },
+  {
+    question: 'Light travels $6.0 \\times 10^{11}\\,\\text{m}$ from the Sun to Jupiter. How long does it take? ($c = 3.0 \\times 10^{8}\\,\\text{m/s}$)',
+    options: [
+      { text: '$2.0 \\times 10^{3}\\,\\text{s}$', correct: true, why: '$t = \\dfrac{6.0 \\times 10^{11}}{3.0 \\times 10^{8}} = 2.0 \\times 10^{3}\\,\\text{s}$.' },
+      { text: '$1.8 \\times 10^{20}\\,\\text{s}$', why: 'You multiplied. $t = \\dfrac{d}{c}$.' },
+      { text: '$5.0 \\times 10^{-4}\\,\\text{s}$', why: 'You divided the wrong way. $t = \\dfrac{d}{c}$.' },
+      { text: '$2.0 \\times 10^{3}\\,\\text{min}$', why: 'The number is right, but the unit is seconds.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Learn the eight planets in order. Make your own sentence to remember them.
+2. Do 5 questions at **Level 2** of the practice.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** the members of the Solar System (6.1.2 C1) and light travel time (6.1.2 C4) are Core. Analysing planetary data (6.1.2 S8) is Extended.
+
+**Timing:** starter 5 min, learn 25 min, distance model 10 min, practice 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Thinking Pluto is a planet (it is a dwarf planet).
+- Forgetting to change km to m before using $c = 3.0 \times 10^{8}\,\text{m/s}$.
+- Thinking temperature always decreases with distance (Venus is the exception).
+
+**Model distances:** distance from the Sun in 10⁶ km ÷ 100 gives metres in the model (NASA data).
+
+**Language support:**
+
+- Sentence frame for patterns: *"The further the planet is from the Sun, the … its …"*
+
+**Differentiation:**
+
+- Support: give the planet order on a card during the quiz.
+- Stretch: Neptune is $4.5 \times 10^{12}\,\text{m}$ from the Sun. How long does sunlight take to reach it, in hours? (About 4.2 h.)
+
+</Step>

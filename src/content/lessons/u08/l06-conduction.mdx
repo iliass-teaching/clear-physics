@@ -1,0 +1,174 @@
+---
+unit: 8
+lesson: 6
+title: Conduction
+syllabus: ['2.3.1 C1', '2.3.1 S2–S4']
+goals:
+  - Describe experiments that show good and bad thermal conductors.
+  - 'Extended: explain conduction with vibrating particles and free electrons.'
+  - 'Extended: explain why gases and most liquids are bad conductors.'
+keyWords: [conduction, thermal conductor, thermal insulator, free electrons]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { conductionRodsSvg, conductionParticlesSvg } from '../../../lib/heatFigures';
+
+<Step kind="starter" title="Metal or wood?" minutes={5}>
+
+In a cold room, touch a metal table leg and a wooden table top. They are at the same temperature (room temperature). Why does the metal feel colder?
+
+</Step>
+
+<Step kind="learn" title="Good and bad conductors" minutes={10}>
+
+In **conduction**, thermal energy moves **through** a material, from the hot part to the cold part. The material does not move.
+
+- A **good thermal conductor** lets energy through easily: **metals** (copper, aluminium, iron).
+- A **bad thermal conductor** is called a **thermal insulator**: plastic, wood, wool, glass fibre, **air**.
+- Many solids are in between (**Extended**): for example glass, brick and stone conduct better than insulators, but much less well than metals.
+
+**Back to the starter:** the metal conducts energy away from your hand quickly, so your hand cools quickly. It *feels* colder, but it is not.
+
+</Step>
+
+<Step kind="learn" title="Experiments" minutes={10}>
+
+**1. Rods of different materials**
+
+<Figure svg={conductionRodsSvg()} caption="After a few minutes: the wax melts furthest along the copper rod." width="32rem" />
+
+Rods of the same size are heated at one end. Pins are fixed along each rod with wax. When the wax melts, the pin falls. The best conductor loses its pins first and furthest along.
+
+**2. Water is a bad conductor**
+
+Put a piece of ice at the bottom of a test tube of water (hold it down with a little metal gauze). Heat the **top** of the water with a Bunsen burner. The water at the top boils, but the ice at the bottom does not melt. Water is a bad conductor.
+
+</Step>
+
+<Step kind="learn" title="Conduction with particles (Extended)" minutes={12}>
+
+<Figure svg={conductionParticlesSvg()} caption="Conduction in a non-metal and in a metal." width="34rem" />
+
+**In all solids:** the particles at the hot end vibrate more. They push their neighbours, which vibrate more too. The vibrations pass along the lattice from particle to particle. This is slow.
+
+**In metals:** there are also **free (delocalised) electrons**. They can move through the whole metal. At the hot end they gain energy, move fast to the cold parts, and collide with particles there. This is much faster. So metals are good conductors.
+
+**Gases and most liquids are bad conductors:**
+
+- In a **gas**, the particles are **far apart**. They collide less often, so energy passes from particle to particle very slowly.
+- In a **liquid**, the particles are close, but they are not held in a lattice and there are no free electrons. (Liquid metals, like mercury, are an exception.)
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={13}>
+
+<Quiz questions={[
+  {
+    question: 'Which material is the best thermal conductor?',
+    options: [
+      { text: 'copper', correct: true, why: 'Metals are good conductors. Copper is one of the best.' },
+      { text: 'wood', why: 'Wood is an insulator.' },
+      { text: 'air', why: 'Air is a very bad conductor: a good insulator.' },
+      { text: 'plastic', why: 'Plastic is an insulator.' },
+    ],
+  },
+  {
+    question: 'A pan has a metal base and a plastic handle. Why?',
+    options: [
+      { text: 'The metal conducts energy to the food; the plastic insulates your hand', correct: true, why: 'Metal: good conductor. Plastic: insulator.' },
+      { text: 'The plastic conducts energy to the food', why: 'Plastic is an insulator.' },
+      { text: 'The metal is cheaper', why: 'The reason is conduction.' },
+      { text: 'The metal keeps the food cold', why: 'The metal conducts energy to the food.' },
+    ],
+  },
+  {
+    question: 'Why do clothes made of wool keep you warm?',
+    options: [
+      { text: 'They trap air, which is a bad conductor', correct: true, why: 'Air is a very good insulator when it cannot move.' },
+      { text: 'Wool makes heat', why: 'Wool does not make energy. It reduces energy loss.' },
+      { text: 'Wool is a good conductor', why: 'Wool and the air in it are insulators.' },
+      { text: 'Wool stops all radiation', why: 'The main reason is the trapped air.' },
+    ],
+  },
+  {
+    question: 'Extended: why are metals better conductors than other solids?',
+    options: [
+      { text: 'They have free electrons that carry energy fast', correct: true, why: 'Other solids pass energy only by vibrations.' },
+      { text: 'Their particles do not vibrate', why: 'The particles vibrate in all solids.' },
+      { text: 'They are heavier', why: 'The reason is the free electrons.' },
+      { text: 'Their particles are far apart', why: 'In solids, the particles are close.' },
+    ],
+  },
+  {
+    question: 'Extended: why is a gas a bad conductor?',
+    options: [
+      { text: 'Its particles are far apart, so they rarely collide', correct: true, why: 'Energy passes slowly from particle to particle.' },
+      { text: 'Its particles do not move', why: 'Gas particles move fast.' },
+      { text: 'It has many free electrons', why: 'Gases have no free electrons.' },
+      { text: 'Its particles are very close', why: 'Gas particles are far apart.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'What is conduction?',
+    options: [
+      { text: 'Energy moves through a material from the hot part to the cold part', correct: true, why: 'The material itself does not move.' },
+      { text: 'Hot fluid rises and cold fluid sinks', why: 'This is convection.' },
+      { text: 'Energy travels as infrared waves', why: 'This is radiation.' },
+      { text: 'Cold moves from the cold part to the hot part', why: 'Energy moves from hot to cold.' },
+    ],
+  },
+  {
+    question: 'In the rods experiment, the pins on the glass rod do not fall. What does this show?',
+    options: [
+      { text: 'Glass is a bad conductor', correct: true, why: 'The wax far from the heat does not get hot enough to melt.' },
+      { text: 'Glass is the best conductor', why: 'The best conductor loses its pins first.' },
+      { text: 'Glass melts', why: 'The glass does not melt. The wax stays solid.' },
+      { text: 'The pins are too heavy', why: 'The wax did not melt: glass conducts badly.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Find 3 objects at home that use thermal conductors and 3 that use thermal insulators. For each one, explain why that material is used.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** experiments with good and bad conductors (2.3.1 C1) are Core. The particle explanations and intermediate conductors (S2–S4) are Extended.
+
+**Timing:** starter 5 min, learn 32 min, check 13 min, exit ticket 5 min. Show the two experiments as demonstrations during the learn parts.
+
+**Common mistakes:**
+
+- "Cold moves into my hand." Energy moves out of the hand.
+- "Metal is colder than wood at the same temperature."
+- "Insulators stop all energy transfer." They make it slower.
+- "Electrons vibrate." The particles (ions) of the lattice vibrate; free electrons move through the metal.
+
+**Language support:**
+
+- *conductor* (lets energy through) ↔ *insulator* (does not let it through easily). The same words are used for electricity in Unit 13.
+- *lattice* = the regular pattern of particles in a solid.
+
+**Differentiation:**
+
+- Support: sort cards of materials into "good conductor" and "insulator".
+- Stretch: why do saucepans for professional cooks often have a copper base, but a steel body?
+
+**Safety:** the wax-and-pins rods: use a heatproof mat and do not touch the rods. Test tube with ice: point the tube away from people; wear eye protection.
+
+</Step>

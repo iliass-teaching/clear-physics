@@ -1,0 +1,125 @@
+---
+unit: 16
+lesson: 8
+title: Half-life
+syllabus: ['5.2.4 C1', '5.2.4 S2']
+goals:
+  - Define the half-life of an isotope.
+  - Use the half-life in calculations, with tables and decay curves.
+  - 'Extended: find the half-life from data that include background radiation.'
+keyWords: [half-life, radioactive decay, count rate, isotope]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Graph from '../../../components/Graph.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import DecaySim from '../../../components/DecaySim.astro';
+
+<Step kind="starter" title="Coins" minutes={5}>
+
+Throw 100 coins. Remove all the "heads". Throw the rest again, remove the heads, and so on. About how many coins are left after each throw? After how many throws are about 25 left?
+
+</Step>
+
+<Step kind="learn" title="Half-life" minutes={12}>
+
+We cannot predict when **one** nucleus decays. But in a big sample, a fixed **fraction** decays in a fixed time.
+
+**The half-life of an isotope is the time taken for half the nuclei of that isotope in any sample to decay.**
+
+After 1 half-life: ½ left. After 2 half-lives: ¼ left. After 3 half-lives: ⅛ left.
+
+<Graph
+  xLabel="time / days" yLabel="count rate / counts per minute"
+  xMax={24} yMax={800} xStep={4} yStep={100}
+  points={[[0,800],[2,566],[4,400],[6,283],[8,200],[10,141],[12,100],[14,71],[16,50],[18,35],[20,25],[22,18],[24,12.5]]}
+  curve
+  title="Decay curve: the count rate halves every 4 days."
+  caption="A decay curve. The count rate halves every 4 days: the half-life is 4 days."
+/>
+
+**From a decay curve:** read the start value, find the time when it is half of this, and the time when it is a quarter. The time between halvings is the half-life.
+
+<WorkedExample
+  question="Iodine-131 has a half-life of 8 days. A sample has a count rate of 1200 counts/minute. What is the count rate after 24 days?"
+  given={['half-life $= 8$ days', 'start: 1200 counts/minute', 'time $= 24$ days']}
+  find="the count rate after 24 days"
+  answer="150 counts/minute"
+>
+
+Number of half-lives $= \dfrac{24}{8} = 3$
+
+1200 → 600 → 300 → 150 counts/minute
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="do" title="Simulate decay" minutes={16}>
+
+<DecaySim />
+
+1. Choose **isotope B**. Wait 1 minute at a time and watch the graph. Use the graph to find the half-life.
+2. Start again with isotope B. Do you get exactly the same numbers? Why not?
+3. Find the half-lives of isotopes A and C.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={20}>
+
+<Practice topic="half-life" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={7}>
+
+<Quiz questions={[
+  {
+    question: 'What is the half-life of an isotope?',
+    options: [
+      { text: 'The time for half the nuclei of that isotope in a sample to decay', correct: true, why: 'This is the definition.' },
+      { text: 'Half the time for all the nuclei to decay', why: 'All the nuclei never decay at a fixed time.' },
+      { text: 'The time for one nucleus to decay', why: 'We cannot predict that.' },
+      { text: 'Half the mass of the sample', why: 'Half-life is a time.' },
+    ],
+  },
+  {
+    question: 'A sample has 80 g of a radioactive isotope. Its half-life is 5 years. How much is left after 15 years?',
+    options: [
+      { text: '10 g', correct: true, why: '3 half-lives: 80 → 40 → 20 → 10 g.' },
+      { text: '26.7 g', why: 'Halve, do not divide by 3.' },
+      { text: '20 g', why: '15 years is 3 half-lives, not 2.' },
+      { text: '70 g', why: 'This is the mass that has decayed. The question asks what is left: 10 g.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** 5.2.4 C1 is Core (calculations without background). Data with background (S2) is Extended.
+
+**Timing:** starter 5 min, learn 12 min, simulation 16 min, practice 20 min, exit ticket 7 min.
+
+**About the simulation:** each nucleus has the same probability of decaying each minute. Isotope A has a half-life of 2 minutes, B of 4 minutes, C of 6 minutes (do not tell students before they measure it).
+
+**Common mistakes:**
+
+- Dividing by the number of half-lives instead of halving repeatedly.
+- Reading the half-life from a curve that includes background (Extended: subtract it first).
+- "After two half-lives, everything has decayed."
+
+**Language support:**
+
+- *half-life* = the time to go down to half.
+
+**Differentiation:**
+
+- Support: the coin activity with a table to complete.
+- Stretch: why can we never say exactly when the last nucleus will decay?
+
+</Step>

@@ -1,0 +1,113 @@
+---
+// Multiple-choice questions with feedback for each answer.
+// Used for the exit ticket at the end of a lesson. Strings can contain LaTeX ($...$).
+import { renderMath } from '../lib/math';
+
+export interface QuizOption {
+  text: string;
+  correct?: boolean;
+  why: string; // shown after the student chooses this option
+}
+
+export interface QuizQuestion {
+  question: string;
+  options: QuizOption[];
+}
+
+interface Props {
+  questions: QuizQuestion[];
+}
+
+const { questions } = Astro.props;
+---
+
+<ol class="quiz">
+  {
+    questions.map((q) => (
+      <li class="quiz-q">
+        <p class="q" set:html={renderMath(q.question)} />
+        <div class="options">
+          {q.options.map((o, i) => (
+            <button type="button" class="option" data-correct={o.correct ? 'true' : 'false'}>
+              <span class="letter">{String.fromCharCode(65 + i)}</span>
+              <span class="text" set:html={renderMath(o.text)} />
+              <span class="why-src" hidden set:html={renderMath(o.why)} />
+            </button>
+          ))}
+        </div>
+        <p class="why" aria-live="polite" />
+      </li>
+    ))
+  }
+</ol>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.quiz-q').forEach((item) => {
+    const why = item.querySelector<HTMLElement>('.why')!;
+    item.querySelectorAll<HTMLButtonElement>('.option').forEach((button) => {
+      button.addEventListener('click', () => {
+        const correct = button.dataset.correct === 'true';
+        item.querySelectorAll('.option').forEach((b) => b.classList.remove('chosen-good', 'chosen-bad'));
+        button.classList.add(correct ? 'chosen-good' : 'chosen-bad');
+        why.className = `why ${correct ? 'good' : 'bad'}`;
+        why.innerHTML = `<strong>${correct ? 'Correct.' : 'Not correct.'}</strong> ${button.querySelector('.why-src')?.innerHTML ?? ''}`;
+      });
+    });
+  });
+</script>
+
+<style>
+  .quiz {
+    list-style: none;
+    counter-reset: q;
+    padding: 0;
+    margin: 0.5rem 0 0;
+  }
+  .quiz-q {
+    counter-increment: q;
+    margin: 0 0 1.6rem;
+  }
+  .q {
+    font-weight: 700;
+    margin: 0 0 0.6rem;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    text-align: left;
+    font-weight: 400;
+    font-size: 0.97rem;
+    padding: 0.55rem 0.8rem;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  .option:hover { border-color: var(--accent); filter: none; }
+  .letter {
+    flex: none;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    border: 1px solid var(--line);
+  }
+  .option.chosen-good { background: var(--good-soft); border-color: var(--good); }
+  .option.chosen-good .letter { background: var(--good); border-color: var(--good); color: var(--bg); }
+  .option.chosen-bad { background: var(--bad-soft); border-color: var(--bad); }
+  .option.chosen-bad .letter { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+  .why { min-height: 0; margin: 0.5rem 0 0; font-size: 0.93rem; }
+  .why.good { color: var(--good); }
+  .why.bad { color: var(--bad); }
+</style>

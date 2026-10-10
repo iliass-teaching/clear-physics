@@ -1,0 +1,194 @@
+---
+unit: 8
+lesson: 1
+title: Thermal expansion
+syllabus: ['2.2.1 C1', '2.2.1 C2', '2.2.1 S3']
+goals:
+  - Describe the thermal expansion of solids, liquids and gases.
+  - Describe everyday uses and problems of thermal expansion.
+  - 'Extended: explain with particles why gases expand the most and solids the least.'
+keyWords: [thermal expansion, particle, solid, liquid, gas]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { railGapSvg, bimetallicSvg } from '../../../lib/heatFigures';
+
+<Step kind="starter" title="A stuck lid" minutes={5}>
+
+The metal lid of a glass jar is stuck. Your grandmother puts the lid under hot water for a few seconds. Now it opens easily. Why?
+
+</Step>
+
+<Step kind="learn" title="Things get bigger when they get hotter" minutes={12}>
+
+When we heat a solid, a liquid or a gas, it gets a little bigger: it **expands**. When it cools, it gets smaller: it **contracts**. This is **thermal expansion**.
+
+- The particles do **not** get bigger.
+- The particles move (or vibrate) more, so they take more space: the distance between them increases.
+
+For the same rise in temperature:
+
+<div class="table-wrap">
+
+| | Expansion |
+|---|---|
+| **solids** | very small |
+| **liquids** | bigger |
+| **gases** | much bigger |
+
+</div>
+
+**Extended: why?**
+
+- In a **solid**, strong forces hold the particles close together. They can only vibrate a little more: the expansion is very small.
+- In a **liquid**, the forces are weaker. The particles can move further apart: the expansion is bigger.
+- In a **gas**, the particles are far apart and the forces between them are very small. The gas expands a lot.
+
+</Step>
+
+<Step kind="learn" title="Expansion in everyday life" minutes={13}>
+
+**Problems:** we must leave space for expansion.
+
+<Figure svg={railGapSvg()} caption="Some railway tracks have gaps between the rails. On a hot day, the rails expand into the gaps." width="30rem" />
+
+- **Bridges** have expansion joints, so the road can expand on hot days.
+- **Power cables** hang loose between poles: in winter they contract and become tighter.
+- Thick **glass** can crack when you pour in boiling water: the inside expands before the outside.
+
+**Uses:**
+
+- A **liquid-in-glass thermometer**: the liquid expands and goes up the thin tube.
+- A **bimetallic strip**: two metals fixed together. One metal expands more than the other, so the strip bends. It can switch a heater off (a thermostat) or ring a fire alarm.
+
+<Figure svg={bimetallicSvg()} caption="A bimetallic strip bends when it gets hot." width="30rem" />
+
+- The stuck lid: the metal lid expands more than the glass jar, so it becomes loose.
+
+</Step>
+
+<Step kind="do" title="See the expansion" minutes={13}>
+
+**Demonstration 1 — a solid:** a metal ball just passes through a metal ring. Heat the ball with a Bunsen burner. Does it still pass through? Let it cool. Try again.
+
+**Demonstration 2 — a liquid:** a flask full of coloured water, with a thin glass tube in the stopper. Mark the level in the tube. Put the flask in hot water. Watch the level.
+
+**Demonstration 3 — a gas:** put a balloon on the neck of an empty flask. Hold the flask in your hands, or put it in hot water. What happens to the balloon?
+
+**Write** one sentence for each demonstration: *"When the … gets hotter, it … , so … ."* Which one expanded the most?
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={12}>
+
+<Quiz questions={[
+  {
+    question: 'What happens to a metal rod when it is heated?',
+    options: [
+      { text: 'It gets a little longer', correct: true, why: 'Solids expand a little when they are heated.' },
+      { text: 'It gets shorter', why: 'It gets shorter when it cools.' },
+      { text: 'Its particles get bigger', why: 'The particles do not change size. The distance between them increases.' },
+      { text: 'Nothing happens', why: 'It expands, but only a little.' },
+    ],
+  },
+  {
+    question: 'Which expands the most for the same rise in temperature?',
+    options: [
+      { text: 'a gas', correct: true, why: 'Gases expand much more than liquids and solids.' },
+      { text: 'a liquid', why: 'A gas expands more.' },
+      { text: 'a solid', why: 'Solids expand the least.' },
+      { text: 'they all expand the same', why: 'Gases expand the most, solids the least.' },
+    ],
+  },
+  {
+    question: 'Why are there gaps between some railway rails?',
+    options: [
+      { text: 'The rails expand on hot days', correct: true, why: 'Without the gaps, the rails could bend.' },
+      { text: 'To make the train quieter', why: 'The gaps leave space for thermal expansion.' },
+      { text: 'The rails contract on hot days', why: 'They expand when they get hotter.' },
+      { text: 'To let rain water out', why: 'The gaps leave space for thermal expansion.' },
+    ],
+  },
+  {
+    question: 'How does a liquid-in-glass thermometer work?',
+    options: [
+      { text: 'The liquid expands and moves up the tube when it gets hotter', correct: true, why: 'The liquid expands much more than the glass.' },
+      { text: 'The glass expands and the liquid stays the same', why: 'The liquid expands more than the glass.' },
+      { text: 'The liquid particles get bigger', why: 'The particles do not change size.' },
+      { text: 'More liquid comes in from outside', why: 'The same liquid expands.' },
+    ],
+  },
+  {
+    question: 'Extended: why does a gas expand more than a solid?',
+    options: [
+      { text: 'The forces between gas particles are very small', correct: true, why: 'In a solid, strong forces hold the particles together.' },
+      { text: 'Gas particles are bigger', why: 'The reason is the forces between the particles.' },
+      { text: 'Gas particles get bigger when heated', why: 'Particles do not change size.' },
+      { text: 'The forces between gas particles are very strong', why: 'They are very small in a gas.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'When a solid is heated, what happens to its particles?',
+    options: [
+      { text: 'They vibrate more and move a little further apart', correct: true, why: 'So the solid expands.' },
+      { text: 'They get bigger', why: 'The particles do not change size.' },
+      { text: 'They stop vibrating', why: 'They vibrate more when hotter.' },
+      { text: 'They get closer together', why: 'They move further apart.' },
+    ],
+  },
+  {
+    question: 'A bimetallic strip bends when it is heated. Why?',
+    options: [
+      { text: 'One metal expands more than the other', correct: true, why: 'The longer metal is on the outside of the curve.' },
+      { text: 'Both metals contract', why: 'They both expand, but by different amounts.' },
+      { text: 'The metals melt', why: 'They expand by different amounts.' },
+      { text: 'Both metals expand by the same amount', why: 'Then the strip would stay straight.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Find two examples of thermal expansion in your home or your town (a use or a problem). Draw each one and explain it in two sentences.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** describing expansion and its applications (2.2.1 C1, C2) is Core. The explanation of the order solid < liquid < gas with particles (2.2.1 S3) is Extended.
+
+**Timing:** starter 5 min, learn 25 min, demonstrations 13 min, check 12 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "The particles expand." Correct this every time: the particles do not change size.
+- "Heat rises." Heat is not a substance. Say: *hot air rises* (Unit 8, convection).
+- Thinking that solids do not expand at all.
+
+**About railways:** many modern railways weld the rails into very long sections and stretch them when they are laid, so there are fewer gaps. Gaps and expansion joints are still a good example.
+
+**Language support:**
+
+- *expand* (get bigger) ↔ *contract* (get smaller).
+- *bimetallic* = *bi* (two) + *metallic* (metal).
+
+**Differentiation:**
+
+- Support: give the three demonstrations as pictures with sentences to complete.
+- Stretch: a bimetallic strip is made of brass and iron. Brass expands more. Draw the strip when it is hot, and when it is very cold.
+
+**Safety:** the ball and ring stay hot for a long time after the demonstration. Use tongs and a heatproof mat.
+
+</Step>

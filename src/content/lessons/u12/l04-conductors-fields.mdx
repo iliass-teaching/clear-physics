@@ -1,0 +1,168 @@
+---
+unit: 12
+lesson: 4
+title: Conductors, insulators and electric fields
+syllabus: ['4.2.1 C5', '4.2.1 C6', '4.2.1 S8–S10']
+goals:
+  - Describe an experiment to test if a material is an electrical conductor or an insulator.
+  - Explain conductors and insulators with a simple electron model, and give examples.
+  - 'Extended: describe electric fields and draw simple field patterns.'
+keyWords: [electrical conductor, electrical insulator, electron, electric field]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { conductorsSvg, electricFieldsSvg } from '../../../lib/chargeFigures';
+
+<Step kind="starter" title="Why plastic?" minutes={5}>
+
+Electric cables have metal inside and plastic outside. Why do we use two different materials?
+
+</Step>
+
+<Step kind="learn" title="Conductors and insulators" minutes={12}>
+
+- An **electrical conductor** lets charge flow through it easily. Examples: **metals** (copper, aluminium, silver), graphite (carbon).
+- An **electrical insulator** does not let charge flow through it. Examples: **plastic**, **rubber**, **glass**, **dry wood**, air.
+
+**The electron model:**
+
+<Figure svg={conductorsSvg()} caption="Electrons in a conductor and in an insulator." width="32rem" />
+
+- In a **metal**, some electrons are **free**: they are not held by one atom, so they can move through the whole metal. They carry the charge.
+- In an **insulator**, all the electrons are **held** by their atoms. They cannot move through the material.
+
+This is why you can charge an insulator by friction (the charge stays where it is), but a metal rod held in your hand does not stay charged (the electrons flow away through it and through you).
+
+</Step>
+
+<Step kind="do" title="Test the materials" minutes={15}>
+
+**Equipment:** a cell (or a low-voltage power supply), a lamp, three leads, two crocodile clips, materials to test: a copper wire, an iron nail, a plastic ruler, a pencil lead (graphite), a rubber band, a coin, glass, a piece of wood, an aluminium foil.
+
+1. Build a circuit with a gap between two crocodile clips.
+2. Connect each material across the gap.
+3. If the lamp lights, the material is a **conductor**. If not, it is an **insulator**.
+4. Record your results in a table.
+
+**Another method:** touch the cap of a charged electroscope with the material held in your hand. If the leaf falls, the charge flowed away: the material is a conductor.
+
+</Step>
+
+<Step kind="learn" title="Electric fields (Extended)" minutes={12}>
+
+An **electric field** is a **region** in which an **electric charge feels a force**.
+
+The **direction** of the field at a point is the direction of the **force on a positive charge** at that point. So field lines go **away from** positive charges and **towards** negative charges.
+
+<Figure svg={electricFieldsSvg()} caption="Three electric field patterns." width="38rem" />
+
+- Around a **point charge**, and around a **charged conducting sphere**: the lines are **radial** (like the spokes of a wheel), going out from + or in to −.
+- Between two oppositely charged **parallel plates**: the lines are **straight, parallel and equally spaced** (a uniform field), from + to −.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={11}>
+
+<Quiz questions={[
+  {
+    question: 'Why do metals conduct electricity?',
+    options: [
+      { text: 'They have free electrons that can move', correct: true, why: 'The free electrons carry the charge.' },
+      { text: 'Their atoms move through the metal', why: 'The atoms stay in place; free electrons move.' },
+      { text: 'They have no electrons', why: 'They have free electrons.' },
+      { text: 'They are hard', why: 'The reason is the free electrons.' },
+    ],
+  },
+  {
+    question: 'Which material is an electrical insulator?',
+    options: [
+      { text: 'rubber', correct: true, why: 'Its electrons are held by the atoms.' },
+      { text: 'copper', why: 'Copper is a conductor.' },
+      { text: 'graphite', why: 'Graphite conducts.' },
+      { text: 'aluminium', why: 'Aluminium is a metal: a conductor.' },
+    ],
+  },
+  {
+    question: 'In the circuit test, the lamp does not light with a material. The material is…',
+    options: [
+      { text: 'an insulator', correct: true, why: 'No charge can flow through it.' },
+      { text: 'a conductor', why: 'A conductor would light the lamp.' },
+      { text: 'a magnet', why: 'The test is about conducting electricity.' },
+      { text: 'a metal', why: 'Metals conduct.' },
+    ],
+  },
+  {
+    question: 'Extended: what is the direction of an electric field?',
+    options: [
+      { text: 'the direction of the force on a positive charge', correct: true, why: 'So lines go from + to −.' },
+      { text: 'the direction of the force on a negative charge', why: 'It is defined with a positive charge.' },
+      { text: 'from − to +', why: 'From + to −.' },
+      { text: 'it has no direction', why: 'It has a direction: the force on a + charge.' },
+    ],
+  },
+  {
+    question: 'Extended: what does the field between two parallel plates look like?',
+    options: [
+      { text: 'straight, parallel, equally spaced lines from + to −', correct: true, why: 'A uniform field.' },
+      { text: 'circles around the plates', why: 'The lines go straight from + to −.' },
+      { text: 'radial lines from the centre', why: 'That is a point charge.' },
+      { text: 'there is no field', why: 'There is a uniform field.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Why can you charge a plastic rod by rubbing it, but not a metal rod held in your hand?',
+    options: [
+      { text: 'In the metal, electrons flow away through the metal and your body', correct: true, why: 'Metal is a conductor; plastic is an insulator.' },
+      { text: 'Metal has no electrons', why: 'Metal has free electrons.' },
+      { text: 'Plastic is a conductor', why: 'Plastic is an insulator, so the charge stays.' },
+      { text: 'Metal is too heavy', why: 'The reason is conduction.' },
+    ],
+  },
+  {
+    question: 'Extended: field lines around a positive point charge…',
+    options: [
+      { text: 'point outwards, away from the charge', correct: true, why: 'A positive test charge is pushed away.' },
+      { text: 'point inwards, towards the charge', why: 'That is a negative charge.' },
+      { text: 'go in circles around it', why: 'They are radial.' },
+      { text: 'are parallel', why: 'That is between parallel plates.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** conductors and insulators (4.2.1 C5, C6) are Core. Electric fields (S8–S10) are Extended. Core students can do a second round of the circuit test with more materials instead.
+
+**Timing:** starter 5 min, learn 12 min, test 15 min, electric fields 12 min, check 11 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "Insulators have no electrons."
+- "In a wire, electrons travel very fast from the battery to the lamp." (They drift slowly; this comes in Unit 13.)
+- Electric field arrows from − to +.
+
+**Language support:**
+
+- *conduct* = let something go through. The same word was used for thermal energy in Unit 8.
+- *radial* = going out from a centre, like the spokes of a bicycle wheel.
+
+**Differentiation:**
+
+- Support: a results table to complete with "lamp on / off".
+- Stretch: water from the tap conducts a little. Why is pure water a poor conductor? (It has very few ions.)
+
+**Safety:** use only cells or low-voltage supplies. Never test materials with mains electricity.
+
+</Step>

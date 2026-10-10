@@ -1,0 +1,152 @@
+---
+unit: 5
+lesson: 4
+title: Energy changes in motion
+syllabus: ['1.7.1 S4', '1.7.1 S5', '1.7.1 S6']
+goals:
+  - Use conservation of energy for falling and rising objects.
+  - Find the speed of an object after it falls, or the height it can reach.
+  - Explain why real speeds are smaller because of friction and air resistance.
+keyWords: [kinetic energy, gravitational potential energy, conservation of energy]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { rollerCoasterSvg } from '../../../lib/energyFigures';
+
+<Step kind="starter" title="The swinging pendulum" minutes={5}>
+
+Watch a pendulum swing. Where is it fastest? Where does it stop for a moment?
+
+Where does it have the most kinetic energy? The most gravitational potential energy?
+
+</Step>
+
+<Step kind="learn" title="Falling: GPE becomes KE" minutes={12}>
+
+When an object falls (with no air resistance), the energy in its gravitational potential store goes into its kinetic store:
+
+$$
+\text{GPE lost} = \text{KE gained} \qquad mg\Delta h = \tfrac{1}{2}mv^2
+$$
+
+<WorkedExample
+  question="A 2.0 kg stone falls 5.0 m. Ignore air resistance. Calculate its speed just before it hits the ground."
+  given={['$m = 2.0\\,\\text{kg}$', '$\\Delta h = 5.0\\,\\text{m}$', '$g = 9.8\\,\\text{N/kg}$', 'it starts at rest']}
+  find="the speed $v$"
+  answer="$v = 9.9\,\text{m/s}$"
+>
+
+GPE lost $= mg\Delta h = 2.0 \times 9.8 \times 5.0 = 98\,\text{J}$
+
+KE gained $= 98\,\text{J}$, so $\tfrac{1}{2} \times 2.0 \times v^2 = 98$
+
+$v^2 = 98$, so $v = \sqrt{98} = 9.9\,\text{m/s}$
+
+</WorkedExample>
+
+**Rising** is the opposite: a ball thrown up loses kinetic energy and gains gravitational potential energy. At the top, it stops for a moment: all the KE has become GPE.
+
+</Step>
+
+<Step kind="learn" title="Several stages: a roller coaster" minutes={10}>
+
+<Figure svg={rollerCoasterSvg(30, 10, 18)} caption="A roller coaster car starts at rest at A." width="34rem" />
+
+With no friction, the **total** energy (KE + GPE) is the same at A, B and C:
+
+- at A: all GPE (the car is at rest);
+- at B: lower down, so less GPE and more KE: the car is fast;
+- at C: higher than B, so it slows down again, but it still moves.
+
+**In real life**, friction and air resistance transfer some energy to the internal (thermal) store of the track, the car and the air. So the real speeds are a bit smaller, and the car can never go back up higher than A.
+
+</Step>
+
+<Step kind="do" title="Energy at each point" minutes={13}>
+
+Use the roller coaster in the figure. The car has a mass of 500 kg and starts at rest at A. Ignore friction. Copy and complete the table ($g = 9.8\,\text{N/kg}$).
+
+<div class="table-wrap">
+
+| point | height / m | GPE / J | KE / J | total energy / J | speed / (m/s) |
+|---|---|---|---|---|---|
+| A | 30 | | 0 | | 0 |
+| B | 10 | | | | |
+| C | 18 | | | | |
+
+</div>
+
+**Question:** in a real roller coaster, would the speed at C be bigger or smaller than your answer? Explain.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={15}>
+
+Ignore air resistance and friction in all these questions.
+
+<Practice topic="energy-transfer" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A ball is thrown straight up. At the top, what is true?',
+    options: [
+      { text: 'Its kinetic energy is zero and its GPE is the biggest', correct: true, why: 'It stops for a moment: all its KE has become GPE.' },
+      { text: 'Its GPE is zero', why: 'At the top it is highest, so its GPE is the biggest.' },
+      { text: 'Its total energy is zero', why: 'Energy is conserved: the total is the same.' },
+      { text: 'Its kinetic energy is the biggest', why: 'It is not moving at the top.' },
+    ],
+  },
+  {
+    question: 'A 1 kg ball falls and loses 20 J of GPE. Ignore air resistance. How much KE does it gain?',
+    options: [
+      { text: '20 J', correct: true, why: 'GPE lost = KE gained.' },
+      { text: '10 J', why: 'All the GPE lost becomes KE.' },
+      { text: '40 J', why: 'The KE gained is equal to the GPE lost.' },
+      { text: '0 J', why: 'The ball speeds up, so it gains KE.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+A skateboarder (60 kg) goes down a ramp 2.5 m high, starting at rest. Calculate her speed at the bottom (ignore friction). Then explain why her real speed is smaller.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Extended content** (1.7.1 S4–S6). Core students can do the starter and the qualitative part of the roller coaster.
+
+**Timing:** starter 5 min, learn 22 min, table 13 min, practice 15 min, exit ticket 5 min.
+
+**Table answers:** total energy 147 000 J everywhere. A: GPE 147 000 J. B: GPE 49 000 J, KE 98 000 J, speed 19.8 m/s. C: GPE 88 200 J, KE 58 800 J, speed 15.3 m/s.
+
+**Homework answer:** $v = \sqrt{2 \times 9.8 \times 2.5} = 7.0\,\text{m/s}$.
+
+**Common mistakes:**
+
+- Using the height of the point instead of the height lost.
+- Forgetting that the mass cancels: $v = \sqrt{2g\Delta h}$ does not depend on the mass.
+- Thinking a real coaster can rise higher than its start.
+
+**Language support:**
+
+- Sentence frame: *"As the … falls, energy moves from the … store to the … store."*
+
+**Differentiation:**
+
+- Support: complete the table row by row with the class.
+- Stretch: on a real coaster, the speed at B is 18 m/s. How much energy was transferred by friction from A to B? ($98\,000 - \tfrac{1}{2} \times 500 \times 18^2 = 17\,000\,\text{J}$.)
+
+</Step>

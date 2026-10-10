@@ -1,0 +1,171 @@
+---
+unit: 3
+lesson: 4
+title: Force, mass and acceleration
+syllabus: ['1.5.1 S11']
+goals:
+  - 'Use the equation $F = ma$ to find force, mass or acceleration.'
+  - Know that the resultant force and the acceleration are in the same direction.
+  - Find the resultant force first, then the acceleration.
+keyWords: [resultant force, acceleration, mass, newton]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="Empty or full?" minutes={5}>
+
+You push an empty shopping trolley and a full one with the same force.
+
+Which one speeds up more quickly? Why?
+
+</Step>
+
+<Step kind="learn" title="F = ma" minutes={12}>
+
+A resultant force makes an object accelerate. The acceleration depends on:
+
+- the **force**: a bigger force gives a bigger acceleration;
+- the **mass**: a bigger mass gives a smaller acceleration (for the same force).
+
+$$
+F = m \times a
+$$
+
+<div class="table-wrap">
+
+| Quantity | Symbol | Unit |
+|---|---|---|
+| resultant force | $F$ | N |
+| mass | $m$ | kg |
+| acceleration | $a$ | m/s² |
+
+</div>
+
+One newton is the force that gives a mass of 1 kg an acceleration of $1\,\text{m/s}^2$.
+
+The resultant force and the acceleration are **in the same direction**. A backwards resultant force gives a backwards acceleration: the object slows down.
+
+<WorkedExample
+  question="A car of mass 1200 kg accelerates at 2.5 m/s². Calculate the resultant force on the car."
+  given={['$m = 1200\\,\\text{kg}$', '$a = 2.5\\,\\text{m/s}^2$']}
+  find="the resultant force $F$"
+  answer="$F = 3000\,\text{N}$"
+>
+
+$F = m \times a = 1200 \times 2.5$
+
+$F = 3000\,\text{N}$
+
+</WorkedExample>
+
+To find $a$ or $m$, change the equation:
+
+$$
+a = \frac{F}{m} \qquad\qquad m = \frac{F}{a}
+$$
+
+</Step>
+
+<Step kind="learn" title="Resultant force first" minutes={8}>
+
+$F$ in $F = ma$ is the **resultant** force. If there are several forces, find the resultant first.
+
+<WorkedExample
+  question="A cyclist and her bike have a mass of 80 kg. The driving force is 300 N and the total resistive force is 140 N. Calculate the acceleration."
+  given={['$m = 80\\,\\text{kg}$', 'driving force $= 300\\,\\text{N}$', 'resistive force $= 140\\,\\text{N}$']}
+  find="the acceleration $a$"
+  answer="$a = 2\,\text{m/s}^2$"
+>
+
+Resultant force: $F = 300 - 140 = 160\,\text{N}$
+
+$a = \dfrac{F}{m} = \dfrac{160}{80} = 2\,\text{m/s}^2$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="do" title="Trolley data" minutes={10}>
+
+A student pulls a trolley of mass 0.50 kg with different forces and measures the acceleration.
+
+<div class="table-wrap">
+
+| force / N | 0.5 | 1.0 | 1.5 | 2.0 | 2.5 |
+|---|---|---|---|---|---|
+| acceleration / (m/s²) | 1.0 | 2.0 | 2.9 | 4.1 | 5.0 |
+
+</div>
+
+1. Plot a graph of acceleration (up) against force (across).
+2. Describe the shape of the graph.
+3. Use $a = \dfrac{F}{m}$ to check one result.
+4. One result does not fit the line perfectly. Suggest why.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={20}>
+
+<Practice topic="fma" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A resultant force of 12 N acts on a 4.0 kg mass. What is its acceleration?',
+    options: [
+      { text: '3.0 m/s²', correct: true, why: '$a = \\dfrac{F}{m} = \\dfrac{12}{4.0} = 3.0\\,\\text{m/s}^2$.' },
+      { text: '48 m/s²', why: 'You multiplied. $a = \\dfrac{F}{m}$.' },
+      { text: '0.33 m/s²', why: 'You divided the wrong way: $a = \\dfrac{F}{m}$.' },
+      { text: '16 m/s²', why: 'You added.' },
+    ],
+  },
+  {
+    question: 'A truck brakes. In which direction is its acceleration?',
+    options: [
+      { text: 'backwards, the same direction as the resultant force', correct: true, why: 'Force and acceleration are always in the same direction.' },
+      { text: 'forwards, the direction of motion', why: 'It slows down: the acceleration is backwards.' },
+      { text: 'there is no acceleration', why: 'Its speed changes, so it accelerates (backwards).' },
+      { text: 'downwards', why: 'The resultant force from the brakes acts backwards.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Do 5 questions at **Level 3** of the practice. For each one, write the resultant force before you calculate the acceleration.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**This lesson is Extended content** (1.5.1 S11). Core students can do the starter and the trolley data task (shape of the graph only).
+
+**Timing:** starter 5 min, learn 20 min, data task 10 min, practice 20 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Using the driving force instead of the resultant force.
+- Using grams instead of kilograms.
+- Thinking a moving object must have a forward resultant force.
+
+**Data task answers:** a straight line through the origin, so $a$ is proportional to $F$. $a = 1.0 / 0.50 = 2.0\,\text{m/s}^2$. The point at 1.5 N (2.9 instead of 3.0) is a little low, probably because of friction or a reading error.
+
+**Language support:**
+
+- Sentence frame: *"The resultant force is … N, so the acceleration is …"*
+
+**Differentiation:**
+
+- Support: give $F = ma$ and its two other forms on a card.
+- Stretch: a lift of mass 800 kg accelerates upwards at $0.5\,\text{m/s}^2$. Calculate the tension in the cable. (Weight 7840 N, resultant 400 N, so tension 8240 N.)
+
+</Step>

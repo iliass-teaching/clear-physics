@@ -1,0 +1,135 @@
+---
+unit: 13
+lesson: 4
+title: Resistance
+syllabus: ['4.2.4 C1', '4.2.4 C2']
+goals:
+  - 'Recall and use the equation $R = \dfrac{V}{I}$.'
+  - Describe an experiment to find a resistance with a voltmeter and an ammeter.
+keyWords: [resistance, ohm, potential difference, electric current, ammeter, voltmeter]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import IvSim from '../../../components/IvSim.astro';
+import { measureCircuitSvg } from '../../../lib/electricFigures';
+
+<Step kind="starter" title="Hard to push" minutes={5}>
+
+Two lamps are connected, one at a time, to the same battery. Lamp A is bright, lamp B is dim. Which lamp lets the current through more easily?
+
+</Step>
+
+<Step kind="learn" title="What is resistance?" minutes={12}>
+
+**Resistance** tells us how much a component **opposes** the current. With the same p.d., a bigger resistance gives a smaller current.
+
+$$
+R = \frac{V}{I}
+$$
+
+<div class="table-wrap">
+
+| Quantity | Symbol | Unit |
+|---|---|---|
+| resistance | $R$ | ohm (Ω) |
+| potential difference | $V$ | volt (V) |
+| current | $I$ | ampere (A) |
+
+</div>
+
+1 Ω = 1 V/A. To find $V$ or $I$, change the subject: $V = IR$ and $I = \dfrac{V}{R}$.
+
+<WorkedExample
+  question="The p.d. across a lamp is 6.0 V. The current in it is 0.25 A. Calculate its resistance."
+  given={['$V = 6.0\\,\\text{V}$', '$I = 0.25\\,\\text{A}$']}
+  find="the resistance $R$"
+  answer="$R = 24\,\Omega$"
+>
+
+$R = \dfrac{V}{I} = \dfrac{6.0}{0.25}$
+
+$R = 24\,\Omega$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="do" title="Measure a resistance" minutes={18}>
+
+<Figure svg={measureCircuitSvg()} caption="The circuit to measure a resistance." width="32rem" />
+
+**Method:**
+
+1. Connect the circuit: the ammeter **in series**, the voltmeter **in parallel** with the resistor.
+2. Use the variable resistor to set a small current. Record $V$ and $I$.
+3. Change the variable resistor to get 5 or 6 different pairs of readings.
+4. Calculate $R = \dfrac{V}{I}$ for each pair, then the **mean**.
+5. Switch off between readings, so the resistor does not get hot.
+
+**Virtual version:** choose the **fixed resistor**. Record at least 6 readings and calculate $R$ each time.
+
+<IvSim />
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={20}>
+
+<Practice topic="resistance" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'The p.d. across a resistor is 12 V and the current is 3 A. What is the resistance?',
+    options: [
+      { text: '4 Ω', correct: true, why: '$R = \\dfrac{12}{3}$.' },
+      { text: '36 Ω', why: 'Divide: $R = \\dfrac{V}{I}$.' },
+      { text: '0.25 Ω', why: 'Upside down.' },
+      { text: '15 Ω', why: 'Divide, do not add.' },
+    ],
+  },
+  {
+    question: 'Why do we switch off the circuit between readings?',
+    options: [
+      { text: 'So that the resistor does not get hot (its resistance would change)', correct: true, why: 'A hot wire has a bigger resistance.' },
+      { text: 'To save the ammeter', why: 'The reason is to stop the resistor heating up.' },
+      { text: 'To reset the voltmeter to zero', why: 'The reason is heating.' },
+      { text: 'It is not necessary', why: 'Heating changes the resistance.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 12 min, practical 18 min, practice 20 min, exit ticket 5 min.
+
+**Practical tips:** use a 10–50 Ω resistor and a supply of a few volts so the current stays small. Check the meter connections before switching on.
+
+**Common mistakes:**
+
+- $R = V \times I$.
+- mA and kΩ not converted (level 3 of the practice).
+- The voltmeter connected across the resistor and the ammeter together.
+
+**Language support:**
+
+- *resist* = to fight against, to oppose.
+- Read Ω as "ohm" (the Greek letter omega).
+
+**Differentiation:**
+
+- Support: level 1 only, with $R = \dfrac{V}{I}$ on the board.
+- Stretch: in the simulation, measure the filament lamp too. Is its resistance constant? (Next lessons.)
+
+**Safety:** resistors and lamps can get hot. Low voltages only.
+
+</Step>

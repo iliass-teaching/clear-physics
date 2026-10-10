@@ -1,0 +1,189 @@
+---
+unit: 7
+lesson: 1
+title: Solids, liquids and gases
+syllabus: ['2.1.1 C1', '2.1.1 C2']
+goals:
+  - Describe the properties of solids, liquids and gases.
+  - Name the changes of state between solid, liquid and gas.
+keyWords: [solid, liquid, gas, melting, freezing, boiling, evaporation, condensation]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { changesOfStateSvg } from '../../../lib/particleFigures';
+
+<Step kind="starter" title="Sort them" minutes={5}>
+
+Put these in three groups: **solid**, **liquid** or **gas**.
+
+> ice · steam · milk · air · sand · oil · a coin · the helium in a balloon
+
+Sand flows when you pour it. Is it a liquid? Discuss with your partner.
+
+</Step>
+
+<Step kind="learn" title="Three states of matter" minutes={12}>
+
+Matter can be in three **states**: solid, liquid or gas.
+
+<div class="table-wrap">
+
+| | Shape | Volume | Can you compress it? | Does it flow? |
+|---|---|---|---|---|
+| **solid** | fixed | fixed | almost no | no |
+| **liquid** | takes the shape of the container | fixed | almost no | yes |
+| **gas** | fills all of the container | not fixed: fills the container | yes, easily | yes |
+
+</div>
+
+- **Compress** means *push into a smaller volume*.
+- Sand is a solid: each grain has a fixed shape and a fixed volume. Many small grains can flow together.
+
+</Step>
+
+<Step kind="learn" title="Changes of state" minutes={10}>
+
+<Figure svg={changesOfStateSvg()} caption="The changes of state. Heating: blue arrows. Cooling: red arrows." width="34rem" />
+
+<div class="table-wrap">
+
+| Change | From → to | Example |
+|---|---|---|
+| **melting** | solid → liquid | ice melts in a drink |
+| **freezing** (solidification) | liquid → solid | water freezes in a freezer |
+| **boiling** | liquid → gas, everywhere in the liquid | water boils in a kettle |
+| **evaporation** | liquid → gas, at the surface only | wet clothes dry in the sun |
+| **condensation** | gas → liquid | drops of water on a cold bottle |
+| **sublimation** | solid → gas, without melting | dry ice (solid carbon dioxide) becomes gas |
+| **deposition** | gas → solid, without condensing first | frost forms on a cold window in winter |
+
+</div>
+
+For water: ice melts at **0 °C** and water boils at **100 °C** (at normal air pressure).
+
+</Step>
+
+<Step kind="do" title="Test the three states" minutes={15}>
+
+**Equipment:** two plastic syringes (no needle), water, a small piece of modelling clay, a beaker.
+
+1. **Air:** pull the plunger out to 20 cm³. Put your finger on the end. Push the plunger. What happens to the volume?
+2. **Water:** fill a syringe with 20 cm³ of water. Put your finger on the end. Push. What happens?
+3. **Solid:** try to squeeze the modelling clay into a smaller volume. Does its shape change? Does its volume change?
+4. Pour the water from the syringe into the beaker. Does it keep its shape? Its volume?
+
+**Write one sentence for each state.** Start with: *"A gas can be compressed because …"* (you will see why in the next lesson).
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={13}>
+
+<Quiz questions={[
+  {
+    question: 'Which state has a fixed volume but no fixed shape?',
+    options: [
+      { text: 'liquid', correct: true, why: 'A liquid takes the shape of its container, but its volume does not change.' },
+      { text: 'solid', why: 'A solid has a fixed shape too.' },
+      { text: 'gas', why: 'A gas has no fixed volume: it fills the container.' },
+      { text: 'all three', why: 'Only a liquid has a fixed volume and no fixed shape.' },
+    ],
+  },
+  {
+    question: 'Which state is easy to compress?',
+    options: [
+      { text: 'gas', correct: true, why: 'You can push air in a syringe into a smaller volume.' },
+      { text: 'liquid', why: 'Liquids are almost impossible to compress.' },
+      { text: 'solid', why: 'Solids are almost impossible to compress.' },
+      { text: 'none of them', why: 'A gas is easy to compress.' },
+    ],
+  },
+  {
+    question: 'What is the name of the change from gas to liquid?',
+    options: [
+      { text: 'condensation', correct: true, why: 'Steam condenses on a cold window.' },
+      { text: 'evaporation', why: 'Evaporation is liquid → gas.' },
+      { text: 'freezing', why: 'Freezing is liquid → solid.' },
+      { text: 'melting', why: 'Melting is solid → liquid.' },
+    ],
+  },
+  {
+    question: 'Chocolate in your hand becomes soft and runny. What is this change of state?',
+    options: [
+      { text: 'melting', correct: true, why: 'Solid → liquid.' },
+      { text: 'freezing', why: 'Freezing is liquid → solid.' },
+      { text: 'boiling', why: 'Boiling is liquid → gas.' },
+      { text: 'condensation', why: 'Condensation is gas → liquid.' },
+    ],
+  },
+  {
+    question: 'A puddle of water disappears on a warm day. The water does not boil. What happens?',
+    options: [
+      { text: 'The water evaporates', correct: true, why: 'Evaporation happens at the surface, at any temperature.' },
+      { text: 'The water condenses', why: 'Condensation is gas → liquid.' },
+      { text: 'The water melts', why: 'Melting is solid → liquid.' },
+      { text: 'The water boils at 25 °C', why: 'At normal air pressure, water boils at 100 °C.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'What is the name of the change from liquid to solid?',
+    options: [
+      { text: 'freezing (solidification)', correct: true, why: 'Water freezes to ice at 0 °C.' },
+      { text: 'melting', why: 'Melting is the opposite: solid → liquid.' },
+      { text: 'condensation', why: 'Condensation is gas → liquid.' },
+      { text: 'evaporation', why: 'Evaporation is liquid → gas.' },
+    ],
+  },
+  {
+    question: 'Which property does a gas have?',
+    options: [
+      { text: 'It fills all of its container', correct: true, why: 'A gas has no fixed shape and no fixed volume.' },
+      { text: 'It has a fixed volume', why: 'Solids and liquids have a fixed volume. A gas does not.' },
+      { text: 'It has a fixed shape', why: 'Only solids have a fixed shape.' },
+      { text: 'It cannot flow', why: 'Gases flow, like liquids.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Find one example at home of each change of state: melting, freezing, boiling, evaporation, condensation. For each one, write one sentence: *"… changes from … to … when …"*.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 22 min, activity 15 min, check 13 min, exit ticket 5 min.
+
+**Syllabus note:** the changes gas → solid (deposition) and solid → gas (sublimation) are not required (2.1.1 C2). They are shown so that the picture is complete, but they are not tested here.
+
+**Common mistakes:**
+
+- "A gas has no volume." It has a volume: the volume of its container.
+- Mixing up *evaporation* and *condensation*. Link them to what students see: evaporation = puddles drying; condensation = water drops on a cold can.
+- Saying that steam is the white cloud above a kettle. The cloud is small drops of liquid water (the gas has condensed). Steam itself is invisible.
+
+**Language support:**
+
+- Word pairs: *melt / freeze*, *evaporate / condense*. The noun ends in *-ing* or *-tion*: *melting*, *condensation*.
+- *State* has other meanings in English (a part of a country; to say). In physics, *state of matter* means solid, liquid or gas.
+
+**Differentiation:**
+
+- Support: give the table with some empty cells to fill in.
+- Stretch: why do wet clothes dry faster on a windy day? (Taught in Unit 8: evaporation.)
+
+**Safety:** syringes without needles only. Wipe up spilled water.
+
+</Step>

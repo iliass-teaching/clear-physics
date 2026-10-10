@@ -1,0 +1,166 @@
+---
+unit: 17
+lesson: 2
+title: The Moon and orbital speed
+syllabus: ['6.1.1 C3', '6.1.1 S4']
+goals:
+  - Know that the Moon orbits the Earth in about one month.
+  - Explain the phases of the Moon.
+  - 'Calculate an average orbital speed with $v = \dfrac{2\pi r}{T}$ (Extended).'
+keyWords: [orbit, phases of the Moon, orbital period, orbital speed]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { moonPhasesSvg } from '../../../lib/spaceFigures';
+
+<Step kind="starter" title="A changing Moon" minutes={5}>
+
+The Moon does not make its own light.
+
+1. So why can we see it?
+2. Why does its shape change during the month?
+
+Talk with a partner.
+
+</Step>
+
+<Step kind="learn" title="The phases of the Moon" minutes={12}>
+
+The Moon **orbits** the Earth in about **one month**.
+
+We see the Moon because it **reflects** light from the Sun.
+The Sun always lights **half** of the Moon. But as the Moon orbits the Earth, we see a different part of this lit half. These shapes are the **phases of the Moon**.
+
+<Figure svg={moonPhasesSvg()} caption="Top: the Moon at four points of its orbit. Bottom: what we see from the Earth (northern hemisphere)." width="34rem" />
+
+- **New moon:** the Moon is between the Earth and the Sun. We see the dark half.
+- **First quarter:** we see half of the lit half: the right side.
+- **Full moon:** the Earth is between the Moon and the Sun. We see all of the lit half.
+- **Last quarter:** we see the left side.
+
+Then the cycle starts again. From one new moon to the next takes about 29.5 days.
+
+</Step>
+
+<Step kind="learn" title="Orbital speed (Extended)" minutes={10}>
+
+In one orbit, the Moon goes around a circle. The distance for one orbit is the circumference: $2\pi r$, where $r$ is the radius of the orbit.
+The time for one orbit is the **orbital period** $T$.
+
+$$
+\text{speed} = \frac{\text{distance}}{\text{time}}
+\qquad\text{so}\qquad
+v = \frac{2\pi r}{T}
+$$
+
+<WorkedExample
+  question="The Moon orbits the Earth in 27.3 days. The radius of its orbit is 3.84 × 10⁸ m. Calculate its average orbital speed."
+  given={['$r = 3.84 \\times 10^{8}\\,\\text{m}$', '$T = 27.3$ days']}
+  find="the average orbital speed $v$"
+  answer="$v = 1.02 \times 10^{3}\,\text{m/s}$ (about 1 km/s)"
+>
+
+Change the period to seconds: $T = 27.3 \times 24 \times 3600 = 2.36 \times 10^{6}\,\text{s}$
+
+$v = \dfrac{2\pi r}{T} = \dfrac{2\pi \times 3.84 \times 10^{8}}{2.36 \times 10^{6}}$
+
+$v = 1.02 \times 10^{3}\,\text{m/s}$
+
+</WorkedExample>
+
+**Tip:** always change the period to **seconds** first.
+
+</Step>
+
+<Step kind="do" title="Make the phases" minutes={15}>
+
+**Equipment:** a lamp (the Sun), a white ball on a stick (the Moon). Your head is the Earth.
+
+1. Switch off the room lights. Stand a few metres from the lamp.
+2. Hold the ball at arm’s length, in front of your face.
+3. Turn slowly on the spot (anticlockwise), so the ball goes around your head.
+4. Watch the lit part of the ball. Draw what you see at 4 positions.
+5. Label your drawings: new moon, first quarter, full moon, last quarter.
+
+**Question:** where is the ball when you see a full moon?
+*Start your answer like this: "I see a full moon when the ball is …"*
+
+</Step>
+
+<Step kind="practice" title="Practice (Extended)" minutes={13}>
+
+<Practice topic="orbital-speed" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Why does the shape of the Moon change during the month?',
+    options: [
+      { text: 'We see different parts of its lit half as it orbits the Earth', correct: true, why: 'The Sun always lights half of the Moon. Our view of that half changes.' },
+      { text: 'The shadow of the Earth covers part of the Moon', why: 'This only happens in an eclipse. The phases come from our view of the lit half.' },
+      { text: 'The Moon makes less light some nights', why: 'The Moon makes no light. It reflects sunlight.' },
+      { text: 'Clouds cover part of the Moon', why: 'Clouds do not make the phases.' },
+    ],
+  },
+  {
+    question: 'How long does the Moon take to orbit the Earth?',
+    options: [
+      { text: 'about one month', correct: true, why: 'About 27 days for one orbit.' },
+      { text: 'about one day', why: 'One day is one spin of the Earth.' },
+      { text: 'about one year', why: 'One year is one orbit of the Earth around the Sun.' },
+      { text: 'about one week', why: 'One week is about a quarter of the Moon’s orbit.' },
+    ],
+  },
+  {
+    question: 'Extended: a satellite has an orbit of radius $4.2 \\times 10^{7}\\,\\text{m}$ and a period of $8.6 \\times 10^{4}\\,\\text{s}$. What is its orbital speed?',
+    options: [
+      { text: '$3.1 \\times 10^{3}\\,\\text{m/s}$', correct: true, why: '$v = \\dfrac{2\\pi \\times 4.2 \\times 10^{7}}{8.6 \\times 10^{4}} = 3.1 \\times 10^{3}\\,\\text{m/s}$.' },
+      { text: '$490\\,\\text{m/s}$', why: 'Do not forget $2\\pi$: $v = \\dfrac{2\\pi r}{T}$.' },
+      { text: '$1.3 \\times 10^{-2}\\,\\text{m/s}$', why: 'You divided the wrong way: $v = \\dfrac{2\\pi r}{T}$.' },
+      { text: '$1.5 \\times 10^{3}\\,\\text{m/s}$', why: 'The circumference is $2\\pi r$, not $\\pi r$.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. For one week, look at the Moon every evening (if you can see it). Draw its shape and write the date.
+2. Extended: do 5 questions at **Level 2** of the practice.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** the Moon’s orbit and phases (6.1.1 C3) are Core. The orbital speed equation (6.1.1 S4) is Extended.
+
+**Timing:** starter 5 min, learn 22 min, model 15 min, practice 13 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "The phases are the shadow of the Earth." The shadow of the Earth only gives a lunar eclipse.
+- Forgetting $2\pi$, or using $\pi r$.
+- Not changing days or hours to seconds.
+
+**Background:** the Moon takes 27.3 days to orbit the Earth, but 29.5 days from one new moon to the next, because the Earth also moves around the Sun. The syllabus only needs "about one month".
+
+**Language support:**
+
+- Teach *reflect* with a mirror and a torch.
+- Sentence frame: *"At full moon, the … is between the … and the …"*
+
+**Differentiation:**
+
+- Support: Core students can do Level 1 of the practice with a calculator guide for $2\pi$.
+- Stretch: the phases look the other way round in the southern hemisphere. Why?
+
+</Step>

@@ -1,0 +1,128 @@
+---
+// Virtual practical: electromagnetic induction. Move a magnet into and out of a coil connected to a
+// centre-zero meter. The meter shows an induced e.m.f. only while the magnet moves.
+// Model: e.m.f. ∝ number of turns × strength of the magnet × speed × (change of field through the coil).
+---
+
+<div class="induction-sim" data-induction-sim>
+  <svg class="fig" viewBox="0 0 560 230" role="img" aria-label="A magnet, a coil and a centre-zero meter">
+    <g class="coil"></g>
+    <g class="magnet"></g>
+    <polyline class="wire" fill="none" points="300,150 300,200 430,200" />
+    <polyline class="wire" fill="none" points="420,150 420,180 500,180 500,200 470,200" />
+    <circle cx="450" cy="200" r="22" class="meter-face" />
+    <line class="needle" x1="450" y1="212" x2="450" y2="184" />
+    <text class="txt" x="450" y="170" text-anchor="middle">0</text>
+  </svg>
+  <div class="controls">
+    <button type="button" class="push">Push the magnet in</button>
+    <button type="button" class="pull secondary">Pull it out</button>
+    <label>speed <input type="range" class="speed" min="40" max="400" step="20" value="160" /></label>
+    <label>turns
+      <select class="turns"><option value="5">5</option><option value="10" selected>10</option><option value="20">20</option></select>
+    </label>
+    <label class="check"><input type="checkbox" class="strong" /> stronger magnet</label>
+    <label class="check"><input type="checkbox" class="flip" /> turn the magnet round (S pole first)</label>
+  </div>
+  <p class="readout" aria-live="polite">The needle moves only while the magnet moves.</p>
+</div>
+
+<script>
+  const COIL_C = 360; // centre of the coil
+  const X_MIN = 30;
+  const X_MAX = 330; // position of the front of the magnet
+
+  document.querySelectorAll<HTMLElement>('[data-induction-sim]').forEach((root) => {
+    const q = <T extends Element>(s: string) => root.querySelector<T>(s)!;
+    const magnetG = q<SVGGElement>('.magnet');
+    const coilG = q<SVGGElement>('.coil');
+    const needle = q<SVGLineElement>('.needle');
+    const speed = q<HTMLInputElement>('.speed');
+    const turns = q<HTMLSelectElement>('.turns');
+    const strong = q<HTMLInputElement>('.strong');
+    const flip = q<HTMLInputElement>('.flip');
+    let x = X_MIN;
+    let v = 0; // px/s
+    let target = X_MIN;
+    let angle = 0;
+    let last = performance.now();
+
+    // Field through the coil (arbitrary units) when the front of the magnet is at x.
+    const flux = (pos: number) => Math.exp(-(((pos - COIL_C) / 70) ** 2));
+
+    function drawCoil(): void {
+      const n = Number(turns.value);
+      const w = 120 / n;
+      let html = '';
+      for (let k = 0; k < n; k++) html += `<ellipse cx="${(300 + w * (k + 0.5)).toFixed(1)}" cy="110" rx="${Math.max(2, w / 2 - 1).toFixed(1)}" ry="40" style="fill:none;stroke:#b87333;stroke-width:${n > 10 ? 2.5 : 4}"/>`;
+      coilG.innerHTML = html;
+    }
+
+    function drawMagnet(): void {
+      const front = flip.checked ? ['S', '#3a6fd8'] : ['N', '#d84b3a'];
+      const back = flip.checked ? ['N', '#d84b3a'] : ['S', '#3a6fd8'];
+      const h = strong.checked ? 34 : 26;
+      const y = 110 - h / 2;
+      magnetG.innerHTML =
+        `<rect x="${(x - 140).toFixed(1)}" y="${y}" width="70" height="${h}" style="fill:${back[1]}"/>` +
+        `<rect x="${(x - 70).toFixed(1)}" y="${y}" width="70" height="${h}" style="fill:${front[1]}"/>` +
+        `<text class="txt-light" x="${(x - 105).toFixed(1)}" y="115" text-anchor="middle" style="font-weight:700">${back[0]}</text>` +
+        `<text class="txt-light" x="${(x - 35).toFixed(1)}" y="115" text-anchor="middle" style="font-weight:700">${front[0]}</text>`;
+    }
+
+    // Induced e.m.f. (arbitrary units): −N × strength × dΦ/dt; the sign gives the direction.
+    function emf(pos: number, vel: number): number {
+      const dphi = (flux(pos + 0.5) - flux(pos - 0.5)) * vel;
+      const s = (strong.checked ? 2 : 1) * (flip.checked ? -1 : 1);
+      return -Number(turns.value) * s * dphi;
+    }
+
+    function step(dt: number): void {
+      const prev = x;
+      const dir = Math.sign(target - x);
+      if (dir !== 0) {
+        x += dir * Number(speed.value) * dt;
+        if ((dir > 0 && x > target) || (dir < 0 && x < target)) x = target;
+      }
+      v = (x - prev) / dt;
+      const e = emf(x, v);
+      const goal = Math.max(-60, Math.min(60, e * 1.2));
+      angle += (goal - angle) * Math.min(1, dt * 12);
+      needle.setAttribute('transform', `rotate(${angle.toFixed(1)} 450 212)`);
+      drawMagnet();
+    }
+
+    const loop = (now: number) => {
+      const dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      step(dt);
+      requestAnimationFrame(loop);
+    };
+
+    q<HTMLButtonElement>('.push').addEventListener('click', () => (target = X_MAX));
+    q<HTMLButtonElement>('.pull').addEventListener('click', () => (target = X_MIN));
+    turns.addEventListener('change', drawCoil);
+    drawCoil();
+    drawMagnet();
+    requestAnimationFrame(loop);
+
+    // For testing.
+    (root as HTMLElement & { _ind?: unknown })._ind = { emf, flux, set: (p: number) => { x = p; target = p; } };
+  });
+</script>
+
+<style>
+  .induction-sim {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  svg { width: 100%; max-width: 36rem; height: auto; display: block; margin: 0 auto; }
+  .meter-face { fill: var(--surface); stroke: var(--ink); stroke-width: 2; }
+  .needle { stroke: var(--exit); stroke-width: 2.5; }
+  .controls { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; align-items: center; margin-top: 0.6rem; }
+  .controls label { display: flex; align-items: center; gap: 0.4rem; }
+  .readout { margin: 0.6rem 0 0.2rem; }
+</style>

@@ -1,0 +1,167 @@
+---
+unit: 17
+lesson: 4
+title: How the Solar System formed
+syllabus: ['6.1.2 C2']
+goals:
+  - Know that the four inner planets are small and rocky, and the four outer planets are large and made mostly of gas.
+  - Describe the accretion model of how the Solar System formed.
+  - Use the model to explain the two kinds of planets.
+keyWords: [accretion disc, planet, orbit]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import PlanetTable from '../../../components/PlanetTable.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { accretionSvg } from '../../../lib/spaceFigures';
+
+<Step kind="starter" title="Two kinds of planets" minutes={7}>
+
+Look at the data. Compare the first four planets with the last four.
+What do you notice? Write two sentences.
+
+<PlanetTable columns={['diameter', 'density', 'type']} />
+
+</Step>
+
+<Step kind="learn" title="Inner and outer planets" minutes={5}>
+
+Compared to each other:
+
+- the **four inner planets** (Mercury, Venus, Earth, Mars) are **small** and **rocky**;
+- the **four outer planets** (Jupiter, Saturn, Uranus, Neptune) are **large** and made mostly of **gas**.
+
+Why? The answer comes from the way the Solar System formed.
+
+</Step>
+
+<Step kind="learn" title="The accretion model" minutes={13}>
+
+<Figure svg={accretionSvg()} caption="The accretion model in three steps (not to scale)." width="38rem" />
+
+1. **A cloud of gas and dust.** About 4.6 billion years ago, there was a huge cloud of gas and dust in space. It contained hydrogen, helium and many other elements.
+2. **Gravity pulls it together.** Gravity pulled the material of the cloud together. The cloud collapsed.
+3. **It spins and flattens.** The cloud was rotating. As it collapsed, it spun faster and became a flat, spinning disc: an **accretion disc**.
+4. **The Sun forms.** Most of the material went to the centre. It became very hot and dense, and formed the Sun.
+5. **The planets form.** In the disc, small pieces collided and stuck together (this is **accretion**). They grew into planets.
+
+### Why two kinds of planets?
+
+- **Near the Sun**, it was very hot. Only rock and metal could stay solid. So the inner planets are **small and rocky**.
+- **Far from the Sun**, it was cold. Ice could also stay solid, so there was more solid material. The planets grew bigger, and their strong gravity pulled in a lot of hydrogen and helium gas. So the outer planets are **large and made mostly of gas**.
+
+</Step>
+
+<Step kind="do" title="Put the story in order" minutes={15}>
+
+Work in pairs. Your teacher gives you 7 cards. Put them in the right order.
+
+<div class="card">
+
+- The Sun forms at the centre.
+- Gravity pulls the material of the cloud together.
+- Far from the Sun, large planets pull in hydrogen and helium.
+- A cloud of gas and dust is in space.
+- The cloud spins faster and becomes a flat disc.
+- Near the Sun, only rock and metal stay solid.
+- Small pieces in the disc stick together and grow.
+
+</div>
+
+Then write a paragraph to explain why Jupiter is large and made of gas, but the Earth is small and rocky.
+*Use these words: gravity, accretion disc, hot, cold, gas, rock.*
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={15}>
+
+<Quiz questions={[
+  {
+    question: 'Which force pulled the cloud of gas and dust together?',
+    options: [
+      { text: 'gravity', correct: true, why: 'Gravity attracts all the material in the cloud.' },
+      { text: 'friction', why: 'Gravity pulled the cloud together.' },
+      { text: 'magnetism', why: 'Gravity pulled the cloud together.' },
+      { text: 'air resistance', why: 'There is no air in space. Gravity pulled the cloud together.' },
+    ],
+  },
+  {
+    question: 'Why did the cloud become a flat disc?',
+    options: [
+      { text: 'It was rotating, and it spun faster as it collapsed', correct: true, why: 'A spinning cloud flattens into a disc.' },
+      { text: 'The Sun pushed it flat', why: 'The disc formed before the Sun. The rotation made it flat.' },
+      { text: 'Planets hit it', why: 'The planets formed later, in the disc.' },
+      { text: 'It was cold', why: 'The rotation made it flat.' },
+    ],
+  },
+  {
+    question: 'Where did most of the material in the cloud go?',
+    options: [
+      { text: 'to the centre, to form the Sun', correct: true, why: 'The Sun contains most of the mass of the Solar System.' },
+      { text: 'into Jupiter', why: 'Jupiter is big, but the Sun has most of the mass.' },
+      { text: 'into the asteroid belt', why: 'Most material went to the centre and formed the Sun.' },
+      { text: 'it escaped into space', why: 'Most material went to the centre and formed the Sun.' },
+    ],
+  },
+  {
+    question: 'Why are the inner planets rocky?',
+    options: [
+      { text: 'Near the Sun it was hot, so only rock and metal stayed solid', correct: true, why: 'Gases and ices could not stay solid near the hot young Sun.' },
+      { text: 'Rocks are heavy, so they fell towards the Sun', why: 'The temperature near the Sun is the reason.' },
+      { text: 'The Sun made the rocks', why: 'The rock was already in the cloud.' },
+      { text: 'The inner planets are older', why: 'All the planets formed at about the same time.' },
+    ],
+  },
+  {
+    question: 'Which planet is large and made mostly of gas?',
+    options: [
+      { text: 'Saturn', correct: true, why: 'Saturn is one of the four outer planets.' },
+      { text: 'Mars', why: 'Mars is a small rocky planet.' },
+      { text: 'Venus', why: 'Venus is a small rocky planet.' },
+      { text: 'Mercury', why: 'Mercury is a small rocky planet.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+Write **three** short sentences:
+
+1. What the Solar System formed from.
+2. What made the cloud collapse.
+3. Why the outer planets are large and made of gas.
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Make a comic strip with 5 pictures: the story of the Solar System, from the cloud to the planets. Write one sentence under each picture.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Syllabus:** 6.1.2 C2 asks for the accretion model with (a) the dependence on gravity, (b) the presence of many elements in interstellar clouds of gas and dust, (c) the rotation of the material and the accretion disc. The temperature explanation for rocky and gas planets is the usual way to complete the model.
+
+**Timing:** starter 7 min, learn 18 min, card sort 15 min, check 15 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Thinking the planets formed first and the Sun later.
+- Thinking the heavy material "fell" to the inside of the Solar System.
+
+**Language support:**
+
+- Show the word *accretion* with a snowball: it grows when it rolls and picks up snow.
+- Spin a ball of pizza dough (or a video of it) to show how spinning makes a disc.
+
+**Differentiation:**
+
+- Support: give the first and the last cards of the story.
+- Stretch: where did the elements heavier than helium in the cloud come from? (From older stars and supernovae: see Lesson 7.)
+
+</Step>

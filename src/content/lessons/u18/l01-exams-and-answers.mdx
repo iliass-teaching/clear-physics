@@ -1,0 +1,203 @@
+---
+unit: 18
+lesson: 1
+title: The exams and how to answer
+syllabus: ['section 2', 'section 4']
+goals:
+  - Know the three exam papers you will take, and how long each one is.
+  - Understand the command words used in questions.
+  - Write full answers to calculation questions and to explanation questions.
+keyWords: [Calculate, Describe, Explain, State, Suggest, Define]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Quiz from '../../../components/Quiz.astro';
+import ExamQuestion from '../../../components/ExamQuestion.astro';
+
+<Step kind="starter" title="What do you know?" minutes={5}>
+
+Write down: how many exam papers will you take? How long is each one? What kind of questions are in each one? Then compare with the table below.
+
+</Step>
+
+<Step kind="learn" title="The three papers" minutes={10}>
+
+Every student takes **three papers**.
+
+<div class="table-wrap">
+
+| | Core students | Extended students | Time | Marks | Weight |
+|---|---|---|---|---|---|
+| Multiple choice (40 questions, 4 options) | Paper 1 | Paper 2 | 45 min | 40 | 30% |
+| Theory (short-answer and structured questions) | Paper 3 | Paper 4 | 1 h 15 min | 80 | 50% |
+| Practical | Paper 5 (practical test) **or** Paper 6 (alternative to practical) | | 1 h 15 min / 1 h | 40 | 20% |
+
+</div>
+
+- Core papers test **Core** content only; grades C to G.
+- Extended papers test **Core and Supplement** content; grades A* to G.
+- Calculators are allowed in all papers.
+- You must **remember the equations**: they are not given (lesson 18.2).
+
+</Step>
+
+<Step kind="learn" title="Command words" minutes={12}>
+
+The first word of a question tells you what to do. Here are some of them:
+
+<div class="table-wrap">
+
+| Command word | What to write | Example |
+|---|---|---|
+| **State** | a short answer, no explanation | State the unit of power. → watt (W) |
+| **Define** | the exact meaning of a word | Define density. → mass per unit volume |
+| **Describe** | what happens, or the steps; no "why" | Describe how the temperature changes. |
+| **Explain** | what happens **and why** (use "because", "so") | Explain why the pressure increases. |
+| **Calculate** | a number, with working and a unit | Calculate the speed. |
+| **Suggest** | apply your knowledge to a new situation | Suggest one improvement. |
+| **Sketch** | a simple drawing or graph, with the right shape | Sketch a velocity–time graph. |
+
+</div>
+
+The full list, with simple meanings, is on the [key words page](../../../key-words/#command-words).
+
+**Marks:** look at the number of marks. [2] usually means two separate points. "Explain … [3]" often needs three linked steps.
+
+</Step>
+
+<Step kind="learn" title="Answering calculations" minutes={10}>
+
+<WorkedExample
+  question="A car of mass 1200 kg accelerates from rest to 15 m/s in 6.0 s. Calculate the resultant force on the car. [3]"
+  given={['$m = 1200\\,\\text{kg}$', '$\\Delta v = 15\\,\\text{m/s}$', '$t = 6.0\\,\\text{s}$']}
+  find="the resultant force $F$"
+  answer="$F = 3000\,\text{N}$"
+>
+
+**Step 1 — equation:** $a = \dfrac{\Delta v}{t}$, then $F = ma$
+
+**Step 2 — substitute:** $a = \dfrac{15}{6.0} = 2.5\,\text{m/s}^2$; $F = 1200 \times 2.5$
+
+**Step 3 — answer with a unit:** $F = 3000\,\text{N}$
+
+</WorkedExample>
+
+**Rules for full marks:**
+
+1. Write the **equation** first (often 1 mark).
+2. **Substitute** the numbers, in consistent units (m, kg, s…).
+3. Give the **answer with its unit**.
+4. **Round only at the end.** Give 2 or 3 significant figures (like the data).
+5. **Check:** is the answer sensible? (A car does not go at 3000 m/s.)
+
+</Step>
+
+<Step kind="practice" title="Try exam questions" minutes={18}>
+
+<ExamQuestion number="1" marks={1}>
+
+State what is meant by the **weight** of an object.
+
+<div slot="scheme">
+
+the (gravitational) force on the object (due to gravity / due to a gravitational field) **[1]**
+
+</div>
+</ExamQuestion>
+
+<ExamQuestion number="2" marks={3}>
+
+A sealed bottle of air is left in the hot sun. **Explain**, in terms of particles, why the pressure of the air in the bottle increases.
+
+<div slot="scheme">
+
+- the particles move faster / have more kinetic energy **[1]**
+- they hit the walls more often **[1]**
+- and harder / with more force (so more force per unit area) **[1]**
+
+</div>
+</ExamQuestion>
+
+<ExamQuestion number="3" marks={3}>
+
+A lamp has a current of 0.25 A when the p.d. across it is 6.0 V. **Calculate** its resistance.
+
+<div slot="scheme">
+
+- $R = \dfrac{V}{I}$ **[1]**
+- $= \dfrac{6.0}{0.25}$ **[1]**
+- $= 24\,\Omega$ **[1]** (unit needed)
+
+</div>
+</ExamQuestion>
+
+<Quiz questions={[
+  {
+    question: 'A question says "State the unit of energy". What should you write?',
+    options: [
+      { text: 'joule (J)', correct: true, why: '"State": a short answer is enough.' },
+      { text: 'Energy is measured in joules because work is force times distance…', why: '"State" needs no explanation.' },
+      { text: 'a calculation', why: '"State" asks for a short answer.' },
+      { text: 'a diagram', why: '"State": one short answer.' },
+    ],
+  },
+  {
+    question: 'Which answer best fits "Explain why the ice melts at 0 °C without a change in temperature"?',
+    options: [
+      { text: 'The energy separates the particles (breaks the forces between them), so the temperature stays the same', correct: true, why: 'It says what happens and why.' },
+      { text: 'The temperature stays the same', why: 'This describes, but does not explain.' },
+      { text: 'Ice is cold', why: 'This does not answer the question.' },
+      { text: 'Because it is 0 °C', why: 'Explain why: use the idea of energy and particles.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'In a calculation, when should you round your answer?',
+    options: [
+      { text: 'only at the end', correct: true, why: 'Rounding in the middle can make the final answer wrong.' },
+      { text: 'after every step', why: 'Round only the final answer.' },
+      { text: 'never', why: 'Round the final answer to 2 or 3 significant figures.' },
+      { text: 'before you start', why: 'Use the data as given.' },
+    ],
+  },
+  {
+    question: 'How many papers does every student take?',
+    options: [
+      { text: 'three', correct: true, why: 'Multiple choice, theory, and practical (or alternative to practical).' },
+      { text: 'two', why: 'There is also a practical paper.' },
+      { text: 'four', why: 'Three papers.' },
+      { text: 'six', why: 'Six papers exist, but each student takes three.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Source:** the paper structure is from the syllabus (section 2, "Assessment overview", and section 4). Past papers, mark schemes and specimen papers are on the official Cambridge pages (School Support Hub, and the public 0625 page).
+
+**Timing:** starter 5 min, papers 10 min, command words 12 min, calculations 10 min, exam questions 18 min, exit ticket 5 min.
+
+**The mark schemes in this unit** are written in the usual Cambridge style, but they are our own questions, not real exam questions.
+
+**Common mistakes:**
+
+- Explaining when the question says "state", and losing time.
+- Giving a number without a unit.
+- Rounding too early.
+
+**Differentiation:**
+
+- Support: a card with the 7 command words and one example each.
+- Stretch: write your own 3-mark "explain" question and its mark scheme.
+
+</Step>

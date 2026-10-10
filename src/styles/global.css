@@ -1,0 +1,301 @@
+/* Clear Physics — a calm, textbook-like design.
+   Body: Source Sans 3. Headings: Source Serif 4 (the same family, so they match).
+   Avoid fonts with a slashed or dotted zero: it looks like θ in physics. */
+
+:root {
+  --bg: #fbfaf6;
+  --surface: #ffffff;
+  --surface-2: #f3f1ea;
+  --ink: #1f2430;
+  --ink-soft: #5b6372;
+  --line: #e4e0d5;
+  --accent: #1d4e89;
+  --accent-soft: #e9eef6;
+  --good: #2f7d4f;
+  --good-soft: #e5f2ea;
+  --bad: #b3402e;
+  --bad-soft: #f8e8e4;
+  --warn-soft: #fbf3dc;
+
+  /* Lesson step colours (muted) */
+  --starter: #b8692a;
+  --learn: #1d4e89;
+  --do: #2f7d4f;
+  --practice: #6b4fa0;
+  --exit: #b3402e;
+  --homework: #5b6372;
+  --teacher: #5b6372;
+
+  --radius: 10px;
+  --measure: 44rem;
+  --sans: 'Source Sans 3 Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --serif: 'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
+
+  font-family: var(--sans);
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--ink);
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15181e;
+    --surface: #1b1f27;
+    --surface-2: #20252e;
+    --ink: #e6e8ec;
+    --ink-soft: #a3abb8;
+    --line: #2e3440;
+    --accent: #8fb3e8;
+    --accent-soft: #1f2a3a;
+    --good: #6fc795;
+    --good-soft: #17301f;
+    --bad: #ec8b78;
+    --bad-soft: #3a211c;
+    --warn-soft: #352d1c;
+    --starter: #e0a064;
+    --learn: #8fb3e8;
+    --do: #6fc795;
+    --practice: #b9a3e3;
+    --exit: #ec8b78;
+    --homework: #a3abb8;
+    --teacher: #a3abb8;
+  }
+}
+
+* { box-sizing: border-box; }
+
+/* The hidden attribute must win over display rules such as button { display: inline-flex }. */
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 2rem 1.25rem 5rem;
+}
+
+h1, h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  /* Long words ("electromagnetic") must not push the page wider than a phone. */
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+h1 { font-size: 2.3rem; margin: 0.3rem 0 1rem; }
+h2 { font-size: 1.55rem; margin: 2.2rem 0 0.8rem; }
+@media (max-width: 520px) {
+  h1 { font-size: 1.9rem; }
+}
+h3 { font-size: 1.08rem; margin: 1.8rem 0 0.4rem; }
+
+p, ul, ol { margin: 0 0 1rem; }
+li { margin-bottom: 0.3rem; }
+li > ul, li > ol { margin-top: 0.3rem; }
+
+a { color: var(--accent); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+
+strong { font-weight: 700; }
+
+.katex { font-size: 1.08em; }
+.katex-display { margin: 1.2rem 0; overflow-x: auto; overflow-y: hidden; padding: 0.2rem 0; }
+
+/* Tables: light, horizontal rules only */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0 1.4rem;
+  font-size: 0.92rem;
+  font-variant-numeric: tabular-nums;
+}
+th, td {
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+th {
+  font-weight: 700;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  border-bottom: 2px solid var(--line);
+}
+tbody tr:hover { background: var(--surface-2); }
+.table-wrap { overflow-x: auto; }
+
+/* Small labels */
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0 0.4rem;
+  white-space: nowrap;
+}
+.tag.ext {
+  color: var(--starter);
+  border-color: currentColor;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}
+
+/* Buttons */
+button, .button {
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+button:hover, .button:hover { filter: brightness(1.08); text-decoration: none; }
+button.secondary, .button.secondary {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--line);
+}
+button.secondary:hover, .button.secondary:hover { border-color: var(--accent); filter: none; }
+button:disabled { opacity: 0.45; cursor: default; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+input, select {
+  font: inherit;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.muted { color: var(--ink-soft); }
+.small { font-size: 0.85rem; }
+
+/* Graphs and figures drawn as SVG (lib/graph.ts, practice figures, space figures).
+   --tz enlarges the labels of simulations on small screens (scripts/textZoom.ts); it is 1 elsewhere. */
+svg.graph, svg.fig { width: 100%; height: auto; display: block; }
+.graph text, .fig text { font-family: var(--sans); }
+.graph .grid { stroke: var(--line); stroke-width: 1; }
+.graph .axis { stroke: var(--ink); stroke-width: 1.5; }
+.graph .tick { fill: var(--ink-soft); font-size: calc(11px * var(--tz, 1)); }
+.graph .label { fill: var(--ink); font-size: calc(12.5px * var(--tz, 1)); font-weight: 700; }
+.graph .line { fill: none; stroke: var(--accent); stroke-width: 2.75; stroke-linejoin: round; stroke-linecap: round; }
+.graph .area { fill: var(--accent); opacity: 0.15; }
+.graph .seg { fill: var(--exit); font-size: calc(15px * var(--tz, 1)); font-weight: 700; }
+.graph .marker { stroke: var(--exit); stroke-width: 2; fill: none; }
+.fig .ink { stroke: var(--ink); fill: none; stroke-width: 1.5; }
+.fig .soft { stroke: var(--ink-soft); stroke-width: 1; }
+.fig .txt { fill: var(--ink); font-size: calc(12px * var(--tz, 1)); }
+.fig .obj { fill: var(--accent); opacity: 0.85; }
+.fig .liquid { fill: var(--accent); opacity: 0.25; }
+.fig .arrow { stroke: var(--accent); stroke-width: 3; fill: none; }
+.fig .arrow-head { fill: var(--accent); }
+.fig .arrow2 { stroke: var(--exit); stroke-width: 3; fill: none; }
+.fig .arrow2-head { fill: var(--exit); }
+.fig .dash { stroke: var(--ink-soft); stroke-dasharray: 5 4; fill: none; stroke-width: 1.6; }
+.fig .sun { fill: #f2b01e; }
+.fig .earth { fill: #2f6fd1; }
+.fig .lit { fill: #f4efe0; stroke: var(--ink-soft); stroke-width: 1; }
+.fig .dark { fill: #3a3f4b; stroke: var(--ink-soft); stroke-width: 1; }
+.fig .rocky { fill: #b08968; }
+.fig .gas { fill: #d9a35f; }
+.fig .disc { fill: #d9a35f; opacity: 0.35; }
+.fig .orbit { fill: none; stroke: var(--ink-soft); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.fig .ray { stroke: #e0a200; stroke-width: 2.5; }
+.fig .ray-head { fill: #e0a200; }
+.fig .ink-head { fill: var(--ink); }
+.fig .soft-fill { fill: var(--ink-soft); }
+.fig .box { fill: var(--surface); stroke: var(--accent); stroke-width: 1.5; }
+.fig .stone { fill: #8a8f98; stroke: var(--ink); stroke-width: 1; }
+.fig .layer-honey { fill: #d99a2b; opacity: 0.85; }
+.fig .layer-water { fill: #4a90d9; opacity: 0.55; }
+.fig .layer-oil { fill: #e8d36a; opacity: 0.8; }
+.fig .sk-in { fill: var(--accent); opacity: 0.55; }
+.fig .sk-useful { fill: var(--good); opacity: 0.6; }
+.fig .sk-waste { fill: var(--exit); opacity: 0.45; }
+.fig .jet { fill: none; stroke: #4a90d9; stroke-width: 3; stroke-linecap: round; }
+.fig .txt-light { fill: #ffffff; font-size: calc(12px * var(--tz, 1)); }
+.fig .txt-dark { fill: #1d2433; font-size: calc(12px * var(--tz, 1)); }
+/* Circuit diagrams (lib/circuit.ts) */
+.fig .wire { stroke: var(--ink); stroke-width: 2; stroke-linejoin: miter; }
+.fig .sym { stroke: var(--ink); stroke-width: 2; }
+.fig .sym-fill { fill: var(--bg); stroke: var(--ink); stroke-width: 2; }
+.fig .sym-solid { fill: var(--ink); stroke: var(--ink); stroke-width: 1; }
+.fig .sym-head { fill: var(--ink); }
+.fig .cut { fill: var(--bg); }
+.fig .sym-text { fill: var(--ink); font-size: calc(15px * var(--tz, 1)); font-weight: 700; font-family: var(--sans); }
+/* Text with a halo: lines behind it are hidden, so it stays readable. */
+.fig .halo { paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+.lens-sim .fig .halo { stroke: var(--surface); }
+
+.practice .figure { max-width: 32rem; margin: 0.5rem auto 1rem; }
+.graph-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 0 1.5rem;
+}
+.graph-grid figure { margin: 0.5rem 0; }
+.quiz .q svg { max-width: 22rem; display: block; margin: 0.6rem 0; }
+
+/* Simulation controls (sliders, menus) must fit a phone screen. */
+fieldset { min-width: 0; }
+@media (max-width: 520px) {
+  .controls label { max-width: 100%; }
+  .controls label:has(input[type='range']) { flex-wrap: wrap; }
+  .controls input[type='range'] { flex: 1 1 7rem; min-width: 0; }
+  .controls select { max-width: 100%; min-width: 0; }
+}
+
+/* "Enlarge" button under figures (phones only) and the full-screen panel it opens (scripts/enlarge.ts). */
+.enlarge-btn { display: none; }
+@media (max-width: 700px) {
+  .enlarge-btn { display: block; width: fit-content; margin: 0.3rem auto 0.2rem; font-size: 0.8rem; padding: 0.2rem 0.8rem; }
+}
+.enlarge-dialog {
+  width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh;
+  margin: 0; padding: 0; border: 0;
+  background: var(--bg); color: var(--ink);
+}
+.enlarge-dialog[open] { display: flex; flex-direction: column; }
+.enlarge-dialog::backdrop { background: rgb(0 0 0 / 0.6); }
+.enlarge-bar { display: flex; align-items: center; gap: 0.8rem; padding: 0.6rem 1rem; border-bottom: 1px solid var(--line); }
+.enlarge-cap { margin: 0 auto 0 0; font-size: 0.85rem; color: var(--ink-soft); line-height: 1.3; }
+.enlarge-body { flex: 1; overflow: auto; padding: 1rem; overscroll-behavior: contain; }
+.enlarge-body svg { display: block; }
+.enlarge-hint { margin: 0; padding: 0.4rem 1rem 0.7rem; font-size: 0.8rem; color: var(--ink-soft); }
+
+/* Printing (worksheets, lessons): no site header or footer, black on white. */
+@media print {
+  @page { margin: 1.5cm; }
+  :root { color-scheme: light; }
+  body { background: #fff; color: #1f2430; }
+  .site-header, .site-footer, .enlarge-btn { display: none !important; }
+  main, main.wide { max-width: none !important; padding: 0 !important; margin: 0 !important; }
+}

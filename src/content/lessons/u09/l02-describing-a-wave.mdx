@@ -1,0 +1,167 @@
+---
+unit: 9
+lesson: 2
+title: Describing a wave
+syllabus: ['3.1 C3']
+goals:
+  - Label a wave with crest, trough, amplitude and wavelength.
+  - Describe frequency and wave speed.
+  - Draw and use wavefronts.
+keyWords: [crest, trough, amplitude, wavelength, frequency, hertz, wavefront, wave speed]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Graph from '../../../components/Graph.astro';
+import Quiz from '../../../components/Quiz.astro';
+import WaveSim from '../../../components/WaveSim.astro';
+import { waveDiagramSvg, wavefrontsSvg } from '../../../lib/waveFigures';
+
+<Step kind="starter" title="Big waves, small waves" minutes={5}>
+
+Describe two different waves on the sea: one on a calm day and one in a storm. What words do you use? Try to find three differences.
+
+</Step>
+
+<Step kind="learn" title="The parts of a wave" minutes={14}>
+
+<Figure svg={waveDiagramSvg()} caption="The parts of a wave." width="34rem" />
+
+- **Crest** (or **peak**): the highest point of the wave.
+- **Trough**: the lowest point of the wave.
+- **Amplitude**: the distance from the **middle line** (the rest position) to a **crest** (or to a trough). It is **not** from a trough to a crest.
+- **Wavelength** $\lambda$ (the Greek letter *lambda*): the length of **one full wave**, for example from one crest to the next crest. Unit: metre (m).
+- **Frequency** $f$: the number of waves that pass a point **each second**. Unit: **hertz** (Hz). 1 Hz = 1 wave per second.
+- **Wave speed** $v$: the distance the wave travels each second. Unit: m/s.
+
+A bigger amplitude means the wave carries more energy.
+
+</Step>
+
+<Step kind="learn" title="Wavefronts" minutes={8}>
+
+When we look at water waves **from above**, we draw each crest as a line. These lines are called **wavefronts**.
+
+<Figure svg={wavefrontsSvg()} caption="Wavefronts. The distance between two wavefronts is one wavelength." width="30rem" />
+
+- The distance between two wavefronts next to each other is **one wavelength**.
+- The wave travels at right angles to the wavefronts.
+
+</Step>
+
+<Step kind="do" title="Measure the wavelength" minutes={15}>
+
+<WaveSim />
+
+1. Set the frequency to 1.0 Hz. Press **Pause**. Use the ruler to measure the wavelength (from one crest to the next crest). Check with the reading.
+2. Count how many waves pass the red point in 10 seconds (use a stopwatch). Is your answer close to 10 × the frequency?
+3. Change the amplitude. Does the wavelength change? Does the frequency change?
+4. Change the frequency to 2.0 Hz. What happens to the wavelength?
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={13}>
+
+<Graph
+  xLabel="distance / m" yLabel="displacement / cm"
+  xMax={6} yMin={-4} yMax={4} xStep={0.5} yStep={1}
+  points={[[0,0],[0.25,1.41],[0.5,2],[0.75,1.41],[1,0],[1.25,-1.41],[1.5,-2],[1.75,-1.41],[2,0],[2.25,1.41],[2.5,2],[2.75,1.41],[3,0],[3.25,-1.41],[3.5,-2],[3.75,-1.41],[4,0],[4.25,1.41],[4.5,2],[4.75,1.41],[5,0],[5.25,-1.41],[5.5,-2],[5.75,-1.41],[6,0]]}
+  curve
+  title="A wave with an amplitude of 2 cm and a wavelength of 2 m."
+  caption="Use this graph for questions 1 and 2."
+/>
+
+<Quiz questions={[
+  {
+    question: '1. What is the amplitude of the wave in the graph?',
+    options: [
+      { text: '2 cm', correct: true, why: 'From the middle line (0) to a crest (2 cm).' },
+      { text: '4 cm', why: 'This is from a trough to a crest. The amplitude is from the middle line to a crest.' },
+      { text: '2 m', why: 'The amplitude is on the vertical axis, in cm.' },
+      { text: '1 cm', why: 'Read the top of a crest: 2 cm.' },
+    ],
+  },
+  {
+    question: '2. What is the wavelength of the wave in the graph?',
+    options: [
+      { text: '2 m', correct: true, why: 'From one crest (0.5 m) to the next crest (2.5 m).' },
+      { text: '1 m', why: 'This is half a wave. Measure a full wave: crest to the next crest.' },
+      { text: '6 m', why: 'This is the length of three waves.' },
+      { text: '2 cm', why: 'The wavelength is on the horizontal axis, in m.' },
+    ],
+  },
+  {
+    question: '3. A wave has a frequency of 5 Hz. What does this mean?',
+    options: [
+      { text: '5 waves pass a point every second', correct: true, why: '1 Hz = 1 wave per second.' },
+      { text: 'The wave travels 5 m every second', why: 'This is a wave speed of 5 m/s.' },
+      { text: 'One wave is 5 m long', why: 'This is a wavelength of 5 m.' },
+      { text: 'The wave is 5 m high', why: 'Frequency is about the number of waves each second.' },
+    ],
+  },
+  {
+    question: '4. What is the distance between two wavefronts next to each other?',
+    options: [
+      { text: 'one wavelength', correct: true, why: 'Each wavefront is a crest. Crest to crest = one wavelength.' },
+      { text: 'the amplitude', why: 'The amplitude is a height, not the distance between crests.' },
+      { text: 'half a wavelength', why: 'From crest to crest is a full wavelength.' },
+      { text: 'the frequency', why: 'Frequency is a number of waves per second, not a distance.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'What is the unit of frequency?',
+    options: [
+      { text: 'hertz (Hz)', correct: true, why: '1 Hz = 1 wave per second.' },
+      { text: 'metre (m)', why: 'Wavelength and amplitude are in metres.' },
+      { text: 'm/s', why: 'This is the unit of wave speed.' },
+      { text: 'second (s)', why: 'Frequency is in hertz.' },
+    ],
+  },
+  {
+    question: 'Which describes the amplitude of a wave?',
+    options: [
+      { text: 'from the middle line to a crest', correct: true, why: 'Not from a trough to a crest.' },
+      { text: 'from a trough to a crest', why: 'This is two amplitudes.' },
+      { text: 'from one crest to the next crest', why: 'This is the wavelength.' },
+      { text: 'the number of waves each second', why: 'This is the frequency.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Draw a wave with a wavelength of 4 cm and an amplitude of 1 cm (use squared paper). Label: crest, trough, wavelength, amplitude. Then draw a second wave with the same wavelength and **double** the amplitude.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 22 min, simulation 15 min, check 13 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Amplitude measured from trough to crest.
+- Wavelength measured from a crest to the next trough (half a wavelength).
+- Mixing up the axes: on a displacement–**distance** graph, the horizontal axis gives the wavelength. (On a displacement–time graph it would give the time for one wave; this is not needed in this syllabus.)
+
+**Language support:**
+
+- $\lambda$ is called *lambda*. Write it in one stroke, so that it does not look like a letter y.
+- *crest*: the top, like the crest of a hill. *trough*: a long, low container for animals' water.
+
+**Differentiation:**
+
+- Support: a labelled wave diagram to copy before the questions.
+- Stretch: two waves have the same frequency. Wave A has twice the wavelength of wave B. Which is faster?
+
+</Step>

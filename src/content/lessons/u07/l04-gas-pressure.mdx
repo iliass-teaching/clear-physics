@@ -1,0 +1,208 @@
+---
+unit: 7
+lesson: 4
+title: Gas pressure
+syllabus: ['2.1.2 C3', '2.1.2 S7', '2.1.3 C1']
+goals:
+  - Explain the pressure of a gas with particles that hit a surface.
+  - Explain why the pressure goes up when a gas is heated (at constant volume).
+  - Explain why the pressure goes up when a gas is compressed (at constant temperature).
+keyWords: [pressure, particle, collision, fixed mass of gas, temperature]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import GasSim from '../../../components/GasSim.astro';
+import { gasWallSvg, gasCompareSvg } from '../../../lib/particleFigures';
+
+<Step kind="starter" title="Inside a balloon" minutes={5}>
+
+Blow up a balloon and tie it. Nothing seems to move inside it, but the rubber stays stretched.
+
+What pushes on the rubber from the inside?
+
+</Step>
+
+<Step kind="learn" title="Where does gas pressure come from?" minutes={10}>
+
+<Figure svg={gasWallSvg()} caption="Each particle that hits the wall pushes on it." width="30rem" />
+
+- The particles of a gas move fast, in random directions.
+- They **collide** with the walls of the container and bounce back.
+- Each collision **pushes** on the wall. Millions of collisions each second make a steady push: this is the **pressure** of the gas.
+
+**Extended:** each collision exerts a small **force** on the wall. The total force on each unit of area is the pressure:
+
+$$
+p = \frac{F}{A}
+$$
+
+</Step>
+
+<Step kind="learn" title="Changing the temperature or the volume" minutes={12}>
+
+A **fixed mass of gas** is a gas in a closed container: no gas goes in or out.
+
+**1. Heat the gas. Keep the volume the same.**
+
+<Figure svg={gasCompareSvg('temperature')} caption="Hotter gas: the particles move faster." width="30rem" />
+
+- The particles move **faster**.
+- They hit the walls **more often** and **harder**.
+- So the pressure **goes up**.
+
+**2. Make the volume smaller. Keep the temperature the same.**
+
+<Figure svg={gasCompareSvg('volume')} caption="Smaller volume: the particles hit the walls more often." width="30rem" />
+
+- The particles move at the **same speed** (same temperature).
+- But they have less space, so they hit the walls **more often**.
+- So the pressure **goes up**.
+
+**In real life:**
+
+- After a long drive, the air in car tyres is warmer, so its pressure is higher. Check tyre pressure when the tyres are cold.
+- A spray can says *do not heat*: hot gas inside could make the pressure too high, and the can could burst.
+
+</Step>
+
+<Step kind="do" title="Investigate with the simulation" minutes={18}>
+
+<GasSim mode="pressure" />
+
+**Part 1 — temperature.** Keep the volume at 100 %. Wait for the readings after each change.
+
+<div class="table-wrap">
+
+| temperature / K | hits on the walls each second | pressure |
+|---|---|---|
+| 150 | | |
+| 300 | | |
+| 450 | | |
+| 600 | | |
+
+</div>
+
+**Part 2 — volume.** Keep the temperature at 300 K.
+
+<div class="table-wrap">
+
+| volume / % | hits on the walls each second | pressure |
+|---|---|---|
+| 100 | | |
+| 80 | | |
+| 50 | | |
+| 40 | | |
+
+</div>
+
+**Questions:**
+
+1. What happens to the pressure when the temperature goes up? Explain with particles.
+2. What happens to the pressure when the volume goes down? Explain with particles.
+3. In Part 2, compare the pressure at 100 % and at 50 %. What do you notice? (You will use this in the next lesson.)
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={10}>
+
+<Quiz questions={[
+  {
+    question: 'What causes the pressure of a gas on the walls of its container?',
+    options: [
+      { text: 'Particles colliding with the walls', correct: true, why: 'Each collision pushes on the wall.' },
+      { text: 'The weight of the walls', why: 'The particles of the gas push on the walls.' },
+      { text: 'Particles sticking to the walls', why: 'The particles hit the walls and bounce back.' },
+      { text: 'Particles that do not move', why: 'Gas particles move fast all the time.' },
+    ],
+  },
+  {
+    question: 'A closed can of gas is heated. The volume does not change. What happens to the pressure?',
+    options: [
+      { text: 'It goes up', correct: true, why: 'The particles move faster, so they hit the walls more often and harder.' },
+      { text: 'It goes down', why: 'Hotter particles move faster and hit the walls harder.' },
+      { text: 'It stays the same', why: 'The particles move faster, so the pressure changes.' },
+      { text: 'It becomes zero', why: 'The pressure goes up.' },
+    ],
+  },
+  {
+    question: 'A gas is compressed into a smaller volume. The temperature stays the same. Why does the pressure go up?',
+    options: [
+      { text: 'The particles hit the walls more often', correct: true, why: 'They have less space, so they reach the walls more often.' },
+      { text: 'The particles move faster', why: 'The temperature is the same, so the particles move at the same speed.' },
+      { text: 'The particles get bigger', why: 'The particles do not change size.' },
+      { text: 'There are more particles', why: 'It is a fixed mass of gas: the number of particles does not change.' },
+    ],
+  },
+  {
+    question: 'Extended: what is the pressure of a gas?',
+    options: [
+      { text: 'The force of the particle collisions on each unit of area of the wall', correct: true, why: '$p = \\dfrac{F}{A}$, with $F$ from the collisions.' },
+      { text: 'The number of particles in the container', why: 'Pressure is a force per unit area.' },
+      { text: 'The speed of the particles', why: 'The speed affects the pressure, but pressure is a force per unit area.' },
+      { text: 'The energy of one particle', why: 'Pressure is a force per unit area.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A bicycle tyre is left in the hot sun. What happens to the pressure of the air inside?',
+    options: [
+      { text: 'It goes up', correct: true, why: 'The air particles move faster and hit the tyre more often and harder.' },
+      { text: 'It goes down', why: 'Hotter air: faster particles, higher pressure.' },
+      { text: 'It stays the same', why: 'The temperature changes, so the pressure changes.' },
+      { text: 'The air particles get bigger', why: 'The particles do not change size.' },
+    ],
+  },
+  {
+    question: 'You push the plunger of a sealed syringe of air. Which sentence is correct?',
+    options: [
+      { text: 'The volume goes down and the pressure goes up', correct: true, why: 'The particles hit the walls more often.' },
+      { text: 'The volume goes down and the pressure goes down', why: 'Less space: more hits each second, so higher pressure.' },
+      { text: 'The particles move faster', why: 'The temperature is the same, so the speed is the same.' },
+      { text: 'Some particles disappear', why: 'The number of particles does not change.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Explain, with particles, why a sealed bag of crisps gets bigger when you take it up a high mountain. (Hint: the air pressure *outside* the bag is lower at the top.)
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** collisions with a surface (2.1.2 C3) and the two qualitative changes (2.1.3 C1) are Core. Pressure as force per unit area from collisions (2.1.2 S7) is Extended.
+
+**Timing:** starter 5 min, learn 22 min, simulation 18 min, check 10 min, exit ticket 5 min.
+
+**Expected results from the simulation:** at constant volume, the pressure is about proportional to the kelvin temperature (about 50 at 150 K, 100 at 300 K, 200 at 600 K). At constant temperature, halving the volume about doubles the pressure (about 200 at 50 %). The readings change a little because the motion is random: ask students to wait and take a typical value.
+
+**Common mistakes:**
+
+- "The particles move faster when the gas is compressed." Only if the temperature changes.
+- "The particles expand when heated."
+- "There are more particles in a smaller volume." There are the same number of particles, closer together.
+- Forgetting the conditions: *at constant volume*, *at constant temperature*. Teach students to write them.
+
+**Language support:**
+
+- Sentence frame: *"When the … goes up, the particles … , so they hit the walls … . This means the pressure … ."*
+- *More often* = more times each second. *Harder* = with more force.
+
+**Differentiation:**
+
+- Support: give the explanations as jumbled sentences to put in order.
+- Stretch: in Part 1, plot pressure against temperature in kelvin. What shape is the graph? Where does it cross the temperature axis?
+
+</Step>

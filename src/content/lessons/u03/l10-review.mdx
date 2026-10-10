@@ -1,0 +1,199 @@
+---
+unit: 3
+lesson: 10
+title: Review and unit test
+syllabus: ['1.5']
+goals:
+  - Remember the key ideas and equations of Unit 3.
+  - Write full answers to "describe" and "explain" questions about forces.
+  - Check what you know with a unit test.
+keyWords: [resultant force, moment, equilibrium, centre of gravity]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="Odd one out" minutes={5}>
+
+Which is the odd one out in each list? Explain why.
+
+1. weight · friction · mass · tension
+2. N · N m · N/m · kg
+3. stretch · squash · bend · weigh
+
+</Step>
+
+<Step kind="learn" title="Unit 3 in one page" minutes={10}>
+
+<div class="table-wrap">
+
+| Idea | Equation or rule | Unit |
+|---|---|---|
+| extension | new length − original length | cm or m |
+| spring constant (Extended) | $k = \dfrac{F}{x}$ | N/m |
+| resultant force | same direction: add; opposite directions: subtract | N |
+| balanced forces | at rest stays at rest; moving keeps a constant velocity | |
+| force and acceleration (Extended) | $F = ma$ | N |
+| moment | $\text{moment} = F \times d$ ($d$ perpendicular to the force) | N m |
+| principle of moments | clockwise moment = anticlockwise moment | |
+| equilibrium | no resultant force and no resultant moment | |
+| stability | low centre of gravity, wide base | |
+
+</div>
+
+</Step>
+
+<Step kind="learn" title="Answering 'explain' questions" minutes={8}>
+
+**Question:** *Explain why a car moving at a constant speed on a straight road needs a driving force.*
+
+**Weak answer:** "Because it is moving."
+
+**Strong answer:** "Friction and air resistance act backwards on the car. The driving force balances them. So the resultant force is zero and the velocity stays constant."
+
+A strong "explain" answer:
+
+1. names the forces;
+2. compares them (balanced or unbalanced, which is bigger);
+3. gives the result, with **so** or **because**.
+
+**Your turn:** explain why a cyclist slows down when she stops pedalling.
+
+</Step>
+
+<Step kind="practice" title="Mixed practice" minutes={12}>
+
+### Resultant force
+
+<Practice topic="resultant" level={2} />
+
+### Moments
+
+<Practice topic="moments" level={2} />
+
+</Step>
+
+<Step kind="exit" title="Unit test" minutes={25}>
+
+Answer all the questions. Questions marked **(E)** are for Extended students.
+
+<Quiz questions={[
+  {
+    question: '1. Which of these can a force NOT change?',
+    options: [
+      { text: 'the mass of an object', correct: true, why: 'A force can change shape, speed or direction, but not mass.' },
+      { text: 'the shape of an object', why: 'Forces can squash, stretch and bend.' },
+      { text: 'the speed of an object', why: 'A resultant force can speed an object up or slow it down.' },
+      { text: 'the direction of motion', why: 'A resultant force can change the direction.' },
+    ],
+  },
+  {
+    question: '2. A spring is 8.0 cm long. With a load it is 11.5 cm long. What is the extension?',
+    options: [
+      { text: '3.5 cm', correct: true, why: '$11.5 - 8.0 = 3.5\\,\\text{cm}$.' },
+      { text: '11.5 cm', why: 'This is the new length.' },
+      { text: '19.5 cm', why: 'Subtract, do not add.' },
+      { text: '8.0 cm', why: 'This is the original length.' },
+    ],
+  },
+  {
+    question: '3. (E) A load of 6.0 N stretches a spring by 0.12 m. What is the spring constant?',
+    options: [
+      { text: '50 N/m', correct: true, why: '$k = \\dfrac{6.0}{0.12} = 50\\,\\text{N/m}$.' },
+      { text: '0.72 N/m', why: 'You multiplied.' },
+      { text: '0.02 N/m', why: 'You divided the wrong way.' },
+      { text: '50 N m', why: 'The unit of spring constant is N/m.' },
+    ],
+  },
+  {
+    question: '4. A box is pushed with 70 N to the right. Friction is 25 N. What is the resultant force?',
+    options: [
+      { text: '45 N to the right', correct: true, why: '$70 - 25 = 45\\,\\text{N}$, towards the bigger force.' },
+      { text: '95 N to the right', why: 'Friction acts against the motion: subtract.' },
+      { text: '45 N to the left', why: 'The resultant acts towards the bigger force.' },
+      { text: '0 N', why: 'The forces are not equal.' },
+    ],
+  },
+  {
+    question: '5. A plane flies at a constant velocity. What is true?',
+    options: [
+      { text: 'The forces on it are balanced', correct: true, why: 'No resultant force: the velocity does not change.' },
+      { text: 'The thrust is bigger than the drag', why: 'Then it would speed up.' },
+      { text: 'There are no forces on it', why: 'There are forces, but they balance.' },
+      { text: 'Its weight is zero', why: 'It has weight, balanced by the lift.' },
+    ],
+  },
+  {
+    question: '6. (E) A resultant force of 2400 N acts on a car of mass 1200 kg. What is its acceleration?',
+    options: [
+      { text: '2.0 m/s²', correct: true, why: '$a = \\dfrac{2400}{1200} = 2.0\\,\\text{m/s}^2$.' },
+      { text: '0.5 m/s²', why: 'You divided the wrong way: $a = \\dfrac{F}{m}$.' },
+      { text: '2 880 000 m/s²', why: 'You multiplied.' },
+      { text: '2.0 m/s', why: 'The unit of acceleration is m/s².' },
+    ],
+  },
+  {
+    question: '7. Which statement about friction is correct?',
+    options: [
+      { text: 'It acts against motion and produces heating', correct: true, why: 'This is solid friction.' },
+      { text: 'It always speeds objects up', why: 'Friction acts against the motion.' },
+      { text: 'It only acts in water', why: 'Friction acts between solid surfaces too, and drag acts in gases.' },
+      { text: 'It does not depend on the surfaces', why: 'Rough surfaces give more friction.' },
+    ],
+  },
+  {
+    question: '8. (E) A ball on a string moves in a circle at constant speed. In which direction is the resultant force?',
+    options: [
+      { text: 'towards the centre of the circle', correct: true, why: 'At right angles to the motion, towards the centre.' },
+      { text: 'away from the centre', why: 'The string pulls the ball towards the centre.' },
+      { text: 'there is no resultant force', why: 'The direction changes, so there is a resultant force.' },
+      { text: 'in the direction of motion', why: 'The force is at right angles to the motion.' },
+    ],
+  },
+  {
+    question: '9. A force of 50 N acts at right angles, 0.4 m from a pivot. A force F acts 0.5 m on the other side. The beam balances. What is F?',
+    options: [
+      { text: '40 N', correct: true, why: '$50 \\times 0.4 = F \\times 0.5$, so $F = \\dfrac{20}{0.5} = 40\\,\\text{N}$.' },
+      { text: '62.5 N', why: 'Multiply each force by its own distance.' },
+      { text: '50 N', why: 'The distances are different, so the forces are different.' },
+      { text: '20 N', why: '20 N m is the moment. Divide by 0.5 m.' },
+    ],
+  },
+  {
+    question: '10. Which bottle is the most stable?',
+    options: [
+      { text: 'a short bottle with a wide base and a heavy bottom', correct: true, why: 'Low centre of gravity and wide base.' },
+      { text: 'a tall bottle with a narrow base', why: 'High centre of gravity and narrow base: easy to knock over.' },
+      { text: 'a tall bottle full of water at the top only', why: 'The centre of gravity is high.' },
+      { text: 'a bottle balanced on its cap', why: 'The base is very narrow.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Look at the questions you got wrong. Find the lesson for each one and do 5 practice questions on it.
+2. Learn the key words of Unit 3 on the [Key words](../../../key-words/) page.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, review 18 min, mixed practice 12 min, unit test 25 min.
+
+**Starter answers:** 1. mass (not a force). 2. kg (not a unit linked to force). 3. weigh (not a change of shape).
+
+**"Your turn" model answer:** "When she stops pedalling, there is no driving force. Friction and air resistance act backwards. So the resultant force is backwards and she slows down."
+
+**Using the test:** questions 1, 2, 4, 5, 7, 9 and 10 test Core content; 3, 6 and 8 are Extended. The feedback for each wrong answer names the mistake.
+
+**Differentiation:**
+
+- Support: allow the "Unit 3 in one page" table during the test the first time.
+- Stretch: ask students to write one "explain" question about forces, with a strong answer.
+
+</Step>

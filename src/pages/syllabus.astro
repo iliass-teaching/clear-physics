@@ -1,0 +1,214 @@
+---
+import Base from '../layouts/Base.astro';
+import { url, unitUrl } from '../lib/url';
+import { renderMath } from '../lib/math';
+import { units } from '../data/units';
+import { syllabus, SYLLABUS_PDF, SYLLABUS_PAGE } from '../data/syllabus';
+
+const unitOf = (n: number) => units.find((u) => u.number === n)!;
+
+const constants = [
+  { name: 'acceleration of free fall near the Earth', value: '$g \\approx 9.8\\,\\text{m/s}^2$ (so $9.8\\,\\text{N/kg}$)', where: 'syllabus 1.2' },
+  { name: 'speed of light (and all electromagnetic waves) in a vacuum', value: '$c = 3.0 \\times 10^8\\,\\text{m/s}$', where: 'syllabus 3.3' },
+  { name: 'one light-year', value: '$9.5 \\times 10^{15}\\,\\text{m}$', where: 'syllabus 6.2.2' },
+  { name: 'Hubble constant (current estimate)', value: '$H_0 = 2.2 \\times 10^{-18}\\,\\text{s}^{-1}$', where: 'syllabus 6.2.3' },
+];
+
+const ourValues = [
+  { name: 'one year in seconds', value: '$365 \\times 24 \\times 3600 \\approx 3.15 \\times 10^7\\,\\text{s}$', why: 'calculated' },
+  { name: 'density of water', value: '$1000\\,\\text{kg/m}^3$ ($1.0\\,\\text{g/cm}^3$)', why: 'standard value' },
+  { name: 'density of sea water', value: '$1030\\,\\text{kg/m}^3$', why: 'typical value (it changes a little with salt and temperature)' },
+];
+---
+
+<Base title="Syllabus and sources" description="The Cambridge syllabus that Clear Physics follows, and the sources used for data.">
+  <p class="kicker">Cambridge IGCSE Physics 0625 · syllabus 2026–2028</p>
+  <h1>Syllabus and sources</h1>
+  <p class="lead">
+    The lessons follow the official Cambridge syllabus.
+    This page links to the syllabus, shows how the course follows it, and lists the other sources used for data.
+  </p>
+
+  <h2 id="syllabus">1. The syllabus</h2>
+  <div class="card doc">
+    <p class="doc-title"><strong>Cambridge IGCSE Physics 0625 — Syllabus for exams in 2026, 2027 and 2028</strong></p>
+    <p class="muted small">Cambridge Assessment International Education · Version 2, published December 2025 (no changes that affect teaching).</p>
+    <p class="links">
+      <a href={SYLLABUS_PDF}>Read the syllabus (PDF)</a>
+      <a href={SYLLABUS_PAGE}>Official 0625 page (past papers, updates)</a>
+    </p>
+  </div>
+  <p>
+    We do not copy the text of the syllabus. The lessons explain each learning point in our own words.
+    For the exact wording, always read the official document.
+  </p>
+  <p class="muted small">
+    Cambridge has also published a new syllabus for exams from 2029. This site follows the 2026–2028 syllabus.
+  </p>
+
+  <h2 id="core-extended">2. Core and Extended</h2>
+  <p>
+    Each topic of the syllabus has two columns of learning points:
+  </p>
+  <ul>
+    <li><strong>Core</strong>: for all students.</li>
+    <li><strong>Supplement</strong>: extra content for students who take the <strong>Extended</strong> papers (Core + Supplement).</li>
+  </ul>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Paper</th><th>Core students</th><th>Extended students</th><th>Weight</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Multiple choice (45 min, 40 questions)</td><td>Paper 1</td><td>Paper 2</td><td>30%</td></tr>
+        <tr><td>Theory (1 h 15 min, 80 marks)</td><td>Paper 3</td><td>Paper 4</td><td>50%</td></tr>
+        <tr><td>Practical test (Paper 5) or written alternative (Paper 6)</td><td colspan="2">Paper 5 or Paper 6</td><td>20%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted small">Core students can get grades C to G. Extended students can get grades A* to G. Source: syllabus, section 2.</p>
+
+  <h3>How we write the codes</h3>
+  <p>
+    Each lesson shows the parts of the syllabus it teaches. A code like <code>1.8 C2</code> means
+    <em>topic 1.8, Core learning point 2</em>. A code like <code>1.8 S4</code> means
+    <em>topic 1.8, Supplement learning point 4</em>.
+    Lessons with Supplement content show the label <span class="tag ext">Extended</span>.
+  </p>
+
+  <h2 id="map">3. From the syllabus to the course</h2>
+  <p>
+    The syllabus has 6 sections. The course teaches them in {units.length} units over two years.
+    The order is a little different from the syllabus: Space physics comes last, because it uses ideas from many other units.
+  </p>
+
+  {syllabus.map((section) => (
+    <section class="section">
+      <h3>{section.number}. {section.title}</h3>
+      <div class="table-wrap">
+        <table class="map">
+          <thead>
+            <tr><th>Syllabus topic</th><th>Clear Physics unit</th><th>Lessons</th></tr>
+          </thead>
+          <tbody>
+            {section.topics.map((t) => {
+              const u = unitOf(t.unit);
+              return (
+                <tr>
+                  <td>
+                    <strong>{t.code}</strong> {t.title}
+                    {t.parts && <ul class="parts">{t.parts.map((p) => <li>{p}</li>)}</ul>}
+                  </td>
+                  <td>
+                    <a href={unitUrl(u.number)}>Unit {u.number}: {u.title}</a>
+                  </td>
+                  <td class="num">{u.lessonCount}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  ))}
+
+  <h2 id="language">4. Words, symbols and units</h2>
+  <ul>
+    <li>
+      <strong>Command words</strong> (<em>state, describe, explain, calculate…</em>): the syllabus gives a list of command words used in exam questions.
+      We explain each one in simple English on the <a href={url('key-words/#command-words')}>key words page</a>.
+    </li>
+    <li>
+      <strong>Symbols and units</strong>: the lessons use the symbols and units listed in the syllabus
+      (section 4, “Symbols and units for physical quantities”), for example <em>p</em> for pressure and Pa for pascal.
+    </li>
+    <li>
+      <strong>Equations</strong>: we write equations in the form used in the syllabus, and we change the subject with algebra (no formula triangles). The full list is on the <a href={url('equations/')}>Equations to know</a> page.
+    </li>
+  </ul>
+
+  <h2 id="values">5. Values used in the lessons</h2>
+  <h3>Values from the syllabus</h3>
+  <p>Students must know these values. We use them in all lessons and practice questions.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Quantity</th><th>Value</th><th>Where</th></tr></thead>
+      <tbody>
+        {constants.map((c) => (
+          <tr><td>{c.name}</td><td set:html={renderMath(c.value)} /><td class="muted">{c.where}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Other values</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Quantity</th><th>Value</th><th>Note</th></tr></thead>
+      <tbody>
+        {ourValues.map((c) => (
+          <tr><td>{c.name}</td><td set:html={renderMath(c.value)} /><td class="muted">{c.why}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="data">6. Data sources</h2>
+  <ul class="sources">
+    <li>
+      <strong>Planets</strong> (Unit 2, Unit 17): distance from the Sun, orbital period and speed, mass, diameter, density, surface gravity, temperature and number of moons.
+      Source: <a href="https://nssdc.gsfc.nasa.gov/planetary/factsheet/">NASA Planetary Fact Sheet</a> (checked October 2026). Values are rounded.
+    </li>
+    <li>
+      <strong>Densities of materials</strong> (Unit 2, Unit 6): typical values at room temperature from standard reference tables, rounded.
+      Real samples can be a little different (wood and oil especially).
+    </li>
+    <li>
+      <strong>Specific heat capacities</strong> (Unit 8): rounded values from data tables
+      (water 4200, aluminium 900, iron 450, copper 385, lead 130 J/(kg °C)), for example the
+      <a href="https://en.wikipedia.org/wiki/Table_of_specific_heat_capacities">table of specific heat capacities</a>.
+    </li>
+    <li>
+      <strong>Refractive indices</strong> (Unit 10): typical values for visible light (water 1.33, Perspex 1.49, glass about 1.5, diamond 2.42).
+      Real values change a little with the type of glass and the colour of the light.
+    </li>
+    <li>
+      <strong>Mains supply</strong> (Units 13–14): 230 V in many countries; 220 V, 50 Hz in Thailand
+      (<a href="https://www.worldstandards.eu/electricity/plug-voltage-by-country/thailand/">World Standards: Thailand</a>).
+    </li>
+    <li>
+      <strong>Electricity in Thailand</strong> (Unit 5, energy resources): natural gas generates more than half of the country’s electricity.
+      Sources: <a href="https://en.wikipedia.org/wiki/Energy_in_Thailand">Energy in Thailand</a> (Wikipedia, citing the International Energy Agency)
+      and <a href="https://ember-energy.org/countries-and-regions/thailand/">Ember: Thailand</a>.
+    </li>
+    <li>
+      <strong>Everyday numbers</strong> (speeds of cars, masses of people, depths of pools…): realistic round values chosen by us, so that the answers make sense.
+    </li>
+  </ul>
+
+  <h2 id="ours">7. What we write ourselves</h2>
+  <p>
+    The explanations, examples, figures, simulations, practice questions and tests are our own work.
+    They are written for students who learn physics in English as a second language.
+    See <a href={url('teachers/')}>For teachers</a> for how the lessons are written.
+  </p>
+  <p class="card small">
+    Clear Physics is an independent resource. It is not affiliated with or endorsed by Cambridge University Press &amp; Assessment.
+  </p>
+</Base>
+
+<style>
+  .kicker { margin: 0; font-size: 0.85rem; color: var(--ink-soft); }
+  .lead { font-size: 1.1rem; }
+  .doc p { margin: 0.25rem 0; }
+  .doc-title { font-size: 1.05rem; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-top: 0.6rem !important; }
+  .links a { font-weight: 600; }
+  .section h3 { margin-top: 1.6rem; }
+  .map td { vertical-align: top; }
+  .num { white-space: nowrap; }
+  .parts { margin: 0.3rem 0 0; padding-left: 1.1rem; font-size: 0.88rem; color: var(--ink-soft); }
+  .parts li { margin: 0.1rem 0; }
+  .sources li { margin-bottom: 0.7rem; }
+  code { font-size: 0.9em; }
+</style>

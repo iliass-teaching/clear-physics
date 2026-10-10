@@ -1,0 +1,116 @@
+---
+unit: 18
+lesson: 7
+title: 'Practical skills: measuring, recording, graphs'
+syllabus: ['section 4']
+goals:
+  - Take readings to the right precision, and correct zero errors.
+  - Record results in a table with the right headings.
+  - Draw a graph, a best-fit line, and find a gradient and an intercept.
+keyWords: [reading, scale, mean, gradient, unit, quantity]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Practice from '../../../components/Practice.astro';
+import ExamQuestion from '../../../components/ExamQuestion.astro';
+
+<Step kind="starter" title="What is wrong?" minutes={5}>
+
+Find 4 mistakes in this results table:
+
+<div class="table-wrap">
+
+| Length | Time |
+|---|---|
+| 20 cm | 0.9 s |
+| 40 cm | 1.27 s |
+| 60 | 1.555 s |
+| 80 cm | 1.8 |
+
+</div>
+
+</Step>
+
+<Step kind="learn" title="Readings and tables" minutes={14}>
+
+**Taking readings:**
+
+- Read an analogue scale to the nearest **half** of the smallest division.
+- Look straight at the scale (eye level), to avoid a **parallax** error.
+- Check for a **zero error**: what does the instrument read when nothing is measured? Correct value = reading − zero error.
+- Time many oscillations (for example 10), then divide: the reaction time error becomes smaller.
+
+**Recording readings in a table:**
+
+- Each column heading has the **quantity** and the **unit**, separated by a solidus: **time / s**.
+- **No units** in the body of the table.
+- Give each reading to the **precision of the instrument** (for example a ruler with mm divisions: 23.5 cm, not 23.48 cm, not 24 cm). Keep the same number of decimal places in a column.
+- **Repeat** readings where you can, and calculate the **mean**. Leave out **anomalous** results.
+- A calculated value has the same number of significant figures as the **least** precise data used (2 or 3).
+
+</Step>
+
+<Step kind="learn" title="Graphs" minutes={12}>
+
+- **Axes:** label each axis with the quantity and unit (as in the table: **time / s**). The independent variable is usually on the horizontal axis.
+- **Scales:** use more than **half** of the grid in both directions, with easy steps (1, 2 or 5 units per 2 cm, or 10, 20, 50…). Do not use steps of 3.
+- **Points:** plot each point accurately (to half a small square), as a small cross (×), a plus (+) or a circled dot (⊙). Use a sharp pencil.
+- **Best-fit line:** one **thin**, **smooth** line (straight or curved) with the points spread evenly on both sides. It does not have to go through every point. Ignore clear anomalies.
+- **Gradient:** draw a big triangle on the line, at least **half the length** of the line; gradient = $\dfrac{\text{change in } y}{\text{change in } x}$, to 2 or 3 significant figures, with units.
+- **Intercept:** where the line crosses an axis; extend the line (extrapolate) if needed.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={22}>
+
+### Reading graphs and gradients
+
+<Practice topic="graph-skills" />
+
+### Means, anomalies and zero errors
+
+<Practice topic="data-skills" level={1} />
+
+<ExamQuestion number="1" marks={3}>
+
+A student measures the extension of a spring. The readings are: 2.1 cm, 4.0 cm, 6.2 cm, 9.7 cm and 10.1 cm for loads of 1.0, 2.0, 3.0, 4.0 and 5.0 N. Draw a results table, and identify the anomalous result.
+
+<div slot="scheme">
+
+- table with headings **load / N** and **extension / cm** **[1]**
+- no units in the body; readings copied correctly **[1]**
+- 9.7 cm (at 4.0 N) is anomalous: it should be about 8 cm **[1]**
+
+</div>
+</ExamQuestion>
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={7}>
+
+<ExamQuestion number="2" marks={2}>
+
+A force meter reads 0.3 N before any load is attached. With a load, it reads 4.8 N. State the correct force, and the name of this kind of error.
+
+<div slot="scheme">
+
+- 4.5 N **[1]**
+- a zero error (a systematic error) **[1]**
+
+</div>
+</ExamQuestion>
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Source:** syllabus section 4, "Presentation of data" (taking and recording readings, drawing and analysing graphs) and the experimental skills list.
+
+**Timing:** starter 5 min, readings and tables 14 min, graphs 12 min, practice 22 min, exit ticket 7 min.
+
+**Starter answers:** no units in the headings; units in the body; 60 has no unit (and no "cm"); 1.555 s has too many decimal places; 1.8 has no unit; decimal places are not consistent (0.9, 1.27, 1.555).
+
+**Tip:** practise tables, graphs (scales, plotting, line) and gradient triangles with real data from earlier practicals.
+
+</Step>

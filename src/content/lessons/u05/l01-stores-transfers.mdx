@@ -1,0 +1,171 @@
+---
+unit: 5
+lesson: 1
+title: Energy stores and transfers
+syllabus: ['1.7.1 C1', '1.7.1 C2']
+goals:
+  - Name the seven energy stores.
+  - Describe the four ways energy is transferred between stores.
+  - Describe the energy transfers in everyday events.
+keyWords: [energy, energy store, joule, work done]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { flowSvg } from '../../../lib/energyFigures';
+
+<Step kind="starter" title="Where does it come from?" minutes={5}>
+
+You eat breakfast, then you cycle to school up a hill.
+
+Where does the energy for cycling come from? Where does it go? Write your ideas in a chain: *food → … → …*
+
+</Step>
+
+<Step kind="learn" title="Energy stores" minutes={12}>
+
+Energy is measured in **joules (J)**. Energy is kept in **stores**:
+
+<div class="table-wrap">
+
+| Energy store | The energy is in… | Example |
+|---|---|---|
+| kinetic | a moving object | a running child, a moving car |
+| gravitational potential | an object raised up high | water behind a dam, a book on a shelf |
+| chemical | fuels, food, batteries | petrol, bread, a phone battery |
+| elastic (strain) | a stretched or squashed object | a stretched spring, a bow ready to shoot |
+| nuclear | the nucleus of atoms | uranium in a nuclear power station |
+| electrostatic | charges that attract or repel | a charged balloon, a thundercloud |
+| internal (thermal) | the particles of a hot object | a cup of hot tea |
+
+</div>
+
+</Step>
+
+<Step kind="learn" title="Energy transfers" minutes={10}>
+
+Energy moves from one store to another. There are four ways:
+
+1. by **forces**: mechanical work done (a push or a pull moves something);
+2. by **electrical currents**: electrical work done;
+3. by **heating**: from a hotter object to a colder one;
+4. by **waves**: electromagnetic waves (like light) and sound.
+
+<Figure svg={flowSvg(['chemical store|(battery)', 'electrical|work done', 'light + heating|the surroundings'])} caption="A torch: energy moves from the battery to the surroundings." width="34rem" />
+
+More examples:
+
+- A ball falls: gravitational potential store → kinetic store (by the force of gravity).
+- A kettle: electrical work → internal (thermal) store of the water.
+- A bow shoots an arrow: elastic store → kinetic store of the arrow.
+
+</Step>
+
+<Step kind="do" title="Energy detectives" minutes={15}>
+
+For each event, write the store at the start, the way energy is transferred, and the store(s) at the end.
+
+<div class="table-wrap">
+
+| event | store at the start | how it is transferred | store(s) at the end |
+|---|---|---|---|
+| a car brakes and stops | | | |
+| a phone plays music | | | |
+| a firework explodes | | | |
+| a wind-up toy moves | | | |
+| a log burns on a fire | | | |
+| a skier goes down a slope | | | |
+
+</div>
+
+*Use this sentence: "Energy moves from the … store to the … store by …"*
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={13}>
+
+<Quiz questions={[
+  {
+    question: 'What is the unit of energy?',
+    options: [
+      { text: 'joule (J)', correct: true, why: 'Energy and work are measured in joules.' },
+      { text: 'watt (W)', why: 'The watt is the unit of power.' },
+      { text: 'newton (N)', why: 'The newton is the unit of force.' },
+      { text: 'kelvin (K)', why: 'The kelvin is a unit of temperature.' },
+    ],
+  },
+  {
+    question: 'Which store has energy in a stretched rubber band?',
+    options: [
+      { text: 'elastic (strain)', correct: true, why: 'Stretched or squashed objects store elastic energy.' },
+      { text: 'kinetic', why: 'The band is not moving.' },
+      { text: 'chemical', why: 'Chemical energy is in fuels, food and batteries.' },
+      { text: 'nuclear', why: 'Nuclear energy is in the nucleus of atoms.' },
+    ],
+  },
+  {
+    question: 'Water is held behind a dam, high above a valley. Which store has its energy?',
+    options: [
+      { text: 'gravitational potential', correct: true, why: 'The water is high up.' },
+      { text: 'kinetic', why: 'The water is not moving yet.' },
+      { text: 'internal (thermal)', why: 'Its height is what matters here.' },
+      { text: 'electrostatic', why: 'Its height is what matters here.' },
+    ],
+  },
+  {
+    question: 'A hot cup of tea cools down on a table. How is energy transferred?',
+    options: [
+      { text: 'by heating', correct: true, why: 'Energy moves from the hot tea to the colder surroundings.' },
+      { text: 'by electrical currents', why: 'No current flows.' },
+      { text: 'by forces', why: 'Nothing is pushed or pulled.' },
+      { text: 'it is not transferred, it disappears', why: 'Energy never disappears. It moves to the surroundings.' },
+    ],
+  },
+  {
+    question: 'A loudspeaker transfers energy to the surroundings. Which way?',
+    options: [
+      { text: 'by sound waves (and some heating)', correct: true, why: 'Sound waves carry energy.' },
+      { text: 'by forces only', why: 'The useful transfer is by sound waves.' },
+      { text: 'by light', why: 'A loudspeaker makes sound.' },
+      { text: 'by nuclear reactions', why: 'There is no nuclear reaction in a loudspeaker.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+Draw a flow diagram for a person climbing a ladder. Start with the chemical store in the person’s muscles.
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Choose 3 electrical devices at home. For each one, draw a flow diagram of the energy transfers. Mark the useful transfer.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 22 min, energy detectives 15 min, check 13 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Calling a way of transfer a store ("light energy", "sound energy", "electrical energy"). The syllabus uses stores and transfers: light and sound are waves that transfer energy; electrical work is a transfer.
+- Saying energy is "used up" or "lost". It is transferred, often to the surroundings.
+
+**Energy detectives answers (main transfers):** car brakes: kinetic → internal (thermal) of brakes and surroundings, by forces (friction). Phone: chemical (battery) → electrical work → sound waves + heating. Firework: chemical → light, sound, kinetic, internal. Wind-up toy: elastic → kinetic (by forces). Log: chemical → heating + light. Skier: gravitational potential → kinetic (+ internal by friction).
+
+**Language support:**
+
+- Keep the 7 stores and 4 transfers on the wall for the whole unit.
+
+**Differentiation:**
+
+- Support: give the stores on cards to choose from.
+- Stretch: describe the energy transfers in a hydroelectric power station.
+
+</Step>

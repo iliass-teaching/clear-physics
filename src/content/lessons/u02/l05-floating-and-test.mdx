@@ -1,0 +1,187 @@
+---
+unit: 2
+lesson: 5
+title: Floating and sinking, and unit test
+syllabus: ['1.4 C3', '1.4 S4']
+goals:
+  - Predict if an object floats or sinks, using density data.
+  - Predict which of two liquids that do not mix floats on the other (Extended).
+  - Check your learning of Unit 2 with a test.
+keyWords: [float, sink, density]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { densityColumnSvg } from '../../../lib/matterFigures';
+
+<Step kind="starter" title="Float or sink?" minutes={5}>
+
+Your teacher puts objects in a bowl of water: an apple, a coin, a candle, a key, a cork.
+
+Before each one, predict: **float** or **sink**? Write your predictions, then watch.
+
+</Step>
+
+<Step kind="learn" title="The rule" minutes={8}>
+
+Compare the density of the object with the density of the liquid:
+
+- density of the object **less than** the liquid → it **floats**;
+- density of the object **more than** the liquid → it **sinks**.
+
+The density of water is $1.0\,\text{g/cm}^3$. So:
+
+- wood (about $0.5\,\text{g/cm}^3$) and ice ($0.92\,\text{g/cm}^3$) float in water;
+- iron ($7.9\,\text{g/cm}^3$) sinks.
+
+**Be careful:** a big object does not always sink, and a small object does not always float. Only the **density** matters: a huge tree trunk floats, a small coin sinks.
+
+</Step>
+
+<Step kind="learn" title="Liquids that do not mix (Extended)" minutes={7}>
+
+Some liquids do not mix, for example oil and water. The liquid with the **lower density floats on top** of the other one.
+
+<Figure svg={densityColumnSvg()} caption="Three liquids that do not mix. Each object floats on a liquid that is denser than it." width="28rem" />
+
+- Oil ($0.92\,\text{g/cm}^3$) floats on water ($1.0\,\text{g/cm}^3$).
+- Water floats on honey ($1.4\,\text{g/cm}^3$).
+- The wood floats on the oil. The plastic bead sinks in the water but floats on the honey. The iron nut sinks to the bottom.
+
+</Step>
+
+<Step kind="exit" title="Unit test" minutes={40}>
+
+Answer all the questions. Questions marked **(E)** are for Extended students.
+
+<Quiz questions={[
+  {
+    question: '1. What is mass?',
+    options: [
+      { text: 'a measure of the quantity of matter in an object', correct: true, why: 'Mass is measured in kg and is the same everywhere.' },
+      { text: 'the gravitational force on an object', why: 'This is weight.' },
+      { text: 'the space an object takes up', why: 'This is volume.' },
+      { text: 'mass per unit volume', why: 'This is density.' },
+    ],
+  },
+  {
+    question: '2. What is the unit of weight?',
+    options: [
+      { text: 'newton (N)', correct: true, why: 'Weight is a force.' },
+      { text: 'kilogram (kg)', why: 'kg is the unit of mass.' },
+      { text: 'g/cm³', why: 'This is a unit of density.' },
+      { text: 'N/kg', why: 'This is the unit of gravitational field strength.' },
+    ],
+  },
+  {
+    question: '3. A bag has a mass of 8.0 kg. What is its weight on the Earth? ($g = 9.8\\,\\text{N/kg}$)',
+    options: [
+      { text: '78 N', correct: true, why: '$W = m \\times g = 8.0 \\times 9.8 = 78\\,\\text{N}$.' },
+      { text: '8.0 N', why: 'This is the mass. Multiply by $g$.' },
+      { text: '0.82 N', why: 'You divided: $W = m \\times g$.' },
+      { text: '78 kg', why: 'Weight is a force, in newtons.' },
+    ],
+  },
+  {
+    question: '4. The gravitational field strength on the Moon is 1.6 N/kg. What does this mean?',
+    options: [
+      { text: 'The Moon pulls on each kilogram with a force of 1.6 N', correct: true, why: '$g$ is the force per unit mass.' },
+      { text: 'Objects on the Moon have a mass of 1.6 kg', why: '$g$ is a force per kilogram, not a mass.' },
+      { text: 'The Moon has a weight of 1.6 N', why: '$g$ is the force on each kilogram of an object on the Moon.' },
+      { text: 'Objects fall at 1.6 m/s', why: 'They accelerate at 1.6 m/s² (not a speed).' },
+    ],
+  },
+  {
+    question: '5. A block has a mass of 120 g and a volume of 15 cm³. What is its density?',
+    options: [
+      { text: '8.0 g/cm³', correct: true, why: '$\\rho = \\dfrac{120}{15} = 8.0\\,\\text{g/cm}^3$.' },
+      { text: '0.125 g/cm³', why: 'You divided the wrong way: $\\rho = \\dfrac{m}{V}$.' },
+      { text: '1800 g/cm³', why: 'You multiplied.' },
+      { text: '135 g/cm³', why: 'You added.' },
+    ],
+  },
+  {
+    question: '6. A block of wood is 10 cm × 5 cm × 2 cm. What is its volume?',
+    options: [
+      { text: '100 cm³', correct: true, why: '$V = 10 \\times 5 \\times 2 = 100\\,\\text{cm}^3$.' },
+      { text: '17 cm³', why: 'Multiply the sides, do not add them.' },
+      { text: '50 cm³', why: 'Multiply all three sides.' },
+      { text: '100 cm²', why: 'A volume is in cm³.' },
+    ],
+  },
+  {
+    question: '7. Water rises from 50 cm³ to 64 cm³ when a stone of mass 35 g is added. What is the density of the stone?',
+    options: [
+      { text: '2.5 g/cm³', correct: true, why: '$V = 64 - 50 = 14\\,\\text{cm}^3$, $\\rho = \\dfrac{35}{14} = 2.5\\,\\text{g/cm}^3$.' },
+      { text: '0.55 g/cm³', why: 'Use the volume of the stone only: $64 - 50$.' },
+      { text: '0.4 g/cm³', why: 'You divided the wrong way: $\\rho = \\dfrac{m}{V}$.' },
+      { text: '0.7 g/cm³', why: 'Use the volume of the stone, $64 - 50 = 14\\,\\text{cm}^3$, not 50.' },
+    ],
+  },
+  {
+    question: '8. Which object floats in water ($1.0\\,\\text{g/cm}^3$)?',
+    options: [
+      { text: 'a candle, density 0.9 g/cm³', correct: true, why: 'Its density is less than the density of water.' },
+      { text: 'a glass marble, density 2.5 g/cm³', why: 'Its density is more than the density of water: it sinks.' },
+      { text: 'an aluminium can, closed and full of soup, density 1.1 g/cm³', why: 'Its density is more than the density of water: it sinks.' },
+      { text: 'a gold ring, density 19.3 g/cm³', why: 'Its density is much more than water: it sinks.' },
+    ],
+  },
+  {
+    question: '9. (E) Ethanol (0.79 g/cm³) and mercury (13.5 g/cm³) do not mix with water. What do you see in a jar with all three?',
+    options: [
+      { text: 'ethanol on top, water in the middle, mercury at the bottom', correct: true, why: 'The lower the density, the higher the layer.' },
+      { text: 'mercury on top, water in the middle, ethanol at the bottom', why: 'The densest liquid goes to the bottom.' },
+      { text: 'water on top, ethanol in the middle, mercury at the bottom', why: 'Ethanol is less dense than water, so it floats on it.' },
+      { text: 'the three liquids mix', why: 'The question says they do not mix.' },
+    ],
+  },
+  {
+    question: '10. (E) Weight is the effect of a gravitational field on a mass. Which change makes the weight of an object bigger?',
+    options: [
+      { text: 'moving it to a place where the gravitational field is stronger', correct: true, why: '$W = m \\times g$: a bigger $g$ gives a bigger weight.' },
+      { text: 'moving it to the Moon', why: 'The field on the Moon is weaker, so the weight is smaller.' },
+      { text: 'cutting it into two pieces', why: 'Each piece has less mass, so less weight.' },
+      { text: 'measuring it with a balance', why: 'The instrument does not change the weight.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Look at the questions you got wrong. Find the lesson for each one and read it again.
+2. A ship is made of steel ($7.8\,\text{g/cm}^3$), but it floats. Suggest why. *(Think about the air inside the ship.)*
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** floating from density data (1.4 C3) is Core. Liquids that do not mix (1.4 S4) is Extended.
+
+**Timing:** starter 5 min, learn 15 min, unit test 40 min.
+
+**Starter:** typical results: apple floats, coin sinks, candle floats, key sinks, cork floats.
+
+**Using the test:** questions 1–8 test Core content; 9 and 10 are Extended.
+
+**Common mistakes:**
+
+- "Heavy things sink, light things float." Only density matters.
+- Thinking the densest liquid floats on top.
+
+**Homework answer:** the ship and the air inside it together have a mean density less than water.
+
+**Language support:**
+
+- Sentence frame: *"The … floats because its density is less than the density of …"*
+
+**Differentiation:**
+
+- Support: give the density table during the test the first time.
+- Stretch: build a density column with honey, water (with food colouring) and oil. Drop in small objects and predict where they stop.
+
+</Step>

@@ -1,0 +1,192 @@
+---
+unit: 8
+lesson: 9
+title: Energy balance, applications and unit test
+syllabus: ['2.3.3 S4–S6', '2.3.4 C1', '2.3.4 S2']
+goals:
+  - Explain everyday uses of conduction, convection and radiation.
+  - 'Extended: explain when an object stays at a constant temperature, and how this applies to the Earth.'
+  - Check your learning of Unit 8 with a test.
+keyWords: [conduction, convection, thermal radiation, temperature]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { earthBalanceSvg } from '../../../lib/heatFigures';
+
+<Step kind="learn" title="Three ways together" minutes={10}>
+
+<div class="table-wrap">
+
+| | How does the energy move? | Where? |
+|---|---|---|
+| **conduction** | from particle to particle (and by free electrons in metals) | mainly solids |
+| **convection** | the hot fluid moves and carries the energy | liquids and gases |
+| **radiation** | infrared waves | everywhere, even in a vacuum |
+
+</div>
+
+**Extended: when more than one type matters**
+
+- **A fire burning wood or coal:** you feel the **radiation** on your face. Hot gases rise up the chimney by **convection**, and cool air comes in at the bottom to keep the fire burning. The grate and the bricks heat up by **conduction**.
+- **A car radiator:** water carries energy from the hot engine to the radiator (convection, helped by a pump). The energy passes through the thin metal walls and fins by **conduction**. Air flowing through the radiator carries it away by **convection** (helped by a fan). The radiator also emits some **radiation**, but most of the energy leaves by convection.
+
+</Step>
+
+<Step kind="learn" title="Energy balance (Extended)" minutes={12}>
+
+An object **receives** energy (for example from the Sun) and **transfers** energy away (for example by radiation).
+
+- If it receives energy **at the same rate** as it transfers energy away, its temperature stays **constant**.
+- If it receives energy **faster** than it transfers it away, its temperature **goes up**. A hotter object emits faster, so it soon reaches a new balance at a higher temperature.
+- If it receives energy **more slowly** than it transfers it away, its temperature **goes down**.
+
+<Figure svg={earthBalanceSvg()} caption="The Earth receives radiation from the Sun and emits infrared radiation into space." width="30rem" />
+
+**The Earth:**
+
+- The Earth receives radiation from the Sun. It emits infrared radiation into space.
+- **Greenhouse gases** in the atmosphere (for example carbon dioxide, methane, water vapour) absorb some of the infrared from the Earth and emit some of it back towards the surface.
+- More greenhouse gases: less energy escapes, so the Earth's temperature goes up until a new balance is reached. This is **global warming**.
+- Other factors: **clouds**, **ice and snow** (they reflect sunlight), and the energy from the Sun.
+
+</Step>
+
+<Step kind="practice" title="Quick check" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A metal plate in the sun gets energy at 50 W and loses energy at 50 W. What happens to its temperature?',
+    options: [
+      { text: 'It stays the same', correct: true, why: 'Energy in = energy out, at the same rate.' },
+      { text: 'It goes up', why: 'It goes up only if it gets energy faster than it loses it.' },
+      { text: 'It goes down', why: 'It goes down only if it loses energy faster than it gets it.' },
+      { text: 'It becomes 50 °C', why: 'The rates are equal, so the temperature stays constant.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Unit test" minutes={33}>
+
+Questions marked **(E)** are for Extended students.
+
+<Quiz questions={[
+  {
+    question: '1. Which expands the most when heated by the same amount?',
+    options: [
+      { text: 'a gas', correct: true, why: 'Gases expand much more than liquids and solids.' },
+      { text: 'a solid', why: 'Solids expand the least.' },
+      { text: 'a liquid', why: 'A gas expands more.' },
+      { text: 'they all expand the same', why: 'Gases expand the most.' },
+    ],
+  },
+  {
+    question: '2. What happens to the internal energy of an object when its temperature goes up?',
+    options: [
+      { text: 'It goes up', correct: true, why: 'Higher temperature, more internal energy.' },
+      { text: 'It goes down', why: 'It goes up.' },
+      { text: 'It stays the same', why: 'The temperature changes, so the internal energy changes.' },
+      { text: 'It becomes zero', why: 'It goes up.' },
+    ],
+  },
+  {
+    question: '3. While water boils, its temperature…',
+    options: [
+      { text: 'stays at 100 °C', correct: true, why: 'The energy separates the particles.' },
+      { text: 'keeps going up', why: 'It stays at the boiling point.' },
+      { text: 'goes down', why: 'It stays at the boiling point.' },
+      { text: 'stays at 0 °C', why: '0 °C is the melting point.' },
+    ],
+  },
+  {
+    question: '4. Why does evaporation cool a liquid?',
+    options: [
+      { text: 'The fastest particles escape, so the average kinetic energy of the rest goes down', correct: true, why: 'Lower average kinetic energy: lower temperature.' },
+      { text: 'Cold air enters the liquid', why: 'The fastest particles leave.' },
+      { text: 'The slowest particles escape', why: 'The fastest ones escape.' },
+      { text: 'The liquid boils', why: 'Evaporation is not boiling.' },
+    ],
+  },
+  {
+    question: '5. Why is a saucepan handle made of plastic?',
+    options: [
+      { text: 'Plastic is a thermal insulator', correct: true, why: 'It conducts energy badly, so the handle stays cool.' },
+      { text: 'Plastic is a good conductor', why: 'Plastic is an insulator.' },
+      { text: 'Plastic reflects radiation', why: 'The reason is conduction.' },
+      { text: 'Plastic makes convection currents', why: 'The reason is conduction.' },
+    ],
+  },
+  {
+    question: '6. Why does warm air rise?',
+    options: [
+      { text: 'It is less dense than the cooler air around it', correct: true, why: 'This causes convection currents.' },
+      { text: 'Its particles are lighter', why: 'The particles are the same, but further apart.' },
+      { text: 'Heat rises', why: 'Warm air rises because its density is lower.' },
+      { text: 'It is denser', why: 'Warm air is less dense.' },
+    ],
+  },
+  {
+    question: '7. Which surface is the best emitter of infrared radiation?',
+    options: [
+      { text: 'matt black', correct: true, why: 'The best absorber is also the best emitter.' },
+      { text: 'shiny silver', why: 'Shiny surfaces are the worst emitters.' },
+      { text: 'shiny white', why: 'Matt black is the best.' },
+      { text: 'matt white', why: 'Matt black is better.' },
+    ],
+  },
+  {
+    question: '8. (E) How much energy is needed to heat 0.50 kg of water from 20 °C to 100 °C? ($c = 4200\\,\\text{J/(kg}\\,^\\circ\\text{C)}$)',
+    options: [
+      { text: '168 000 J', correct: true, why: '$0.50 \\times 4200 \\times 80 = 168\\,000\\,\\text{J}$.' },
+      { text: '210 000 J', why: 'Use the change in temperature: 80 °C.' },
+      { text: '2100 J', why: 'Multiply by the change in temperature too.' },
+      { text: '42 000 J', why: 'Check: $0.50 \\times 4200 \\times 80$.' },
+    ],
+  },
+  {
+    question: '9. (E) Why are metals better thermal conductors than glass?',
+    options: [
+      { text: 'They have free electrons that carry energy quickly', correct: true, why: 'Glass passes energy only by vibrations.' },
+      { text: 'Their particles do not vibrate', why: 'All solids have vibrating particles.' },
+      { text: 'They are always hotter', why: 'The reason is the free electrons.' },
+      { text: 'Glass has free electrons', why: 'Metals have free electrons.' },
+    ],
+  },
+  {
+    question: '10. (E) The Earth receives energy from the Sun faster than it emits energy into space. What happens?',
+    options: [
+      { text: 'Its temperature rises until it emits at the same rate', correct: true, why: 'A hotter surface emits faster, so a new balance is reached.' },
+      { text: 'Its temperature falls', why: 'It gets more energy than it loses, so it warms.' },
+      { text: 'Nothing changes', why: 'The rates are not equal, so the temperature changes.' },
+      { text: 'It stops emitting radiation', why: 'All objects emit radiation.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** everyday applications (2.3.4 C1) are Core. Fires and car radiators (2.3.4 S2) and energy balance (2.3.3 S4–S6) are Extended.
+
+**Timing:** review 10 min, energy balance 12 min, quick check 5 min, unit test 33 min. Core students can use the energy-balance time to revise lessons 1–8.
+
+**Using the test:** questions 1–7 test Core content; 8–10 are Extended.
+
+**About the greenhouse effect:** keep to the syllabus idea of balance between incoming and outgoing radiation. Avoid the common wrong model "greenhouse gases reflect heat like a mirror". They absorb infrared and emit it again in all directions, including back towards the Earth.
+
+**Common mistakes:**
+
+- "A car radiator works mainly by radiation." Most of the energy leaves by convection.
+- "Constant temperature means no energy transfer." It means energy in = energy out.
+
+**Differentiation:**
+
+- Support: before the test, give the three-column table (conduction / convection / radiation) to complete.
+- Stretch: a vacuum flask has a vacuum between two glass walls, and shiny walls. Explain how it reduces conduction, convection and radiation.
+
+</Step>

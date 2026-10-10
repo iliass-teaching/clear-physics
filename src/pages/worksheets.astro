@@ -1,0 +1,206 @@
+---
+import Base from '../layouts/Base.astro';
+import { lessonUrl, url } from '../lib/url';
+import { practiceGroups, tagText } from '../lib/practiceTopics';
+
+const groups = await practiceGroups();
+---
+
+<Base title="Worksheets" description="Make printable physics worksheets: choose the topics and levels, and give each student different numbers. The answers are printed at the end." wide>
+  <div class="no-print">
+    <h1>Printable worksheets</h1>
+    <p class="lead">
+      Choose topics and levels. Each student gets a different version, with new numbers.
+      The answers for every version are printed at the end.
+    </p>
+    <p class="small muted">
+      The questions come from the <a href={url('practice/')}>Practice</a> page. Write down the code: the same code always gives the same sheets.
+    </p>
+
+    <form class="ws-form" id="ws-form">
+      <fieldset class="settings">
+        <legend>Settings</legend>
+        <label class="wide">Title <input type="text" name="title" value="Physics worksheet" maxlength="80" /></label>
+        <label>Questions for each level
+          <select name="perLevel">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+        <label>Versions (students) <input type="number" name="versions" min="1" max="40" value="1" /></label>
+        <label>Answers
+          <select name="answers">
+            <option value="answers" selected>answers only</option>
+            <option value="solutions">answers and worked solutions</option>
+            <option value="none">no answers</option>
+          </select>
+        </label>
+        <label>Code
+          <span class="code-row">
+            <input type="number" name="code" min="0" max="999999" value="1000" />
+            <button type="button" class="secondary" data-act="new-code">New code</button>
+          </span>
+        </label>
+        <label class="check"><input type="checkbox" name="mix" checked /> Mix the order of the questions</label>
+        <label class="check"><input type="checkbox" name="working" checked /> Space for working</label>
+      </fieldset>
+
+      <div class="bar">
+        <p class="count" data-count aria-live="polite"></p>
+        <button type="button" class="secondary" data-act="clear-all">Clear all</button>
+        <button type="button" data-print>Print</button>
+      </div>
+
+      <div class="units">
+        {
+          groups.map((g) => (
+            <fieldset class="unit" data-unit={g.unit.number}>
+              <legend>
+                <span class="unit-num">Unit {g.unit.number}</span> {g.unit.title}
+              </legend>
+              <div class="unit-acts">
+                <button type="button" class="secondary small-btn" data-act="unit-all">All levels</button>
+                <button type="button" class="secondary small-btn" data-act="unit-none">None</button>
+              </div>
+              <ul>
+                {g.items.map((it) => (
+                  <li>
+                    <span class="name">
+                      <a href={lessonUrl(it.use.unit, it.use.lesson)} title={`Taught in Unit ${it.use.unit}, lesson ${it.use.lesson}: ${it.use.title}`}>{it.topic.title}</a>
+                      {it.level !== 'core' && <span class={`tag ${it.level === 'extended' ? 'ext' : 'mix'}`}>{tagText[it.level]}</span>}
+                    </span>
+                    <span class="levels">
+                      {it.topic.levels.map((lv, i) => (
+                        <label title={lv.description}>
+                          <input type="checkbox" data-topic={it.id} data-level={i + 1} />
+                          <span>{i + 1}</span>
+                          <span class="sr-only">{`${it.topic.title}, ${lv.name}: ${lv.description}`}</span>
+                        </label>
+                      ))}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </fieldset>
+          ))
+        }
+      </div>
+    </form>
+
+    <h2>Preview</h2>
+    <p class="small muted">This is what will be printed. Each version starts on a new page.</p>
+  </div>
+
+  <div class="ws-out" id="ws-out"></div>
+</Base>
+
+<script>
+  import { mountWorksheet } from '../scripts/worksheet';
+
+  mountWorksheet(document.querySelector<HTMLFormElement>('#ws-form')!, document.querySelector<HTMLElement>('#ws-out')!);
+</script>
+
+<style>
+  .lead { font-size: 1.1rem; max-width: 46rem; }
+  .ws-form { margin: 1.5rem 0 2rem; }
+  fieldset { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); margin: 0 0 1rem; padding: 0.8rem 1rem 1rem; min-width: 0; }
+  legend { font-weight: 700; padding: 0 0.4rem; }
+  .settings { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr)); gap: 0.8rem 1.2rem; }
+  .settings label { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.9rem; font-weight: 600; }
+  .settings label.wide { grid-column: 1 / -1; }
+  .settings label.check { flex-direction: row; align-items: center; gap: 0.5rem; font-weight: 400; }
+  .settings input[type='text'], .settings input[type='number'], .settings select {
+    font: inherit; font-weight: 400; padding: 0.35rem 0.5rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); min-width: 0;
+  }
+  .code-row { display: flex; gap: 0.5rem; }
+  .code-row input { width: 7rem; }
+  .bar {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.8rem;
+    padding: 0.6rem 0.8rem; margin: 0 0 1rem;
+    background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius);
+  }
+  .count { margin: 0 auto 0 0; font-weight: 600; }
+  .count.warn { color: var(--bad); }
+  .units { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(21rem, 100%), 1fr)); gap: 0 1rem; align-items: start; }
+  .unit legend { font-size: 0.95rem; }
+  .unit-num { color: var(--accent); font-size: 0.8rem; margin-right: 0.2rem; }
+  .unit-acts { display: flex; gap: 0.4rem; margin: 0 0 0.4rem; }
+  .small-btn { font-size: 0.78rem; padding: 0.15rem 0.6rem; }
+  .unit ul { list-style: none; margin: 0; padding: 0; }
+  .unit li { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; padding: 0.3rem 0; border-top: 1px solid var(--line); font-size: 0.92rem; }
+  .name { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem 0.4rem; }
+  .name a { color: var(--ink); text-decoration: none; }
+  .name a:hover { color: var(--accent); text-decoration: underline; }
+  .name .tag { font-size: 0.65rem; }
+  :global(.tag.mix) { background: var(--surface-2); color: var(--ink-soft); border: 1px solid var(--line); }
+  .levels { display: flex; gap: 0.25rem; flex-shrink: 0; }
+  .levels label { position: relative; cursor: pointer; }
+  .levels input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+  .levels label > span:not(.sr-only) {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 1.9rem; height: 1.9rem; border-radius: 6px;
+    border: 1px solid var(--line); background: var(--bg); color: var(--ink-soft); font-weight: 700; font-size: 0.85rem;
+  }
+  .levels input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+  .levels input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* The sheets: on screen they look like pages; in print, only they are shown. */
+  .ws-out :global(.ws-sheet), .ws-out :global(.ws-key) {
+    background: #fff; color: #1f2430; border: 1px solid var(--line); border-radius: 4px;
+    padding: 1.6rem 1.8rem; margin: 0 auto 1.5rem; max-width: 46rem; font-size: 15px; line-height: 1.5;
+  }
+  .ws-out :global(.ws-head) { border-bottom: 2px solid #1f2430; margin-bottom: 1em; padding-bottom: 0.6em; }
+  .ws-out :global(.ws-head h2) { margin: 0; font-size: 1.4em; color: #1f2430; }
+  .ws-out :global(.ws-ver) { margin: 0.1em 0 0.6em; font-size: 0.8em; color: #5b6372; }
+  .ws-out :global(.ws-who) { display: flex; flex-wrap: wrap; gap: 0.6em 1.5em; margin: 0.4em 0; }
+  .ws-out :global(.ws-rules) { margin: 0.4em 0 0; font-size: 0.85em; color: #5b6372; }
+  .ws-out :global(.ws-line) { display: inline-block; width: 11em; border-bottom: 1px solid #1f2430; height: 1em; vertical-align: baseline; }
+  .ws-out :global(.ws-line.short) { width: 5em; }
+  .ws-out :global(.ws-list) { padding-left: 1.6em; margin: 0; }
+  .ws-out :global(.ws-q) { break-inside: avoid; page-break-inside: avoid; padding: 0.6em 0 0.9em; border-bottom: 1px dashed #c9c4b8; }
+  .ws-out :global(.ws-q:last-child) { border-bottom: 0; }
+  .ws-out :global(.ws-q::marker) { font-weight: 700; }
+  .ws-out :global(.ws-text) { margin: 0 0 0.4em; }
+  .ws-out :global(.ws-figure) { max-width: 22em; margin: 0.3em 0 0.5em; }
+  .ws-out :global(.ws-data) { display: grid; grid-template-columns: auto 1fr; gap: 0.1em 0.8em; font-size: 0.92em; }
+  .ws-out :global(.ws-data ul) { margin: 0; padding-left: 1em; }
+  .ws-out :global(.ws-data p) { margin: 0; }
+  .ws-out :global(.ws-working) { border: 1px solid #c9c4b8; border-radius: 4px; height: 6.5em; margin: 0.5em 0; padding: 0.2em 0.5em; }
+  .ws-out :global(.ws-working span) { font-size: 0.75em; color: #8a909b; }
+  .ws-out :global(.ws-answer) { margin: 0.5em 0 0; }
+  .ws-out :global(.ws-key h2) { margin: 0 0 0.6em; font-size: 1.3em; color: #1f2430; }
+  .ws-out :global(.ws-key h3) { margin: 0.8em 0 0.3em; font-size: 1em; color: #1f2430; }
+  .ws-out :global(.ws-key-version) { break-inside: avoid; page-break-inside: avoid; }
+  .ws-out :global(.ws-key ol) { margin: 0; padding-left: 1.6em; }
+  .ws-out :global(.ws-topic) { font-size: 0.8em; color: #5b6372; margin-left: 0.4em; }
+  .ws-out :global(.ws-solution) { font-size: 0.85em; color: #3a404c; margin: 0.1em 0 0.4em; }
+  /* Figures use the site colours: keep them readable on the white sheet in dark mode. */
+  .ws-out :global(.ws-sheet), .ws-out :global(.ws-key) {
+    --ink: #1f2430; --ink-soft: #5b6372; --line: #e4e0d5; --accent: #1d4e89; --exit: #b3402e;
+    --bg: #ffffff; --surface: #ffffff; --surface-2: #f3f1ea; --good: #2f7d4f;
+  }
+
+  /* On wide screens the bar stays visible under the site header while you choose topics. */
+  @media (min-width: 900px) {
+    .bar { position: sticky; top: 4.2rem; z-index: 5; }
+  }
+
+  @media (max-width: 600px) {
+    .ws-out :global(.ws-sheet), .ws-out :global(.ws-key) { padding: 1rem; }
+    .ws-out :global(.ws-line) { width: 8rem; }
+  }
+
+  @media print {
+    .no-print { display: none !important; }
+    .ws-out :global(.ws-sheet), .ws-out :global(.ws-key) {
+      border: 0; border-radius: 0; padding: 0; margin: 0; max-width: none; font-size: 11pt;
+    }
+    .ws-out :global(.ws-sheet + .ws-sheet), .ws-out :global(.ws-key) { break-before: page; page-break-before: always; }
+    .ws-out :global(.ws-working) { height: 2.8cm; }
+    .ws-out :global(.ws-figure) { max-width: 8cm; }
+    .ws-out :global(.ws-key.compact) { columns: 2; column-gap: 1.2cm; }
+    .ws-out :global(.ws-key.compact h2) { column-span: all; }
+  }
+</style>

@@ -1,0 +1,142 @@
+---
+unit: 18
+lesson: 2
+title: Equations and units
+syllabus: ['all topics']
+goals:
+  - Learn all the equations you must recall, with their units.
+  - Convert units with prefixes (milli, kilo, mega…) and standard form.
+keyWords: [equation, unit, quantity]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import EquationSheet from '../../../components/EquationSheet.astro';
+
+<Step kind="starter" title="Equation race" minutes={7}>
+
+In 3 minutes, write down as many physics equations as you can remember, from all the units. Then count: how many did you remember? The full list has more than 40.
+
+</Step>
+
+<Step kind="learn" title="All the equations" minutes={15}>
+
+You must **recall** these equations: they are not given in the exam. Core students need only the equations without the "Extended" label.
+
+<EquationSheet />
+
+**How to learn them:** make flashcards (equation on one side, words and units on the other); test a partner; say them aloud in words ("pressure equals force over area").
+
+</Step>
+
+<Step kind="learn" title="Prefixes and conversions" minutes={10}>
+
+<div class="table-wrap">
+
+| Prefix | Symbol | Meaning | Example |
+|---|---|---|---|
+| nano | n | $10^{-9}$ | 500 nm $= 5 \times 10^{-7}$ m |
+| micro | µ | $10^{-6}$ | 20 µs $= 2 \times 10^{-5}$ s |
+| milli | m | $10^{-3}$ | 250 mA $= 0.25$ A |
+| kilo | k | $10^{3}$ | 2.3 kW $= 2300$ W |
+| mega | M | $10^{6}$ | 100 MHz $= 1.0 \times 10^8$ Hz |
+| giga | G | $10^{9}$ | 2.4 GHz $= 2.4 \times 10^9$ Hz |
+
+</div>
+
+**Areas and volumes:** $1\,\text{m}^2 = 10\,000\,\text{cm}^2$; $1\,\text{m}^3 = 1\,000\,000\,\text{cm}^3$. (1 m = 100 cm, so square it or cube it.)
+
+**Time:** 1 h = 60 min = 3600 s.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={20}>
+
+### Unit prefixes
+
+<Practice topic="multiples" level={2} />
+
+### Which equation?
+
+<Quiz questions={[
+  {
+    question: 'You know the force on an area, and the area. Which equation gives the pressure?',
+    options: [
+      { text: '$p = \\dfrac{F}{A}$', correct: true, why: 'Pressure = force ÷ area.' },
+      { text: '$p = mv$', why: 'Here $p$ is momentum.' },
+      { text: '$P = IV$', why: 'This is electrical power.' },
+      { text: '$\\Delta p = \\rho g \\Delta h$', why: 'This is for pressure in a liquid.' },
+    ],
+  },
+  {
+    question: 'You know the current and the time. Which quantity can you find with one equation (Extended)?',
+    options: [
+      { text: 'the charge: $Q = It$', correct: true, why: '$I = \\dfrac{Q}{t}$.' },
+      { text: 'the p.d.', why: 'You need more information.' },
+      { text: 'the resistance', why: 'You need V and I.' },
+      { text: 'the power', why: 'You need V too.' },
+    ],
+  },
+  {
+    question: 'Which equation links wave speed, frequency and wavelength?',
+    options: [
+      { text: '$v = f\\lambda$', correct: true, why: 'For all waves.' },
+      { text: '$v = \\dfrac{s}{t}$', why: 'This is for speed in general, not frequency and wavelength.' },
+      { text: '$n = \\dfrac{\\sin i}{\\sin r}$', why: 'This is the refractive index.' },
+      { text: '$E = IVt$', why: 'This is electrical energy.' },
+    ],
+  },
+  {
+    question: 'What is 2.5 kW in watts?',
+    options: [
+      { text: '2500 W', correct: true, why: 'kilo = 1000.' },
+      { text: '250 W', why: 'kilo means × 1000.' },
+      { text: '0.0025 W', why: 'Multiply by 1000.' },
+      { text: '25 000 W', why: 'Multiply by 1000, not 10 000.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={8}>
+
+<Quiz questions={[
+  {
+    question: 'What is $1\\,\\text{m}^3$ in $\\text{cm}^3$?',
+    options: [
+      { text: '1 000 000 cm³', correct: true, why: '$100 \\times 100 \\times 100$.' },
+      { text: '100 cm³', why: 'Cube 100: $100^3$.' },
+      { text: '1000 cm³', why: 'That is 1 litre (1 dm³).' },
+      { text: '10 000 cm³', why: 'That is for m² to cm².' },
+    ],
+  },
+  {
+    question: 'Which unit goes with $c = \\dfrac{\\Delta E}{m\\Delta\\theta}$?',
+    options: [
+      { text: 'J/(kg °C)', correct: true, why: 'Joules per kilogram per degree.' },
+      { text: 'J', why: 'That is the unit of energy only.' },
+      { text: 'W', why: 'That is power.' },
+      { text: 'kg/m³', why: 'That is density.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Source:** the equation list was made from every "recall and use" learning point of the syllabus. The "Values to know" come from the syllabus too (for example $g \approx 9.8$ m/s², 330–350 m/s for sound). The mathematical requirements (section 4 of the syllabus) include unit conversions such as cm³ to m³.
+
+**Timing:** starter 7 min, equations 15 min, prefixes 10 min, practice 20 min, exit ticket 8 min.
+
+**Tip:** give each student a printed equation sheet without the equations (only the words) to complete from memory, once a week until the exam.
+
+**Common mistakes:**
+
+- Using the same letter for two quantities: $p$ (pressure, momentum), $P$ (power), $E$ (energy, e.m.f.). Look at the context.
+- Converting cm² or cm³ with 100 instead of 10 000 or 1 000 000.
+
+</Step>

@@ -1,0 +1,165 @@
+---
+unit: 17
+lesson: 7
+title: The life cycle of a star
+syllabus: ['6.2.2 S3']
+goals:
+  - Describe how a star forms from a cloud of gas and dust.
+  - Explain why a stable star does not collapse.
+  - Describe the end of a star, for a less massive star and for a very massive star.
+keyWords: [protostar, nuclear fusion, supernova]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { starLifeSvg } from '../../../lib/spaceFigures';
+
+<Step kind="starter" title="Stars do not live forever" minutes={5}>
+
+A star uses hydrogen as fuel.
+
+What do you think happens when a star runs out of fuel? Write one idea. Then compare with your partner.
+
+</Step>
+
+<Step kind="learn" title="Birth of a star" minutes={10}>
+
+1. A star forms from a **cloud of gas and dust** in space (a **nebula**). The cloud contains hydrogen.
+2. Gravity pulls the cloud together. It collapses and gets hotter. This is a **protostar**.
+3. The centre becomes very hot. Nuclear fusion starts: hydrogen fuses into helium. The star is now a **stable star**.
+
+**Why is a stable star stable?** Two forces balance:
+
+- **inwards:** the gravitational attraction of the star’s own material;
+- **outwards:** a force caused by the very high temperature in the centre of the star.
+
+When these two forces are equal, the star does not get bigger or smaller.
+
+</Step>
+
+<Step kind="learn" title="The end of a star" minutes={10}>
+
+All stars run out of hydrogen in the end. Then:
+
+- **Most stars** expand and become **red giants**.
+- **Very massive stars** expand and become **red supergiants**.
+
+<Figure svg={starLifeSvg()} caption="The life cycle of a star." width="38rem" />
+
+**A less massive star** (like the Sun): the red giant forms a **planetary nebula** (a shell of gas), with a **white dwarf** star at its centre.
+
+**A very massive star:** the red supergiant explodes as a **supernova**. This makes a nebula that contains hydrogen and **new, heavier elements**. A **neutron star** or a **black hole** is left at the centre.
+
+The nebula from a supernova can form **new stars, with planets**. The elements in your body, like the carbon and the oxygen, were made in stars.
+
+</Step>
+
+<Step kind="do" title="Life cycle cards" minutes={15}>
+
+Work in pairs. Your teacher gives you these cards. Make **two** life cycles: one for the Sun, and one for a very massive star.
+
+<div class="card">
+
+cloud of gas and dust · protostar · stable star · red giant · red supergiant · planetary nebula and white dwarf · supernova · neutron star or black hole
+
+</div>
+
+Some cards are used in both life cycles. Write them twice.
+
+Then write the **biography of the Sun** in 5 sentences: from its birth to its end.
+*Start like this: "The Sun was born in a cloud of gas and dust. Gravity …"*
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={15}>
+
+<Quiz questions={[
+  {
+    question: 'What is a protostar?',
+    options: [
+      { text: 'a cloud that collapses and gets hotter because of gravity', correct: true, why: 'Gravity pulls the cloud together and its temperature increases.' },
+      { text: 'a star at the end of its life', why: 'A protostar is at the start of the life of a star.' },
+      { text: 'a very small planet', why: 'A protostar becomes a star.' },
+      { text: 'the explosion of a star', why: 'This is a supernova.' },
+    ],
+  },
+  {
+    question: 'In a stable star, which two things balance?',
+    options: [
+      { text: 'gravity inwards and a force due to the high temperature outwards', correct: true, why: 'When these are equal, the star does not grow or shrink.' },
+      { text: 'gravity and magnetism', why: 'The outward force is due to the high temperature in the centre.' },
+      { text: 'the light and the heat of the star', why: 'Think about forces: gravity inwards, and a force due to the high temperature outwards.' },
+      { text: 'hydrogen and helium', why: 'These are elements, not forces.' },
+    ],
+  },
+  {
+    question: 'What will happen to the Sun at the end of its life?',
+    options: [
+      { text: 'red giant, then planetary nebula and white dwarf', correct: true, why: 'The Sun is a less massive star.' },
+      { text: 'red supergiant, then supernova', why: 'Only very massive stars become supernovae.' },
+      { text: 'it becomes a black hole', why: 'The Sun is not massive enough.' },
+      { text: 'it lives forever', why: 'All stars run out of hydrogen in the end.' },
+    ],
+  },
+  {
+    question: 'What is left at the centre after a supernova?',
+    options: [
+      { text: 'a neutron star or a black hole', correct: true, why: 'This is what the syllabus describes.' },
+      { text: 'a white dwarf', why: 'A white dwarf is left by a less massive star.' },
+      { text: 'a protostar', why: 'A protostar is the start of a star.' },
+      { text: 'nothing at all', why: 'A neutron star or a black hole is left.' },
+    ],
+  },
+  {
+    question: 'Why is a supernova important for new planets?',
+    options: [
+      { text: 'It makes heavier elements that can form new stars and planets', correct: true, why: 'The nebula contains hydrogen and new heavier elements.' },
+      { text: 'It pushes planets into new orbits', why: 'The important part is the new heavier elements.' },
+      { text: 'It turns into a planet', why: 'The nebula can form new stars with planets.' },
+      { text: 'It is not important', why: 'The heavy elements on the Earth were made in stars and supernovae.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+Put these in order for a **very massive star**:
+
+*supernova · stable star · cloud of gas and dust · red supergiant · protostar · black hole*
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Make a poster of the two life cycles. Use one colour for the Sun and another colour for a very massive star.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**This lesson is Extended content** (6.2.2 S3). Core students can use it as enrichment: the ideas help them understand Lesson 4 (where the elements come from).
+
+**Timing:** starter 5 min, learn 20 min, cards 15 min, check 15 min, exit ticket 5 min.
+
+**Exit ticket answer:** cloud of gas and dust → protostar → stable star → red supergiant → supernova → black hole.
+
+**Common mistakes:**
+
+- "All stars explode." Only very massive stars become supernovae.
+- "A planetary nebula has planets in it." The name is historical: it is a shell of gas.
+- Thinking the star is "on fire".
+
+**Language support:**
+
+- The two branches use similar words: *giant / supergiant*, *white dwarf / neutron star*. Put them side by side on the board.
+
+**Differentiation:**
+
+- Support: give the stable star card already in place.
+- Stretch: why does a massive star have a shorter life than the Sun, even though it has more fuel? (It uses its fuel much faster.)
+
+</Step>

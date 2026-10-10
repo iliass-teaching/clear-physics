@@ -1,0 +1,132 @@
+---
+// Virtual oscilloscope: a microphone picks up a sound and shows it as a wave on a screen.
+// The student changes the frequency (pitch) and the amplitude (loudness), and can play the sound.
+// The screen shows 10 ms of time, so the number of waves on the screen = frequency ÷ 100.
+---
+
+<div class="sound-sim" data-sound-sim>
+  <svg viewBox="0 0 600 240" role="img" aria-label="An oscilloscope screen showing a sound wave">
+    <rect class="screen" x="0" y="0" width="600" height="240" rx="10" />
+    <g class="grid"></g>
+    <path class="trace" d="" />
+  </svg>
+
+  <div class="controls">
+    <label>
+      frequency <input type="range" class="freq" min="100" max="2000" step="50" value="400" />
+      <output class="freq-out">400 Hz</output>
+    </label>
+    <label>
+      amplitude <input type="range" class="amp" min="1" max="10" step="1" value="5" />
+      <output class="amp-out">5</output>
+    </label>
+    <button type="button" class="play">Play the sound</button>
+  </div>
+  <p class="readout"></p>
+  <p class="small muted">The screen shows 10 milliseconds (0.01 s). Use headphones or a quiet volume. The sound stops after 3 seconds.</p>
+</div>
+
+<script>
+  const W = 600;
+  const H = 240;
+
+  document.querySelectorAll<HTMLElement>('[data-sound-sim]').forEach((root) => {
+    const q = <T extends Element>(s: string) => root.querySelector<T>(s)!;
+    const trace = q<SVGPathElement>('.trace');
+    const grid = q<SVGGElement>('.grid');
+    const freq = q<HTMLInputElement>('.freq');
+    const amp = q<HTMLInputElement>('.amp');
+    const play = q<HTMLButtonElement>('.play');
+    let ctx: AudioContext | null = null;
+    let osc: OscillatorNode | null = null;
+    let gain: GainNode | null = null;
+    let stopTimer = 0;
+
+    // Grid: 10 columns (1 ms each), 8 rows.
+    const NS = 'http://www.w3.org/2000/svg';
+    for (let i = 1; i < 10; i++) {
+      const l = document.createElementNS(NS, 'line');
+      l.setAttribute('x1', String((W / 10) * i));
+      l.setAttribute('x2', String((W / 10) * i));
+      l.setAttribute('y1', '0');
+      l.setAttribute('y2', String(H));
+      grid.appendChild(l);
+    }
+    for (let j = 1; j < 8; j++) {
+      const l = document.createElementNS(NS, 'line');
+      l.setAttribute('x1', '0');
+      l.setAttribute('x2', String(W));
+      l.setAttribute('y1', String((H / 8) * j));
+      l.setAttribute('y2', String((H / 8) * j));
+      grid.appendChild(l);
+    }
+
+    function draw(): void {
+      const f = Number(freq.value);
+      const a = Number(amp.value);
+      q<HTMLOutputElement>('.freq-out').textContent = `${f} Hz`;
+      q<HTMLOutputElement>('.amp-out').textContent = String(a);
+      const A = a * 10; // px
+      const pts: string[] = [];
+      for (let x = 0; x <= W; x += 1) {
+        const t = (x / W) * 0.01; // seconds
+        pts.push(`${x},${(H / 2 - A * Math.sin(2 * Math.PI * f * t)).toFixed(1)}`);
+      }
+      trace.setAttribute('d', `M${pts.join(' L')}`);
+      q<HTMLElement>('.readout').innerHTML =
+        `<strong>${(f / 100).toFixed(1)}</strong> waves on the screen · higher frequency → <strong>higher pitch</strong> · bigger amplitude → <strong>louder</strong>`;
+      if (osc && ctx) osc.frequency.setValueAtTime(f, ctx.currentTime);
+      if (gain && ctx) gain.gain.setValueAtTime(0.012 * a, ctx.currentTime);
+    }
+
+    function stop(): void {
+      if (osc && gain && ctx) {
+        gain.gain.setTargetAtTime(0, ctx.currentTime, 0.05);
+        const o = osc;
+        setTimeout(() => o.stop(), 200);
+      }
+      osc = null;
+      play.textContent = 'Play the sound';
+    }
+
+    play.addEventListener('click', () => {
+      if (osc) {
+        stop();
+        return;
+      }
+      ctx ??= new AudioContext();
+      osc = ctx.createOscillator();
+      gain = ctx.createGain();
+      osc.type = 'sine';
+      gain.gain.value = 0;
+      osc.connect(gain).connect(ctx.destination);
+      osc.start();
+      draw();
+      play.textContent = 'Stop';
+      clearTimeout(stopTimer);
+      stopTimer = window.setTimeout(stop, 3000);
+    });
+
+    freq.addEventListener('input', draw);
+    amp.addEventListener('input', draw);
+    draw();
+  });
+</script>
+
+<style>
+  .sound-sim {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  svg { width: 100%; max-width: 36rem; height: auto; display: block; margin: 0 auto; }
+  .screen { fill: #10261a; }
+  .grid :global(line) { stroke: #2f5a40; stroke-width: 1; }
+  .trace { fill: none; stroke: #7dff9a; stroke-width: 2.5; }
+  .controls { display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem; align-items: center; margin-top: 0.8rem; }
+  .controls label { display: flex; align-items: center; gap: 0.5rem; }
+  .controls output { font-variant-numeric: tabular-nums; min-width: 4rem; }
+  .readout { margin: 0.8rem 0 0.2rem; }
+</style>

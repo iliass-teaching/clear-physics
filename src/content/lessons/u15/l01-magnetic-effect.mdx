@@ -1,0 +1,154 @@
+---
+unit: 15
+lesson: 1
+title: The magnetic effect of a current
+syllabus: ['4.5.3 C1', '4.5.3 C2', '4.5.3 S4', '4.5.3 S5']
+goals:
+  - Describe the magnetic field around a straight wire and around a solenoid.
+  - Describe an experiment to find the pattern and direction of these fields.
+  - 'Extended: describe how the field changes with distance, and with the size and direction of the current.'
+keyWords: [magnetic field, field line, solenoid, compass, electric current]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { wireFieldSvg, solenoidSvg } from '../../../lib/emEffectsFigures';
+
+<Step kind="starter" title="Ørsted's compass" minutes={5}>
+
+In 1820, Hans Christian Ørsted noticed that a compass needle moved when he switched on a current in a nearby wire. What does this tell you about an electric current?
+
+</Step>
+
+<Step kind="learn" title="A straight wire" minutes={14}>
+
+A current in a wire makes a **magnetic field** around it.
+
+<Figure svg={wireFieldSvg()} caption="The field around a straight wire, seen from above. ⊙: current out of the page; ⊗: current into the page." width="34rem" />
+
+- The field lines are **circles** around the wire.
+- **Direction: the right-hand grip rule.** Hold the wire in your right hand, with your thumb pointing in the direction of the (conventional) current. Your fingers curl in the direction of the field.
+
+**Extended:**
+
+- The field is **strongest close to the wire**. Further away, it gets weaker: the circles are further apart.
+- A **bigger current** gives a **stronger** field.
+- **Reversing the current** reverses the direction of the field.
+
+</Step>
+
+<Step kind="learn" title="A solenoid" minutes={12}>
+
+A **solenoid** is a long coil of wire.
+
+<Figure svg={solenoidSvg()} caption="The field of a solenoid is like the field of a bar magnet." width="34rem" />
+
+- Outside, the field is like the field of a **bar magnet**: one end is a N pole, the other end is a S pole.
+- **Inside**, the field is **strong** and almost **uniform** (parallel, equally spaced lines).
+- Reversing the current swaps the N and S poles.
+
+**Extended:** the field gets **stronger** with a bigger current and with more turns. It is strongest inside the solenoid.
+
+</Step>
+
+<Step kind="do" title="Find the patterns" minutes={16}>
+
+**Straight wire:** push a thick wire vertically through the middle of a horizontal card. Connect it to a low-voltage supply (a few amps; switch on only for a few seconds).
+
+1. Sprinkle iron filings on the card and tap it. What pattern do you see?
+2. Put 4 plotting compasses around the wire. Which way do they point? Reverse the current. What changes?
+
+**Solenoid:** wind a coil around a cardboard tube (or use a ready-made solenoid on a card).
+
+3. Use iron filings and plotting compasses again. Which end is the N pole? Reverse the current and check.
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={8}>
+
+<Quiz questions={[
+  {
+    question: 'What is the shape of the magnetic field around a straight wire?',
+    options: [
+      { text: 'circles around the wire', correct: true, why: 'Concentric circles.' },
+      { text: 'straight lines along the wire', why: 'The field goes around the wire.' },
+      { text: 'like a bar magnet', why: 'That is a solenoid.' },
+      { text: 'there is no field', why: 'A current always makes a magnetic field.' },
+    ],
+  },
+  {
+    question: 'The current in a solenoid is reversed. What happens?',
+    options: [
+      { text: 'The N and S poles swap', correct: true, why: 'The field reverses.' },
+      { text: 'The field disappears', why: 'It reverses.' },
+      { text: 'The field gets stronger', why: 'It reverses; the strength stays the same.' },
+      { text: 'Nothing', why: 'The field reverses.' },
+    ],
+  },
+  {
+    question: 'Extended: where is the field of a straight wire strongest?',
+    options: [
+      { text: 'close to the wire', correct: true, why: 'It gets weaker further away.' },
+      { text: 'far from the wire', why: 'It is weaker far away.' },
+      { text: 'the same everywhere', why: 'It depends on the distance.' },
+      { text: 'only at the end of the wire', why: 'Close to the wire, along all its length.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Which rule gives the direction of the field around a wire?',
+    options: [
+      { text: 'the right-hand grip rule', correct: true, why: 'Thumb along the current, fingers curl with the field.' },
+      { text: 'the law of reflection', why: 'That is for light.' },
+      { text: 'the junction rule', why: 'That is for currents in circuits.' },
+      { text: 'the principle of moments', why: 'That is for turning forces.' },
+    ],
+  },
+  {
+    question: 'Inside a solenoid, the field is…',
+    options: [
+      { text: 'strong and almost uniform', correct: true, why: 'Parallel, equally spaced lines.' },
+      { text: 'zero', why: 'The field is strongest inside.' },
+      { text: 'in circles', why: 'Inside, the lines are parallel.' },
+      { text: 'weaker than outside', why: 'It is stronger inside.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** patterns, directions and experiments (4.5.3 C1, C2) are Core. Strength variation and the effect of changing the current (S4, S5) are Extended.
+
+**Timing:** starter 5 min, wire 14 min, solenoid 12 min, practical 16 min, check 8 min, exit ticket 5 min.
+
+**Practical tips:** you need a big current (a few amps) for the straight-wire pattern; switch on only briefly. A solenoid with many turns shows a clear pattern with a smaller current.
+
+**Common mistakes:**
+
+- Using the left hand for the grip rule.
+- Drawing field lines that start or end on the wire.
+- Using the electron flow instead of the conventional current.
+
+**Language support:**
+
+- *grip* = hold tightly; *curl* = bend round.
+- ⊙ (dot) = the current comes towards you, like the point of an arrow; ⊗ (cross) = it goes away, like the feathers of an arrow.
+
+**Differentiation:**
+
+- Support: a printed card with 4 compasses to complete.
+- Stretch: how could you make the field of a solenoid much stronger without changing the current? (More turns; add a soft-iron core.)
+
+**Safety:** the wire gets hot with a big current: switch on for a few seconds only.
+
+</Step>

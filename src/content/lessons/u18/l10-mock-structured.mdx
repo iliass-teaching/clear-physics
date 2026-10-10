@@ -1,0 +1,232 @@
+---
+unit: 18
+lesson: 10
+title: 'Mock exam: structured questions'
+syllabus: ['all topics']
+goals:
+  - Answer structured questions on all topics, with full working.
+  - Mark your answers with a mark scheme, and learn what examiners expect.
+keyWords: [Calculate, Explain, Describe, State, Suggest]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Graph from '../../../components/Graph.astro';
+import ExamQuestion from '../../../components/ExamQuestion.astro';
+
+<Step kind="learn" title="Instructions" minutes={3}>
+
+- 6 questions, 36 marks, about **40 minutes**. Write your answers on paper first.
+- Show your working in calculations, and give units.
+- Then open each mark scheme and mark your answers (or swap with a partner).
+- Parts marked **(E)** are for Extended students.
+
+</Step>
+
+<Step kind="exit" title="Mock test" minutes={45}>
+
+### Question 1: motion
+
+<Graph
+  xLabel="time / s" yLabel="speed / m/s"
+  xMax={20} yMax={12} xStep={2} yStep={2}
+  points={[[0, 0], [5, 10], [15, 10], [20, 0]]}
+  title="Speed–time graph: speed rises from 0 to 10 m/s in 5 s, stays at 10 m/s until 15 s, then falls to 0 at 20 s."
+  caption="The motion of a car."
+/>
+
+<ExamQuestion number="1(a)" marks={1}>
+
+Describe the motion of the car between 5 s and 15 s.
+
+<div slot="scheme">
+
+constant speed (of 10 m/s) **[1]**
+
+</div>
+</ExamQuestion>
+
+<ExamQuestion number="1(b)" marks={3}>
+
+Calculate the total distance travelled by the car.
+
+<div slot="scheme">
+
+- distance = area under the graph **[1]**
+- $\tfrac{1}{2} \times 5 \times 10 + 10 \times 10 + \tfrac{1}{2} \times 5 \times 10$ **[1]**
+- $= 150\,\text{m}$ **[1]**
+
+</div>
+</ExamQuestion>
+
+<ExamQuestion number="1(c) (E)" marks={2}>
+
+Calculate the acceleration of the car in the first 5 s.
+
+<div slot="scheme">
+
+- $a = \dfrac{\Delta v}{\Delta t} = \dfrac{10}{5}$ **[1]**
+- $= 2.0\,\text{m/s}^2$ **[1]**
+
+</div>
+</ExamQuestion>
+
+### Question 2: energy
+
+<ExamQuestion number="2(a)" marks={2}>
+
+A motor lifts a load. It does 1800 J of work in 12 s. Calculate the useful power output of the motor.
+
+<div slot="scheme">
+
+- $P = \dfrac{W}{t} = \dfrac{1800}{12}$ **[1]**
+- $= 150\,\text{W}$ **[1]**
+
+</div>
+</ExamQuestion>
+
+<ExamQuestion number="2(b) (E)" marks={3}>
+
+The electrical power input of the motor is 250 W. Calculate its efficiency, and state one reason why it is not 100%.
+
+<div slot="scheme">
+
+- efficiency $= \dfrac{150}{250} \times 100\%$ **[1]**
+- $= 60\%$ **[1]**
+- energy is transferred to the surroundings as thermal energy (friction / heating of wires) or sound **[1]**
+
+</div>
+</ExamQuestion>
+
+### Question 3: thermal physics
+
+<ExamQuestion number="3(a)" marks={3}>
+
+Describe the arrangement, separation and motion of the particles in a liquid.
+
+<div slot="scheme">
+
+- arrangement: no regular pattern / random **[1]**
+- separation: close together / touching **[1]**
+- motion: move around each other / slide past each other **[1]**
+
+</div>
+</ExamQuestion>
+
+<ExamQuestion number="3(b)" marks={2}>
+
+Explain why a metal spoon in hot tea feels hot at the handle, but a plastic spoon does not.
+
+<div slot="scheme">
+
+- metal is a good (thermal) conductor / has free electrons **[1]**
+- plastic is a (thermal) insulator / poor conductor **[1]**
+
+</div>
+</ExamQuestion>
+
+### Question 4: waves
+
+<ExamQuestion number="4(a)" marks={3}>
+
+A sound wave in air has a frequency of 500 Hz. The speed of sound in air is 340 m/s. Calculate the wavelength.
+
+<div slot="scheme">
+
+- $v = f\lambda$, so $\lambda = \dfrac{v}{f}$ **[1]**
+- $= \dfrac{340}{500}$ **[1]**
+- $= 0.68\,\text{m}$ **[1]**
+
+</div>
+</ExamQuestion>
+
+<ExamQuestion number="4(b)" marks={2}>
+
+State two differences between a sound wave and a light wave.
+
+<div slot="scheme">
+
+Any two of:
+
+- sound is longitudinal, light is transverse **[1]**
+- sound needs a medium, light can travel through a vacuum **[1]**
+- light is much faster (3.0 × 10⁸ m/s) than sound (about 340 m/s) **[1]**
+- light is electromagnetic, sound is not **[1]**
+
+</div>
+</ExamQuestion>
+
+### Question 5: electricity
+
+<ExamQuestion number="5(a)" marks={3}>
+
+A kettle is rated 230 V, 2300 W. Calculate the current in the kettle.
+
+<div slot="scheme">
+
+- $P = IV$, so $I = \dfrac{P}{V}$ **[1]**
+- $= \dfrac{2300}{230}$ **[1]**
+- $= 10\,\text{A}$ **[1]**
+
+</div>
+</ExamQuestion>
+
+<ExamQuestion number="5(b)" marks={3}>
+
+The kettle has a metal case. Explain how the earth wire and the fuse protect the user if the live wire touches the case.
+
+<div slot="scheme">
+
+- a (large) current flows through the earth wire (to the ground) **[1]**
+- the large current melts the fuse / the fuse blows **[1]**
+- this disconnects the live wire, so the case is not live / the user does not get a shock **[1]**
+
+</div>
+</ExamQuestion>
+
+### Question 6: radioactivity
+
+<ExamQuestion number="6(a)" marks={2}>
+
+The count rate from a sample falls from 800 counts/minute to 100 counts/minute in 24 hours. (Background is not included.) Determine the half-life.
+
+<div slot="scheme">
+
+- 800 → 400 → 200 → 100: three half-lives **[1]**
+- half-life $= \dfrac{24}{3} = 8$ hours **[1]**
+
+</div>
+</ExamQuestion>
+
+<ExamQuestion number="6(b)" marks={3}>
+
+Suggest which type of radiation (α, β or γ) is used to sterilise medical equipment in sealed packets, and explain why.
+
+<div slot="scheme">
+
+- γ (gamma) **[1]**
+- it is very penetrating / passes through the packet **[1]**
+- it kills bacteria (and the equipment does not become radioactive) **[1]**
+
+</div>
+</ExamQuestion>
+
+</Step>
+
+<Step kind="homework" title="After the mock" minutes={12}>
+
+Add up your marks. For each question where you lost marks, write: the topic, what you did wrong, and what the mark scheme wanted. Then redo that question without looking.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** instructions 3 min, test 45 min, marking and reflection 12 min.
+
+**Marks:** 36 in total (Core students: 31, without the Extended parts 1(c) and 2(b)).
+
+**These are our own questions** in the style of Papers 3 and 4, with mark schemes in the usual Cambridge style. For real exam practice, use specimen and past papers from Cambridge.
+
+**Using the mark schemes:** teach students that each [1] is one separate idea, and that a correct number without a unit can lose a mark.
+
+</Step>

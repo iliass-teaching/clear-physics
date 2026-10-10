@@ -1,0 +1,175 @@
+---
+unit: 17
+lesson: 5
+title: Gravity and orbits
+syllabus: ['6.1.2 C3', '6.1.2 C5', '6.1.2 C6', '6.1.2 S7', '6.1.2 S9', '6.1.2 S10']
+goals:
+  - Explain what keeps the planets in orbit around the Sun.
+  - Describe how the gravitational field of a planet depends on its mass and on the distance.
+  - Describe elliptical orbits, and explain why a planet moves faster near the Sun (Extended).
+keyWords: [orbit, gravitational field strength, elliptical]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Graph from '../../../components/Graph.astro';
+import PlanetTable from '../../../components/PlanetTable.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { ellipticalOrbitSvg } from '../../../lib/spaceFigures';
+
+<Step kind="starter" title="Ball on a string" minutes={5}>
+
+Your teacher swings a soft ball on a string in a circle.
+
+1. What keeps the ball moving in a circle?
+2. Predict: what happens if the string breaks?
+
+</Step>
+
+<Step kind="learn" title="What keeps the planets in orbit?" minutes={10}>
+
+The **Sun** contains **most of the mass** of the Solar System (more than 99%).
+So the Sun’s gravity is very strong, and the planets orbit the Sun.
+
+The force that keeps a planet in its orbit is the **gravitational attraction of the Sun**. It acts like the string in the starter: it pulls the planet towards the Sun all the time.
+Without this force, the planet would move away in a straight line.
+
+</Step>
+
+<Step kind="learn" title="Gravity of a planet" minutes={8}>
+
+The **gravitational field strength** $g$ tells us the gravitational force on each kilogram.
+
+- **At the surface** of a planet, $g$ depends on the **mass** of the planet: a planet with more mass usually has a stronger field.
+- **Around** a planet, $g$ gets **smaller** when the distance from the planet gets bigger.
+
+<PlanetTable columns={['diameter', 'g']} />
+
+Your mass is the same on every planet. But your weight (the gravitational force on you) changes: on Mars, you weigh less than half your weight on the Earth.
+
+</Step>
+
+<Step kind="learn" title="Elliptical orbits (Extended)" minutes={10}>
+
+The orbits of planets, minor planets and comets are **elliptical** (a stretched circle).
+The Sun is **not** at the centre of the ellipse. (For an orbit that is almost a circle, the Sun is almost at the centre. The orbits of most planets are almost circles.)
+
+<Figure svg={ellipticalOrbitSvg()} caption="An elliptical orbit. The shape is exaggerated: the orbits of most planets are almost circles." width="30rem" />
+
+An object in an elliptical orbit moves **faster when it is closer to the Sun**. We can explain this with the **conservation of energy**:
+
+- When the object moves **towards** the Sun, it loses gravitational potential energy and gains kinetic energy: it speeds up.
+- When it moves **away** from the Sun, it loses kinetic energy and gains gravitational potential energy: it slows down.
+
+The Sun’s gravitational field also gets weaker further from the Sun. So the planets far from the Sun move more slowly:
+
+<Graph
+  xLabel="distance from the Sun / 10⁶ km" yLabel="orbital speed / (km/s)"
+  xMax={5000} yMax={50} xStep={1000} yStep={10}
+  points={[[57.9, 47.4], [108.2, 35.0], [149.6, 29.8], [228, 24.1], [778.5, 13.1], [1432, 9.7], [2867, 6.8], [4515, 5.4]]}
+  markers={[[57.9, 47.4], [108.2, 35.0], [149.6, 29.8], [228, 24.1], [778.5, 13.1], [1432, 9.7], [2867, 6.8], [4515, 5.4]]}
+  curve
+  caption="Orbital speed of the eight planets (NASA data)."
+/>
+
+</Step>
+
+<Step kind="do" title="Analyse the data" minutes={12}>
+
+Use the table and the graph above.
+
+1. Which planet has the strongest gravitational field at its surface? Which has the weakest?
+2. Venus and the Earth have a similar size. Compare their values of $g$.
+3. **Extended:** describe how the orbital speed changes with the distance from the Sun.
+4. **Extended:** explain this pattern. Use the words *gravitational field* and *weaker*.
+
+*Start your answer to question 3 like this: "The further the planet is from the Sun, the …"*
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={10}>
+
+<Quiz questions={[
+  {
+    question: 'What force keeps the Earth in its orbit around the Sun?',
+    options: [
+      { text: 'the gravitational attraction of the Sun', correct: true, why: 'The Sun’s gravity pulls the Earth towards it all the time.' },
+      { text: 'the gravitational attraction of the Moon', why: 'The Moon is too small. The Sun’s gravity keeps the Earth in orbit.' },
+      { text: 'magnetism', why: 'Gravity keeps the planets in orbit.' },
+      { text: 'no force is needed', why: 'Without a force, the Earth would move away in a straight line.' },
+    ],
+  },
+  {
+    question: 'Why do the planets orbit the Sun, and not the Sun orbit a planet?',
+    options: [
+      { text: 'The Sun has most of the mass of the Solar System', correct: true, why: 'So its gravitational attraction is the strongest.' },
+      { text: 'The Sun is hot', why: 'Temperature does not decide this. Mass does.' },
+      { text: 'The Sun is in the middle of the galaxy', why: 'It is not. The Sun has most of the mass of the Solar System.' },
+      { text: 'The planets are made of gas', why: 'Some are rocky. The Sun has most of the mass.' },
+    ],
+  },
+  {
+    question: 'You travel away from the Earth in a spacecraft. What happens to the Earth’s gravitational field strength?',
+    options: [
+      { text: 'it decreases', correct: true, why: 'The field gets weaker when the distance increases.' },
+      { text: 'it increases', why: 'The field gets weaker further away.' },
+      { text: 'it stays the same', why: 'The field gets weaker further away.' },
+      { text: 'it becomes zero at once', why: 'It decreases slowly with distance.' },
+    ],
+  },
+  {
+    question: 'Extended: where does a comet move fastest in its elliptical orbit?',
+    options: [
+      { text: 'when it is closest to the Sun', correct: true, why: 'It has lost gravitational potential energy and gained kinetic energy.' },
+      { text: 'when it is furthest from the Sun', why: 'There it has the most potential energy and the least kinetic energy: it is slowest.' },
+      { text: 'it moves at the same speed everywhere', why: 'In an elliptical orbit, the speed changes.' },
+      { text: 'halfway between', why: 'It is fastest when it is closest to the Sun.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+**Extended:** explain why a planet moves faster when it is closer to the Sun. Use the words *kinetic energy* and *gravitational potential energy*.
+
+**Core:** what would happen to the Earth if the Sun’s gravity suddenly disappeared?
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Your mass is 50 kg. Use $W = mg$ and the table to calculate your weight on the Earth, on Mars and on Jupiter’s cloud tops.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** 6.1.2 C3, C5 and C6 are Core. Elliptical orbits (S7), orbital speed and distance (S9), and the energy explanation (S10) are Extended.
+
+**Timing:** starter 5 min, learn 28 min, data task 12 min, check 10 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "There is no gravity in space." There is: it gets weaker with distance, but it keeps the planets in orbit.
+- "The Sun is at the centre of every orbit." Only for orbits that are almost circles.
+- Confusing mass and weight.
+
+**Data note:** $g$ at the surface does not depend on mass only: it also depends on the size of the planet. The syllabus only asks for the link with mass. For the gas planets, NASA gives $g$ at the cloud tops (where the pressure is 1 bar).
+
+**Homework answers:** Earth 490 N, Mars 185 N, Jupiter 1155 N. $W = mg$ is from Unit 2.
+
+**Language support:**
+
+- Sentence frame: *"When the planet moves towards the Sun, it loses … and gains …, so it …"*
+
+**Differentiation:**
+
+- Support: focus on the ball-on-a-string model and the Core questions.
+- Stretch: Halley’s comet has a very elliptical orbit. Sketch it and mark where it is fastest and slowest.
+
+**Safety:** use a soft ball and keep a clear space around you for the starter demonstration.
+
+</Step>

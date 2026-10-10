@@ -1,0 +1,165 @@
+---
+unit: 15
+lesson: 3
+title: The force on a current-carrying conductor
+syllabus: ['4.5.4 C1', '4.5.4 S2', '4.5.4 S3']
+goals:
+  - Describe an experiment to show the force on a wire in a magnetic field.
+  - Describe the effect of reversing the current or the field.
+  - "Extended: use Fleming's left-hand rule, also for beams of charged particles."
+keyWords: [motor effect, magnetic field, electric current, conventional current]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Quiz from '../../../components/Quiz.astro';
+import FlemingSim from '../../../components/FlemingSim.astro';
+import { motorEffectSvg } from '../../../lib/emEffectsFigures';
+
+<Step kind="starter" title="Two fields" minutes={5}>
+
+A wire with a current has its own magnetic field (lesson 15.1). What could happen if we put this wire between the poles of a magnet?
+
+</Step>
+
+<Step kind="learn" title="The motor effect" minutes={12}>
+
+A wire carrying a current, in a magnetic field, feels a **force**. This is the **motor effect**.
+
+<Figure svg={motorEffectSvg()} caption="A force acts on the wire." width="30rem" />
+
+- The force is at **right angles** to the current and to the field.
+- **Reverse the current** → the force **reverses**.
+- **Reverse the field** (swap the poles) → the force **reverses**.
+- Reverse both → the force is in the **same** direction as at the start.
+- There is **no force** if the wire is **parallel** to the field.
+
+The force is bigger with a bigger current and a stronger field.
+
+</Step>
+
+<Step kind="do" title="The jumping wire" minutes={15}>
+
+**Equipment:** a strong U-shaped magnet, two horizontal metal rails (or a loose bare copper wire), a short copper rod, a low-voltage supply, a switch.
+
+1. Put the copper rod across the rails, between the poles of the magnet.
+2. Switch on for a moment. Which way does the rod roll (or jump)?
+3. Reverse the current. What happens?
+4. Turn the magnet over (reverse the field). What happens?
+
+**Virtual version:**
+
+<FlemingSim />
+
+</Step>
+
+<Step kind="learn" title="Fleming's left-hand rule (Extended)" minutes={12}>
+
+Hold the **thumb**, **first finger** and **second finger** of your **left** hand at right angles to each other:
+
+- **F**irst finger: **F**ield (from N to S);
+- se**C**ond finger: **C**urrent (conventional current, + to −);
+- th**u**mb: **m**otion (the direction of the force).
+
+**Beams of charged particles:** a beam of moving charged particles is a current.
+
+- For **positive** particles, the current is in the direction they move.
+- For **electrons** (negative), the conventional current is **opposite** to the direction they move. Point your second finger the **other way**.
+
+Try it in the simulation: tick "a beam of electrons".
+
+</Step>
+
+<Step kind="practice" title="Check your understanding" minutes={11}>
+
+<Quiz questions={[
+  {
+    question: 'A wire in a magnetic field feels a force upwards. The current is reversed. Now the force is…',
+    options: [
+      { text: 'downwards', correct: true, why: 'Reversing the current reverses the force.' },
+      { text: 'upwards', why: 'It reverses.' },
+      { text: 'zero', why: 'It reverses.' },
+      { text: 'sideways', why: 'It reverses: downwards.' },
+    ],
+  },
+  {
+    question: 'The current AND the field are both reversed. The force…',
+    options: [
+      { text: 'stays in the same direction', correct: true, why: 'Two reversals cancel.' },
+      { text: 'reverses', why: 'Each reversal reverses the force; two reversals cancel.' },
+      { text: 'becomes zero', why: 'The force is still there.' },
+      { text: 'doubles', why: 'Its size does not change.' },
+    ],
+  },
+  {
+    question: 'When is there no force on a current-carrying wire in a magnetic field?',
+    options: [
+      { text: 'When the wire is parallel to the field', correct: true, why: 'The force is biggest at 90°.' },
+      { text: 'When the wire is at 90° to the field', why: 'Then the force is biggest.' },
+      { text: 'When the current is big', why: 'A big current gives a big force.' },
+      { text: 'Never', why: 'There is no force when the wire is parallel to the field.' },
+    ],
+  },
+  {
+    question: "Extended: in Fleming's left-hand rule, what does the second finger show?",
+    options: [
+      { text: 'the conventional current', correct: true, why: 'seCond = Current.' },
+      { text: 'the field', why: 'The first finger shows the field.' },
+      { text: 'the force', why: 'The thumb shows the force (motion).' },
+      { text: 'the flow of electrons', why: 'It shows the conventional current, opposite to the electrons.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'What is the motor effect?',
+    options: [
+      { text: 'A current-carrying wire in a magnetic field feels a force', correct: true, why: 'This is how motors work.' },
+      { text: 'A moving magnet makes a current', why: 'That is electromagnetic induction.' },
+      { text: 'A current makes a wire hot', why: 'That is the heating effect.' },
+      { text: 'A magnet attracts iron', why: 'That is magnetism.' },
+    ],
+  },
+  {
+    question: 'Extended: a beam of electrons moves to the right, in a field. How do you use the left-hand rule?',
+    options: [
+      { text: 'Point the second finger to the left (opposite to the electrons)', correct: true, why: 'Conventional current is opposite to the electron flow.' },
+      { text: 'Point the second finger to the right', why: 'For electrons, the current is the other way.' },
+      { text: 'Use the right hand', why: 'Use the left hand, with the current opposite to the electrons.' },
+      { text: 'The rule does not work for beams', why: 'It works; reverse the current for electrons.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** the experiment and the effect of reversing (4.5.4 C1) are Core. Fleming's left-hand rule (S2) and beams of charged particles (S3) are Extended.
+
+**Timing:** starter 5 min, learn 12 min, practical 15 min, Fleming 12 min, check 11 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- Using the right hand (that is for generators, lesson 15.6).
+- Using the electron flow as the current.
+- Field direction from S to N.
+
+**Language support:**
+
+- Say the rule aloud: "Field, Current, Motion — first, second, thumb."
+
+**Differentiation:**
+
+- Support: do the simulation with the rule card in front of you.
+- Stretch: a beam of electrons in a TV tube is bent by magnetic coils. Which way must the field point to bend the beam upwards?
+
+**Safety:** the rod and rails get hot with a big current; switch on only briefly.
+
+</Step>

@@ -1,0 +1,143 @@
+---
+unit: 8
+lesson: 2
+title: Internal energy and specific heat capacity
+syllabus: ['2.2.2 C1', '2.2.2 S2', '2.2.2 S3']
+goals:
+  - Know that the internal energy of an object goes up when its temperature goes up.
+  - 'Extended: link temperature to the average kinetic energy of the particles.'
+  - 'Extended: use the equation $c = \dfrac{\Delta E}{m \Delta\theta}$.'
+keyWords: [internal energy, temperature, specific heat capacity, kinetic energy]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+
+<Step kind="starter" title="The beach at noon" minutes={5}>
+
+At noon on a sunny day, the sand on the beach is very hot. The sea is still cool. The Sun gives the same energy to each square metre of sand and of sea. Why is the sand so much hotter?
+
+</Step>
+
+<Step kind="learn" title="Internal energy" minutes={8}>
+
+The particles in an object move (or vibrate). The energy of all its particles is its **internal energy**.
+
+- When the **temperature** of an object goes **up**, its **internal energy** goes **up**.
+
+**Extended:** when the temperature goes up, the **average kinetic energy** of the particles goes up: on average, they move faster.
+
+</Step>
+
+<Step kind="learn" title="Specific heat capacity (Extended)" minutes={14}>
+
+Some materials need a lot of energy to get hot. Others need only a little.
+
+The **specific heat capacity** $c$ of a material is the energy needed to raise the temperature of **1 kg** by **1 °C**:
+
+$$
+c = \frac{\Delta E}{m \Delta\theta}
+$$
+
+- $\Delta E$: energy given to the object (J)
+- $m$: mass (kg)
+- $\Delta\theta$: **change** in temperature (°C)
+- $c$: specific heat capacity, in J/(kg °C)
+
+<div class="table-wrap">
+
+| Material | $c$ / J/(kg °C) |
+|---|---|
+| water | 4200 |
+| aluminium | 900 |
+| iron | 450 |
+| copper | 385 |
+| lead | 130 |
+
+</div>
+
+Water has a **very high** specific heat capacity: it needs a lot of energy to get hot, and it gives out a lot of energy when it cools. This is why the sea stays cool on a hot day, and why we use hot water in heating systems.
+
+<WorkedExample
+  question="How much energy is needed to heat 2.0 kg of water from 20 °C to 70 °C?"
+  given={['$m = 2.0\\,\\text{kg}$', '$c = 4200\\,\\text{J/(kg}\\,^\\circ\\text{C)}$', '$\\Delta\\theta = 70 - 20 = 50\\,^\\circ\\text{C}$']}
+  find="the energy $\Delta E$"
+  answer="$\Delta E = 420\,000\,\text{J} = 4.2 \times 10^5\,\text{J}$"
+>
+
+$c = \dfrac{\Delta E}{m \Delta\theta}$, so $\Delta E = m c \Delta\theta$
+
+$\Delta E = 2.0 \times 4200 \times 50$
+
+$\Delta E = 420\,000\,\text{J}$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="practice" title="Practice (Extended)" minutes={20}>
+
+<Practice topic="shc" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={8}>
+
+<Quiz questions={[
+  {
+    question: 'The temperature of a cup of tea goes down. What happens to its internal energy?',
+    options: [
+      { text: 'It goes down', correct: true, why: 'Lower temperature, less internal energy.' },
+      { text: 'It goes up', why: 'Internal energy goes up when the temperature goes up.' },
+      { text: 'It stays the same', why: 'The temperature changes, so the internal energy changes.' },
+      { text: 'It becomes zero', why: 'The particles still move: there is still internal energy.' },
+    ],
+  },
+  {
+    question: 'Extended: 1 kg of copper and 1 kg of water get the same energy. Which gets hotter?',
+    options: [
+      { text: 'the copper', correct: true, why: 'Copper has a much smaller specific heat capacity (385) than water (4200).' },
+      { text: 'the water', why: 'Water needs more energy for each °C.' },
+      { text: 'both the same', why: 'Their specific heat capacities are different.' },
+      { text: 'we cannot know', why: 'Compare the specific heat capacities.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+1. Calculate the energy needed to heat a 0.80 kg aluminium pan from 20 °C to 120 °C.
+2. Explain why water is used in hot-water bottles. Use the words *specific heat capacity* and *energy*.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** "a rise in temperature increases internal energy" (2.2.2 C1) is Core. Average kinetic energy (S2) and specific heat capacity (S3) are Extended. Core students can do the starter, the internal energy part and the first exit question, then revise Unit 7.
+
+**Timing:** starter 5 min, learn 22 min, practice 20 min, exit ticket 8 min, discussion 5 min.
+
+**Values:** the values of $c$ are rounded values from data tables (water about 4180–4200; aluminium about 900; iron about 450; copper about 385; lead about 130). Exam papers usually give the value they want students to use.
+
+**Common mistakes:**
+
+- Using the final temperature instead of the change in temperature.
+- Mass in grams.
+- Confusing *temperature* (how hot) with *internal energy* (how much energy). A bath of warm water has more internal energy than a cup of boiling water.
+
+**Language support:**
+
+- *Specific* here means *for 1 kg*. *Capacity* means *how much it can take*.
+- Read the unit J/(kg °C) as "joules per kilogram per degree Celsius".
+
+**Differentiation:**
+
+- Support: start with level 1 only, with the equation $\Delta E = m c \Delta\theta$ written on the board.
+- Stretch: explain the starter (the beach) with numbers: dry sand has $c$ of about 800 J/(kg °C).
+
+</Step>

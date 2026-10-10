@@ -1,0 +1,153 @@
+---
+unit: 6
+lesson: 1
+title: Pressure
+syllabus: ['1.8 C1', '1.8 C2']
+goals:
+  - Define pressure as force per unit area.
+  - 'Use the equation $p = \dfrac{F}{A}$.'
+  - Explain everyday examples of high and low pressure.
+keyWords: [pressure, area, force, pascal]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { brickSvg } from '../../../lib/pressureFigures';
+
+<Step kind="starter" title="Pencil and finger" minutes={5}>
+
+Hold a pencil between two fingers: the flat end on one finger, the sharp point on the other. Press gently.
+
+The force is the same on both fingers. Why does the point hurt more?
+
+</Step>
+
+<Step kind="learn" title="What is pressure?" minutes={12}>
+
+**Pressure** is the force on each unit of area:
+
+$$
+p = \frac{F}{A}
+$$
+
+<div class="table-wrap">
+
+| Quantity | Symbol | Units |
+|---|---|---|
+| pressure | $p$ | N/m² (= pascal, Pa) or N/cm² |
+| force | $F$ | N |
+| area | $A$ | m² or cm² |
+
+</div>
+
+- The **same force** on a **smaller area** gives a **bigger pressure**.
+- A **bigger force** on the same area gives a bigger pressure.
+
+<Figure svg={brickSvg()} caption="The same brick: standing up, it presses harder on the ground." width="32rem" />
+
+<WorkedExample
+  question="A box has a weight of 600 N. It stands on an area of 0.30 m². Calculate the pressure on the floor."
+  given={['$F = 600\\,\\text{N}$', '$A = 0.30\\,\\text{m}^2$']}
+  find="the pressure $p$"
+  answer="$p = 2000\,\text{N/m}^2 = 2000\,\text{Pa}$"
+>
+
+$p = \dfrac{F}{A} = \dfrac{600}{0.30}$
+
+$p = 2000\,\text{N/m}^2$
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="learn" title="Pressure in everyday life" minutes={8}>
+
+<div class="table-wrap">
+
+| We want a **big** pressure: small area | We want a **small** pressure: big area |
+|---|---|
+| a sharp knife cuts easily | snowshoes stop you sinking into snow |
+| a drawing pin goes into a board | wide tyres on a tractor do not sink into mud |
+| the studs on football boots grip the grass | a camel’s wide feet do not sink into sand |
+| a nail has a sharp point | the wide straps of a heavy bag do not hurt your shoulders |
+
+</div>
+
+</Step>
+
+<Step kind="do" title="Your pressure on the floor" minutes={12}>
+
+1. Find your mass $m$ (in kg). Calculate your weight: $F = mg$ (use $g = 9.8\,\text{N/kg}$).
+2. Stand on squared paper (1 cm squares). Draw around your shoe.
+3. Count the squares inside the outline (count a square if more than half of it is inside). This is the area of one shoe in cm².
+4. Calculate the pressure when you stand on **two feet**, then on **one foot**, in N/cm².
+
+**Question:** why does the pressure double when you stand on one foot?
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={18}>
+
+<Practice topic="pressure" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'A force of 200 N acts on an area of 0.5 m². What is the pressure?',
+    options: [
+      { text: '400 N/m²', correct: true, why: '$p = \\dfrac{200}{0.5} = 400\\,\\text{N/m}^2$.' },
+      { text: '100 N/m²', why: 'You multiplied. $p = \\dfrac{F}{A}$.' },
+      { text: '0.0025 N/m²', why: 'You divided the wrong way.' },
+      { text: '400 N', why: 'Pressure is in N/m² (Pa).' },
+    ],
+  },
+  {
+    question: 'Why do snowshoes stop you sinking into the snow?',
+    options: [
+      { text: 'They spread your weight over a bigger area, so the pressure is smaller', correct: true, why: '$p = \\dfrac{F}{A}$: a bigger $A$ gives a smaller $p$.' },
+      { text: 'They make you lighter', why: 'Your weight does not change.' },
+      { text: 'They make the snow harder', why: 'They reduce the pressure on the snow.' },
+      { text: 'They increase the pressure', why: 'They reduce the pressure.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Find 4 objects at home designed for a high pressure or a low pressure. For each one, explain the design using *force*, *area* and *pressure*.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Timing:** starter 5 min, learn 20 min, activity 12 min, practice 18 min, exit ticket 5 min.
+
+**Units:** the syllabus uses N/m² and N/cm² at Core, and the pascal (Pa) at Extended. $1\,\text{Pa} = 1\,\text{N/m}^2$.
+
+**Common mistakes:**
+
+- Using the mass (kg) as the force: the force is the weight, $mg$.
+- Changing cm² to m² by dividing by 100 (it is 10 000).
+- Multiplying force and area.
+
+**Language support:**
+
+- In everyday English, *pressure* can mean stress ("I am under pressure"). In physics it is force per unit area.
+
+**Differentiation:**
+
+- Support: use areas in m² only at first.
+- Stretch: an elephant (40 000 N on 4 feet of 0.12 m² each) or a person in high heels (600 N on 1 cm²): who puts more pressure on the floor? (Elephant: about 83 000 Pa; high heel: 6 000 000 Pa.)
+
+**Safety:** use a pencil gently in the starter, without a very sharp point.
+
+</Step>

@@ -1,0 +1,124 @@
+---
+unit: 13
+lesson: 7
+title: Electrical power and energy
+syllabus: ['4.2.5 C1', '4.2.5 C2', '4.2.5 C3']
+goals:
+  - Understand that circuits transfer energy from a source to the components and the surroundings.
+  - 'Recall and use the equation $P = IV$.'
+  - 'Recall and use the equation $E = IVt$.'
+keyWords: [power, watt, electric current, potential difference, energy]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import WorkedExample from '../../../components/WorkedExample.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import { energyFlowSvg } from '../../../lib/electricFigures';
+
+<Step kind="starter" title="Read the label" minutes={5}>
+
+A kettle label says **230 V, 2300 W**. A phone charger says **5 V, 2 A**. What do these numbers tell you? Which appliance transfers energy faster?
+
+</Step>
+
+<Step kind="learn" title="Energy in circuits" minutes={8}>
+
+<Figure svg={energyFlowSvg()} caption="Energy goes from the source to the components, then to the surroundings." width="30rem" />
+
+An electric circuit **transfers energy**:
+
+- from a **source** (a cell, a battery, the mains supply),
+- to the **components** (a lamp, a heater, a motor),
+- and then to the **surroundings** (as light, sound, thermal energy, kinetic energy…).
+
+</Step>
+
+<Step kind="learn" title="Power and energy" minutes={14}>
+
+**Power** is the energy transferred each second (Unit 5). For an electrical component:
+
+$$
+P = IV
+$$
+
+- $P$: power (W); $I$: current (A); $V$: p.d. (V).
+
+**Energy** transferred in a time $t$:
+
+$$
+E = IVt
+$$
+
+- $E$: energy (J); $t$: time (s). (This is $E = Pt$, with $P = IV$.)
+
+<WorkedExample
+  question="A kettle works at 230 V. The current is 10 A. It boils water in 3 minutes. Calculate (a) its power, (b) the energy transferred."
+  given={['$V = 230\\,\\text{V}$', '$I = 10\\,\\text{A}$', '$t = 3\\,\\text{min} = 180\\,\\text{s}$']}
+  find="the power $P$ and the energy $E$"
+  answer="$P = 2300\,\text{W}$; $E = 414\,000\,\text{J}$"
+>
+
+(a) $P = IV = 10 \times 230 = 2300\,\text{W}$
+
+(b) $E = IVt = 10 \times 230 \times 180 = 414\,000\,\text{J}$ (about $4.1 \times 10^5\,\text{J}$)
+
+</WorkedExample>
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={25}>
+
+<Practice topic="electrical-power" />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={8}>
+
+<Quiz questions={[
+  {
+    question: 'A lamp works at 12 V with a current of 2 A. What is its power?',
+    options: [
+      { text: '24 W', correct: true, why: '$P = IV = 2 \\times 12$.' },
+      { text: '6 W', why: 'Multiply: $P = IV$.' },
+      { text: '14 W', why: 'Multiply, do not add.' },
+      { text: '24 J', why: 'Power is in watts.' },
+    ],
+  },
+  {
+    question: 'A 6 V motor takes a current of 0.5 A for 1 minute. How much energy is transferred?',
+    options: [
+      { text: '180 J', correct: true, why: '$E = IVt = 0.5 \\times 6 \\times 60$.' },
+      { text: '3 J', why: 'This is the power (3 W). Multiply by the time too.' },
+      { text: '3 W', why: 'This is the power.' },
+      { text: '6 J', why: 'Use $E = IVt$ with $t$ in seconds.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core:** 4.2.5 C1–C3.
+
+**Timing:** starter 5 min, energy 8 min, equations 14 min, practice 25 min, exit ticket 8 min.
+
+**Common mistakes:**
+
+- Time in minutes in $E = IVt$.
+- Confusing power (W) and energy (J).
+- $P = \dfrac{V}{I}$ (this is resistance).
+
+**Language support:**
+
+- *rate* = how fast; power = the rate of energy transfer.
+
+**Differentiation:**
+
+- Support: level 1 only, with a table of $I$, $V$, $P$ to complete.
+- Stretch: show that $P = I^2 R$ using $V = IR$. (Not required, but useful for Unit 15.)
+
+</Step>

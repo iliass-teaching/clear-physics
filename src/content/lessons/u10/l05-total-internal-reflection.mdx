@@ -1,0 +1,164 @@
+---
+unit: 10
+lesson: 5
+title: Total internal reflection
+syllabus: ['3.2.2 C4', '3.2.2 C5', '3.2.2 S8', '3.2.2 S9']
+goals:
+  - State the meaning of the critical angle.
+  - Describe total internal reflection, with an experiment and everyday examples.
+  - 'Extended: use $n = \dfrac{1}{\sin c}$ and describe optical fibres.'
+keyWords: [critical angle, total internal reflection, optical fibre, refraction]
+minutes: 60
+---
+
+import Step from '../../../components/Step.astro';
+import Figure from '../../../components/Figure.astro';
+import Practice from '../../../components/Practice.astro';
+import Quiz from '../../../components/Quiz.astro';
+import RaySim from '../../../components/RaySim.astro';
+import { tirSvg, opticalFibreSvg } from '../../../lib/lightFigures';
+
+<Step kind="starter" title="Light in a tube of glass" minutes={5}>
+
+The internet sends information across the oceans as **light**, inside thin glass cables. The cables are not straight: they bend. How can light follow a bent cable?
+
+</Step>
+
+<Step kind="learn" title="The critical angle" minutes={14}>
+
+Light goes from glass into air. It bends **away from** the normal. When we make the angle of incidence bigger:
+
+<Figure svg={tirSvg()} caption="A ray inside a semicircular glass block hits the flat side." width="36rem" />
+
+1. **Small angle:** most light refracts out into the air. A little light reflects back inside (a weak reflection).
+2. **At the critical angle:** the refracted ray goes **along the surface** (the angle of refraction is 90°).
+3. **Bigger than the critical angle:** no light leaves. **All** the light reflects back inside. This is **total internal reflection**.
+
+**Critical angle** $c$: the angle of incidence (inside the material) where the angle of refraction is 90°. For glass, $c$ is about 42°.
+
+**Two conditions for total internal reflection:**
+
+- the light goes from a **slower** material (glass, water) towards a **faster** one (air);
+- the angle of incidence is **bigger than the critical angle**.
+
+</Step>
+
+<Step kind="do" title="Find the critical angle" minutes={14}>
+
+**With a semicircular block:** shine the ray at the **curved** side, towards the centre of the flat side (so it does not bend at the curved side). Slowly increase the angle. Find the angle where the ray leaves along the surface.
+
+Or use the simulation:
+
+<RaySim mode="semicircle" />
+
+1. Find the critical angle for glass, water and diamond. Record them.
+2. What happens to the weak reflected ray as you get close to the critical angle?
+3. Which material has the smallest critical angle? (This is why diamonds sparkle: light is totally internally reflected many times inside them.)
+
+</Step>
+
+<Step kind="learn" title="Uses (and Extended: the equation)" minutes={10}>
+
+<Figure svg={opticalFibreSvg()} caption="Light travels along an optical fibre by total internal reflection." width="30rem" />
+
+- **Optical fibres** (Extended): very thin glass fibres. The light hits the inside surface at more than the critical angle, so it is totally internally reflected again and again. Optical fibres carry phone calls, TV and internet signals (telecommunications) over very long distances, very fast. Doctors also use them in **endoscopes**, to look inside the body.
+- **Prisms** in binoculars and periscopes: a 45° glass prism reflects all the light, better than a mirror.
+- **Cat's eyes** on roads and bicycle reflectors.
+
+**Extended:** the refractive index and the critical angle are linked:
+
+$$
+n = \frac{1}{\sin c}
+$$
+
+For glass, $n = 1.5$: $\sin c = \dfrac{1}{1.5} = 0.667$, so $c = 41.8^\circ$.
+
+</Step>
+
+<Step kind="practice" title="Practice" minutes={12}>
+
+**All students:**
+
+<Quiz questions={[
+  {
+    question: 'What is the critical angle?',
+    options: [
+      { text: 'The angle of incidence where the angle of refraction is 90°', correct: true, why: 'The refracted ray goes along the surface.' },
+      { text: 'The angle where light goes straight on', why: 'That is 0°, along the normal.' },
+      { text: 'The angle of reflection in a mirror', why: 'The critical angle is about refraction out of a material.' },
+      { text: 'Always 90°', why: 'The angle of refraction is 90°; the critical angle is the angle of incidence (about 42° for glass).' },
+    ],
+  },
+  {
+    question: 'When does total internal reflection happen?',
+    options: [
+      { text: 'Light goes from glass towards air with an angle of incidence bigger than the critical angle', correct: true, why: 'Both conditions are needed.' },
+      { text: 'Light goes from air into glass with a big angle', why: 'It must go from the slower material towards the faster one.' },
+      { text: 'The angle of incidence is smaller than the critical angle', why: 'Then most light refracts out.' },
+      { text: 'Light hits a mirror', why: 'That is ordinary reflection.' },
+    ],
+  },
+]} />
+
+**Extended:**
+
+<Practice topic="refractive-index" level={3} />
+
+</Step>
+
+<Step kind="exit" title="Exit ticket" minutes={5}>
+
+<Quiz questions={[
+  {
+    question: 'Why can light travel along a bent optical fibre?',
+    options: [
+      { text: 'It is totally internally reflected at the inside surface', correct: true, why: 'The angle of incidence is always bigger than the critical angle.' },
+      { text: 'Glass absorbs the light', why: 'The light reflects inside the fibre.' },
+      { text: 'The light bends to follow the glass', why: 'Light travels in straight lines between reflections.' },
+      { text: 'The fibre has mirrors inside', why: 'It uses total internal reflection, not mirrors.' },
+    ],
+  },
+  {
+    question: 'Extended: the critical angle of a plastic is 40°. What is its refractive index?',
+    options: [
+      { text: '1.56', correct: true, why: '$n = \\dfrac{1}{\\sin 40^\\circ} = \\dfrac{1}{0.643}$.' },
+      { text: '0.64', why: 'This is $\\sin c$. Now calculate $\\dfrac{1}{\\sin c}$.' },
+      { text: '0.025', why: 'Use $\\dfrac{1}{\\sin c}$, not $\\dfrac{1}{c}$.' },
+      { text: '1.31', why: 'Check: $\\dfrac{1}{\\sin 40^\\circ} = 1.56$.' },
+    ],
+  },
+]} />
+
+</Step>
+
+<Step kind="homework" title="Homework">
+
+Find out how an endoscope works. Draw a simple diagram and write 4 sentences. Use the words *optical fibre*, *critical angle* and *total internal reflection*.
+
+</Step>
+
+<Step kind="teacher" title="Teacher notes">
+
+**Core and Extended:** critical angle and total internal reflection (3.2.2 C4, C5) are Core. $n = \dfrac{1}{\sin c}$ and optical fibres in telecommunications (S8, S9) are Extended.
+
+**Timing:** starter 5 min, learn 24 min, experiment 14 min, practice 12 min, exit ticket 5 min.
+
+**Common mistakes:**
+
+- "Total internal reflection happens when light goes from air into glass."
+- "The critical angle is 90°." (90° is the angle of refraction.)
+- Forgetting that some light is always reflected, even below the critical angle.
+
+**Language support:**
+
+- *total* = all; *internal* = inside. "Total internal reflection" = all the light reflects back inside.
+- *critical* here means "the angle where things change".
+
+**Differentiation:**
+
+- Support: three-step comic strip (small angle / critical angle / bigger angle) to label.
+- Stretch: why do diamonds sparkle more than glass of the same shape?
+
+**Safety:** as in lesson 10.3.
+
+</Step>
